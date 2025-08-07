@@ -1,0 +1,1499 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// Product Images
+import AlphaMain from '../assets/alpha-main.jpg';
+import AlphaAlt1 from '../assets/alpha-alt1.webp';
+import AlphaAlt2 from '../assets/alpha-alt2.jpg';
+import AlphaAlt3 from '../assets/alpha-alt3.jpg';
+
+
+// Feature Icons
+import CheckIcon from '../assets/check.svg';
+
+---
+
+<Layout title="Order Your Healing Device | Anywhere Healing">
+	<Header />
+	
+	<!-- Product Selection Section -->
+	<section class="product-hero">
+		<div class="container">
+			<!-- Product Tabs -->
+			<div class="product-tabs">
+				<button class="tab-button active" data-product="alpha">Alpha Wearable</button>
+				<button class="tab-button" data-product="charisma">Charisma Ring</button>
+				<button class="tab-button" data-product="frequana">Frequana</button>
+				<button class="tab-button" data-product="bundle">Complete Bundle</button>
+			</div>
+
+			<!-- Product Display -->
+			<div class="product-display">
+				<!-- Product Images -->
+				<div class="product-images">
+					<div class="main-image">
+						<img id="main-product-image" src={AlphaMain.src} alt="Alpha Wearable">
+					</div>
+					<div class="thumbnail-grid" id="thumbnail-grid">
+						<img class="thumbnail active" src={AlphaMain.src} alt="Alpha Main" data-main={AlphaMain.src}>
+						<img class="thumbnail" src={AlphaAlt1.src} alt="Alpha Alt 1" data-main={AlphaAlt1.src}>
+						<img class="thumbnail" src={AlphaAlt2.src} alt="Alpha Alt 2" data-main={AlphaAlt2.src}>
+						<img class="thumbnail" src={AlphaAlt3.src} alt="Alpha Alt 3" data-main={AlphaAlt3.src}>
+					</div>
+				</div>
+
+				<!-- Product Info -->
+				<div class="product-info">
+					<div class="product-content active" data-product="alpha">
+						<h1>Alpha Wearable + App Subscription</h1>
+						<div class="price-section">
+							<span class="current-price">$399</span>
+							<span class="original-price">$499</span>
+							<span class="savings">Save $100</span>
+						</div>
+						
+						<div class="product-description">
+							<p>Experience the future of natural healing with our revolutionary Alpha Wearable. This cutting-edge device uses advanced bioresonance technology to scan your body's frequencies and deliver targeted vibrations that support your natural healing processes.</p>
+						</div>
+
+						<div class="key-benefits">
+							<div class="benefit-item">
+								<img src={CheckIcon.src} alt="Check">
+								<span>Sleep aid, anxiety, depression relief</span>
+							</div>
+							<div class="benefit-item">
+								<img src={CheckIcon.src} alt="Check">
+								<span>Bioresonance therapy technology</span>
+							</div>
+							<div class="benefit-item">
+								<img src={CheckIcon.src} alt="Check">
+								<span>Boosts energy and promotes balance</span>
+							</div>
+							<div class="benefit-item">
+								<img src={CheckIcon.src} alt="Check">
+								<span>Works in harmony with your body</span>
+							</div>
+						</div>
+
+						<div class="purchase-section">
+							
+							<button class="buy-button primary snipcart-add-item"
+							data-item-id="alpha-wearable"
+							data-item-price="399.00"
+							data-item-url="/order"
+							data-item-description="Revolutionary Alpha Wearable with bioresonance technology"
+							data-item-image="/src/assets/alpha-main.jpg"
+							data-item-name="Alpha Wearable + App Subscription"
+							data-item-categories="wearables">
+							Order Alpha Wearable - $399
+							</button>
+
+							<p class="guarantee">30-day money-back guarantee</p>
+						</div>
+					</div>
+
+					<div class="product-content" data-product="charisma">
+						<h1>Charisma Ring</h1>
+						<div class="price-section">
+							<span class="current-price">$199</span>
+						</div>
+						
+						<div class="product-description">
+							<p>The Charisma Ring combines elegance with advanced frequency technology. Designed for daily wear, it continuously supports your well-being through gentle frequency therapy that enhances focus, reduces stress, and promotes natural energy.</p>
+						</div>
+
+						<div class="key-benefits">
+							<div class="benefit-item">
+								<img src={CheckIcon.src} alt="Check">
+								<span>Sleep aid, anxiety through frequencies</span>
+							</div>
+							<div class="benefit-item">
+								<img src={CheckIcon.src} alt="Check">
+								<span>Smart technology integration</span>
+							</div>
+							<div class="benefit-item">
+								<img src={CheckIcon.src} alt="Check">
+								<span>Tracks sleep, stress, and energy</span>
+							</div>
+							<div class="benefit-item">
+								<img src={CheckIcon.src} alt="Check">
+								<span>Improves focus and natural energy</span>
+							</div>
+						</div>
+
+						<div class="purchase-section">
+							
+							<button class="buy-button primary snipcart-add-item"
+							data-item-id="charisma-ring"
+							data-item-price="199.00"
+							data-item-url="/order"
+							data-item-description="Elegant Charisma Ring with frequency technology"
+							data-item-image="/src/assets/charisma-main.webp"
+							data-item-name="Charisma Ring"
+							data-item-categories="jewelry,wearables">
+							Order Charisma Ring - $199
+							</button>
+
+							<p class="guarantee">30-day money-back guarantee</p>
+						</div>
+					</div>
+
+					<div class="product-content" data-product="frequana">
+						<h1>Frequana</h1>
+						<div class="price-section">
+							<span class="current-price">$400</span>
+						</div>
+						
+						<div class="product-description">
+							<p>Frequana represents the next generation of frequency healing technology. This powerful device offers comprehensive wellness support through advanced electromagnetic signatures that restore natural balance and promote cellular regeneration.</p>
+						</div>
+
+						<div class="key-benefits">
+							<div class="benefit-item">
+								<img src={CheckIcon.src} alt="Check">
+								<span>Next generation, more powerful technology</span>
+							</div>
+							<div class="benefit-item">
+								<img src={CheckIcon.src} alt="Check">
+								<span>Non-invasive, drug-free approach</span>
+							</div>
+							<div class="benefit-item">
+								<img src={CheckIcon.src} alt="Check">
+								<span>Promotes detoxification and wellness</span>
+							</div>
+							<div class="benefit-item">
+								<img src={CheckIcon.src} alt="Check">
+								<span>Advanced biofield technology</span>
+							</div>
+						</div>
+
+						<div class="purchase-section">
+							
+							<button class="buy-button primary snipcart-add-item"
+							data-item-id="frequana"
+							data-item-price="400.00"
+							data-item-url="/order"
+							data-item-description="Next generation Frequana healing technology device"
+							data-item-image="/src/assets/frequana-main.jpg"
+							data-item-name="Frequana"
+							data-item-categories="devices">
+							Order Frequana - $400
+							</button>
+
+
+							<p class="guarantee">30-day money-back guarantee</p>
+						</div>
+					</div>
+
+					<div class="product-content" data-product="bundle">
+						<h1>Complete Healing Bundle</h1>
+						<div class="price-section">
+							<span class="current-price">$499</span>
+							<span class="original-price">$998</span>
+							<span class="savings-bundle">Save $499</span>
+						</div>
+						
+						<div class="product-description">
+							<p>Get the complete healing experience with all three devices. The perfect combination for comprehensive wellness support, targeting every aspect of your health journey from sleep and energy to focus and recovery.</p>
+						</div>
+
+						<div class="bundle-includes">
+							<h4>Bundle Includes:</h4>
+							<div class="bundle-item">
+								<strong>Alpha Wearable</strong> - Advanced bioresonance therapy
+							</div>
+							<div class="bundle-item">
+								<strong>Charisma Ring</strong> - Elegant daily frequency support
+							</div>
+							<div class="bundle-item">
+								<strong>Frequana</strong> - Next-gen healing technology
+							</div>
+						</div>
+
+						<div class="purchase-section">
+							
+							<button class="buy-button primary bundle snipcart-add-item"
+							data-item-id="complete-bundle"
+							data-item-price="899.00"
+							data-item-url="/order"
+							data-item-description="Complete healing bundle with all three devices"
+							data-item-image="/src/assets/pack-bundle.jpg"
+							data-item-name="Complete Healing Bundle"
+							data-item-categories="bundles">
+							Order Complete Bundle - $899
+							</button>
+
+
+							<p class="guarantee">30-day money-back guarantee + FREE shipping</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Product Details Tabs -->
+	<section class="product-details">
+		<div class="container">
+			<div class="details-tabs">
+				<button class="detail-tab active" data-tab="description">Description</button>
+				<button class="detail-tab" data-tab="specifications">Specifications</button>
+				<button class="detail-tab" data-tab="how-it-works">How It Works</button>
+				<button class="detail-tab" data-tab="shipping">Shipping & Returns</button>
+			</div>
+
+			<div class="details-content">
+				<div class="detail-panel active" data-panel="description">
+					<h3>Revolutionary Frequency Healing Technology</h3>
+					<p>Our devices use cutting-edge bioresonance technology to identify and correct frequency imbalances in your body. Each device scans your natural biofield and delivers precise therapeutic frequencies that support your body's innate healing abilities.</p>
+					
+					<div class="comprehensive-info">
+						<div class="info-grid">
+							<div class="info-card">
+								<div class="feature-icon-mini2">📈</div>
+								<h5>Initial Results</h5>
+								<p>Most users experience mild improvements within just a few hours of first use.</p>
+							</div>
+							<div class="info-card">
+								<div class="feature-icon-mini2">📋​</div>
+								<h5>Complete Results</h5>
+								<p>For optimal results, we recommend continuous use for 4-8 weeks.</p>
+							</div>
+							<div class="info-card">
+								<div class="feature-icon-mini2">💙</div>
+								<h5>App Features</h5>
+								<p>Our platform offers 10 different health topic programs tailored to your specific needs.</p>
+							</div>
+							<div class="info-card">
+								<div class="feature-icon-mini2">📊</div>
+								<h5>Health Statistics</h5>
+								<p>Over 21% of adults suffer from chronic pain, and 50-70% experience sleep disorders.</p>
+							</div>
+							<div class="info-card">
+								<div class="feature-icon-mini2">😴</div>
+								<h5>Better Sleep</h5>
+								<p>Fall asleep faster and enjoy deeper, more restorative sleep cycles.</p>
+							</div>
+							<div class="info-card">
+								<div class="feature-icon-mini2">🔆</div>
+								<h5>Natural Energy</h5>
+								<p>Boost your energy levels without stimulants or side effects.</p>
+							</div>
+							<div class="info-card">
+								<div class="feature-icon-mini2">🌬️</div>
+								<h5>Mental Clarity</h5>
+								<p>Enhance focus, reduce brain fog, and improve cognitive function.</p>
+							</div>
+							<div class="info-card">
+								<div class="feature-icon-mini2">😄</div>
+								<h5>Overall Wellness</h5>
+								<p>Support your body's natural balance and healing processes.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="detail-panel" data-panel="specifications">
+					<h3>Technical Specifications</h3>
+					<div class="specs-grid">
+						<div class="spec-category">
+							<h4>Alpha Wearable</h4>
+							<ul>
+								<li>Charging Time: 90 Minutes</li>
+								<li>Battery Life: 6 Hours</li>
+								<li>Connectivity: Bluetooth 5.0</li>
+								<li>Compatibility: iOS and Android</li>
+								<li>Weight: 300g</li>
+								<li>Materials: Medical-grade silicone</li>
+							</ul>
+						</div>
+						<div class="spec-category">
+							<h4>Charisma Ring</h4>
+							<ul>
+								<li>Frequency Range: 1 Hz to 10 kHz</li>
+								<li>Battery Life: 5-7 days</li>
+								<li>Sizes: 6-12 available</li>
+								<li>Materials: Titanium with ceramic coating</li>
+								<li>Weight: 8g</li>
+								<li>Water Resistance: IPX5</li>
+							</ul>
+						</div>
+						<div class="spec-category">
+							<h4>Frequana</h4>
+							<ul>
+								<li>Frequency Range: 0.01 Hz to 100 kHz</li>
+								<li>Power Source: AC adapter</li>
+								<li>Connectivity: WiFi, Bluetooth</li>
+								<li>Dimensions: 8" x 6" x 2"</li>
+								<li>Weight: 2.1 lbs</li>
+								<li>Certification: FDA registered</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="detail-panel" data-panel="how-it-works">
+					<h3>The Science Behind Frequency Healing</h3>
+					<div class="process-steps">
+						<div class="step">
+							<div class="step-number">1</div>
+							<div class="step-content">
+								<h4>Biofield Scanning</h4>
+								<p>The device scans your body's natural electromagnetic field to identify frequency imbalances and areas of stress or dysfunction.</p>
+							</div>
+						</div>
+						<div class="step">
+							<div class="step-number">2</div>
+							<div class="step-content">
+								<h4>Frequency Analysis</h4>
+								<p>Advanced algorithms analyze the scan results and determine the optimal therapeutic frequencies needed to restore balance.</p>
+							</div>
+						</div>
+						<div class="step">
+							<div class="step-number">3</div>
+							<div class="step-content">
+								<h4>Targeted Delivery</h4>
+								<p>Precise frequencies are delivered to specific areas through gentle vibrations that penetrate at the cellular level.</p>
+							</div>
+						</div>
+						<div class="step">
+							<div class="step-number">4</div>
+							<div class="step-content">
+								<h4>Natural Healing</h4>
+								<p>Your body responds by naturally realigning its frequencies, promoting healing, balance, and optimal function.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="detail-panel" data-panel="shipping">
+					<h3>Shipping & Returns Information</h3>
+					<div class="shipping-info">
+						<div class="shipping-option">
+							<h4>Fast Order Processing</h4>
+							<p>Orders are processed within 1-3 business days.</p>
+						</div>
+						<div class="shipping-option">
+							<h4>Fast Shipping</h4>
+							<p>Shipping times vary by location, typically ranging from 3-7 business days.</p>
+						</div>
+						<div class="shipping-option">
+							<h4>Tracking Number</h4>
+							<p>You will receive a tracking number once your order has shipped so you can monitor its progress.</p>
+						</div>
+					</div>
+					
+					<div class="return-policy">
+						<h4>30-Day Money-Back Guarantee</h4>
+						<p>Not satisfied? Return your device within 30 days for a full refund. Items must be in original condition with all accessories included.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+	<div class="container">
+		<div class="testimonials-content">
+			<h2>Real Testimonials from Our Users</h2>
+			<p class="testimonials-subtitle">Authentic experiences from people who have transformed their wellbeing</p>
+			
+			<div class="testimonials-grid">
+				<div class="testimonial-card">
+					<div class="testimonial-header">
+						<div class="user-info">
+							<div class="user-avatar">S</div>
+							<div class="user-details">
+								<h4>Sarah Johnson</h4>
+								<span>Verified ✓</span>
+							</div>
+						</div>
+						<div class="rating">★★★★★</div>
+					</div>
+					<p>"After using the Alpha Wearable for 3 weeks, my sleep quality improved enormously. I used to wake up 4-5 times per night, now I sleep deeply and wake up energized."</p>
+					<div class="testimonial-footer">
+						<span class="product-used">Alpha Wearable</span>
+						<span class="time-used">3 weeks of use</span>
+					</div>
+				</div>
+
+				<div class="testimonial-card">
+					<div class="testimonial-header">
+						<div class="user-info">
+							<div class="user-avatar">M</div>
+							<div class="user-details">
+								<h4>Michael Thompson</h4>
+								<span>Verified ✓</span>
+							</div>
+						</div>
+						<div class="rating">★★★★★</div>
+					</div>
+					<p>"My anxiety has decreased significantly since I started using the Charisma Ring. It's incredible how something so small can have such a big impact on my mental and emotional state."</p>
+					<div class="testimonial-footer">
+						<span class="product-used">Charisma Ring</span>
+						<span class="time-used">6 weeks of use</span>
+					</div>
+				</div>
+
+				<div class="testimonial-card">
+					<div class="testimonial-header">
+						<div class="user-info">
+							<div class="user-avatar">E</div>
+							<div class="user-details">
+								<h4>Emily Rodriguez</h4>
+								<span>Verified ✓</span>
+							</div>
+						</div>
+						<div class="rating">★★★★★</div>
+					</div>
+					<p>"Frequana changed my life. I had been struggling with chronic pain for years. After 2 months of constant use, the pain decreased by 80%. It's as if my body remembered how to heal itself."</p>
+					<div class="testimonial-footer">
+						<span class="product-used">Frequana</span>
+						<span class="time-used">2 months of use</span>
+					</div>
+				</div>
+
+				<div class="testimonial-card">
+					<div class="testimonial-header">
+						<div class="user-info">
+							<div class="user-avatar">D</div>
+							<div class="user-details">
+								<h4>David Miller</h4>
+								<span>Verified ✓</span>
+							</div>
+						</div>
+						<div class="rating">★★★★★</div>
+					</div>
+					<p>"I bought the complete bundle and it has been the best investment in my health. My energy increased, I sleep better and my concentration at work improved noticeably. I recommend it 100%."</p>
+					<div class="testimonial-footer">
+						<span class="product-used">Complete Bundle</span>
+						<span class="time-used">4 months of use</span>
+					</div>
+				</div>
+
+				<div class="testimonial-card">
+					<div class="testimonial-header">
+						<div class="user-info">
+							<div class="user-avatar">J</div>
+							<div class="user-details">
+								<h4>Jessica Williams</h4>
+								<span>Verified ✓</span>
+							</div>
+						</div>
+						<div class="rating">★★★★★</div>
+					</div>
+					<p>"I was skeptical at first, but the results speak for themselves. My stress level dropped considerably and I have a general sense of wellbeing that I hadn't experienced in years."</p>
+					<div class="testimonial-footer">
+						<span class="product-used">Alpha Wearable</span>
+						<span class="time-used">5 weeks of use</span>
+					</div>
+				</div>
+
+				<div class="testimonial-card">
+					<div class="testimonial-header">
+						<div class="user-info">
+							<div class="user-avatar">R</div>
+							<div class="user-details">
+								<h4>Robert Anderson</h4>
+								<span>Verified ✓</span>
+							</div>
+						</div>
+						<div class="rating">★★★★★</div>
+					</div>
+					<p>"After trying multiple treatments for my insomnia, the Alpha Wearable was the only thing that actually worked. Now I sleep 7-8 continuous hours and feel renewed every morning."</p>
+					<div class="testimonial-footer">
+						<span class="product-used">Alpha Wearable</span>
+						<span class="time-used">8 weeks of use</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="trust-stats">
+				<div class="stat">
+					<span class="stat-number">4,561</span>
+					<span class="stat-label">Satisfied Customers</span>
+				</div>
+				<div class="stat">
+					<span class="stat-number">95%</span>
+					<span class="stat-label">Satisfaction Rate</span>
+				</div>
+				<div class="stat">
+					<span class="stat-number">10+</span>
+					<span class="stat-label">Cities Reached</span>
+				</div>
+				<div class="stat">
+					<span class="stat-number">879</span>
+					<span class="stat-label">App Downloads</span>
+				</div>
+			</div>
+			
+			<div class="certifications">
+				<div class="cert-item">
+					<img src={CheckIcon.src} alt="FDA">
+					<span>No Pills, Frequency Healing</span>
+				</div>
+				<div class="cert-item">
+					<img src={CheckIcon.src} alt="Clinical">
+					<span>Restore Natural Balance</span>
+				</div>
+				<div class="cert-item">
+					<img src={CheckIcon.src} alt="Safe">
+					<span>Feel Energized, Live Fully</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Botón del carrito flotante -->
+<button class="snipcart-checkout desktop-only" style="position:fixed;bottom:20px;left:20px;z-index:1000;">
+	🛒 Cart (<span class="snipcart-items-count">0</span>)
+</button>
+
+	<Footer />
+</Layout>
+
+<style lang="scss">
+
+	
+// Optimized CSS - Removed animations and transitions for faster loading
+.product-hero {
+	padding: 120px 0 80px;
+	background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+
+	.product-tabs {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 60px;
+		border-bottom: 2px solid #e2e8f0;
+
+		.tab-button {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 40px 15px;
+  color: #666;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.tab-button.active {
+  color: #2596be;
+}
+
+.tab-button.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;  /* Ajusta ancho de línea */
+  height: 3px;  /* Grosor línea */
+  background-color: #2596be;
+  border-radius: 2px;
+}
+
+	}
+
+	.product-display {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 80px;
+		align-items: start;
+	}
+
+	.product-images {
+		.main-image {
+
+			margin-bottom: 20px;
+
+			img {
+				width: 100%;
+				height: 400px;
+				object-fit: cover;
+				border-radius: 20px;
+			}
+		}
+
+		#thumbnail-grid {
+	display: flex !important;
+	flex-wrap: wrap !important;
+	gap: 12px !important;
+	align-items: flex-start !important;
+
+	img.thumbnail {
+		// Dimensiones fijas y específicas
+		width: 80px !important;
+		height: 80px !important;
+		min-width: 80px !important;
+		min-height: 80px !important;
+		max-width: 80px !important;
+		max-height: 80px !important;
+		
+		// Forzar objeto cuadrado
+		object-fit: cover !important;
+		object-position: center !important;
+		
+		// Estilos visuales
+		border-radius: 8px !important;
+		cursor: pointer !important;
+		border: 2px solid transparent !important;
+		
+		// Resetear estilos
+		display: block !important;
+		box-sizing: border-box !important;
+		flex-shrink: 0 !important;
+		flex-grow: 0 !important;
+
+		&:hover {
+			border-color: #2596be !important;
+			transform: none !important; // Evitar animaciones
+		}
+
+		&.active {
+			border-color: #2596be !important;
+		}
+	}
+}
+	}
+
+	.product-info {
+		.product-content {
+			display: none;
+
+			&.active {
+				display: block;
+			}
+		}
+
+		h1 {
+			font-size: 2.5rem;
+			font-weight: 700;
+			color: #1a202c;
+			margin-bottom: 20px;
+		}
+
+		.price-section {
+			margin-bottom: 30px;
+
+			.current-price {
+				font-size: 3rem;
+				font-weight: 700;
+				color: #2596be;
+				margin-right: 16px;
+			}
+
+			.original-price {
+				font-size: 1.5rem;
+				color: #64748b;
+				text-decoration: line-through;
+				margin-right: 16px;
+			}
+
+			.savings, .savings-bundle {
+				background: linear-gradient(135deg, #87bd42, #2596be);
+				color: white;
+				padding: 6px 12px;
+				border-radius: 20px;
+				font-size: 0.9rem;
+				font-weight: 600;
+			}
+		}
+
+		.product-description {
+			margin-bottom: 30px;
+
+			p {
+				font-size: 1.5rem;
+				line-height: 1.6;
+				color: #374151;
+			}
+		}
+
+		.key-benefits {
+			margin-bottom: 40px;
+
+			.benefit-item {
+				display: flex;
+				align-items: center;
+				margin-bottom: 12px;
+
+				img {
+					width: 20px;
+					height: 20px;
+					margin-right: 12px;
+				}
+
+				span {
+					color: #374151;
+					font-weight: 500;
+				}
+			}
+		}
+
+		.bundle-includes {
+			margin-bottom: 30px;
+
+			h4 {
+				font-size: 1.2rem;
+				font-weight: 600;
+				color: #1a202c;
+				margin-bottom: 16px;
+			}
+
+			.bundle-item {
+				background: #f8fafc;
+				padding: 12px 16px;
+				border-radius: 8px;
+				margin-bottom: 8px;
+				border-left: 4px solid #2596be;
+
+				strong {
+					color: #2596be;
+				}
+			}
+		}
+
+		.purchase-section {
+			.buy-button {
+				background: #2596be;
+				color: white;
+				border: none;
+
+				border-radius: 50px;
+				font-size: 1.1rem;
+				font-weight: 600;
+				cursor: pointer;
+				width: 100%;
+				margin-bottom: 16px;
+
+				&:hover {
+					background: #87bd42;
+				}
+
+				&.bundle {
+					background: linear-gradient(135deg, #2596be, #87bd42);
+				}
+			}
+
+			.guarantee {
+				text-align: center;
+				color: #64748b;
+				font-size: 1.1rem;
+			}
+		}
+	}
+}
+
+.product-details {
+	padding: 80px 0;
+	background: white;
+
+	.details-tabs {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 60px;
+		border-bottom: 1px solid #e2e8f0;
+
+		.detail-tab {
+			background: none;
+			border: none;
+			padding: 16px 24px;
+			font-size: 1.1rem;
+			font-weight: 500;
+			color: #64748b;
+			cursor: pointer;
+			border-bottom: 2px solid transparent;
+			padding: 35px 15px;
+
+			&:hover {
+				color: #2596be;
+			}
+
+			&.active {
+				color: #2596be;
+				border-bottom-color: #2596be;
+			}
+		}
+	}
+
+	.detail-panel {
+		display: none;
+
+		&.active {
+			display: block;
+		}
+
+		h3 {
+			font-size: 2.5rem;
+			font-weight: 700;
+			color: #1a202c;
+			margin-bottom: 50px;
+			text-align: center;
+		}
+
+		p {
+			font-size: 1.5rem;
+			line-height: 1.6;
+			color: #374151;
+			margin-bottom: 65px;
+			text-align: center;
+			max-width: 800px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
+	.comprehensive-info {
+		margin-bottom: 50px;
+
+		.info-grid {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 25px;
+			margin-bottom: 40px;
+
+			.info-card {
+				background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+				padding: 25px 20px;
+				border-radius: 12px;
+				text-align: center;
+				border-left: 4px solid #2596be;
+
+				img {
+					width: 40px;
+					height: 40px;
+					margin-bottom: 12px;
+					filter: invert(26%) sepia(89%) saturate(1481%) hue-rotate(184deg) brightness(94%) contrast(87%);
+				}
+
+				h5 {
+					font-size: 1.5rem;
+					font-weight: 600;
+					color: #2596be;
+					margin-bottom: 12px;
+				}
+
+				p {
+					font-size: 1.2rem;
+					color: #374151;
+					margin: 0;
+					line-height: 1.5;
+				}
+			}
+		}
+	}
+
+	.specs-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 40px;
+
+		.spec-category {
+			h4 {
+				font-size: 1.3rem;
+				font-weight: 600;
+				color: #2596be;
+				margin-bottom: 16px;
+			}
+
+			ul {
+				list-style: none;
+				padding: 0;
+
+				li {
+					padding: 8px 0;
+					color: #374151;
+					border-bottom: 1px solid #e2e8f0;
+
+					&:last-child {
+						border-bottom: none;
+					}
+				}
+			}
+		}
+	}
+
+	.process-steps {
+		max-width: 800px;
+		margin: 0 auto;
+
+		.step {
+			display: flex;
+			align-items: flex-start;
+			margin-bottom: 40px;
+
+			.step-number {
+				width: 50px;
+				height: 50px;
+				background: linear-gradient(135deg, #2596be, #87bd42);
+				color: white;
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 1.2rem;
+				font-weight: 700;
+				margin-right: 24px;
+				flex-shrink: 0;
+			}
+
+			.step-content {
+				h4 {
+					font-size: 1.5rem;
+					font-weight: 600;
+					color: #1a202c;
+					margin-bottom: 8px;
+				}
+
+				p {
+					font-size: 1.35rem;
+					color: #64748b;
+					margin: 0;
+					text-align: left;
+				}
+			}
+		}
+	}
+
+	.shipping-info {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 30px;
+		margin-bottom: 40px;
+
+			h3 {
+				margin-bottom: 450px;
+			}
+
+		.shipping-option {
+			background: #f8fafc;
+			padding: 24px;
+			border-radius: 12px;
+			border-left: 4px solid #2596be;
+			
+	
+			h4 {
+				font-size: 1.4rem;
+				font-weight: 600;
+				color: #1a202c;
+				margin-bottom: 8px;
+			}
+
+			p {
+				font-size: 1.3rem;
+				color: #64748b;
+				margin: 0;
+				text-align: left;
+			}
+		}
+	}
+
+	.return-policy {
+		background: linear-gradient(135deg, #2596be10, #87bd4210);
+		padding: 50px 100px;
+		border-radius: 16px;
+		text-align: center;
+		
+
+		h4 {
+			font-size: 1.6rem;
+			font-weight: 600;
+			color: #1a202c;
+			margin-bottom: 22px;
+			
+		}
+
+		p {
+			margin: 0;
+			text-align: center;
+		}
+	}
+}
+
+.testimonials-section {
+	padding: 80px 0;
+	background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+
+	.testimonials-content {
+		
+
+		h2 {
+			font-size: 3rem;
+			font-weight: 700;
+			color: #1a202c;
+			margin-bottom: 16px;
+			text-align: center;
+		}
+
+		.testimonials-subtitle {
+			font-size: 1.35rem;
+			color: #64748b;
+			margin-bottom: 60px;
+			text-align: center;
+		}
+	}
+
+	.testimonials-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+		gap: 30px;
+		margin-bottom: 80px;
+		max-width: 1200px;
+		margin-left: auto;
+		margin-right: auto;
+
+		.testimonial-card {
+			background: white;
+			padding: 30px;
+			border-radius: 16px;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+
+			.testimonial-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 20px;
+
+				.user-info {
+					display: flex;
+					align-items: center;
+
+					.user-avatar {
+						width: 50px;
+						height: 50px;
+						background: linear-gradient(135deg, #2596be, #87bd42);
+						color: white;
+						border-radius: 50%;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						font-size: 1.2rem;
+						font-weight: 700;
+						margin-right: 16px;
+					}
+
+					.user-details {
+						h4 {
+							font-size: 1.4rem;
+							font-weight: 600;
+							color: #1a202c;
+							margin: 0 0 4px 0;
+						}
+
+						span {
+							font-size: 1rem;
+							color: #2596be;
+							font-weight: 500;
+							
+						}
+					}
+				}
+
+				.rating {
+					color: #ffd700;
+					font-size: 1.3rem;
+				}
+			}
+
+			p {
+				font-size: 1.4rem;
+				line-height: 1.6;
+				color: #374151;
+				margin-bottom: 20px;
+				text-align: left;
+				flex-grow: 1;
+			}
+
+			.testimonial-footer {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding-top: 16px;
+				border-top: 1px solid #e2e8f0;
+
+				.product-used {
+					font-size: 1.1rem;
+					font-weight: 600;
+					color: #2596be;
+				}
+
+				.time-used {
+					font-size: 1.1rem;
+					color: #64748b;
+				}
+			}
+		}
+	}
+
+	.trust-stats {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 40px;
+		margin-bottom: 60px;
+		text-align: center;
+
+		.stat {
+			.stat-number {
+				display: block;
+				font-size: 2.5rem;
+				font-weight: 700;
+				color: #2596be;
+				margin-bottom: 8px;
+				
+			}
+
+			.stat-label {
+				font-size: 1.3rem;
+				color: #64748b;
+				font-weight: 500;
+			}
+		}
+	}
+
+	.certifications {
+		display: flex;
+		justify-content: center;
+		gap: 60px;
+
+		.cert-item {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			img {
+				width: 40px;
+				height: 40px;
+				margin-bottom: 12px;
+				filter: invert(26%) sepia(89%) saturate(1481%) hue-rotate(184deg) brightness(94%) contrast(87%);
+			}
+
+			span {
+				font-weight: 600;
+				color: #2596be;
+			}
+		}
+	}
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+	.product-hero {
+		padding: 80px 0 60px;
+
+		.product-tabs {
+			flex-wrap: wrap;
+			gap: 8px;
+
+			
+		}
+
+		.product-display {
+			grid-template-columns: 1fr;
+			gap: 40px;
+		}
+
+		.product-info h1 {
+			font-size: 2rem;
+		}
+
+		.price-section .current-price {
+			font-size: 2.5rem;
+		}
+	}
+
+	.product-details {
+		padding: 60px 0;
+
+		.details-tabs {
+			flex-wrap: wrap;
+			gap: 8px;
+
+			.detail-tab {
+				padding: 12px 16px;
+				font-size: 1.2rem;
+			}
+		}
+
+		.comprehensive-info .info-grid {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 20px;
+		}
+
+		.specs-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.testimonials-section {
+		.testimonials-grid {
+			grid-template-columns: 1fr;
+			grid-template-rows: none;
+		}
+
+		.trust-stats {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 30px;
+		}
+
+		.certifications {
+			flex-direction: column;
+			gap: 30px;
+		}
+	}
+}
+
+@media (max-width: 1024px) {
+	.testimonials-section {
+		.testimonials-grid {
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(3, 1fr);
+		}
+	}
+
+	.product-details {
+		.comprehensive-info .info-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+}
+
+.tab-button.active {
+  color: #2596be;
+  border-bottom: none;       /* quitamos el borde por defecto */
+  position: relative;        /* para poder usar ::after posicionado */
+  padding-bottom: 4px;       /* espacio para la línea */
+  font-weight: 600;          /* opcional, que resalte */
+}
+
+.tab-button.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2px;               /* línea fina */
+  width: 60%;                /* ancho más pequeño que el texto */
+  background-color: #2596be; /* color azul */
+  border-radius: 1px;        /* bordes redondeados para suavizar */
+}
+
+.feature-icon-mini2 {
+
+						align-items: center;
+						justify-content: center;
+					
+						font-size: 2.4rem;
+						
+						margin-bottom: 10px;
+					}
+
+
+.desktop-only {
+    display: block;
+    
+    @media (max-width: 768px) {
+        display: none;
+    }
+}
+
+
+</style>
+
+<script>
+// Optimized JavaScript - Fixed product switching and improved performance
+document.addEventListener('DOMContentLoaded', function() {
+	// Product data with correct image paths
+	const productData = {
+		alpha: {
+			images: [
+				{ src: `${import.meta.env.BASE_URL || ''}src/assets/alpha-main.jpg`, alt: 'Alpha Main' },
+				{ src: `${import.meta.env.BASE_URL || ''}src/assets/alpha-alt1.webp`, alt: 'Alpha Alt 1' },
+				{ src: `${import.meta.env.BASE_URL || ''}src/assets/alpha-alt2.jpg`, alt: 'Alpha Alt 2' },
+				{ src: `${import.meta.env.BASE_URL || ''}src/assets/alpha-alt3.jpg`, alt: 'Alpha Alt 3' }
+			]
+		},
+		charisma: {
+			images: [
+				{ src: `${import.meta.env.BASE_URL || ''}src/assets/charisma-main.webp`, alt: 'Charisma Main' },
+				{ src: `${import.meta.env.BASE_URL || ''}src/assets/charisma-alt1.jpg`, alt: 'Charisma Alt 1' },
+				{ src: `${import.meta.env.BASE_URL || ''}src/assets/charisma-alt2.jpg`, alt: 'Charisma Alt 2' }
+			]
+		},
+		frequana: {
+			images: [
+				{ src: `${import.meta.env.BASE_URL || ''}src/assets/frequana-main.jpg`, alt: 'Frequana Main' },
+				{ src: `${import.meta.env.BASE_URL || ''}src/assets/frequana-alt1.jpg`, alt: 'Frequana Alt 1' },
+				{ src: `${import.meta.env.BASE_URL || ''}src/assets/frequana-alt2.png`, alt: 'Frequana Alt 2' }
+			]
+		},
+		bundle: {
+			images: [
+				{ src: `${import.meta.env.BASE_URL || ''}src/assets/pack-bundle.jpg`, alt: 'Complete Bundle' },
+				{ src: `${import.meta.env.BASE_URL || ''}src/assets/alpha-main.jpg`, alt: 'Alpha Included' },
+				{ src: `${import.meta.env.BASE_URL || ''}src/assets/charisma-main.webp`, alt: 'Charisma Included' },
+				{ src: `${import.meta.env.BASE_URL || ''}src/assets/frequana-main.jpg`, alt: 'Frequana Included' }
+			]
+		}
+	};
+
+	// Get DOM elements
+	const tabButtons = document.querySelectorAll('.tab-button');
+	const productContents = document.querySelectorAll('.product-content');
+	const mainImage = document.getElementById('main-product-image');
+	const thumbnailGrid = document.getElementById('thumbnail-grid');
+
+// Función modificada para actualizar thumbnails sin romper el CSS
+type ProductKey = 'alpha' | 'charisma' | 'frequana' | 'bundle';
+type ProductImage = { src: string; alt: string };
+
+function updateProductImages(productKey: ProductKey) {
+	const images: ProductImage[] | undefined = productData[productKey]?.images;
+	
+	const mainImage = document.getElementById('main-product-image') as HTMLImageElement | null;
+	const thumbnailGrid = document.getElementById('thumbnail-grid') as HTMLElement | null;
+
+	if (!images || !mainImage || !thumbnailGrid) return;
+	
+	// Update main image
+	mainImage.src = images[0].src;
+	mainImage.alt = images[0].alt;
+	
+	// Clear and update thumbnail grid
+	thumbnailGrid.innerHTML = '';
+	
+	images.forEach((image: ProductImage, index: number) => {
+		const thumbnail = document.createElement('img');
+		thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+		thumbnail.src = image.src;
+		thumbnail.alt = image.alt;
+		thumbnail.dataset.main = image.src;
+		
+		// Forzar estilos inline para asegurar que se mantengan
+		thumbnail.style.width = '80px';
+		thumbnail.style.height = '80px';
+		thumbnail.style.objectFit = 'cover';
+		thumbnail.style.borderRadius = '8px';
+		thumbnail.style.cursor = 'pointer';
+		thumbnail.style.border = index === 0 ? '2px solid #2596be' : '2px solid transparent';
+		thumbnail.style.display = 'block';
+		thumbnail.style.flexShrink = '0';
+		
+		// Add click event for thumbnails
+		thumbnail.addEventListener('click', function(this: HTMLImageElement) {
+			thumbnailGrid.querySelectorAll('.thumbnail').forEach(t => {
+				(t as HTMLImageElement).classList.remove('active');
+				(t as HTMLImageElement).style.border = '2px solid transparent';
+			});
+			
+			this.classList.add('active');
+			this.style.border = '2px solid #2596be';
+			
+			mainImage.src = this.dataset.main || '';
+			mainImage.alt = this.alt;
+		});
+		
+		thumbnailGrid.appendChild(thumbnail);
+	});
+	
+	// Forzar el estilo del contenedor después de agregar elementos
+	thumbnailGrid.style.display = 'flex';
+	thumbnailGrid.style.gap = '12px';
+	thumbnailGrid.style.flexWrap = 'wrap';
+}
+
+	// Product tab switching functionality
+	tabButtons.forEach(button => {
+		button.addEventListener('click', function(this: HTMLElement) {
+			const productType = this.dataset.product as ProductKey;
+			
+			// Remove active class from all tabs
+			tabButtons.forEach(tab => tab.classList.remove('active'));
+			// Add active class to clicked tab
+			this.classList.add('active');
+			
+			// Remove active class from all product content
+			productContents.forEach(content => content.classList.remove('active'));
+			
+			// Show corresponding content
+			const targetContent = document.querySelector(`.product-content[data-product="${productType}"]`);
+			if (targetContent) {
+				targetContent.classList.add('active');
+			}
+			
+			// Update product images
+			updateProductImages(productType);
+		});
+	});
+
+	// Detail tabs functionality
+	const detailTabs = document.querySelectorAll('.detail-tab');
+	const detailPanels = document.querySelectorAll('.detail-panel');
+
+	detailTabs.forEach(tab => {
+		tab.addEventListener('click', function(this: HTMLElement) {
+			const tabType = this.dataset.tab;
+			
+			// Remove active class from all detail tabs and panels
+			detailTabs.forEach(t => t.classList.remove('active'));
+			detailPanels.forEach(panel => panel.classList.remove('active'));
+			
+			// Add active class to clicked tab
+			this.classList.add('active');
+			
+			// Show corresponding panel
+			const targetPanel = document.querySelector(`.detail-panel[data-panel="${tabType}"]`);
+			if (targetPanel) {
+				targetPanel.classList.add('active');
+			}
+		});
+	});
+
+
+
+// Check URL parameters for preselected product
+const urlParams = new URLSearchParams(window.location.search);
+const preselectedProduct = urlParams.get('product');
+
+// Function to select product tab
+function selectProductTab(productType) {
+	// Remove active class from all tabs
+	tabButtons.forEach(tab => tab.classList.remove('active'));
+	
+	// Find and activate the correct tab
+	const targetTab = document.querySelector(`.tab-button[data-product="${productType}"]`);
+	if (targetTab) {
+		targetTab.classList.add('active');
+	}
+	
+	// Remove active class from all product content
+	productContents.forEach(content => content.classList.remove('active'));
+	
+	// Show corresponding content
+	const targetContent = document.querySelector(`.product-content[data-product="${productType}"]`);
+	if (targetContent) {
+		targetContent.classList.add('active');
+	}
+	
+	// Update product images
+	updateProductImages(productType);
+}
+
+// If there's a preselected product, use it; otherwise default to alpha
+const initialProduct = preselectedProduct && ['alpha', 'charisma', 'frequana', 'bundle'].includes(preselectedProduct) 
+	? preselectedProduct 
+	: 'alpha';
+
+	// Initialize with preselected or default product
+selectProductTab(initialProduct);
+});
+</script>

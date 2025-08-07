@@ -1,0 +1,1252 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// Import product images
+import HeroProduct from '../assets/hero-product.jpg';
+import ProductShowcase1 from '../assets/product-showcase-1.jpg';
+import ProductShowcase2 from '../assets/product-showcase-2.jpg';
+import ProductShowcase3 from '../assets/product-showcase-3.jpg';
+import ProductCloseUp from '../assets/product-close-up.jpg';
+import ProductInUse from '../assets/product-in-use.jpg';
+
+// Import icons
+import Check from '../assets/check.svg';
+import Bolt from '../assets/bolt.svg';
+import Secure from '../assets/lock.svg';
+---
+
+<Layout title="Alpha Wearable | Anywhere Healing">
+	<Header />
+	
+	<!-- Hero Section -->
+	<section class="product-hero">
+		<div class="container">
+			<div class="row">
+				<div class="one-half column hero-content">
+					<h1 class="hero-title">Alpha Wearable, a Bioresonance Device</h1>
+					<p class="hero-subtitle">Revolutionary wearable technology that scans your body's frequencies and delivers targeted vibrations to restore natural balance, energy, and wellness.</p>
+					
+					<div class="product-features">
+						<div class="feature-item">
+							<img src={Bolt.src} alt="Energy">
+							<span>Instant Results in Minutes</span>
+						</div>
+						<div class="feature-item">
+							<img src={Check.src} alt="Energy">
+							<span>4,561+ clients and 95% satisfaction</span>
+						</div>
+						<div class="feature-item">
+							<img src={Check.src} alt="Energy">
+							<span>879+ app downloads</span>
+						</div>
+						<div class="feature-item">
+							<img src={Secure.src} alt="Secure">
+							<span>Safe & Natural</span>
+						</div>
+					</div>
+
+					<div class="pricing-section">
+						<div class="price-box">
+							<span class="price">$399</span>
+							<span class="price-note">One-time investment</span>
+						</div>
+						<a href="/order?product=alpha">
+						<button class="cta-button">Order Your Alpha Wearable Now</button></a>
+						
+						<p class="guarantee">30-Day Money Back Guarantee</p>
+					</div>
+				</div>
+				
+				<div class="one-half column hero-image">
+					<img src={HeroProduct.src} alt="Alpha AH Bioresonance Device" class="product-main-image">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Product Details Section -->
+	<section class="product-details">
+		<div class="container">
+			<div class="section-header">
+				<h2>Experience the Science of Natural Healing</h2>
+				<p>The Alpha Wearable uses advanced bioresonance technology to scan your body's natural frequencies and deliver precise vibrations that help restore balance and promote healing.</p>
+			</div>
+
+			<div class="row detail-row">
+				<div class="one-half column">
+					<img src={ProductShowcase1.src} alt="Device Technology" class="detail-image">
+				</div>
+				<div class="one-half column detail-content">
+					<h3>Advanced Frequency Scanning</h3>
+					<p>Our patented technology scans over 9,000 frequencies in your body to identify areas of imbalance, stress, and dysfunction. Within minutes, you'll have a complete picture of your body's energetic state.</p>
+					
+					<ul class="feature-list">
+						<li><img src={Check.src} alt="Check"> Scans nervous system frequencies</li>
+						<li><img src={Check.src} alt="Check"> Identifies stress patterns</li>
+						<li><img src={Check.src} alt="Check"> Detects energy blockages</li>
+						<li><img src={Check.src} alt="Check"> Maps organ system health</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="row detail-row reverse">
+				<div class="one-half column detail-content">
+					<h3>Targeted Healing Vibrations</h3>
+					<p>Once your scan is complete, the Alpha AH device delivers specific healing frequencies directly to the areas that need support. These gentle vibrations help your body remember its natural state of balance.</p>
+					
+					<ul class="feature-list">
+						<li><img src={Check.src} alt="Energy"> Restores cellular energy</li>
+						<li><img src={Check.src} alt="Energy"> Reduces inflammation</li>
+						<li><img src={Check.src} alt="Energy"> Improves circulation</li>
+						<li><img src={Check.src} alt="Energy"> Enhances recovery</li>
+					</ul>
+				</div>
+				<div class="one-half column">
+					<img src={ProductShowcase2.src} alt="Healing Process" class="detail-image">
+				</div>
+			</div>
+
+			<div class="row detail-row">
+				<div class="one-half column">
+					<img src={ProductShowcase3.src} alt="Lifestyle Integration" class="detail-image">
+				</div>
+				<div class="one-half column detail-content">
+					<h3>Seamless Lifestyle Integration</h3>
+					<p>Compact, wearable, and completely portable. Use your Alpha AH device anywhere - at home, work, or travel. No appointments, no side effects, just natural healing on your schedule.</p>
+					
+					<ul class="feature-list">
+						<li><img src={Check.src} alt="Portable"> Very lightweight, only 300 Grams</li>
+						<li><img src={Check.src} alt="Portable"> Ultra-portable design</li>
+						<li><img src={Check.src} alt="Portable"> Rechargeable battery life up to 6 hours</li>
+						<li><img src={Check.src} alt="Portable"> Silent operation</li>
+						<li><img src={Check.src} alt="Portable"> Works with smartphone app</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- NEW: Advanced Features Section (Sensate-inspired) -->
+	<section class="advanced-features">
+		<div class="container">
+			<div class="features-grid">
+				<div class="feature-card">
+					<div class="feature-image all-in-one">
+						<div class="feature-icon-large">​📈</div>
+						<div class="pulse-ring"></div>
+					</div>
+					<div class="feature-title">All-in-One Convenience</div>
+					<p class="feature-description">
+						Track sleep, monitor heart rate, and access therapy in a single wearable device connected to an easy-to-use app.
+					</p>
+					<div class="feature-highlights">
+						<li>Comprehensive health monitoring</li>
+						<li>Seamless app integration</li>
+						<li>Real-time vital metrics</li>
+						<li>Personalized insights</li>
+					</div>
+				</div>
+
+				<div class="feature-card">
+					<div class="feature-image science-backed">
+						<div class="feature-icon-large glow">​🚀​</div>
+					</div>
+					<div class="feature-title">Science-Backed and Innovative</div>
+					<p class="feature-description">
+						Built on cutting-edge research and technology, the Alpha Wearable provides a modern, reliable approach to achieving optimal wellness.
+					</p>
+					<div class="feature-highlights">
+						<li>Advanced bioresonance technology</li>
+						<li>Clinically validated methods</li>
+						<li>Innovative frequency therapy</li>
+						<li>Research-based solutions</li>
+					</div>
+				</div>
+
+				<div class="feature-card device-showcase">
+					<div class="device-image-container">
+						<img src={ProductCloseUp.src} alt="Alpha AH Device Close-up" class="device-showcase-image">
+						<div class="device-glow"></div>
+					</div>
+					<div class="device-info">
+						<div class="feature-title">Premium Design</div>
+						<p class="feature-description">
+							Elegant, lightweight design that seamlessly integrates into your daily routine with advanced materials and precision engineering.
+						</p>
+						<div class="feature-highlights">
+							<li>Medical-grade materials</li>
+							<li>Ergonomic comfort design</li>
+							<li>Wireless connectivity</li>
+							<li>Compatible with Android and iOS</li>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="wellness-showcase">
+				<div class="showcase-content">
+					<div class="showcase-left">
+						<h2 class="showcase-title">Revolutionary Wellness Technology</h2>
+						<div class="showcase-features">
+							<div class="showcase-feature">
+								<div class="feature-icon-mini">🔬</div>
+								<div class="feature-text">
+									<h4>Bio-Scan Technology</h4>
+									<p>Advanced Technology with in-depth wellness reports. Monitors Heart Rate, Blood Pressure, and Blood Oxygen</p>
+								</div>
+							</div>
+							<div class="showcase-feature">
+								<div class="feature-icon-mini">📱</div>
+								<div class="feature-text">
+									<h4>Smart App Integration</h4>
+									<p>Seamless connectivity with real-time monitoring of vital metrics and sleep patterns</p>
+								</div>
+							</div>
+							<div class="showcase-feature">
+								<div class="feature-icon-mini">⚡</div>
+								<div class="feature-text">
+									<h4>Targeted Therapy</h4>
+									<p>Personalized frequency therapy for sleep, stress, mood, and pain management</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="showcase-center">
+						<div class="device-display">
+							<img src={ProductInUse.src} alt="Alpha AH Device in Use" class="showcase-device-image">
+							<div class="pulse-animation"></div>
+						</div>
+					</div>
+					
+					<div class="showcase-right">
+						<div class="wellness-benefits">
+							<h3>Complete Wellness Solution</h3>
+							<div class="benefit-item">
+								<span class="benefit-number">2min</span>
+								<span class="benefit-label">Full Body Scan</span>
+							</div>
+							<div class="benefit-item">
+								<span class="benefit-number">24/7</span>
+								<span class="benefit-label">Health Monitoring</span>
+							</div>
+							<div class="benefit-item">
+								<span class="benefit-number">Tracks Sleep Stages</span>
+								<span class="benefit-label">REM, light, and deep</span>
+							</div>
+							<div class="benefit-item">
+								<span class="benefit-number">9000+</span>
+								<span class="benefit-label">Frequencies Analyzed</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Benefits Section -->
+	<section class="benefits-section">
+		<div class="container">
+			<h2>What You Can Expect</h2>
+			<p class="section-subtitle">Thousands of users report significant improvements in these key areas:</p>
+			
+			<div class="benefits-grid">
+				<div class="benefit-card">
+					<div class="feature-icon-mini2">😴</div>
+					<h3>Better Sleep</h3>
+					<p>Fall asleep faster, sleep deeper, and wake up refreshed. Users report 73% improvement in sleep quality within the first week.</p>
+				</div>
+				
+				<div class="benefit-card">
+					<div class="feature-icon-mini2">🏃</div>
+					<h3>More Energy</h3>
+					<p>Natural, sustained energy without caffeine or stimulants. Feel vibrant and alert throughout your day.</p>
+				</div>
+				
+				<div class="benefit-card">
+					<div class="feature-icon-mini2">🤍</div>
+					<h3>Pain Relief</h3>
+					<p>Reduce chronic pain, muscle tension, and inflammation naturally. Many users experience relief within hours.</p>
+				</div>
+				
+				<div class="benefit-card">
+					<div class="feature-icon-mini2">💭​</div>
+					<h3>Mental Clarity</h3>
+					<p>Clear brain fog, improve focus, and enhance cognitive function. Think sharper and feel more present.</p>
+				</div>
+				
+				<div class="benefit-card">
+					<div class="feature-icon-mini2">🙂​</div>
+					<h3>Stress Relief</h3>
+					<p>Calm your nervous system and reduce anxiety naturally. Feel more balanced and resilient to daily stressors.</p>
+				</div>
+				
+				<div class="benefit-card">
+					<div class="feature-icon-mini2">​🧘​</div>
+					<h3>Overall Wellness</h3>
+					<p>Support your body's natural healing processes for improved digestion, immunity, and vitality.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- How It Works Section -->
+	<section class="how-it-works">
+		<div class="container">
+			<h2>How It Works - Simple as 1, 2, 3</h2>
+			
+			<div class="steps-container">
+				<div class="step">
+					<div class="step-number">1</div>
+					<div class="step-content">
+						<h3>Turn on the Device and Download the App</h3>
+						<p>Install the Anywhere Healing app from the App Store or Google Play Store. Place the device on your body and run a comprehensive frequency scan. The device reads your body's natural frequencies and identifies areas of imbalance. </p>
+					</div>
+				</div>
+				
+				<div class="step">
+					<div class="step-number">2</div>
+					<div class="step-content">
+						<h3>Scan Your Body for Targeted Frequencies</h3>
+						<p>Pair the Alpha Wearable with the app via Bluetooth for seamless communication. Activate the therapy feature through the app to begin the healing process. Based on your scan results, the device will restore balance and promote healing.</p>
+
+					</div>
+				</div>
+				
+				<div class="step">
+					<div class="step-number">3</div>
+					<div class="step-content">
+						<h3>Feel the Difference</h3>
+						<p>Experience immediate and lasting improvements in energy, sleep, pain relief, and overall well-being. Use daily for optimal results. Feel the therapeutic frequencies restore balance and promote well-being in your body.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Scientific Backing Section -->
+	<section class="scientific-backing">
+		<div class="container">
+			<div class="scientific-content">
+				<div class="scientific-header">
+					<h2>The Science Behind Frequency Healing</h2>
+					<p>Backed by decades of research in bioresonance and frequency therapy</p>
+				</div>
+				
+				<div class="scientific-features">
+					<div class="scientific-feature">
+						<div class="feature-icon">
+							<img src={Bolt.src} alt="Frequency">
+						</div>
+						<div class="feature-content">
+							<h3>70-80% Accuracy</h3>
+							<p>Clinical studies show our Bio-Scan technology achieves 70-80% accuracy in identifying potential health concerns across various systems</p>
+						</div>
+					</div>
+					
+					<div class="scientific-feature">
+						<div class="feature-icon">
+							<img src={Check.src} alt="Research">
+						</div>
+						<div class="feature-content">
+							<h3>Fast and Simple</h3>
+							<p>Advanced algorithms process over 9,000 frequency patterns to deliver comprehensive health insights in just minutes</p>
+						</div>
+					</div>
+					
+					<div class="scientific-feature">
+						<div class="feature-icon">
+							<img src={Secure.src} alt="Safety">
+						</div>
+						<div class="feature-content">
+							<h3>Non-Invasive Technology</h3>
+							<p>Gentle frequency-based therapy designed to support natural healing without side effects or invasive procedures</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Final CTA Section -->
+	<section class="final-cta">
+		<div class="container">
+			<div class="cta-content">
+				<h2>Do you Want to Get Better Results?</h2>
+				<p>Get the complete bundle for and join thousands who have already discovered the power of bioresonance healing.</p>
+				
+				<div class="cta-box">
+					<div class="price-display">
+						<span class="price">$499</span>
+						<span class="price-subtitle">Alpha Wearable + Frequana + Charisma Ring</span>
+					</div>
+					<a href="/order?product=bundle">
+					<button class="cta-button-large">Order Now the Complete Bundle</button>
+					</a>
+					<div class="guarantees">
+						<div class="guarantee-item">
+							<img src={Check.src} alt="Check">
+							<span>30-Day Money Back Guarantee</span>
+						</div>
+						<div class="guarantee-item">
+							<img src={Secure.src} alt="Secure">
+							<span>Secure Checkout</span>
+						</div>
+						<div class="guarantee-item">
+							<img src={Bolt.src} alt="Fast">
+							<span>Fast and Simple</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<Footer />
+</Layout>
+
+<style lang="scss">
+	.product-hero {
+		background: linear-gradient(135deg, #2596be 0%, #87bd42 100%);
+		color: white;
+		padding: 100px 0;
+
+		.hero-content {
+			padding-top: 50px;
+		}
+
+		.hero-title {
+			font-size: 3.5rem;
+			font-weight: 700;
+			margin-bottom: 20px;
+			line-height: 1.2;
+		}
+
+		.hero-subtitle {
+			font-size: 1.5rem;
+			margin-bottom: 40px;
+			opacity: 0.9;
+			line-height: 1.6;
+		}
+
+		.product-features {
+			margin-bottom: 40px;
+
+			.feature-item {
+				display: flex;
+				align-items: center;
+				margin-bottom: 15px;
+
+				img {
+					width: 20px;
+					margin-right: 12px;
+				}
+
+				span {
+					font-size: 1.4rem;
+					font-weight: 500;
+				}
+			}
+		}
+
+		.pricing-section {
+			.price-box {
+				background: rgba(255, 255, 255, 0.15);
+				padding: 25px;
+				border-radius: 15px;
+				margin-bottom: 25px;
+				text-align: center;
+				backdrop-filter: blur(10px);
+
+				.price {
+					font-size: 3rem;
+					font-weight: 700;
+					display: block;
+				}
+
+				.price-note {
+					font-size: 1.25rem;
+					opacity: 0.8;
+				}
+			}
+
+			.cta-button {
+				background: white;
+				color: #2596be;
+				padding: 1px 0px;
+				border: none;
+				border-radius: 50px;
+				font-size: 1.2rem;
+				font-weight: 600;
+				cursor: pointer;
+				width: 100%;
+				margin-bottom: 15px;
+				transition: all 0.3s ease;
+
+				&:hover {
+					transform: translateY(-2px);
+					box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+				}
+			}
+
+			.guarantee {
+				text-align: center;
+				font-size: 1.1rem;
+				opacity: 0.8;
+			}
+		}
+
+		.product-main-image {
+			width: 100%;
+			border-radius: 20px;
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+		}
+	}
+
+	.product-details {
+		padding: 80px 0;
+		background: #f8f9fa;
+
+		.section-header {
+			text-align: center;
+			margin-bottom: 125px;
+            margin-top: 40px;
+			h2 {
+				
+				color: #2c3e50;
+				margin-bottom: 20px;
+			}
+
+			p {
+				font-size: 1.55rem;
+				color: #6c757d;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+		}
+
+		.detail-row {
+			margin-bottom: 60px;
+			align-items: center;
+
+			&.reverse {
+				flex-direction: row-reverse;
+			}
+
+			.detail-image {
+				width: 100%;
+				border-radius: 15px;
+				box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+				margin-top: 25px;
+			}
+
+			.detail-content {
+				padding: 30px;
+                
+				h3 {
+					font-size: 2.2rem;
+					color: #2c3e50;
+					margin-bottom: 20px;
+				}
+
+				p {
+					font-size: 1.4rem;
+					color: #6c757d;
+					line-height: 1.7;
+					margin-bottom: 30px;
+				}
+
+				.feature-list {
+					list-style: none;
+					padding: 0;
+
+					li {
+						display: flex;
+						align-items: center;
+						margin-bottom: 12px;
+						font-size: 1.4rem;
+						color: #495057;
+
+						img {
+							width: 18px;
+							margin-right: 12px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// NEW: Advanced Features Section (Sensate-inspired)
+	.advanced-features {
+		padding: 100px 0;
+		background: linear-gradient(135deg, #0a0e1a 0%, #1a1f2e 50%, #0a0e1a 100%);
+		color: white;
+		position: relative;
+		overflow: hidden;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: radial-gradient(circle at 50% 50%, rgba(37, 150, 190, 0.1) 0%, transparent 70%);
+			pointer-events: none;
+		}
+
+		.container {
+			position: relative;
+			z-index: 2;
+		}
+
+		.features-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+			gap: 60px;
+			margin-bottom: 80px;
+		}
+
+		.feature-card {
+			text-align: center;
+			padding: 40px 30px;
+			background: rgba(255, 255, 255, 0.02);
+			border-radius: 24px;
+			backdrop-filter: blur(10px);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			transition: all 0.4s ease;
+			position: relative;
+			overflow: hidden;
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(37, 150, 190, 0.1), transparent);
+				transition: left 0.6s ease;
+			}
+
+			&:hover::before {
+				left: 100%;
+			}
+
+			&:hover {
+				transform: translateY(-10px);
+				border-color: rgba(37, 150, 190, 0.3);
+				box-shadow: 0 20px 40px rgba(37, 150, 190, 0.2);
+			}
+		}
+
+		.feature-image {
+			width: 100%;
+			height: 200px;
+			border-radius: 16px;
+			margin-bottom: 30px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+			overflow: hidden;
+
+			&.all-in-one {
+				background: linear-gradient(135deg, #2596be 0%, #4fd1c7 100%);
+			}
+
+			&.science-backed {
+				background: linear-gradient(135deg, #87bd42 0%, #2596be 100%);
+			}
+
+			&.non-invasive {
+				background: linear-gradient(135deg, #4fd1c7 0%, #87bd42 100%);
+			}
+
+			.feature-icon-large {
+				font-size: 4rem;
+				position: relative;
+				z-index: 2;
+
+				&.glow {
+					animation: glow 2s ease-in-out infinite alternate;
+				}
+			}
+
+			.pulse-ring {
+				position: absolute;
+				width: 60px;
+				height: 60px;
+				border: 3px solid rgba(255, 255, 255, 0.3);
+				border-radius: 50%;
+				animation: pulse 2s infinite;
+			}
+		}
+
+		.device-showcase {
+			grid-column: 1 / -1;
+			max-width: 500px;
+			margin: 0 auto;
+			
+			.device-image-container {
+				position: relative;
+				margin-bottom: 30px;
+				
+				.device-showcase-image {
+					width: 100%;
+					border-radius: 20px;
+					position: relative;
+					z-index: 2;
+				}
+				
+				.device-glow {
+					position: absolute;
+					top: -20px;
+					left: -20px;
+					right: -20px;
+					bottom: -20px;
+					background: radial-gradient(circle, rgba(37, 150, 190, 0.3) 0%, transparent 70%);
+					border-radius: 40px;
+					animation: glow-pulse 3s ease-in-out infinite;
+				}
+			}
+			
+			.device-info {
+				text-align: center;
+			}
+		}
+
+		.wellness-showcase {
+			margin-top: 80px;
+			background: rgba(255, 255, 255, 0.03);
+			border-radius: 24px;
+			padding: 60px 40px;
+			backdrop-filter: blur(15px);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+
+			.showcase-content {
+				display: grid;
+				grid-template-columns: 1fr auto 1fr;
+				gap: 50px;
+				align-items: center;
+			}
+
+			.showcase-title {
+				font-size: 2.5rem;
+				font-weight: 600;
+				margin-bottom: 40px;
+				background: linear-gradient(135deg, #2596be 0%, #87bd42 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+
+			.showcase-features {
+				.showcase-feature {
+					display: flex;
+					align-items: flex-start;
+					margin-bottom: 30px;
+
+					.feature-icon-mini {
+						width: 40px;
+						height: 40px;
+						background: linear-gradient(135deg, #2596be 0%, #87bd42 100%);
+						border-radius: 10px;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						margin-right: 15px;
+						font-size: 2rem;
+						flex-shrink: 0;
+					}
+
+					.feature-text {
+						h4 {
+							font-size: 1.6rem;
+							font-weight: 600;
+							color: white;
+							margin-bottom: 5px;
+						}
+
+						p {
+							font-size: 1.3rem;
+							color: rgba(255, 255, 255, 0.7);
+							line-height: 1.5;
+						}
+					}
+				}
+			}
+
+			.showcase-center {
+				.device-display {
+					position: relative;
+					width: 300px;
+					height: 300px;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+
+					.showcase-device-image {
+						width: 250px;
+						height: 250px;
+						object-fit: cover;
+						border-radius: 50%;
+						position: relative;
+						z-index: 2;
+						border: 3px solid rgba(37, 150, 190, 0.3);
+					}
+
+					.pulse-animation {
+						position: absolute;
+						width: 100%;
+						height: 100%;
+						border: 2px solid rgba(37, 150, 190, 0.4);
+						border-radius: 50%;
+						animation: pulse-ring 2s infinite;
+					}
+				}
+			}
+
+			.showcase-right {
+				.wellness-benefits {
+					h3 {
+						font-size: 1.9rem;
+						font-weight: 600;
+						margin-bottom: 30px;
+						color: white;
+						text-align: center;
+					}
+
+					.benefit-item {
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						text-align: center;
+						margin-bottom: 25px;
+						padding: 20px;
+						background: rgba(255, 255, 255, 0.05);
+						border-radius: 12px;
+						border: 1px solid rgba(255, 255, 255, 0.1);
+
+						.benefit-number {
+							font-size: 1.8rem;
+							font-weight: 700;
+							color: #87bd42;
+							margin-bottom: 5px;
+						}
+
+						.benefit-label {
+							font-size: 1.2rem;
+							color: rgba(255, 255, 255, 0.8);
+						}
+					}
+				}
+			}
+		}
+
+		.feature-title {
+			font-size: 2.3rem;
+			font-weight: 600;
+			margin-bottom: 20px;
+			background: linear-gradient(135deg, #2596be 0%, #87bd42 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+
+		.feature-description {
+			font-size: 1.35rem;
+			color: rgba(255, 255, 255, 0.8);
+			line-height: 1.7;
+			margin-bottom: 25px;
+		}
+
+		.feature-highlights {
+			list-style: none;
+			text-align: left;
+			padding: 0;
+            font-weight: 1;
+
+			li {
+				display: flex;
+				align-items: center;
+				margin-bottom: 12px;
+				font-size: 1.4rem;
+				color: rgba(255, 255, 255, 0.9);
+				
+
+				&::before {
+					content: '✓';
+					color: #87bd42;
+					font-weight: bold;
+					margin-right: 12px;
+					font-size: 1.2rem;
+				}
+			}
+		}
+
+		@keyframes pulse {
+			0%, 100% { transform: scale(1); opacity: 1; }
+			50% { transform: scale(1.2); opacity: 0.6; }
+		}
+
+		@keyframes glow {
+			0% { filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); }
+			100% { filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8)); }
+		}
+
+		@keyframes glow-pulse {
+			0%, 100% { opacity: 0.5; transform: scale(1); }
+			50% { opacity: 0.8; transform: scale(1.05); }
+		}
+
+		@keyframes pulse-ring {
+			0% { transform: scale(1); opacity: 1; }
+			100% { transform: scale(1.3); opacity: 0; }
+		}
+	}
+
+	.benefits-section {
+		padding: 80px 0;
+		background: white;
+
+		h2 {
+			text-align: center;
+			
+			color: #2c3e50;
+			margin-bottom: 20px;
+		}
+
+		.section-subtitle {
+			text-align: center;
+			font-size: 1.6rem;
+			color: #6c757d;
+			margin-bottom: 60px;
+		}
+
+		.benefits-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 40px;
+
+			.benefit-card {
+				text-align: center;
+				padding: 40px 30px;
+				background: #f8f9fa;
+				border-radius: 20px;
+				transition: all 0.3s ease;
+
+				&:hover {
+					transform: translateY(-5px);
+					box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+				}
+
+				.benefit-icon {
+					width: 50px;
+					margin-bottom: 20px;
+				}
+
+				h3 {
+					font-size: 1.8rem;
+					color: #2c3e50;
+					margin-bottom: 15px;
+				}
+
+				p {
+					color: #6c757d;
+					line-height: 1.6;
+					font-size: 1.5rem;
+				}
+			}
+		}
+	}
+
+	.how-it-works {
+		padding: 80px 0;
+		background: linear-gradient(135deg, #2596be 0%, #87bd42 100%);
+		color: white;
+
+		h2 {
+			text-align: center;
+			font-size: 2.8rem;
+			margin-bottom: 60px;
+		}
+
+		.steps-container {
+			max-width: 800px;
+			margin: 0 auto;
+
+			.step {
+				display: flex;
+				align-items: center;
+				margin-bottom: 30px;
+
+				.step-number {
+					width: 150px;
+					height: 80px;
+					
+					border-radius: 60%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					font-size: 2rem;
+					font-weight: 700;
+					margin-bottom: 40px;
+
+				}
+
+				.step-content {
+					h3 {
+						font-size: 1.7rem;
+						margin-bottom: 10px;
+					}
+
+					p {
+						font-size: 1.26rem;
+						opacity: 0.9;
+						line-height: 1.6;
+					}
+				}
+			}
+		}
+	}
+
+	.scientific-backing {
+		padding: 80px 0;
+		background: #f8f9fa;
+
+		.scientific-content {
+			max-width: 1000px;
+			margin: 0 auto;
+
+			.scientific-header {
+				text-align: center;
+				margin-bottom: 60px;
+
+				h2 {
+					font-size: 2.8rem;
+					color: #2c3e50;
+					margin-bottom: 20px;
+				}
+
+				p {
+					font-size: 1.45rem;
+					color: #6c757d;
+					margin: 0 auto;
+				}
+			}
+
+			.scientific-features {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 40px;
+
+				.scientific-feature {
+					display: flex;
+					align-items: flex-start;
+					padding: 30px;
+					background: white;
+					border-radius: 15px;
+					box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+					transition: all 0.3s ease;
+
+					&:hover {
+						transform: translateY(-5px);
+						box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+					}
+
+					.feature-icon {
+						margin-right: 20px;
+						background: linear-gradient(135deg, #2596be 0%, #87bd42 100%);
+						padding: 15px;
+						border-radius: 12px;
+						min-width: 60px;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+
+						img {
+							width: 30px;
+							filter: brightness(0) invert(1);
+						}
+					}
+
+					.feature-content {
+						h3 {
+							font-size: 1.8rem;
+							color: #2c3e50;
+							margin-bottom: 10px;
+							font-weight: 600;
+						}
+
+						p {
+							color: #6c757d;
+							line-height: 1.2;
+							font-size: 1.4rem;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.final-cta {
+		padding: 80px 0;
+		background: linear-gradient(135deg, #2596be 0%, #87bd42 100%);
+		color: white;
+		text-align: center;
+
+		h2 {
+			font-size: 3rem;
+			margin-bottom: 20px;
+		}
+
+		p {
+			font-size: 1.4rem;
+			margin-bottom: 50px;
+			opacity: 0.9;
+		}
+
+		.cta-box {
+			background: rgba(255, 255, 255, 0.15);
+			padding: 50px;
+			border-radius: 25px;
+			max-width: 600px;
+			margin: 0 auto;
+			backdrop-filter: blur(10px);
+
+			.price-display {
+				margin-bottom: 30px;
+
+				.price {
+					font-size: 3.5rem;
+					font-weight: 700;
+					display: block;
+				}
+
+				.price-subtitle {
+					font-size: 1.2rem;
+					opacity: 0.8;
+				}
+			}
+
+			.cta-button-large {
+				background: white;
+				color: #2596be;
+				padding: 1px 0px;
+				border: none;
+				border-radius: 50px;
+				font-size: 1.1rem;
+				font-weight: 600;
+				cursor: pointer;
+				width: 100%;
+				margin-bottom: 30px;
+				transition: all 0.3s ease;
+
+				&:hover {
+					transform: translateY(-2px);
+					box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+				}
+			}
+
+			.guarantees {
+				.guarantee-item {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					margin-bottom: 10px;
+
+					img {
+						width: 18px;
+						margin-right: 10px;
+					}
+
+					span {
+						font-size: 1.2rem;
+					}
+				}
+			}
+		}
+	}
+
+	@media (max-width: 768px) {
+		.product-hero {
+			.hero-title {
+			
+			}
+
+			.hero-subtitle {
+				font-size: 1.1rem;
+			}
+		}
+
+		.detail-row {
+			&.reverse {
+				flex-direction: column !important;
+			}
+		}
+
+		.steps-container .step {
+			flex-direction: column;
+			text-align: center;
+
+			.step-number {
+				margin-right: 0;
+				margin-bottom: 20px;
+			}
+		}
+
+		.advanced-features {
+			.features-grid {
+				grid-template-columns: 1fr;
+				gap: 40px;
+			}
+			
+			.wellness-showcase .showcase-content {
+				grid-template-columns: 1fr;
+				gap: 40px;
+				text-align: center;
+			}
+			
+			.showcase-center .device-display {
+				width: 250px;
+				height: 250px;
+				margin: 0 auto;
+				
+				.showcase-device-image {
+					width: 200px;
+					height: 200px;
+				}
+			}
+			
+			.showcase-title {
+				font-size: 1.8rem;
+			}
+			
+			.feature-title {
+				font-size: 2.8rem;
+			}
+			
+			.wellness-showcase {
+				padding: 40px 20px;
+				margin-top: 60px;
+			}
+		}
+	}
+
+					.feature-icon-mini2 {
+
+						align-items: center;
+						justify-content: center;
+					
+						font-size: 3.5rem;
+						
+						margin-bottom: 10px;
+					}
+
+
+</style>

@@ -1,0 +1,485 @@
+---
+import AlphaWearable from '../assets/alpha-wearable.png'
+import CharismaRing from '../assets/charismaring.png'
+import App1 from '../assets/app1.webp'
+import App2 from '../assets/app2.webp'
+import App3 from '../assets/app3.webp'
+import App4 from '../assets/app4.webp'
+---
+
+<section class="features-section">
+  <div class="container">
+    
+    <!-- Alpha Wearable -->
+    <div class="feature-item">
+      <div class="feature-content">
+        <div class="feature-text">
+          <h2>Alpha Wearable + App Technology</h2>
+          <p>Our comprehensive wearable device continuously monitors your body's vital signs while delivering targeted frequency therapy. Paired with our intelligent app, it provides real-time insights and automatically adjusts treatment protocols based on your unique biometric data.</p>
+        </div>
+        <div class="feature-image">
+          <img src={AlphaWearable.src} alt="Alpha Wearable" class="wearable-image">
+        </div>
+      </div>
+    </div>
+
+    <!-- Smart Ring -->
+    <div class="feature-item reverse">
+      <div class="feature-content">
+        <div class="feature-text">
+          <h2>Bio-Scan Tech</h2>
+          <p>Quick, comprehensive body assessment in 2 minutes, detecting potential health concerns with 70-80% accuracy.</p>
+          <div class="feature-subtext">
+            <h3>Smart Sleep Tracking</h3>
+            <p>Monitors energy patterns during sleep, adjusts frequencies to help achieve deeper, restorative rest.</p>
+          </div>
+        </div>
+        <div class="feature-image">
+          <img src={CharismaRing.src} alt="Charisma Ring" class="ring-image">
+        </div>
+      </div>
+    </div>
+
+    <!-- App Features -->
+    <div class="app-section">
+      <div class="app-header">
+        <h2>Comprehensive Health Monitoring</h2>
+        <p>Track, analyze, and optimize your wellness journey with our advanced mobile application</p>
+      </div>
+      
+      <div class="app-features-grid">
+        <div class="app-feature">
+          <div class="app-image-container">
+            <img src={App1.src} alt="Bioscan App" class="app-image">
+          </div>
+          <div class="app-feature-text">
+            <h3>Bio Scan</h3>
+            <p>Start your diagnostic test with comprehensive body scanning technology</p>
+          </div>
+        </div>
+
+        <div class="app-feature">
+          <div class="app-image-container">
+            <img src={App2.src} alt="Vital Signs App" class="app-image">
+          </div>
+          <div class="app-feature-text">
+            <h3>Vital Signs Monitoring</h3>
+            <p>Real-time tracking of sleep patterns, stress levels, and heart rate with detailed analytics</p>
+          </div>
+        </div>
+
+        <div class="app-feature">
+          <div class="app-image-container">
+            <img src={App3.src} alt="Results App" class="app-image">
+          </div>
+          <div class="app-feature-text">
+            <h3>Personalized Results</h3>
+            <p>Get comprehensive diagnostic results with actionable health insights and recommendations</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- App Info Section -->
+      <div class="app-info-section">
+        <div class="app-info-content">
+          <div class="app-info-text">
+            <h3>Sleep Monitoring</h3>
+            <p>Track your sleep patterns effortlessly. Our app analyzes your nightly rest, providing insights into sleep quality, duration, and disruptions.</p>
+            
+            <h4>Heart Rate Monitoring</h4>
+            <p>Keep an eye on your heart health in real-time. Our app continuously monitors your heart rate, helping you understand your cardiovascular trends and detect any irregularities early.</p>
+          </div>
+          <div class="app-info-image">
+            <img src={App4.src} alt="Sleep and Heart Rate Monitoring" class="app-detail-image">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .features-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    position: relative;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .feature-item {
+    margin-bottom: 120px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 24px;
+    padding: 60px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .feature-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .feature-item.reverse .feature-content {
+    grid-template-columns: 1fr 1fr;
+    direction: rtl;
+  }
+
+  .feature-item.reverse .feature-text {
+    direction: ltr;
+  }
+
+  .feature-text h2 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 30px;
+    line-height: 1.2;
+    position: relative;
+    padding-bottom: 20px;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: rgba(128, 128, 128, 0.3);
+    }
+  }
+
+  .feature-text p {
+    font-size: 1.5rem;
+    color: #475569;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .feature-subtext h3 {
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 20px;
+    margin-top: 32px;
+    position: relative;
+    padding-bottom: 15px;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: rgba(128, 128, 128, 0.3);
+    }
+  }
+
+  .feature-subtext p {
+    font-size: 1.5rem;
+    color: #64748b;
+    margin-bottom: 0;
+  }
+
+  .feature-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .wearable-image, .ring-image {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+  }
+
+  .wearable-image {
+    transform: rotate(-5deg);
+    transition: transform 0.3s ease;
+  }
+
+  .wearable-image:hover {
+    transform: rotate(-2deg) scale(1.05);
+  }
+
+  .ring-image {
+    transform: rotate(8deg);
+    transition: transform 0.3s ease;
+  }
+
+  .ring-image:hover {
+    transform: rotate(5deg) scale(1.05);
+  }
+
+  /* App Section */
+  .app-section {
+    margin-top: 80px;
+  }
+
+  .app-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .app-header h2 {
+    font-size: 3.7rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .app-header p {
+    font-size: 1.5rem;
+    color: #64748b;
+    font-weight: 400;
+  }
+
+  .app-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 100px;
+  }
+
+  .app-feature {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .app-feature:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.15);
+  }
+
+  .app-image-container {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .app-image {
+    max-width: 200px;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .app-feature-text h3 {
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 16px;
+    position: relative;
+    padding-bottom: 12px;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 1px;
+      background-color: rgba(128, 128, 128, 0.3);
+    }
+  }
+
+  .app-feature-text p {
+    font-size: 1.5rem;
+    color: #64748b;
+    line-height: 1.6;
+  }
+
+  /* App Info Section */
+  .app-info-section {
+    margin-top: 80px;
+  }
+
+  .app-info-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 80px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 50px;
+    box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .app-info-content.reverse {
+    grid-template-columns: 1fr 1fr;
+    direction: rtl;
+  }
+
+  .app-info-content.reverse .app-info-text {
+    direction: ltr;
+  }
+
+  .app-info-text h3 {
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 15px;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: rgba(128, 128, 128, 0.3);
+    }
+  }
+
+  .app-info-text h4 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 20px;
+    margin-top: 35px;
+    position: relative;
+    padding-bottom: 15px;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: rgba(128, 128, 128, 0.3);
+    }
+  }
+
+  .app-info-text p {
+    font-size: 1.5rem;
+    color: #475569;
+    line-height: 1.7;
+  }
+
+  .app-info-image {
+    display: flex;
+    justify-content: center;
+  }
+
+  .app-detail-image {
+    max-width: 280px;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 968px) {
+    .features-section {
+      padding: 60px 0;
+    }
+
+    .feature-item {
+      padding: 40px;
+      margin-bottom: 80px;
+    }
+
+    .feature-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      text-align: center;
+    }
+
+    .feature-item.reverse .feature-content {
+      grid-template-columns: 1fr;
+      direction: ltr;
+    }
+
+    .feature-text h2 {
+      font-size: 2.2rem;
+    }
+
+    .app-features-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .app-info-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      text-align: center;
+    }
+
+    .app-info-content.reverse {
+      grid-template-columns: 1fr;
+      direction: ltr;
+    }
+
+    .app-header h2 {
+      font-size: 2.4rem;
+    }
+
+    .app-info-text h3 {
+      font-size: 2.2rem;
+    }
+
+    .app-info-text h4 {
+      font-size: 1.8rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 16px;
+    }
+
+    .feature-item {
+      padding: 30px 20px;
+    }
+
+    .feature-text h2 {
+      font-size: 1.9rem;
+    }
+
+    .feature-text p {
+      font-size: 1.1rem;
+    }
+
+    .app-header h2 {
+      font-size: 1.9rem;
+    }
+
+    .app-feature {
+      padding: 30px 20px;
+    }
+
+    .app-info-content {
+      padding: 30px 20px;
+    }
+
+    .app-info-text h3 {
+      font-size: 1.8rem;
+    }
+
+    .app-info-text h4 {
+      font-size: 1.5rem;
+    }
+  }
+</style>

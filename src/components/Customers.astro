@@ -3,136 +3,226 @@ import Stars from '../assets/stars.svg'
 ---
 
 <section class="product-reviews" id="customers">
-    <div class="container">
-        <div class="center">
-            <div class="text-container">
-                <h3 class="h1-title">Trusted by the companies you trust</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, possimus deleniti illo corporie.</p>
-            </div>
+  <div class="container">
+    <div class="center">
+      <div class="text-container">
+        <h3 class="h1-title">Trusted by many</h3>
+        <p>Our Testimonials showcase the real-life experiences of users who have benefited from our innovative health solutions.</p>
+      </div>
 
-            <div class="customer-reviews m-margin">
-                <div class="flex center">
-                    <img src={Stars.src}>
-                    <span class="s-paragraph">Base on 87,00+ reviews</span>
-                </div>
-                <small><strong>1 millon</strong> customers and counting</small>
-            </div>
-            <div class="center">
-                <a href="#" class="button button-primary">Start Trial — It's Free</a>
-                <small class="block">No credit card required.</small>
-            </div>
+      <div class="customer-reviews m-margin">
+        <div class="flex center">
+          <img src={Stars.src}>
+          <span class="s-paragraph">Over 4k clients</span>
         </div>
+        <small><strong>95%</strong> success rate</small>
+      </div>
 
-        <div class="customer-avatars">
-           <div class="left-side-avatars">
-              <div class="circular-image">
-                <img src="https://images.pexels.com/photos/1520760/pexels-photo-1520760.jpeg?auto=compress&cs=tinysrgb&w=800">
-               </div>
-               <div class="circular-image">
-                 <img src="https://images.pexels.com/photos/1493111/pexels-photo-1493111.jpeg?auto=compress&cs=tinysrgb&w=800">
-               </div>
-               <div class="circular-image">
-                 <img src="https://images.pexels.com/photos/2269872/pexels-photo-2269872.jpeg?auto=compress&cs=tinysrgb&w=800">
-               </div>
-               <div class="circular-image">
-                   <img src="https://images.pexels.com/photos/3058391/pexels-photo-3058391.jpeg?auto=compress&cs=tinysrgb&w=800">
-               </div>
-           </div>
-           <div class="right-side-avatars">
-            <div class="circular-image">
-              <img src="https://images.pexels.com/photos/12599059/pexels-photo-12599059.jpeg?auto=compress&cs=tinysrgb&w=800">
-             </div>
-             <div class="circular-image">
-               <img src="https://images.pexels.com/photos/3394657/pexels-photo-3394657.jpeg?auto=compress&cs=tinysrgb&w=800">
-             </div>
-             <div class="circular-image">
-               <img src="https://images.pexels.com/photos/3211476/pexels-photo-3211476.jpeg?auto=compress&cs=tinysrgb&w=800">
-             </div>
-             <div class="circular-image">
-                 <img src="https://images.pexels.com/photos/3756985/pexels-photo-3756985.jpeg?auto=compress&cs=tinysrgb&w=800">
-             </div>
-          </div>
-        </div>
+      <div class="center">
+        <a href="#!" id="openVideoGallery" class="button button-primary">Watch the testimonials</a>
+      </div>
     </div>
- </section>
 
+    <div class="customer-avatars">
+      <div class="left-side-avatars">
+        <div class="circular-image"><img src="https://images.pexels.com/photos/1520760/pexels-photo-1520760.jpeg?auto=compress&cs=tinysrgb&w=800"></div>
+        <div class="circular-image"><img src="https://images.pexels.com/photos/1493111/pexels-photo-1493111.jpeg?auto=compress&cs=tinysrgb&w=800"></div>
+        <div class="circular-image"><img src="https://images.pexels.com/photos/2269872/pexels-photo-2269872.jpeg?auto=compress&cs=tinysrgb&w=800"></div>
+        <div class="circular-image"><img src="https://images.pexels.com/photos/3058391/pexels-photo-3058391.jpeg?auto=compress&cs=tinysrgb&w=800"></div>
+      </div>
+      <div class="right-side-avatars">
+        <div class="circular-image"><img src="https://images.pexels.com/photos/12599059/pexels-photo-12599059.jpeg?auto=compress&cs=tinysrgb&w=800"></div>
+        <div class="circular-image"><img src="https://images.pexels.com/photos/3394657/pexels-photo-3394657.jpeg?auto=compress&cs=tinysrgb&w=800"></div>
+        <div class="circular-image"><img src="https://images.pexels.com/photos/3211476/pexels-photo-3211476.jpeg?auto=compress&cs=tinysrgb&w=800"></div>
+        <div class="circular-image"><img src="https://images.pexels.com/photos/3756985/pexels-photo-3756985.jpeg?auto=compress&cs=tinysrgb&w=800"></div>
+      </div>
+    </div>
+  </div>
 
- <style lang="scss">
+ <!-- LIGHTWEIGHT VIDEO MODAL (YouTube, no autoplay, original look) -->
+<div id="videoGallery" class="video-modal" aria-hidden="true">
+  <div class="video-modal__content">
+    <button class="video-modal__close" aria-label="Close">✕</button>
+    <button class="video-modal__mute" aria-label="Unmute" data-state="muted">🔊</button>
 
-  .product-reviews{
-    padding: 80px 0;
-    background-color: #fff;
-    .customer-reviews{
-      img{
-        width: 80px;
-      }
-      span{
-         margin-left: 10px;
-      }
-    }
-    .text-container{
-      max-width: 400px;
-      margin: 10px auto;
-    }
-    p, h3{
-      margin: 10px 0;
-    }
-    .container{
-      padding: 70px 0;
-      position: relative;
-      
-    }
-    .customer-avatars{
-      .circular-image {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        overflow: hidden;
-        display: inline-block;
-        vertical-align: middle;
-        img{
-          width: 100%;
-        }
-      }
+    <div class="video-modal__slides">
+      <!-- 1 Menstrual cramps -->
+      <div class="slide">
+        <iframe class="yt-player"
+                data-yt-id="OGWeUKIqNbI"
+                src="about:blank"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                allowfullscreen></iframe>
+      </div>
+      <!-- 2 Allergy relief -->
+      <div class="slide">
+        <iframe class="yt-player"
+                data-yt-id="TbqwIzDv9OE"
+                src="about:blank"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                allowfullscreen></iframe>
+      </div>
+      <!-- 3 Anxiety in kids -->
+      <div class="slide">
+        <iframe class="yt-player"
+                data-yt-id="mVTB00q_RKU"
+                src="about:blank"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                allowfullscreen></iframe>
+      </div>
+      <!-- 4 Insomnia & appetite -->
+      <div class="slide">
+        <iframe class="yt-player"
+                data-yt-id="HyXRVhkKisg"
+                src="about:blank"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                allowfullscreen></iframe>
+      </div>
+      <!-- 5 Autism thrive -->
+      <div class="slide">
+        <iframe class="yt-player"
+                data-yt-id="RiKqE-icp_0"
+                src="about:blank"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                allowfullscreen></iframe>
+      </div>
+      <!-- 6 Migraine relief -->
+      <div class="slide">
+        <iframe class="yt-player"
+                data-yt-id="gFUQJ8kW86M"
+                src="about:blank"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                allowfullscreen></iframe>
+      </div>
+    </div>
 
-      .circular-image{
-        position: absolute;
-      }
-      .left-side-avatars .circular-image{
-        &:nth-child(1){
-          top: 0; left: 20%;
-        }
-        &:nth-child(2){
-          top: 14%; left: 5%;
-        }
-        &:nth-child(3){
-          bottom: 14%; left: 5%;
-        }
-        &:nth-child(4){
-          bottom: 0%; left: 20%;
-        }
-      }
-      .right-side-avatars .circular-image{
-        &:nth-child(1){
-          top: 0; right: 20%;
-        }
-        &:nth-child(2){
-          top: 14%; right: 5%;
-        }
-        &:nth-child(3){
-          bottom: 14%; right: 5%;
-        }
-        &:nth-child(4){
-          bottom: 0%; right: 20%;
-        }
-      }
-     
-    }
+    <button class="arrow arrow--prev" aria-label="Previous">‹</button>
+    <button class="arrow arrow--next" aria-label="Next">›</button>
+  </div>
+</div>
+</section>
 
-    @media (max-width:700px) {
-      .circular-image img{
-        display: none;
-      }
+<!-- =====================  STYLES  ===================== -->
+<style lang="scss">
+.product-reviews{
+  padding: 80px 0;
+  background-color: #fff;
+  .customer-reviews{
+    img{ width: 80px; }
+    span{ margin-left: 10px; }
+  }
+  .text-container{ max-width: 400px; margin: 10px auto; }
+  p,h3{ margin: 10px 0; }
+  .container{ padding: 70px 0; position: relative; }
+  .customer-avatars{
+    .circular-image{
+      width: 80px; height: 80px; border-radius: 50%; overflow: hidden; display: inline-block; vertical-align: middle;
+      img{ width: 100%; }
+    }
+    .circular-image{ position: absolute; }
+    .left-side-avatars .circular-image{
+      &:nth-child(1){ top: 0; left: 20%; }
+      &:nth-child(2){ top: 14%; left: 5%; }
+      &:nth-child(3){ bottom: 14%; left: 5%; }
+      &:nth-child(4){ bottom: 0%; left: 20%; }
+    }
+    .right-side-avatars .circular-image{
+      &:nth-child(1){ top: 0; right: 20%; }
+      &:nth-child(2){ top: 14%; right: 5%; }
+      &:nth-child(3){ bottom: 14%; right: 5%; }
+      &:nth-child(4){ bottom: 0%; right: 20%; }
     }
   }
- </style>
+  @media (max-width:700px){
+    .circular-image img{ display: none; }
+  }
+}
+
+.video-modal{
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.7);
+  display:flex; align-items:center; justify-content:center;
+  z-index:999;
+  opacity:0; pointer-events:none;
+  transition:.25s;
+}
+.video-modal[aria-hidden="false"]{ opacity:1; pointer-events:auto; }
+.video-modal__content{ position:relative; width:90%; max-width:900px; }
+.video-modal__slides{ display:flex; transition:transform .35s ease; }
+.slide{ width:100%; flex:0 0 100%; }
+.slide iframe{ width:100%; height:50vw; max-height:500px; display:block; }
+.video-modal__close{ position:absolute; top:-40px; right:0; background:none; border:none; color:#fff; font-size:28px; cursor:pointer; }
+.video-modal__mute{ position:absolute; top:-40px; left:0; background:none; border:none; color:#fff; font-size:22px; cursor:pointer; z-index:3; }
+
+/* ==== ROUND ARROWS ==== */
+.arrow{
+  position:absolute; top:50%; transform:translateY(-50%);
+  background:rgba(0,0,0,.4); color:#fff;
+  border:none; width:53px; height:53px; /* perfect circle */
+  border-radius:50%; font-size:26px; cursor:pointer; z-index:2;
+  display:flex; align-items:center; justify-content:center;
+}
+.arrow--prev{ left:-60px; }
+.arrow--next{ right:-60px; }
+@media(max-width:700px){
+  .arrow--prev{ left:10px; }
+  .arrow--next{ right:10px; }
+}
+</style>
+
+<!-- =====================  JAVASCRIPT  ===================== -->
+<script>
+(() => {
+  function init() {
+    const btn   = document.getElementById('openVideoGallery');
+    const modal = document.getElementById('videoGallery');
+    if (!btn || !modal) return;
+
+    const wrapper = modal.querySelector('.video-modal__slides');
+    const slides  = [...modal.querySelectorAll('.slide')];
+    const muteBtn = modal.querySelector('.video-modal__mute');
+    let current   = 0;
+
+    function open(){
+      modal.setAttribute('aria-hidden','false');
+      slides.forEach((slide,i)=>{
+        const iframe = slide.querySelector('iframe');
+        const id     = iframe.dataset.ytId;
+        // NO autoplay, show controls, no related videos
+        iframe.src = `https://www.youtube.com/embed/${id}?rel=0&controls=1&showinfo=0&iv_load_policy=3&modestbranding=1`;
+      });
+      show(0);
+      document.addEventListener('keydown', handleKeys);
+    }
+
+    function close(){
+      modal.setAttribute('aria-hidden','true');
+      slides.forEach(s=>{ s.querySelector('iframe').src='about:blank'; });
+      document.removeEventListener('keydown', handleKeys);
+    }
+
+    function show(i){
+      current = (i+slides.length)%slides.length;
+      wrapper.style.transform = `translateX(-${current*100}%)`;
+    }
+
+    function handleKeys(e){
+      if (e.key==='Escape') close();
+      if (e.key==='ArrowLeft') show(current-1);
+      if (e.key==='ArrowRight') show(current+1);
+    }
+
+    btn.addEventListener('click', open);
+    modal.querySelector('.video-modal__close').addEventListener('click', close);
+    modal.querySelector('.arrow--prev').addEventListener('click', ()=>show(current-1));
+    modal.querySelector('.arrow--next').addEventListener('click', ()=>show(current+1));
+    modal.addEventListener('click', e=>{ if(e.target===modal) close(); });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>

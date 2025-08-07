@@ -1,0 +1,50 @@
+/* Mobile first approach */
+@media (max-width: 550px) {
+  .hero-title {
+    font-size: 2rem !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem !important;
+  }
+  
+  .container {
+    padding: 0 20px;
+  }
+  
+  /* Hacer que las columnas se apilen en móvil */
+  .columns {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 750px) {
+  /* Tablet adjustments */
+  .nav-menu {
+    display: none;
+  }
+  
+  .mobile-menu {
+    display: block;
+  }
+}
+
+/* Ocultar/mostrar elementos según el tamaño */
+.mobile-only {
+  display: none;
+}
+
+.desktop-only {
+  display: block;
+}
+
+@media (max-width: 550px) {
+  .mobile-only {
+    display: block;
+  }
+  
+  .desktop-only {
+    display: none;
+  }
+}

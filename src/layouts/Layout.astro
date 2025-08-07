@@ -10,105 +10,350 @@ const { title } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description">
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="description" content="Revolutionary healing devices using bioresonance technology">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
-    <meta name="description" content="Idol is an elegant landing page template for micro SaaS products built with AstroJS & Skeleton CSS"/>
 		<title>{title}</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+		
+		<!-- Snipcart CSS -->
+		<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.css" />
 	</head>
 	<body>
 		<slot />
+
+		
+		<div id="snipcart" 
+			 data-api-key="MDllZTAxMzktMTZkMS00N2RjLTgxODctZjc2MjI3ZmVjN2UyNjM4ODk0MjM5MDYzNzAwMjc1" 
+			 data-config-modal-style="side"
+			 data-config-add-product-behavior="none"
+			 hidden>
+		</div>
+
+		<!-- Snipcart JavaScript - Al final del body -->
+		<script src="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.js"></script>
+		
+		<!-- Configuración de Snipcart -->
+		<script>
+			window.SnipcartSettings = {
+				publicApiKey: "MDllZTAxMzktMTZkMS00N2RjLTgxODctZjc2MjI3ZmVjN2UyNjM4ODk0MjM5MDYzNzAwMjc1", // CAMBIA ESTO por tu API key real
+				loadStrategy: "on-user-interaction",
+				modalStyle: "side",
+				currency: "usd",
+				templatesUrl: "/snipcart-templates.html" // Opcional
+			};
+		</script>
+
+		
 	</body>
 </html>
+
 <style lang="scss" is:global>
 	@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap');
 
-
 	:root {
 		--accent: #cc4b06;
-    --dark: #000;
-    --tenary: #ecf7f8;
+		--dark: #000;
+		--tenary: #ecf7f8;
 		--base-font: 'Manrope', sans-serif;
 	}
+	
 	html, body {
 		font-family: var(--base-font);
 		margin: 0px;
 		scroll-behavior: smooth;
-    background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+		background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+		overflow-x: hidden;
 	}
 
-	.block{
-	  display: block;
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 20px;
+		
+		@media (max-width: 768px) {
+			padding: 0 15px;
+		}
+		
+		@media (max-width: 480px) {
+			padding: 0 10px;
+		}
 	}
 
-  .flex{
-    display: flex;
-    &.center{
-      justify-content: center;
-    }
-  }
-.text-container{
-  max-width: 600px;
-  margin: 50px auto;
-}
-.h1-title, .h2-title, .s-subtitle, .l-subtitle{
-  font-weight: 700;
-}
+	.block {
+		display: block;
+	}
 
-.h1-title{
-  font-size: 4rem;
-}
-.h2-title{
-  font-size: 3.2rem;
-}
-.l-subtitle{
-  font-size: 1.9rem;
-}
+	.flex {
+		display: flex;
+		&.center {
+			justify-content: center;
+		}
+	}
 
-.s-margin{
-  margin-bottom: 5px;
-}
-.m-margin{
-  margin-bottom: 2rem;
-}
+	.text-container {
+		max-width: 600px;
+		margin: 50px auto;
+		padding: 0 20px;
+		
+		@media (max-width: 768px) {
+			margin: 30px auto;
+			padding: 0 15px;
+		}
+	}
 
-.md-width{
-  width: 300px;
-}
-.s-paragraph{
-  font-size: 1.3rem;
-}
-p{
-  font-size: 1.8rem;
-}
+	.h1-title, .h2-title, .s-subtitle, .l-subtitle {
+		font-weight: 700;
+		line-height: 1.2;
+	}
 
-.button{
-  border-radius: 8px;
-  &.button-primary, &.button-primary:hover,  &.button-primary:focus{
-    background: var(--accent);
-    border: var(--accent);
-  }
-  &:hover{
-    opacity: .8;
-  }
-}
+	.h1-title {
+		font-size: 4rem;
+		
+		@media (max-width: 1024px) {
+			font-size: 3.5rem;
+		}
+		
+		@media (max-width: 768px) {
+			font-size: 2.8rem;
+		}
+		
+		@media (max-width: 480px) {
+			font-size: 2.2rem;
+		}
+		
+		@media (max-width: 375px) {
+			font-size: 1.9rem;
+		}
+	}
 
-section{
-  padding: 70px 0;
-}
+	.h2-title {
+		font-size: 3.2rem;
+		
+		@media (max-width: 1024px) {
+			font-size: 2.8rem;
+		}
+		
+		@media (max-width: 768px) {
+			font-size: 2.4rem;
+		}
+		
+		@media (max-width: 480px) {
+			font-size: 2rem;
+		}
+	}
 
-.center{ 
-    text-align: center; 
-}
+	.l-subtitle {
+		font-size: 1.9rem;
+		
+		@media (max-width: 768px) {
+			font-size: 1.6rem;
+		}
+		
+		@media (max-width: 480px) {
+			font-size: 1.4rem;
+		}
+	}
 
-.product-cta{
-  max-width: 250px;
-  margin: 0 auto;
-  .button{
-    margin-bottom: 3px;
-  }
-}
+	.s-margin {
+		margin-bottom: 5px;
+	}
 
+	.m-margin {
+		margin-bottom: 2rem;
+		
+		@media (max-width: 768px) {
+			margin-bottom: 1.5rem;
+		}
+	}
+
+	.md-width {
+		width: 300px;
+		
+		@media (max-width: 480px) {
+			width: 100%;
+			max-width: 300px;
+		}
+	}
+
+	.s-paragraph {
+		font-size: 1.3rem;
+		
+		@media (max-width: 768px) {
+			font-size: 1.2rem;
+		}
+		
+		@media (max-width: 480px) {
+			font-size: 1.1rem;
+		}
+	}
+
+	p {
+		font-size: 1.8rem;
+		line-height: 1.5;
+		
+		@media (max-width: 1024px) {
+			font-size: 1.6rem;
+		}
+		
+		@media (max-width: 768px) {
+			font-size: 1.4rem;
+		}
+		
+		@media (max-width: 480px) {
+			font-size: 1.2rem;
+		}
+	}
+
+	.button {
+		border-radius: 8px;
+		transition: all 0.3s ease;
+		font-weight: 600;
+		
+		&.button-primary, &.button-primary:hover, &.button-primary:focus {
+			background: #2596be;
+			border: #2596be;
+			color: white;
+		}
+		
+		&:hover {
+			opacity: .8;
+			transform: translateY(-1px);
+			color: white !important;
+		}
+		
+		@media (max-width: 768px) {
+			padding: 12px 20px;
+			font-size: 1rem;
+		}
+		
+		@media (max-width: 480px) {
+			padding: 10px 18px;
+			font-size: 0.9rem;
+		}
+	}
+
+	section {
+		padding: 70px 0;
+		
+		@media (max-width: 1024px) {
+			padding: 60px 0;
+		}
+		
+		@media (max-width: 768px) {
+			padding: 50px 0;
+		}
+		
+		@media (max-width: 480px) {
+			padding: 40px 0;
+		}
+	}
+
+	.center { 
+		text-align: center; 
+	}
+
+	.product-cta {
+		max-width: 250px;
+		margin: 0 auto;
+		
+		.button {
+			margin-bottom: 3px;
+		}
+		
+		@media (max-width: 768px) {
+			max-width: 280px;
+		}
+		
+		@media (max-width: 480px) {
+			max-width: 100%;
+			
+			.button {
+				width: 100%;
+				max-width: 300px;
+			}
+		}
+	}
+
+	.mobile-only {
+		display: none;
+		
+		@media (max-width: 768px) {
+			display: block;
+		}
+	}
+
+	.desktop-only {
+		display: block;
+		
+		@media (max-width: 768px) {
+			display: none;
+		}
+	}
+
+	.tablet-only {
+		display: none;
+		
+		@media (min-width: 769px) and (max-width: 1024px) {
+			display: block;
+		}
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	.hero-copy, .text-content, .feature-content {
+		h1, h2, h3, p {
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
+	@media (max-width: 550px) {
+		.columns {
+			width: 100% !important;
+			margin-left: 0 !important;
+		}
+		
+		.row {
+			margin-bottom: 0;
+		}
+	}
+	
+	a:hover {
+		color: #87bd42 !important;
+	}
+
+	/* Estilos personalizados para Snipcart */
+	.snipcart-checkout {
+		background: #2596be !important;
+		color: white !important;
+		border: none !important;
+
+		border-radius: 50px !important;
+		font-weight: 600 !important;
+		cursor: pointer !important;
+		transition: all 0.3s ease !important;
+		
+		&:hover {
+			background: #87bd42 !important;
+			transform: translateY(-2px) !important;
+		}
+	}
+	
+
+	
+
+.snipcart-base-button {
+   padding: 0px 16px !important;
+}
+	
+	
 </style>

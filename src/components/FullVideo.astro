@@ -1,0 +1,76 @@
+---
+/* 1. your local background image */
+import bgImage from '../assets/bg-video.jpg';
+---
+
+<section class="full-video-hero">
+  <!-- 2. background image -->
+  <div class="bg"
+       style={`background:url(${bgImage.src}) center/cover no-repeat`}></div>
+
+  <!-- 3. bigger Play button (same SVG style) -->
+  <button class="play-btn" aria-label="Play video">
+    <svg viewBox="0 0 60 60" fill="currentColor">
+      <path d="M20 12v36l30-18z"/>
+    </svg>
+  </button>
+</section>
+
+<style lang="scss">
+.full-video-hero{
+  position:relative;
+  width:100%;
+  aspect-ratio:16 / 9;
+  overflow:hidden;
+
+  .bg{
+    position:absolute;
+    inset:0;
+    z-index:1;
+  }
+
+  .play-btn{
+    position:absolute;
+    top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    z-index:2;
+
+    width:88px;          /* bigger circle */
+    height:88px;
+    border:none;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:0 4px 12px rgba(0,0,0,.2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:transform .2s, box-shadow .2s;
+
+    &:hover{
+      transform:translate(-50%,-50%) scale(1.05);
+      box-shadow:0 6px 16px rgba(0,0,0,.3);
+    }
+
+    svg{
+      width:40px;        /* bigger icon */
+      height:40px;
+    }
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.querySelector('.play-btn');
+  btn.addEventListener('click', () => {
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/embed/LdmuquUvU2k?autoplay=1&rel=0&modestbranding=1';
+    iframe.className = 'video-frame';
+    iframe.style.cssText = 'width:100%;height:100%;border:none;position:absolute;inset:0;z-index:3;';
+    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+    iframe.setAttribute('allowfullscreen', 'true');
+    btn.replaceWith(iframe);
+  });
+});
+</script>

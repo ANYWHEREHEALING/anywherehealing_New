@@ -1,73 +1,101 @@
 ---
-
+import Frequana from '../assets/frequana.png'
+import AlphaWearable from '../assets/alpha-wearable.png'
+import CharismaRing from '../assets/charismaring.png'
 ---
-
 
 <section class="pricing-table" id="pricing">
     <div class="container">
         <div class="center text-container">
-            <h3 class="h1-title">Choose the right plan</h3>
-            <p>We have designed our pricing to help you find the best solutions for you and your incredible business</p>
-        </div>
+            <h3 class="h1-title">Choose the right one</h3>
+            <p>Our main product is Alpha Wearable but we also offer Frequana and Charisma ring. Choose the one is for you or buy all of them for frequency power increase, helping you to improve faster.</p>
+        <div class="buttonbuyall"><a href="/order?product=bundle" class="button button-primary u-full-width">Buy The Complete Bundle</a></div>
+        
+          </div>
 
         <div class="row">
             <div class="one-third column price-item">
+                <div class="product-image">
+                    <img src={Frequana.src} alt="Frequana" class="product-img" data-image="frequana">
+                </div>
                 <div class="price-header m-margin">
-                    <h5 class="l-subtitle">Starter</h5>
-                    <h3 class="h2-title">$9.99<span class="s-paragraph"> / month</span></h3>
-                    <a href="#" class="button u-full-width">start trial</a>
+                    <h5 class="l-subtitle">Frequana</h5>
+                    <h3 class="h2-title">$400<span class="s-paragraph"> USD</span></h3>
+                    <a href="/order?product=frequana" class="button u-full-width">Buy Now</a>
                 </div>
 
                 <div class="price-list">
-                    <p>Unlimited Feedback boards</p>
-                    <p>Unlimited Prioritization Table</p>
-                    <p>Single Sign-On (SSO)</p>
-                    <p>Brand Customization</p>
-                    <p>Unlimited Tracked Users</p>
-                    <p>Custom Domain</p>
-                    <p>Unlimited Prioritization Table</p>
+                    <p>Next generation and more powerful</p>
+                    <p>Non-Invasive Approach: Drug-free technology</p>
+                    <p>Wellness Support: Promotes detoxification</p>
+                    <p>Improves overall wellness through frequency harmonization</p>
+                    <p>Biofield Technology: Works with electromagnetic signature to restore natural balance</p>
+                    <p>Improves circulation</p>
+                    <p>Enhanced cellular communication</p>
+                    <p>Nervous system balance</p>
+                    <p>Immune resilience</p>
+                    <p>And more</p>
                 </div>
             </div>
             <div class="one-third column price-item">
+                <div class="product-image">
+                    <img src={AlphaWearable.src} alt="Alpha Wearable" class="product-img" data-image="alpha">
+                </div>
                 <div class="price-header m-margin">
-                    <h5 class="l-subtitle">Starter</h5>
-                    <h3 class="h2-title">$9.99<span class="s-paragraph"> / month</span></h3>
-                    <a href="#" class="button button-primary u-full-width">start trial</a>
+                    <h5 class="l-subtitle">Alpha Wearable + App subscription</h5>
+                    <h3 class="h2-title">$399<span class="s-paragraph"> USD</span></h3>
+                    <a href="/order?product=alpha" class="button button-primary u-full-width">Buy Now</a>
                 </div>
 
                 <div class="price-list">
-                    <p>Unlimited Feedback boards</p>
-                    <p>Unlimited Prioritization Table</p>
-                    <p>Single Sign-On (SSO)</p>
-                    <p>Brand Customization</p>
-                    <p>Unlimited Tracked Users</p>
-                    <p>Custom Domain</p>
-                    <p>Unlimited Prioritization Table</p>
+                    <p>Sleep aid, anxiety, depression and overall-wellbeing</p>
+                    <p>Bioresonance therapy</p>
+                    <p>Correct energy imbalances</p>
+                    <p>Boosting energy to promoting balance and vitality</p>
+                    <p>Work in harmony with your body</p>
+                    <p>Promoting a natural path to better health</p>
+                    <p>Helping manage symptoms of neurological disorders</p>
+                    <p>Enhances circulation to the optic nerves</p>
+                    <p>Promotes bone regeneration and joint mobility</p>
+                    <p>Supports healthy blood circulation and helps regulate blood pressure for overall wellness.</p>
+                    <p>Reduces inflammation and supports cellular regeneration for healthier skin.</p>
+                    <p>Enhances oxygen circulation and improves respiratory function</p>
+                    <p>Holistic Approach to Healing</p>
                 </div>
             </div>
             <div class="one-third column price-item">
+                <div class="product-image">
+                    <img src={CharismaRing.src} alt="Charisma Ring" class="product-img" data-image="charisma">
+                </div>
                 <div class="price-header m-margin">
-                    <h5 class="l-subtitle">Starter</h5>
-                    <h3 class="h2-title">$9.99<span class="s-paragraph"> / month</span></h3>
-                    <a href="#" class="button u-full-width">start trial</a>
+                    <h5 class="l-subtitle">Charisma ring</h5>
+                    <h3 class="h2-title">$199<span class="s-paragraph"> USD</span></h3>
+                    <a href="/order?product=charisma" class="button u-full-width">Buy Now</a>
                 </div>
 
                 <div class="price-list">
-                    <p>Unlimited Feedback boards</p>
-                    <p>Unlimited Prioritization Table</p>
-                    <p>Single Sign-On (SSO)</p>
-                    <p>Brand Customization</p>
-                    <p>Unlimited Tracked Users</p>
-                    <p>Custom Domain</p>
-                    <p>Unlimited Prioritization Table</p>
+                    <p>Sleep aid, anxiety through frequencies</p>
+                    <p>Smart technology</p>
+                    <p>Tracks sleep, hrv, and stress</p>
+                    <p>Improves focus and boosts natural energy levels</p>
+                    <p>Ongoing wellness insights</p>
+                    <p>Enhances sleep quality and supports healthy blood circulation</p>
+                    <p>And more</p>
                 </div>
             </div>
         </div>
     </div>
- </section>
+    
+    <!-- Modal para imagen ampliada -->
+    <div class="image-modal" id="imageModal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
+</section>
 
-
- <style lang="scss">
+<style lang="scss">
 
 .pricing-table{
    background-color: #fff;
@@ -76,6 +104,29 @@
     padding: 30px;
     margin-top: 20px;
     border-radius: 20px;
+    
+    // Contenedor de imagen del producto
+    .product-image {
+      text-align: center;
+      margin-bottom: 25px;
+      
+      .product-img {
+        width: 70px !important;
+        height: 70px !important;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+        display: block;
+        margin: 0 auto;
+        border-radius: 12px !important;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+    
     .price-header{
       h3 .s-paragraph{
         color: #9ba5b9;
@@ -86,6 +137,8 @@
         margin: 10px 0;
         position: relative;
         padding-left: 20px;
+        font-size: 14px; // Texto más pequeño
+        line-height: 1.4; // Ajustar altura de línea para mejor legibilidad
         &::before{
           position: absolute;
           content: '';
@@ -100,7 +153,217 @@
         }
       }
     }
+  }
+
+.price-item .button:hover {
+  color: #333 !important;
+}
+
+.price-item .button.button-primary:hover {
+  color: white !important;
+}
+
+}
+
+// Modal para imagen ampliada
+.image-modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(5px);
+  
+  &.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; // Añadir padding para evitar que toque los bordes
+  }
+  
+  .modal-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
+    .close-button {
+      position: fixed; // Cambiar a fixed para que siempre esté visible
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10001;
+      transition: all 0.3s ease;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      &:hover {
+        color: #ccc;
+        background: rgba(0, 0, 0, 0.7);
+        transform: scale(1.1);
+      }
+    }
+    
+    img {
+      max-width: calc(100vw - 40px); // Restar padding
+      max-height: calc(100vh - 40px); // Restar padding
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 15px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      transition: opacity 0.3s ease;
+    }
   }
 }
- </style>
+
+// Responsive para modal
+@media (max-width: 768px) {
+  .image-modal {
+    &.active {
+      padding: 10px;
+    }
+    
+    .modal-content {
+      .close-button {
+        top: 10px;
+        right: 10px;
+        font-size: 30px;
+        width: 50px;
+        height: 50px;
+      }
+      
+      img {
+        max-width: calc(100vw - 20px);
+        max-height: calc(100vh - 20px);
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .image-modal {
+    &.active {
+      padding: 5px;
+    }
+    
+    .modal-content {
+      .close-button {
+        top: 5px;
+        right: 5px;
+        font-size: 24px;
+        width: 40px;
+        height: 40px;
+      }
+      
+      img {
+        max-width: calc(100vw - 10px);
+        max-height: calc(100vh - 10px);
+      }
+    }
+  }
+}
+
+.buttonbuyall {
+  margin-top: 50px;
+  margin-bottom: 70px;
+}
+
+</style>
+
+<script>
+// Optimización: Solo ejecutar cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+  // Cache de elementos para evitar búsquedas repetidas en el DOM
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImage');
+  const closeBtn = document.querySelector('.close-button');
+  
+  // Variable para controlar si el modal está abierto
+  let isModalOpen = false;
+  
+  // Función optimizada para abrir modal
+  function openModal(imgSrc, imgAlt) {
+    if (isModalOpen) return; // Prevenir múltiples aperturas
+    
+    modalImg.src = imgSrc;
+    modalImg.alt = imgAlt;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    isModalOpen = true;
+  }
+
+  // Función optimizada para cerrar modal
+  function closeModal() {
+    if (!isModalOpen) return; // Prevenir múltiples cierres
+    
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    isModalOpen = false;
+    
+    // Limpiar src para liberar memoria (opcional)
+    setTimeout(() => {
+      if (!isModalOpen) {
+        modalImg.src = '';
+      }
+    }, 300); // Esperar a que termine la animación
+  }
+
+  // Event delegation: Un solo listener para todas las imágenes
+  // Esto es más eficiente que agregar un listener a cada imagen
+  document.addEventListener('click', function(e) {
+    // Verificar si el elemento clickeado es una imagen de producto
+    if (e.target.classList.contains('product-img')) {
+      e.preventDefault();
+      openModal(e.target.src, e.target.alt);
+    }
+  });
+
+  // Cerrar con botón X (usando evento pasivo para mejor rendimiento)
+  closeBtn.addEventListener('click', closeModal, { passive: true });
+
+  // Cerrar al hacer click fuera de la imagen
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      closeModal();
+    }
+  }, { passive: true });
+
+  // Cerrar con tecla ESC (throttled para evitar múltiples llamadas)
+  let escapeTimeout;
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && isModalOpen) {
+      if (escapeTimeout) return;
+      escapeTimeout = setTimeout(() => {
+        closeModal();
+        escapeTimeout = null;
+      }, 100);
+    }
+  });
+
+  // Optimización adicional: Precargar imágenes cuando se hace hover
+  // (opcional, descomenta si quieres esta funcionalidad)
+  /*
+  document.addEventListener('mouseover', function(e) {
+    if (e.target.classList.contains('product-img')) {
+      // Precargar imagen en segundo plano
+      const preloadImg = new Image();
+      preloadImg.src = e.target.src;
+    }
+  }, { passive: true });
+  */
+});
+</script>

@@ -1,0 +1,335 @@
+---
+// FAQ.astro
+---
+
+<section class="faq-section">
+  <div class="container">
+    <div class="faq-header">
+      <h2>Frequently Asked Questions</h2>
+      <p>Everything you need to know about our wellness technology</p>
+    </div>
+    
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>How does this actually work?</span>
+          <svg class="faq-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3.5V12.5M3.5 8H12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-content">
+            <p>Like a radio, our body runs on natural frequencies. When it's out of tune, you feel tired, stressed, or just "off". This device scans your energy and sends gentle vibrations to help bring it back into balance.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>Will I feel anything?</span>
+          <svg class="faq-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3.5V12.5M3.5 8H12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-content">
+            <p>Most people don't feel the vibrations directly, but they notice the effects (better sleep, more energy, and less stress) within days.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>Is this backed by science?</span>
+          <svg class="faq-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3.5V12.5M3.5 8H12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-content">
+            <p>Yes! Vibration therapy and frequency-based wellness are used in science and medicine to support the body's natural healing. While this is a non-medical device, it's built on principles that have been studied for years.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>How long does it take to work?</span>
+          <svg class="faq-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3.5V12.5M3.5 8H12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-content">
+            <p>Many people feel a difference in just a few days, while others notice gradual improvements over a couple of weeks. The more consistently you use it, the better the results.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>Do I have to change my routine?</span>
+          <svg class="faq-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3.5V12.5M3.5 8H12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-content">
+            <p>Nope! Just wear it, run the scan, and let it do the work. No effort needed.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>Will this interfere with my medications or treatments?</span>
+          <svg class="faq-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3.5V12.5M3.5 8H12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-content">
+            <p>No, it's completely non-invasive and works alongside any health routine. If you have any concerns, always check with your doctor for peace of mind and assurance.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>Can I wear it all day?</span>
+          <svg class="faq-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3.5V12.5M3.5 8H12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-content">
+            <p>Yes! It's designed to be lightweight and comfortable, so you can use it anywhere, anytime.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>What if it doesn't work for me?</span>
+          <svg class="faq-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3.5V12.5M3.5 8H12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-content">
+            <p>Everyone's body responds differently, but we stand behind our product. If you don't feel a difference, we offer a hassle-free return policy!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>Is this safe?</span>
+          <svg class="faq-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3.5V12.5M3.5 8H12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-content">
+            <p>Yes! It's non-invasive, drug-free, and designed for daily use without side effects.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>How do I get started?</span>
+          <svg class="faq-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3.5V12.5M3.5 8H12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-content">
+            <p>Just charge it, connect it to the app, run a quick scan, and start feeling the benefits. It's that easy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    position: relative;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .faq-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .faq-header h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .faq-header p {
+    font-size: 1.3rem;
+    color: #64748b;
+    font-weight: 400;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .faq-item {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .faq-item:hover {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .faq-question {
+    width: 100%;
+    padding: 24px 32px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1e293b;
+    transition: all 0.3s ease;
+  }
+
+  .faq-question:hover {
+    color: #2596be;
+  }
+
+  .faq-question span {
+    flex: 1;
+    margin-right: 16px;
+  }
+
+  .faq-icon {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    color: #64748b;
+  }
+
+  .faq-item.active .faq-icon {
+    transform: rotate(45deg);
+    color: #2596be;
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+  }
+
+  .faq-item.active .faq-answer {
+    max-height: 500px;
+    padding-bottom: 24px;
+  }
+
+  .faq-content {
+    padding: 0 32px;
+  }
+
+  .faq-content p {
+    color: #475569;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .faq-section {
+      padding: 60px 0;
+    }
+
+    .container {
+      padding: 0 16px;
+    }
+
+    .faq-header h2 {
+      font-size: 2.2rem;
+    }
+
+    .faq-header p {
+      font-size: 1.1rem;
+    }
+
+    .faq-question {
+      padding: 20px 24px;
+      font-size: 1.4rem;
+    }
+
+    .faq-content {
+      padding: 0 24px;
+    }
+
+    .faq-item.active .faq-answer {
+      padding-bottom: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .faq-header h2 {
+      font-size: 1.8rem;
+    }
+
+    .faq-question {
+      padding: 16px 20px;
+    }
+
+    .faq-content {
+      padding: 0 20px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    window.toggleFAQ = function(button) {
+      const faqItem = button.closest('.faq-item');
+      const isActive = faqItem.classList.contains('active');
+      
+      // Close all other FAQ items
+      document.querySelectorAll('.faq-item.active').forEach(item => {
+        if (item !== faqItem) {
+          item.classList.remove('active');
+        }
+      });
+      
+      // Toggle current item
+      if (isActive) {
+        faqItem.classList.remove('active');
+      } else {
+        faqItem.classList.add('active');
+      }
+    };
+  });
+</script>

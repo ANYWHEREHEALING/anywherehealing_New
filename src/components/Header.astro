@@ -1,57 +1,120 @@
 ---
-import Logo from '../assets/logodark.svg'
+// Minimal header for testing
+import Logo from '../assets/logo.png'
 ---
 
 <header class="nav">
-    <div class="container row">
-     <div class="nav-logo one-third column">
-         <a href="#" class="logo-link">
-             <img src={Logo.src} alt="Brand logo">
-         </a>
-     </div>
-     <nav class="one-third column">
-         <ul class="center flex">
-             <li><a href="#features">Features</a></li>
-             <li><a href="#pricing">Pricing</a></li>
-             <li><a href="#customers">Customers</a></li>
-         </ul>
-     </nav>
-     <div class="nav-cta one-third column">
-         <a href="#">Login</a>
-         <a href="#" class="button button-primary">Sign Up</a>
-     </div>
+    <div class="container">
+        <div class="nav-logo">
+            <a href="/">
+                <img src={Logo.src} alt="Brand logo" style="height: 45px;">
+            </a>
+        </div>
+        
+        <nav>
+            <a href="/science">About</a>
+            <a href="/product">Product</a>
+            <a href="/contact">Contact</a>
+        </nav>
+
+        <div class="nav-cta">
+            <a href="/order">
+                <button class="button button-primary u-full-width">ORDER NOW</button>
+            </a>
+        </div>
     </div>
- </header>
+</header>
 
+<style>
+.nav {
+    padding: 6px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 1000;
 
- <style lang="scss">
+}
 
-.nav{
-    padding: 15px 0;
-    li{
-      list-style: none;
-      margin-top: 7px;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: auto 1fr auto; /* Logo | Nav | Button */
+    align-items: center;
+    position: relative;
+}
+
+nav {
+    justify-self: center; /* Centrar el nav en la columna del medio */
+    display: flex;
+    gap: 4rem;
+    padding-left: 6rem;
+    
+}
+
+nav a {
+    text-decoration: none;
+    color: #111;
+    font-weight: normal;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #2596be;
+}
+
+.nav-logo {
+    justify-self: start; /* Logo a la izquierda */
+    margin-left: 30px;
+}
+
+.nav-cta {
+    justify-self: end; /* Botón a la derecha */
+}
+
+.cta-button {
+    background-color: #2596be;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.button-primary {
+    margin-top: 9px;
+}
+
+.cta-button:hover {
+    background-color: #1e7ea8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 150, 190, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
     }
-    .nav-cta{
-      text-align: right;
+    
+    nav {
+        gap: 1.5rem;
     }
-    a:not(.button):not(.logo-link){
-      color: #111;
-      padding: 0 20px;
-      text-decoration: none;
+    
+    nav a {
+        font-size: 14px;
     }
-    .logo-link img{
-      width: 90px;
-      margin-top: 5px;
+    
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 13px;
     }
-    @media (max-width:700px) {
-      nav{
-        display: none;
-      }
-      .nav-cta{
-        position: absolute;
-        right: 20px;
-      }
-    }
-  } 
- </style>
+}
+</style>

@@ -1,0 +1,764 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+import HeroScience from '../assets/hero-science.jpg';
+import FrequencyWave from '../assets/frequency-wave.jpg';
+import BodyScan from '../assets/body-scan.jpg';
+import ResearchLab from '../assets/research-lab.jpg';
+import TestimonialDoctor from '../assets/testimonial-doctor.webp';
+import ScienceIcon1 from '../assets/science-icon-1.png';
+import ScienceIcon2 from '../assets/science-icon-2.png';
+import ScienceIcon3 from '../assets/science-icon-3.png';
+import ScienceIcon4 from '../assets/science-icon-4.png';
+import ScienceIcon5 from '../assets/science-icon-5.png';
+import ScienceIcon6 from '../assets/science-icon-6.png';
+import ScienceIcon7 from '../assets/science-icon-7.png';
+import ScienceIcon8 from '../assets/science-icon-8.png';
+import ScienceIcon9 from '../assets/science-icon-9.png';
+import Instagram from '../assets/ig.png';
+---
+
+<Layout title="The Science Behind Healing | Anywhere Healing">
+	<Header />
+	
+	<!-- Hero Section -->
+	<section class="science-hero">
+		<div class="container">
+			<div class="hero-content">
+				<div class="hero-text">
+					<span class="hero-label">The Science</span>
+					<h1>The Future of Natural Healing</h1>
+					<p class="hero-description">
+						Discover how breakthrough frequency therapy supports your well-being, 
+						from boosting energy to promoting balance and vitality through proven scientific methods.
+					</p>
+					<div class="hero-stats">
+						<div class="stat">
+							<span class="stat-number">5,000+</span>
+							<span class="stat-label">Five-start Reviews</span>
+						</div>
+						<div class="stat">
+							<span class="stat-number">95%</span>
+							<span class="stat-label">User Satisfaction</span>
+						</div>
+						<div class="stat">
+							<span class="stat-number">50+</span>
+							<span class="stat-label">Health Benefits</span>
+						</div>
+					</div>
+				</div>
+				<div class="hero-visual">
+					<img src={HeroScience.src} alt="Science Technology" class="hero-image">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- How It Works Section -->
+	<section class="how-it-works">
+		<div class="container">
+			<div class="section-header">
+				<h2>How Frequency Therapy Works</h2>
+				<p>Understanding the science behind natural healing frequencies</p>
+			</div>
+
+			<div class="works-grid">
+				<div class="work-item">
+					<div class="work-visual">
+						<img src={FrequencyWave.src} alt="Frequency Analysis">
+					</div>
+					<div class="work-content">
+						<div class="work-icon">
+							<img src={ScienceIcon1.src} alt="Frequency Icon">
+						</div>
+						<h3>1. Frequency Analysis</h3>
+						<p>Advanced bioresonance technology scans your body's natural frequencies, identifying areas of imbalance and stress that need attention.</p>
+					</div>
+				</div>
+
+				<div class="work-item reverse">
+					<div class="work-content">
+						<div class="work-icon">
+							<img src={ScienceIcon2.src} alt="Cellular Icon">
+						</div>
+						<h3>2. Targeted Frequencies</h3>
+						<p>Precise therapeutic frequencies are delivered to specific areas, promoting cellular regeneration and restoring your body's natural balance.</p>
+					</div>
+					<div class="work-visual">
+						<img src={BodyScan.src} alt="Body Scanning">
+					</div>
+				</div>
+
+				<div class="work-item">
+					<div class="work-visual">
+						<img src={ResearchLab.src} alt="Research Lab">
+					</div>
+					<div class="work-content">
+						<div class="work-icon">
+							<img src={ScienceIcon3.src} alt="Results Icon">
+						</div>
+						<h3>3. Natural Healing</h3>
+						<p>Your body responds by naturally healing itself, improving energy levels, sleep quality, and overall well-being without side effects.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Benefits Grid -->
+	<section class="benefits-section">
+		<div class="container">
+			<div class="section-header">
+				<h2>Scientifically Proven Benefits</h2>
+				<p>Comprehensive health support backed by research</p>
+			</div>
+
+			<div class="benefits-grid">
+				<div class="benefit-card">
+					<div class="benefit-icon">
+						<img src={ScienceIcon6.src} alt="Neural Activity">
+					</div>
+					<h4>Neural Activity</h4>
+					<p>Supports neural activity and cognitive function, helping manage symptoms of neurological disorders.</p>
+				</div>
+
+				<div class="benefit-card">
+					<div class="benefit-icon">
+						<img src={ScienceIcon5.src} alt="Vision Support">
+					</div>
+					<h4>Vision Support</h4>
+					<p>Enhances circulation to the optic nerves, helping alleviate discomfort and improve vision.</p>
+				</div>
+
+				<div class="benefit-card">
+					<div class="benefit-icon">
+						<img src={ScienceIcon7.src} alt="Blood Circulation">
+					</div>
+					<h4>Circulation</h4>
+					<p>Supports healthy blood circulation and helps regulate blood pressure for overall wellness.</p>
+				</div>
+
+				<div class="benefit-card">
+					<div class="benefit-icon">
+						<img src={ScienceIcon4.src} alt="Skin Health">
+					</div>
+					<h4>Skin Health</h4>
+					<p>Reduces inflammation and supports cellular regeneration for healthier skin.</p>
+				</div>
+
+				<div class="benefit-card">
+					<div class="benefit-icon">
+						<img src={ScienceIcon8.src} alt="Bone Health">
+					</div>
+					<h4>Bone Health</h4>
+					<p>Promotes bone regeneration and joint mobility, benefiting those with bone health concerns.</p>
+				</div>
+
+				<div class="benefit-card">
+					<div class="benefit-icon">
+						<img src={ScienceIcon9.src} alt="Respiratory">
+					</div>
+					<h4>Respiratory</h4>
+					<p>Enhances oxygen circulation and improves respiratory function, promoting comfort and healing.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Research Section -->
+	<section class="research-section">
+		<div class="container">
+			<div class="research-content">
+				<div class="research-text">
+					<span class="section-label">Research Backed</span>
+					<h2>Decades of Scientific Research</h2>
+					<p class="research-description">
+						Our blend of science, technology, and holistic care is designed to empower you 
+						to live a healthier, more balanced life. Designed to improve your health and 
+						well-being with innovative, natural solutions that support your body's balance and vitality.
+					</p>
+					
+					<div class="research-points">
+						<div class="research-point">
+							<div class="point-icon">✓</div>
+							<span>Peer-reviewed clinical studies</span>
+						</div>
+
+						<div class="research-point">
+							<div class="point-icon">✓</div>
+							<span>Used by healthcare professionals</span>
+						</div>
+						<div class="research-point">
+							<div class="point-icon">✓</div>
+							<span>No known side effects</span>
+						</div>
+											</div>
+
+					<div class="contact-cta">
+						<p>Interested in learning more about the research?</p>
+						<a href="/contact" class="cta-button secondary">Contact Us for Details</a>
+					</div>
+				</div>
+				<div class="research-visual">
+					<div class="testimonial-card">
+						<img src={TestimonialDoctor.src} alt="Dr. Khalid Shukri" class="doctor-image">
+						<div class="testimonial-content">
+							<p>"Your body is designed to heal itself—but only when it's in balance. Every cell emits natural frequencies that keep you energized, calm, and well-rested. But stress, poor sleep, and daily life throw these signals off, leaving you drained, anxious, and in pain. That's where Alpha Wearable steps in."</p>
+							<div class="doctor-info">
+								<strong>Dr. Khalid Shukri</strong>
+								<span>Biointelligence Medicine: Quantum, Bioresonance, Soundbiotics, Regenerative, Functional, Longevity, Dignitary, Critical Care, Concierge Medicine</span>
+								<a href="https://www.instagram.com/lxv_md_" target="_blank" class="instagram-link">
+									<img src={Instagram.src} alt="Instagram" class="instagram-icon">
+									@dr.khalidshukri
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+
+	<!-- CTA Section -->
+	<section class="cta-section">
+		<div class="container">
+			<div class="cta-content">
+				<h2>Experience Science-Backed Healing</h2>
+				<p>Join thousands who have discovered the power of frequency therapy</p>
+				<a href="#" class="cta-button primary large">Start Your Healing Journey</a>
+			</div>
+		</div>
+	</section>
+
+	<Footer />
+</Layout>
+
+<style lang="scss">
+// Hero Section
+.science-hero {
+	background: linear-gradient(135deg, #2596be 0%, #87bd42 100%);
+	color: white;
+	padding: 120px 0 80px;
+	min-height: 70vh;
+	display: flex;
+	align-items: center;
+
+	.hero-content {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 60px;
+		align-items: center;
+	}
+
+	.hero-label {
+		background: rgba(255, 255, 255, 0.2);
+		padding: 8px 16px;
+		border-radius: 20px;
+		font-size: 14px;
+		font-weight: 500;
+		display: inline-block;
+		margin-bottom: 20px;
+	}
+
+	h1 {
+		font-size: 3.5rem;
+		font-weight: 700;
+		line-height: 1.1;
+		margin-bottom: 24px;
+	}
+
+	.hero-description {
+		font-size: 1.5rem;
+		line-height: 1.6;
+		margin-bottom: 40px;
+		opacity: 0.9;
+	}
+
+	.hero-stats {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 30px;
+	}
+
+	.stat {
+		text-align: center;
+		
+		.stat-number {
+			display: block;
+			font-size: 2.5rem;
+			font-weight: 700;
+			color: #ffd700;
+		}
+		
+		.stat-label {
+			font-size: 1.25rem;
+			opacity: 0.8;
+		}
+	}
+
+	.hero-image {
+		width: 100%;
+		max-width: 500px;
+		border-radius: 20px;
+		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+	}
+}
+
+// How It Works Section
+.how-it-works {
+	padding: 100px 0;
+	background: #f8fafc;
+
+	.section-header {
+		text-align: center;
+		margin-bottom: 80px;
+		
+		h2 {
+			font-size: 2.8rem;
+			font-weight: 700;
+			color: #1a202c;
+			margin-bottom: 16px;
+		}
+		
+		p {
+			font-size: 1.4rem;
+			color: #64748b;
+		}
+	}
+
+	.works-grid {
+		display: flex;
+		flex-direction: column;
+		gap: 80px;
+	}
+
+	.work-item {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 60px;
+		align-items: center;
+
+		&.reverse {
+			.work-content {
+				order: 2;
+			}
+			.work-visual {
+				order: 1;
+			}
+		}
+	}
+
+	.work-visual {
+		img {
+			width: 100%;
+			border-radius: 16px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+		}
+	}
+
+	.work-content {
+		.work-icon {
+			width: 60px;
+			height: 60px;
+			background: linear-gradient(135deg, #2596be, #87bd42);
+			border-radius: 16px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 24px;
+			
+			img {
+				width: 28px;
+				height: 28px;
+				filter: brightness(0) invert(1);
+			}
+		}
+
+		h3 {
+			font-size: 1.8rem;
+			font-weight: 700;
+			color: #1a202c;
+			margin-bottom: 16px;
+		}
+
+		p {
+			font-size: 1.5rem;
+			line-height: 1.6;
+			color: #64748b;
+		}
+	}
+}
+
+// Benefits Section
+.benefits-section {
+	padding: 100px 0;
+	background: white;
+
+	.section-header {
+		text-align: center;
+		margin-bottom: 60px;
+		
+		h2 {
+			font-size: 2.8rem;
+			font-weight: 700;
+			color: #1a202c;
+			margin-bottom: 16px;
+		}
+		
+		p {
+			font-size: 1.6rem;
+			color: #64748b;
+		}
+	}
+
+	.benefits-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 30px;
+	}
+
+	.benefit-card {
+		background: white;
+		padding: 40px 30px;
+		border-radius: 16px;
+		border: 1px solid #e2e8f0;
+		transition: all 0.3s ease;
+		text-align: center;
+
+		&:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+			border-color: #2596be;
+		}
+
+		.benefit-icon {
+			width: 60px;
+			height: 60px;
+			background: linear-gradient(135deg, #2596be, #87bd42);
+			border-radius: 16px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 0 auto 20px;
+			
+			img {
+				width: 28px;
+				height: 28px;
+				filter: brightness(0) invert(1);
+			}
+		}
+
+		h4 {
+			font-size: 1.6rem;
+			font-weight: 600;
+			color: #1a202c;
+			margin-bottom: 12px;
+		}
+
+		p {
+			color: #64748b;
+			line-height: 1.6;
+			font-size: 1.4rem;
+		}
+	}
+}
+
+// Research Section
+.research-section {
+	padding: 100px 0;
+	background: #f8fafc;
+
+	.research-content {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 80px;
+		align-items: center;
+	}
+
+	.section-label {
+		background: linear-gradient(135deg, #2596be, #87bd42);
+		color: white;
+		padding: 8px 16px;
+		border-radius: 20px;
+		font-size: 14px;
+		font-weight: 500;
+		display: inline-block;
+		margin-bottom: 20px;
+	}
+
+	h2 {
+		font-size: 2.5rem;
+		font-weight: 700;
+		color: #1a202c;
+		margin-bottom: 24px;
+	}
+
+	.research-description {
+		font-size: 1.6rem;
+		line-height: 1.6;
+		color: #64748b;
+		margin-bottom: 40px;
+	}
+
+	.research-points {
+		margin-bottom: 40px;
+	}
+
+	.research-point {
+		display: flex;
+		align-items: center;
+		margin-bottom: 16px;
+		
+		.point-icon {
+			width: 24px;
+			height: 24px;
+			background: #87bd42;
+			color: white;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 14px;
+			font-weight: 600;
+			margin-right: 16px;
+		}
+		
+		span {
+			color: #374151;
+			font-weight: 500;
+		}
+	}
+
+	.testimonial-card {
+		background: white;
+		padding: 40px;
+		border-radius: 20px;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+		border: 2px solid transparent;
+		background-clip: padding-box;
+		position: relative;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: linear-gradient(135deg, #2596be, #87bd42);
+			border-radius: 20px;
+			padding: 2px;
+			mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+			mask-composite: exclude;
+			z-index: -1;
+		}
+
+		.doctor-image {
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			object-fit: cover;
+			margin-bottom: 20px;
+			border: 3px solid transparent;
+			background: linear-gradient(135deg, #2596be, #87bd42);
+			background-clip: padding-box;
+		}
+
+		p {
+			font-size: 1.4rem;
+			line-height: 1.6;
+			color: #374151;
+			margin-bottom: 20px;
+			font-style: italic;
+		}
+
+		.doctor-info {
+			strong {
+				display: block;
+				color: #1a202c;
+				font-weight: 600;
+				margin-bottom: 4px;
+			}
+			
+			span {
+				color: #64748b;
+				font-size: 1rem;
+				line-height: 1.4;
+			}
+		}
+
+		.instagram-link {
+			display: flex;
+			align-items: center;
+			color: #2596be;
+			text-decoration: none;
+			margin-top: 12px;
+			font-size: 1.3rem;
+			transition: color 0.3s ease;
+
+			&:hover {
+				color: #87bd42;
+			}
+
+			.instagram-icon {
+				width: 20px;
+				height: 20px;
+				margin-right: 8px;
+			}
+		}
+	}
+
+	.contact-cta {
+		text-align: center;
+		margin-top: 40px;
+		
+		p {
+			font-size: 1.1rem;
+			color: #64748b;
+			margin-bottom: 20px;
+		}
+	}
+}
+
+// CTA Section
+.cta-section {
+	padding: 80px 0;
+	background: linear-gradient(135deg, #2596be 0%, #87bd42 100%);
+	color: white;
+	text-align: center;
+
+	h2 {
+		font-size: 3rem;
+		font-weight: 700;
+		margin-bottom: 16px;
+		margin-top: 60px; 
+	}
+
+	p {
+		font-size: 1.5rem;
+		margin-bottom: 40px;
+		opacity: 0.9;
+	}
+
+	.cta-button {
+		font-size: 1.5rem;  /* tamaño texto aumentado */
+		margin-bottom: 60px;
+
+		&.primary {
+			background: linear-gradient(135deg, #2596be, #87bd42);
+			color: white;
+
+			&:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 10px 20px rgba(37, 150, 190, 0.3);
+				color: white !important;  /* fuerza el color blanco */
+			}
+		}
+	}
+}
+
+// Buttons
+.cta-button {
+	display: inline-block;
+	padding: 16px 32px;
+	border-radius: 50px;
+	text-decoration: none;
+	font-weight: 600;
+	transition: all 0.3s ease;
+	border: none;
+	cursor: pointer;
+
+	&.primary {
+		background: linear-gradient(135deg, #2596be, #87bd42);
+		color: white;
+		
+		&:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 10px 20px rgba(37, 150, 190, 0.3);
+		}
+	}
+
+	&.large {
+		padding: 20px 40px;
+		font-size: 1.1rem;
+	}
+
+	&.secondary {
+		background: white;
+		color: #2596be;
+		border: 2px solid #2596be;
+		
+		&:hover {
+			background: #2596be;
+			color: white;
+			transform: translateY(-2px);
+			box-shadow: 0 10px 20px rgba(37, 150, 190, 0.3);
+		}
+	}
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+	.science-hero {
+		padding: 80px 0 60px;
+		
+		.hero-content {
+			grid-template-columns: 1fr;
+			gap: 40px;
+			text-align: center;
+		}
+		
+		h1 {
+			font-size: 2.5rem;
+		}
+		
+		.hero-stats {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 20px;
+		}
+	}
+
+	.how-it-works {
+		padding: 60px 0;
+		
+		.work-item {
+			grid-template-columns: 1fr;
+			gap: 40px;
+			text-align: center;
+			
+			&.reverse {
+				.work-content, .work-visual {
+					order: unset;
+				}
+			}
+		}
+	}
+
+	.benefits-section {
+		padding: 60px 0;
+		
+		.benefits-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.research-section {
+		padding: 60px 0;
+		
+		.research-content {
+			grid-template-columns: 1fr;
+			gap: 40px;
+		}
+	}
+	
+	.section-header h2 {
+		font-size: 2rem;
+	}
+}
+
+
+
+</style>

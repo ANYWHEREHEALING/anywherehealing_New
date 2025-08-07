@@ -1,0 +1,756 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// Import contact images
+import ContactHero from '../assets/contact-hero.jpg';
+import TeamPhoto from '../assets/team-photo.jpg';
+import OfficeLocation from '../assets/office-location.jpg';
+
+// Import icons
+import Check from '../assets/check.svg';
+import Bolt from '../assets/bolt.svg';
+import Secure from '../assets/lock.svg';
+---
+
+<Layout title="Contact Us | Anywhere Healing">
+    <Header />
+    
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="row">
+                <div class="one-half column hero-content">
+                    <h1 class="hero-title">Let's Connect</h1>
+                    <p class="hero-subtitle">Our team is ready to guide you on your healing journey with the device.</p>
+                    
+                    <div class="contact-highlights">
+                        <div class="highlight-item">
+                            <img src={Bolt.src} alt="Fast Response">
+                            <span>24-hour response guarantee</span>
+                        </div>
+                        <div class="highlight-item">
+                            <img src={Check.src} alt="Expert Support">
+                            <span>Expert wellness support team</span>
+                        </div>
+                        <div class="highlight-item">
+                            <img src={Secure.src} alt="Confidential">
+                            <span>Confidential health consultations</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="one-half column hero-image">
+                    <img src={ContactHero.src} alt="Contact Anywhere Healing" class="contact-main-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Methods Section -->
+    <section class="contact-methods">
+        <div class="container">
+            <div class="row">
+                <!-- Contact Form -->
+                <div class="two-thirds column">
+                    <div class="contact-form-container">
+                        <h2>Send Us a Message</h2>
+                        <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+                        
+                        <form class="contact-form" name="contact" data-netlify="true" id="contactForm">
+                            <input type="hidden" name="form-name" value="contact">
+                            <div class="form-row">
+                                <div class="form-group half">
+                                    <label for="firstName">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group half">
+                                    <label for="lastName">Last Name *</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group half">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group half">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Select a topic...</option>
+                                    <option value="product-info">Product Information</option>
+                                    <option value="technical-support">Technical Support</option>
+                                    <option value="order-status">Order Status</option>
+                                    <option value="health-consultation">Health Consultation</option>
+                                    <option value="partnership">Partnership Inquiry</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Your Message *</label>
+                                <textarea id="message" name="message" rows="6" placeholder="Tell us how we can help you..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-button">Send Message</button>
+                            <div id="form-feedback" style="display: none; margin-top: 20px;"></div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Contact Info Sidebar -->
+                <div class="one-third column">
+                    <div class="contact-info">
+                        <h3>Let's Connect</h3>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <div class="feature-icon-mini2">📍​</div>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Our Headquarters</h4>
+                                <p>1038, 701 Tillery Street<br>Austin, Texas 78702<br>United States</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <div class="feature-icon-mini2">✉️​​</div>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <a href="mailto:admin@anywherehealing.com"><div class="emailsize">admin@anywherehealing.com</div></a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <div class="feature-icon-mini2">📞​​</div>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Phone</h4>
+                                <p>+1 619-755-3023</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="contact-faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <p class="section-subtitle">Quick answers to common questions about our products and services.</p>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>How long does shipping take?</h3>
+                    <p>Orders are processed within 1-3 business days. Shipping times vary by location, typically ranging from 3-7 business days.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Is the device safe to use?</h3>
+                    <p>Yes, our device is completely safe. It uses gentle, low-level frequencies that are well within safe parameters for human use.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>What's your return policy?</h3>
+                    <p>We offer a 30-day money-back guarantee. If you're not completely satisfied, return the device for a full refund.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Do you offer package tracking?</h3>
+                    <p>You will receive a tracking number once your order has shipped so you can monitor its progress.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>How often should I use the device?</h3>
+                    <p>Most users see best results with daily use, typically 15-30 minutes per session. Our support team can help create a personalized protocol.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Is training provided?</h3>
+                    <p>Every device comes with comprehensive manuals, and we offer live training sessions for new users at no additional cost.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="row">
+                <div class="one-half column">
+                    <img src={TeamPhoto.src} alt="Anywhere Healing Team" class="team-image">
+                </div>
+                <div class="one-half column team-content">
+                    <h2>Meet Our Wellness Team</h2>
+                    <p>Our dedicated team combines decades of experience in natural health, bioresonance therapy, and cutting-edge wellness technology. We're passionate about helping you achieve optimal health naturally.</p>
+                    
+                    <div class="team-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">879+</div>
+                            <div class="stat-label">App Downloads</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">4,561+</div>
+                            <div class="stat-label">Clients Helped</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Success Rate</div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-credentials">
+                        <h4>Our Certifications Include:</h4>
+                        <ul>
+                            <li><img src={Check.src} alt="Check"> Certified Bioresonance Practitioners</li>
+                            <li><img src={Check.src} alt="Check"> Licensed Wellness Coaches</li>
+                            <li><img src={Check.src} alt="Check"> Certified Nutritional Consultants</li>
+                            <li><img src={Check.src} alt="Check"> Holistic Health Specialists</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section">
+        <div class="container">
+            <div class="row">
+                <div class="one-half column location-content">
+                    <h2>Visit Us</h2>
+                    <p>While our devices work perfectly at home, you're welcome to visit us for in-person consultations, device demonstrations, and personalized health assessments.</p>
+                    
+                    <div class="location-details">
+                        <div class="detail-item">
+                            <div class="feature-icon-mini2">📍​​</div>
+                            <div>
+                                <h4>Address</h4>
+                                <p>1038, 701 Tillery Street<br>Austin, Texas 78702<br>United States</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="feature-icon-mini2">📅​​</div>
+                            <div>
+                                <h4>Working Hours</h4>
+                                <p>Monday - Friday: 9AM - 6PM<br>Saturday: 10AM - 4PM<br>Sunday: By appointment</p>
+                            </div>
+                        </div>
+                        
+                       
+                    </div>
+                    <a href="https://share.google/mLxDHo3M7MwewsXQD" target="_blank" rel="noopener noreferrer">
+                    <button class="appointment-button">Google Maps Link</button>
+                    </a>
+                </div>
+                
+                <div class="one-half column">
+                    <img src={OfficeLocation.src} alt="Wellness Center Location" class="location-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <Footer />
+</Layout>
+
+<style lang="scss">
+    .contact-hero {
+        background: linear-gradient(135deg, #2596be 0%, #87bd42 100%);
+        color: white;
+        padding: 100px 0;
+
+        .hero-content {
+            padding-top: 50px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .contact-highlights {
+            .highlight-item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 15px;
+                
+                
+                img {
+                    width: 20px;
+                    margin-right: 12px;
+                }
+
+                span {
+                    font-size: 1.35rem;
+                    
+                }
+            }
+        }
+
+        .contact-main-image {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    .contact-methods {
+        padding: 100px 0;
+        background: #f8f9fa;
+
+        .contact-form-container {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+
+            h2 {
+                font-size: 2.5rem;
+                color: #2c3e50;
+                margin-bottom: 10px;
+            }
+
+            p {
+                color: #6c757d;
+                margin-bottom: 40px;
+                font-size: 1.3rem;
+            }
+
+            .contact-form {
+                .form-row {
+                    display: flex;
+                    gap: 20px;
+                    margin-bottom: 25px;
+
+                    .form-group.half {
+                        flex: 1;
+                    }
+                }
+
+                .form-group {
+                    margin-bottom: 25px;
+
+                    label {
+                        display: block;
+                        margin-bottom: 8px;
+                        font-weight: 600;
+                        color: #2c3e50;
+                    }
+
+                    input, select, textarea {
+                        width: 100%;
+                        
+                        border: 2px solid #e9ecef;
+                        border-radius: 10px;
+                        font-size: 1.5rem;
+                        transition: all 0.3s ease;
+                        font-family: inherit;
+  
+
+                        &:focus {
+                            outline: none;
+                            border-color: #2596be;
+                            box-shadow: 0 0 0 3px rgba(37, 150, 190, 0.1);
+                        }
+                    }
+
+                    textarea {
+                        resize: vertical;
+                        min-height: 120px;
+                    }
+
+                    
+                    
+                }
+
+                .submit-button {
+                    background: linear-gradient(135deg, #2596be 0%, #87bd42 100%);
+                    color: white;
+                    
+                    border: none;
+                    border-radius: 50px;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    width: 100%;
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+                    }
+                }
+            }
+        }
+
+        .contact-info {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+
+            h3 {
+                font-size: 2rem;
+                color: #2c3e50;
+                margin-bottom: 30px;
+            }
+
+            .contact-item {
+                display: flex;
+                align-items: flex-start;
+                margin-bottom: 30px;
+                padding-bottom: 25px;
+                border-bottom: 1px solid #e9ecef;
+
+                &:last-child {
+                    border-bottom: none;
+                    margin-bottom: 0;
+                }
+
+                .contact-icon {
+                    margin-right: 15px;
+                    margin-top: 5px;
+
+                    img {
+                        width: 24px;
+                    }
+                }
+
+                .contact-details {
+                    .emailsize {
+                        font-size: 1.3rem;
+                    }
+
+                    h4 {
+                        color: #2c3e50;
+                        margin-bottom: 5px;
+                        font-size: 1.6rem;
+                    }
+
+                    p {
+                        color: #495057;
+                        margin-bottom: 5px;
+                        
+                        font-size: 1.5rem;
+                    }
+
+                    span {
+                        color: #6c757d;
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .contact-faq {
+        padding: 100px 0;
+        background: white;
+
+        h2 {
+            text-align: center;
+            font-size: 3.2rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #6c757d;
+            margin-bottom: 60px;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+
+            .faq-item {
+                background: #f8f9fa;
+                padding: 30px;
+                border-radius: 15px;
+                border-left: 4px solid #2596be;
+
+                h3 {
+                    color: #2c3e50;
+                    margin-bottom: 15px;
+                    font-size: 1.6rem;
+                }
+
+                p {
+                    color: #6c757d;
+                    line-height: 1.6;
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+
+    .team-section {
+        padding: 100px 0;
+        background: #f8f9fa;
+
+        .team-image {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-content {
+            padding: 40px;
+
+            h2 {
+                font-size: 2.5rem;
+                color: #2c3e50;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 1.5rem;
+                color: #6c757d;
+                line-height: 1.7;
+                margin-bottom: 40px;
+            }
+
+            .team-stats {
+                display: flex;
+                gap: 40px;
+                margin-bottom: 40px;
+
+                .stat-item {
+                    text-align: center;
+
+                    .stat-number {
+                        font-size: 2.5rem;
+                        font-weight: 700;
+                        color: #2596be;
+                        display: block;
+                    }
+
+                    .stat-label {
+                        font-size: 1rem;
+                        color: #6c757d;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                    }
+                }
+            }
+
+            .team-credentials {
+                h4 {
+                    color: #2c3e50;
+                    margin-bottom: 15px;
+                    font-size: 1.5rem;
+                }
+
+                ul {
+                    list-style: none;
+                    padding: 0;
+
+                    li {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 8px;
+                        color: #495057;
+
+                        img {
+                            width: 16px;
+                            margin-right: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .location-section {
+        padding: 100px 0;
+        background: white;
+
+        .location-content {
+            padding: 40px;
+
+            h2 {
+                font-size: 2.5rem;
+                color: #2c3e50;
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-size: 1.5rem;
+                color: #6c757d;
+                line-height: 1.7;
+                margin-bottom: 40px;
+            }
+
+            .location-details {
+                margin-bottom: 40px;
+
+                .detail-item {
+                    display: flex;
+                    align-items: flex-start;
+                    margin-bottom: 25px;
+
+                    .feature-icon-mini2 {
+
+						align-items: center;
+						justify-content: center;
+					
+						font-size: 2.1rem;
+						
+						margin-bottom: 10px;
+                        margin-right: 20px;
+					}
+
+                    img {
+                        width: 24px;
+                        margin-right: 15px;
+                        margin-top: 5px;
+                    }
+
+                    h4 {
+                        color: #2c3e50;
+                        margin-bottom: 5px;
+                        font-size: 1.5rem;
+                        font-weight: 400;
+                    }
+
+                    p {
+                        color: #495057;
+                        margin: 0;
+                        line-height: 1.5;
+                    }
+                }
+            }
+
+            .appointment-button {
+                background: linear-gradient(135deg, #2596be 0%, #87bd42 100%);
+                color: white;
+                
+                border: none;
+                border-radius: 50px;
+                font-size: 1.1rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+                }
+            }
+        }
+
+        .location-image {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .contact-hero {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+
+        .contact-methods {
+            .contact-form-container {
+                padding: 30px;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 0 !important;
+            }
+        }
+
+        .team-stats {
+            flex-direction: column;
+            gap: 20px !important;
+        }
+    }
+
+					.feature-icon-mini2 {
+
+						align-items: center;
+						justify-content: center;
+					
+						font-size: 2.1rem;
+						
+						margin-bottom: 10px;
+					}
+
+</style>
+
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const feedback = document.getElementById('form-feedback');
+    const submitBtn = document.querySelector('.submit-button');
+    
+    submitBtn.innerHTML = 'Sending...';
+    submitBtn.disabled = true;
+    
+    try {
+        const response = await fetch('/', {
+            method: 'POST',
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(new FormData(this)).toString()
+        });
+        
+        if (response.ok) {
+            feedback.innerHTML = `
+                <div style="background: #d4edda; color: #155724; padding: 20px; border-radius: 15px; text-align: center; border: 2px solid #c3e6cb;">
+                    <h3 style="margin: 0 0 10px 0;">✅ Message Sent Successfully!</h3>
+                    <p style="margin: 0;">Thank you for contacting us. We'll get back to you within 24 hours.</p>
+                </div>
+            `;
+            feedback.style.display = 'block';
+            this.reset();
+            submitBtn.style.display = 'none';
+        }
+    } catch (error) {
+        feedback.innerHTML = `
+            <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 10px; text-align: center;">
+                ❌ Something went wrong. Please try again.
+            </div>
+        `;
+        feedback.style.display = 'block';
+        submitBtn.innerHTML = 'Try Again';
+        submitBtn.disabled = false;
+    }
+});
+</script>

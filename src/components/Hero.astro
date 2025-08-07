@@ -1,21 +1,25 @@
 ---
-import Bomb from '../assets/bomb.svg'
-import Mailbox from '../assets/mailbox.svg'
-import Folder from '../assets/folder.svg'
-import Savings from '../assets/savings.svg'
-import Gift from '../assets/gift.svg'
+import Bomb from '../assets/bomb.png'
+import Mailbox from '../assets/mailbox.png'
+import Folder from '../assets/folder.png'
+import Savings from '../assets/savings.png'
+import Gift from '../assets/gift.png'
+import heroBg from '../assets/hero-bg.jpg';
 ---
 
-
-<section class="product-hero">
+<section class="product-hero" style={`--hero-bg: url(${heroBg.src})`}>
     <div class="container">
         <div class="d-table">
             <div class="d-table-cell center">
                 <div class="hero-copy">
-                    <h1 class="h1-title">Automate your design process for creative freedom</h1>
-                    <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat excepturi dignissimos exercitationem nesciunt, quo quibusdam assums? Architecto, placeat libero. </p>
+                    <h1 class="h1-title">Your Body Speaks, <br>
+                    Alpha Wearable Listens</h1>
+                    <p>
+                      Like a radio, when you aren't tuned into the right frequency, all you get is static.
+                      That's because your cells vibrate at natural frequencies, and when something's wrong, those frequencies become disrupted.
+                    </p>
                     <div class="product-cta">
-                      <a href="#" class="button button-primary u-full-width">Start Trial — It's Free</a>
+                      <a href="/product" class="button button-primary u-full-width">Get Back to Your Best!</a>
                     </div>
                 </div>
             </div>
@@ -28,64 +32,127 @@ import Gift from '../assets/gift.svg'
             <img src={Gift.src} alt="Gift">
         </div>
     </div>
- </section>
+</section>
 
- <style lang="scss">
+<style lang="scss">
+.product-hero {
+  padding: 180px 0 50px 0;
+  background-image: var(--hero-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
 
+  .product-cta {
+    margin-top: 40px;
+  }
 
-.product-hero{
-  padding: 50px 0;
-  .container{
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.67);
+    pointer-events: none;
+  }
+
+  .container {
     position: relative;
-    .d-table{
+    z-index: 1;
+
+    .d-table {
       height: 500px;
-     }
-  }
-  .hero-media{
-    padding: 5px;
-    border-radius: 48px;
-  }
-  .hero-copy{
-    h1, p{
-      max-width: 600px;
-      margin: 20px auto;
     }
   }
-  .hero-media{
-    img{
+
+  .hero-copy {
+    h1, p {
+      max-width: 600px;
+      margin: 20px auto;
+      color: #ffffff;
+    }
+  }
+
+  .hero-media {
+    padding: 5px;
+    border-radius: 48px;
+
+    img {
       position: absolute;
       width: 160px;
-      &:nth-child(1){
-        top: 0;
-        left: -100px;
+
+      &:nth-child(1) {
+        top: 50px;
+        left: -50px;
       }
-      &:nth-child(2){
-        top: 0;
-        right: -100px;
+      &:nth-child(2) {
+        top: 50px;
+        right: -50px;
       }
-      &:nth-child(3){
+      &:nth-child(3) {
         top: 250px;
         left: 0;
       }
-      &:nth-child(4){
+      &:nth-child(4) {
         top: 250px;
         right: 0;
       }
-      &:nth-child(5){
-        bottom: -20px;
+      &:nth-child(5) {
+        bottom: 25px;
         left: 50%;
         transform: translateX(-50%);
-      }
-    }
-    @media (max-width:700px) {
-      img{
-        &:nth-child(2), &:nth-child(3),
-        &:nth-child(4){
-          display: none;
-        }
       }
     }
   }
 }
 
- </style>
+@media (max-width: 768px) {
+  .product-hero {
+
+        .hero-copy {
+      h1 {
+        font-size: 2.7rem; // antes quizás 1.5rem
+      }
+
+      p {
+        font-size: 1.6rem; // más legible en móvil
+        
+      }
+    }
+    
+    .hero-media {
+      img {
+        display: none;
+
+        &:nth-child(5) {
+          display: block;
+          width: 180px; // Más grande en móvil
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+    }
+
+    .product-cta {
+      margin-top: 0px;
+    }
+  }
+
+   .button {
+    padding: 0px 18px; // Menos padding vertical
+    font-size: 1.15rem;
+    margin-top: 20px; // Espacio entre el botón y el texto
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    padding: 0px 18px; // Menos padding vertical
+    font-size: 1.15rem;
+    margin-top: 20px; // Espacio entre el botón y el texto
+  }
+}
+
+
+
+</style>
