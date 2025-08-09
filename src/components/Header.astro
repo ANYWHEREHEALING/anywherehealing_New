@@ -22,6 +22,26 @@ import Logo from '../assets/logo.png'
                 <button class="button button-primary u-full-width">ORDER NOW</button>
             </a>
         </div>
+
+        <!-- Hamburger Menu Button (Mobile Only) -->
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-close" id="mobileClose">&times;</button>
+        <div class="mobile-menu-content">
+            <a href="/science">About</a>
+            <a href="/product">Product</a>
+            <a href="/contact">Contact</a>
+            <a href="/order">
+                <button class="button button-primary u-full-width">ORDER NOW</button>
+            </a>
+        </div>
     </div>
 </header>
 
@@ -34,7 +54,6 @@ import Logo from '../assets/logo.png'
     right: 0;
     background: rgba(255, 255, 255, 0.95);
     z-index: 1000;
-
 }
 
 .container {
@@ -52,7 +71,6 @@ nav {
     display: flex;
     gap: 4rem;
     padding-left: 6rem;
-    
 }
 
 nav a {
@@ -75,6 +93,26 @@ nav a:hover {
     justify-self: end; /* Botón a la derecha */
 }
 
+.button-primary {
+    margin-top: 9px;
+    background-color: #2596be;
+    color: white;
+    padding: 0px 24px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.button-primary:hover {
+    background-color: #1e7ea8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 150, 190, 0.3);
+}
+
 .cta-button {
     background-color: #2596be;
     color: white;
@@ -88,33 +126,186 @@ nav a:hover {
     display: inline-block;
 }
 
-.button-primary {
-    margin-top: 9px;
-}
-
 .cta-button:hover {
     background-color: #1e7ea8;
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(37, 150, 190, 0.3);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Hamburger Menu Styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    padding: 5px;
+    justify-self: end;
+    background: none;
+    border: none;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background-color: #111;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* Mobile Menu Close Button */
+.mobile-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 40px;
+    color: #111;
+    cursor: pointer;
+    z-index: 2001;
+    line-height: 1;
+    padding: 10px;
+}
+
+.mobile-close:hover {
+    color: #2596be;
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    z-index: 2000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.mobile-menu.active {
+    transform: translateX(0);
+}
+
+.mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 2rem;
+}
+
+.mobile-menu-content a {
+    text-decoration: none;
+    color: #111;
+    font-size: 24px;
+    font-weight: normal;
+    transition: color 0.3s ease;
+}
+
+.mobile-menu-content a:hover {
+    color: #2596be;
+}
+
+.mobile-order-btn {
+    font-size: 14px !important;
+    padding: 12px 24px !important;
+    margin-top: 1rem;
+}
+
+/* Tablet Responsive (mantienes el diseño desktop) */
+@media (max-width: 1024px) and (min-width: 769px) {
     .container {
         padding: 0 15px;
     }
     
     nav {
-        gap: 1.5rem;
+        gap: 2.5rem;
+        padding-left: 3rem;
     }
     
     nav a {
         font-size: 14px;
     }
     
-    .cta-button {
-        padding: 10px 20px;
-        font-size: 13px;
+    .button-primary {
+        padding: 0px 20px;
+        
     }
 }
+
+/* Mobile Responsive (hamburger menu) */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: auto 1fr auto;
+        padding: 0 15px;
+    }
+    
+    nav,
+    .nav-cta {
+        display: none;
+    }
+    
+    .hamburger {
+        display: flex;
+        margin-bottom: 0 !important;
+    }
+    
+    .nav-logo {
+        margin-left: 10px;
+    }
+
+    .mobile-menu-content .button-primary {
+        font-size: 1.45rem !important;
+        padding: 0px 32px !important;
+    }
+
+}
 </style>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileClose = document.getElementById('mobileClose');
+
+const openMenu = () => {
+    hamburger.classList.add('active');
+    mobileMenu.classList.add('active');
+};
+
+const closeMenu = () => {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('active');
+};
+
+hamburger.addEventListener('click', openMenu);
+mobileClose.addEventListener('click', closeMenu);
+
+// Close menu when clicking on links
+mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        closeMenu();
+    }
+});
+</script>
