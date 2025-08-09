@@ -370,6 +370,7 @@ import Instagram from '../assets/ig.png';
 			justify-content: center;
 			margin-bottom: 24px;
 			
+			
 			img {
 				width: 28px;
 				height: 28px;
@@ -735,6 +736,10 @@ import Instagram from '../assets/ig.png';
 				}
 			}
 		}
+
+		.work-icon {
+			margin: 0 auto 24px auto; /* Centra horizontalmente */
+		}
 	}
 
 	.benefits-section {
@@ -747,16 +752,74 @@ import Instagram from '../assets/ig.png';
 
 	.research-section {
 		padding: 60px 0;
-		
+		text-align: center;
+
 		.research-content {
 			grid-template-columns: 1fr;
 			gap: 40px;
+			text-align: center;
+			padding: 20px;
 		}
+
+		.research-point {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.point-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.research-point span {
+  flex: 1;
+  line-height: 1.5;
+  margin: 0;
+  text-align: center;
+}
+
+/* Centrar el contenedor de research points */
+.research-points {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+
 	}
 	
 	.section-header h2 {
 		font-size: 2rem;
 	}
+
+
+	.contact-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+}
+
+
+.instagram-link, 
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
 }
 
 
