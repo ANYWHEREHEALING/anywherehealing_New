@@ -328,7 +328,7 @@ import CheckIcon from '../assets/check.svg';
 								<li>Connectivity: WiFi, Bluetooth</li>
 								<li>Dimensions: 8" x 6" x 2"</li>
 								<li>Weight: 2.1 lbs</li>
-								<li>Certification: FDA registered</li>
+								<li> </li>
 							</ul>
 						</div>
 					</div>
@@ -657,6 +657,47 @@ import CheckIcon from '../assets/check.svg';
 
 		&.active {
 			border-color: #2596be !important;
+		}
+
+		// NUEVAS REGLAS RESPONSIVE PARA MÓVILES
+		// Tablets pequeños y móviles grandes
+		@media (max-width: 768px) {
+			width: 70px !important;
+			height: 70px !important;
+			min-width: 70px !important;
+			min-height: 70px !important;
+			max-width: 70px !important;
+			max-height: 70px !important;
+		}
+
+		// Móviles medianos
+		@media (max-width: 480px) {
+			width: 60px !important;
+			height: 60px !important;
+			min-width: 60px !important;
+			min-height: 60px !important;
+			max-width: 60px !important;
+			max-height: 60px !important;
+		}
+
+		// Móviles pequeños
+		@media (max-width: 375px) {
+			width: 55px !important;
+			height: 55px !important;
+			min-width: 55px !important;
+			min-height: 55px !important;
+			max-width: 55px !important;
+			max-height: 55px !important;
+		}
+
+		// Móviles muy pequeños
+		@media (max-width: 320px) {
+			width: 50px !important;
+			height: 50px !important;
+			min-width: 50px !important;
+			min-height: 50px !important;
+			max-width: 50px !important;
+			max-height: 50px !important;
 		}
 	}
 }
@@ -1185,6 +1226,19 @@ import CheckIcon from '../assets/check.svg';
 	}
 }
 
+// También ajusta el gap para pantallas más pequeñas
+@media (max-width: 480px) {
+	#thumbnail-grid {
+		gap: 8px !important;
+	}
+}
+
+@media (max-width: 320px) {
+	#thumbnail-grid {
+		gap: 6px !important;
+	}
+}
+
 // Responsive Design
 
 @media (max-width: 480px) {
@@ -1380,8 +1434,6 @@ import CheckIcon from '../assets/check.svg';
         display: none;
     }
 }
-
-
 </style>
 
 <script>
@@ -1446,6 +1498,24 @@ function updateProductImages(productKey: ProductKey) {
 	// Clear and update thumbnail grid
 	thumbnailGrid.innerHTML = '';
 	
+	// Función para obtener el tamaño correcto según el viewport
+	function getThumbnailSize() {
+		const width = window.innerWidth;
+		if (width <= 320) return '50px';
+		if (width <= 375) return '55px';
+		if (width <= 480) return '60px';
+		if (width <= 768) return '70px';
+		return '80px'; // Desktop
+	}
+	
+	// Función para obtener el gap correcto según el viewport
+	function getThumbnailGap() {
+		const width = window.innerWidth;
+		if (width <= 320) return '6px';
+		if (width <= 480) return '8px';
+		return '12px'; // Tablet y desktop
+	}
+	
 	images.forEach((image: ProductImage, index: number) => {
 		const thumbnail = document.createElement('img');
 		thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
@@ -1453,15 +1523,21 @@ function updateProductImages(productKey: ProductKey) {
 		thumbnail.alt = image.alt;
 		thumbnail.dataset.main = image.src;
 		
-		// Forzar estilos inline para asegurar que se mantengan
-		thumbnail.style.width = '80px';
-		thumbnail.style.height = '80px';
+		// Aplicar estilos responsivos
+		const size = getThumbnailSize();
+		thumbnail.style.width = size;
+		thumbnail.style.height = size;
+		thumbnail.style.minWidth = size;
+		thumbnail.style.minHeight = size;
+		thumbnail.style.maxWidth = size;
+		thumbnail.style.maxHeight = size;
 		thumbnail.style.objectFit = 'cover';
 		thumbnail.style.borderRadius = '8px';
 		thumbnail.style.cursor = 'pointer';
 		thumbnail.style.border = index === 0 ? '2px solid #2596be' : '2px solid transparent';
 		thumbnail.style.display = 'block';
 		thumbnail.style.flexShrink = '0';
+		thumbnail.style.boxSizing = 'border-box';
 		
 		// Add click event for thumbnails
 		thumbnail.addEventListener('click', function(this: HTMLImageElement) {
@@ -1480,10 +1556,11 @@ function updateProductImages(productKey: ProductKey) {
 		thumbnailGrid.appendChild(thumbnail);
 	});
 	
-	// Forzar el estilo del contenedor después de agregar elementos
+	// Aplicar estilos al contenedor
 	thumbnailGrid.style.display = 'flex';
-	thumbnailGrid.style.gap = '12px';
+	thumbnailGrid.style.gap = getThumbnailGap();
 	thumbnailGrid.style.flexWrap = 'wrap';
+	thumbnailGrid.style.alignItems = 'flex-start';
 }
 
 	// Product tab switching functionality
@@ -1570,5 +1647,56 @@ const initialProduct = preselectedProduct && ['alpha', 'charisma', 'frequana', '
 
 	// Initialize with preselected or default product
 selectProductTab(initialProduct);
+
+// Función para reajustar tamaños cuando cambia el viewport
+function handleResize() {
+	const thumbnails = document.querySelectorAll('#thumbnail-grid .thumbnail');
+	const thumbnailGrid = document.getElementById('thumbnail-grid');
+	
+	if (thumbnails.length === 0 || !thumbnailGrid) return;
+	
+	function getThumbnailSize() {
+		const width = window.innerWidth;
+		if (width <= 320) return '50px';
+		if (width <= 375) return '55px';
+		if (width <= 480) return '60px';
+		if (width <= 768) return '70px';
+		return '80px';
+	}
+	
+	function getThumbnailGap() {
+		const width = window.innerWidth;
+		if (width <= 320) return '6px';
+		if (width <= 480) return '8px';
+		return '12px';
+	}
+	
+	const size = getThumbnailSize();
+	const gap = getThumbnailGap();
+	
+	// Actualizar tamaños de todas las miniaturas
+	thumbnails.forEach(thumbnail => {
+		thumbnail.style.width = size;
+		thumbnail.style.height = size;
+		thumbnail.style.minWidth = size;
+		thumbnail.style.minHeight = size;
+		thumbnail.style.maxWidth = size;
+		thumbnail.style.maxHeight = size;
+	});
+	
+	// Actualizar gap del contenedor
+	thumbnailGrid.style.gap = gap;
+}
+
+// Agregar event listener para resize (con throttling para performance)
+let resizeTimeout;
+window.addEventListener('resize', function() {
+	clearTimeout(resizeTimeout);
+	resizeTimeout = setTimeout(handleResize, 150);
+});
+
+// Llamar una vez al cargar para establecer el tamaño inicial
+setTimeout(handleResize, 100); // Dar tiempo para que se renderice
+
 });
 </script>
