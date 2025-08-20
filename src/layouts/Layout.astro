@@ -19,8 +19,8 @@ const { title } = Astro.props;
 		<title>{title}</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
 		
-		<!-- Snipcart CSS -->
-		<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.css" />
+		<!-- shopify sdk -->
+			<script src="https://cdn.jsdelivr.net/npm/shopify-buy@2/dist/shopify-buy.umd.min.js"></script>
 
 		<meta property="og:title" content="{title}" />
 		<meta property="og:description" content="Discover revolutionary healing devices powered by bioresonance technology." />
@@ -32,25 +32,34 @@ const { title } = Astro.props;
 		<slot />
 
 		
-		<div id="snipcart" 
-			 data-api-key="INSERT-API-KEY-HERE" 
-			 data-config-modal-style="side"
-			 data-config-add-product-behavior="none"
-			 hidden>
-		</div>
-
-		<!-- Snipcart JavaScript - Al final del body -->
-		<script src="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.js"></script>
-		
-		<!-- Configuración de Snipcart -->
+		<!-- CONFIGURACIÓN SHOPIFY - DESPUÉS DEL SDK -->
 		<script>
-			window.SnipcartSettings = {
-				publicApiKey: "INSERT-API-KEY-HERE", // CAMBIA ESTO por tu API key real
-				loadStrategy: "on-user-interaction",
-				modalStyle: "side",
-				currency: "usd",
-				templatesUrl: "/snipcart-templates.html" // Opcional
-			};
+			// Esperar a que el SDK se cargue completamente
+			window.addEventListener('load', function() {
+				// Verificar que ShopifyBuy existe
+				if (typeof ShopifyBuy !== 'undefined') {
+					console.log('✅ ShopifyBuy SDK loaded successfully');
+					
+					// Configuración global de Shopify
+					window.SHOPIFY_CONFIG = {
+						domain: '1gnria-yq.myshopify.com', // SIN https://
+						storefrontAccessToken: '8a0c7906e5a62af482193267282e546a'
+					};
+					
+					// Inicializar cliente inmediatamente
+					try {
+						window.SHOPIFY_CLIENT = ShopifyBuy.buildClient({
+							domain: window.SHOPIFY_CONFIG.domain,
+							storefrontAccessToken: window.SHOPIFY_CONFIG.storefrontAccessToken
+						});
+						console.log('✅ Shopify client initialized');
+					} catch (error) {
+						console.error('❌ Error creating Shopify client:', error);
+					}
+				} else {
+					console.error('❌ ShopifyBuy SDK failed to load');
+				}
+			});
 		</script>
 
 		

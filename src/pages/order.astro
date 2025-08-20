@@ -8,6 +8,7 @@ import AlphaMain from '../assets/alpha-main.jpg';
 import AlphaAlt1 from '../assets/alpha-alt1.webp';
 import AlphaAlt2 from '../assets/alpha-alt2.jpg';
 import AlphaAlt3 from '../assets/alpha-alt3.jpg';
+import AlphaAndRing from '../assets/alphaandring.jpg';
 
 
 // Feature Icons
@@ -25,6 +26,7 @@ import CheckIcon from '../assets/check.svg';
 			<div class="product-tabs">
 				<button class="tab-button active" data-product="alpha">Alpha Wearable</button>
 				<button class="tab-button" data-product="charisma">Charisma Ring</button>
+				<button class="tab-button" data-product="alpha-charisma">Alpha + Charisma</button>
 				<button class="tab-button" data-product="frequana">Frequana</button>
 				<button class="tab-button" data-product="bundle">Complete Bundle</button>
 			</div>
@@ -79,14 +81,10 @@ import CheckIcon from '../assets/check.svg';
 
 						<div class="purchase-section">
 							
-							<button class="buy-button primary snipcart-add-item"
-							data-item-id="alpha-wearable"
-							data-item-price="399.00"
-							data-item-url="/order"
-							data-item-description="Revolutionary Alpha Wearable with bioresonance technology"
-							data-item-image="/src/assets/alpha-main.jpg"
-							data-item-name="Alpha Wearable + App Subscription"
-							data-item-categories="wearables">
+							<button class="buy-button primary shopify-add-item"
+							data-variant-id="51670303506616"
+							data-product-title="Alpha Wearable + App Subscription"
+							data-price="399.00">
 							Order Alpha Wearable - $399
 							</button>
 
@@ -125,20 +123,61 @@ import CheckIcon from '../assets/check.svg';
 
 						<div class="purchase-section">
 							
-							<button class="buy-button primary snipcart-add-item"
-							data-item-id="charisma-ring"
-							data-item-price="199.00"
-							data-item-url="/order"
-							data-item-description="Elegant Charisma Ring with frequency technology"
-							data-item-image="/src/assets/charisma-main.webp"
-							data-item-name="Charisma Ring"
-							data-item-categories="jewelry,wearables">
+							<button class="buy-button primary shopify-add-item"
+							data-variant-id="51670404956344" 
+							data-product-title="Charisma Ring"
+							data-price="199.00">
 							Order Charisma Ring - $199
 							</button>
 
 							<p class="guarantee">30-day money-back guarantee</p>
 						</div>
 					</div>
+
+
+				<div class="product-content" data-product="alpha-charisma">
+					<h1>Alpha + Charisma Bundle</h1>
+					<div class="price-section">
+						<span class="current-price">$399</span>
+					</div>
+					
+					<div class="product-description">
+						<p>The perfect combination for enhanced frequency therapy. The Charisma Ring amplifies the Alpha Wearable's power, delivering effective results in just 60 seconds. Experience brain massage-like sensations, optimal oxygen levels, clear energy with focus, and the best night's sleep you'll wake up refreshed from.</p>
+					</div>
+
+					<div class="key-benefits">
+						<div class="benefit-item">
+							<img src={CheckIcon.src} alt="Check">
+							<span>Enhanced frequency therapy amplification</span>
+						</div>
+						<div class="benefit-item">
+							<img src={CheckIcon.src} alt="Check">
+							<span>60-second brain massage sensation</span>
+						</div>
+						<div class="benefit-item">
+							<img src={CheckIcon.src} alt="Check">
+							<span>Optimal brain oxygen levels & clear energy</span>
+						</div>
+						<div class="benefit-item">
+							<img src={CheckIcon.src} alt="Check">
+							<span>Sleep, stress & HRV tracking included</span>
+						</div>
+					</div>
+
+					<div class="purchase-section">
+						<button class="buy-button primary shopify-add-item"
+						data-variant-id="51670434054328"
+						data-product-title="Alpha + Charisma Bundle"
+						data-price="499.00">
+						Order Alpha + Charisma - $499
+						</button>
+
+						<p class="guarantee">30-day money-back guarantee</p>
+					</div>
+				</div>
+
+
+
 
 					<div class="product-content" data-product="frequana">
 						<h1>Frequana</h1>
@@ -171,15 +210,11 @@ import CheckIcon from '../assets/check.svg';
 
 						<div class="purchase-section">
 							
-							<button class="buy-button primary snipcart-add-item"
-							data-item-id="frequana"
-							data-item-price="400.00"
-							data-item-url="/order"
-							data-item-description="Next generation Frequana healing technology device"
-							data-item-image="/src/assets/frequana-main.jpg"
-							data-item-name="Frequana"
-							data-item-categories="devices">
-							Order Frequana - $400
+							<button class="buy-button primary shopify-add-item"
+							data-variant-id="51670420717752"
+							data-product-title="Frequana"
+							data-price="649.00">
+							Order Frequana - $649
 							</button>
 
 
@@ -214,15 +249,11 @@ import CheckIcon from '../assets/check.svg';
 
 						<div class="purchase-section">
 							
-							<button class="buy-button primary bundle snipcart-add-item"
-							data-item-id="complete-bundle"
-							data-item-price="899.00"
-							data-item-url="/order"
-							data-item-description="Complete healing bundle with all three devices"
-							data-item-image="/src/assets/pack-bundle.jpg"
-							data-item-name="Complete Healing Bundle"
-							data-item-categories="bundles">
-							Order Complete Bundle - $899
+							<button class="buy-button primary bundle shopify-add-item"
+							data-variant-id="51670504407224"
+							data-product-title="Complete Healing Bundle"
+							data-price="949.00">
+							Order Complete Bundle - $949
 							</button>
 
 
@@ -549,8 +580,8 @@ import CheckIcon from '../assets/check.svg';
 </section>
 
 <!-- Botón del carrito flotante -->
-<button class="snipcart-checkout desktop-only" style="position:fixed;bottom:20px;left:20px;z-index:1000;">
-	🛒 Cart (<span class="snipcart-items-count">0</span>)
+<button class="shopify-checkout" style="position:fixed;bottom:20px;left:20px;z-index:1000;">
+	🛒 Cart (<span class="shopify-cart-count">0</span>)
 </button>
 
 	<Footer />
@@ -1427,19 +1458,83 @@ import CheckIcon from '../assets/check.svg';
 					}
 
 
-.desktop-only {
-    display: block;
+.shopify-checkout {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    background: #2596be;
+    color: white;
+    border: none;
+
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(37, 150, 190, 0.3);
+
     
+    // Mobile positioning adjustments only
     @media (max-width: 768px) {
-        display: none;
+        bottom: 15px;
+        left: 15px;
+    }
+    
+    @media (max-width: 480px) {
+        bottom: 10px;
+        left: 10px;
+    }
+
+    &:hover {
+        background: #1e7a9a;
+        transform: translateY(-2px);
     }
 }
 </style>
 
+
+
 <script>
-// Optimized JavaScript - Fixed product switching and improved performance
 document.addEventListener('DOMContentLoaded', function() {
-	// Product data with correct image paths
+	
+	// Detectar si estamos en desarrollo
+	const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+	
+	// Función para esperar a que Shopify esté listo (con timeout para desarrollo)
+	function waitForShopify(callback, attempts = 0) {
+		const maxAttempts = isDevelopment ? 10 : 50; // Menos intentos en desarrollo
+		
+		if (window.SHOPIFY_CLIENT) {
+			callback();
+		} else if (attempts < maxAttempts) {
+			console.log('⏳ Esperando que Shopify se inicialice... Intento:', attempts + 1);
+			setTimeout(() => waitForShopify(callback, attempts + 1), 100);
+		} else {
+			console.warn('⚠️ Shopify no se pudo inicializar, usando modo desarrollo');
+			// Crear cliente mock para desarrollo
+			window.SHOPIFY_CLIENT = {
+				checkout: {
+					create: () => Promise.resolve({ 
+						id: 'dev-checkout-' + Date.now(), 
+						lineItems: [],
+						webUrl: 'https://1gnria-yq.myshopify.com/cart'
+					}),
+					addLineItems: (id, items) => Promise.resolve({ 
+						id: id,
+						lineItems: items.map((item, index) => ({
+							...item, 
+							id: 'dev-item-' + index,
+							title: 'Producto de prueba',
+							quantity: item.quantity || 1
+						})),
+						webUrl: 'https://1gnria-yq.myshopify.com/cart'
+					})
+				}
+			};
+			callback();
+		}
+	}
+
+	// TODO EL CÓDIGO DE PRODUCTOS (mantener igual)
 	const productData = {
 		alpha: {
 			images: [
@@ -1454,6 +1549,13 @@ document.addEventListener('DOMContentLoaded', function() {
 				{ src: `${import.meta.env.BASE_URL || ''}src/assets/charisma-main.webp`, alt: 'Charisma Main' },
 				{ src: `${import.meta.env.BASE_URL || ''}src/assets/charisma-alt1.jpg`, alt: 'Charisma Alt 1' },
 				{ src: `${import.meta.env.BASE_URL || ''}src/assets/charisma-alt2.jpg`, alt: 'Charisma Alt 2' }
+			]
+		},
+		'alpha-charisma': {
+			images: [
+				{ src: `${import.meta.env.BASE_URL || ''}src/assets/alphaandring.jpg`, alt: 'Alpha + Charisma Bundle' },
+				{ src: `${import.meta.env.BASE_URL || ''}src/assets/alpha-main.jpg`, alt: 'Alpha Wearable' },
+				{ src: `${import.meta.env.BASE_URL || ''}src/assets/charisma-main.webp`, alt: 'Charisma Ring' }
 			]
 		},
 		frequana: {
@@ -1479,110 +1581,93 @@ document.addEventListener('DOMContentLoaded', function() {
 	const mainImage = document.getElementById('main-product-image');
 	const thumbnailGrid = document.getElementById('thumbnail-grid');
 
-// Función modificada para actualizar thumbnails sin romper el CSS
-type ProductKey = 'alpha' | 'charisma' | 'frequana' | 'bundle';
-type ProductImage = { src: string; alt: string };
-
-function updateProductImages(productKey: ProductKey) {
-	const images: ProductImage[] | undefined = productData[productKey]?.images;
-	
-	const mainImage = document.getElementById('main-product-image') as HTMLImageElement | null;
-	const thumbnailGrid = document.getElementById('thumbnail-grid') as HTMLElement | null;
-
-	if (!images || !mainImage || !thumbnailGrid) return;
-	
-	// Update main image
-	mainImage.src = images[0].src;
-	mainImage.alt = images[0].alt;
-	
-	// Clear and update thumbnail grid
-	thumbnailGrid.innerHTML = '';
-	
-	// Función para obtener el tamaño correcto según el viewport
-	function getThumbnailSize() {
-		const width = window.innerWidth;
-		if (width <= 320) return '50px';
-		if (width <= 375) return '55px';
-		if (width <= 480) return '60px';
-		if (width <= 768) return '70px';
-		return '80px'; // Desktop
-	}
-	
-	// Función para obtener el gap correcto según el viewport
-	function getThumbnailGap() {
-		const width = window.innerWidth;
-		if (width <= 320) return '6px';
-		if (width <= 480) return '8px';
-		return '12px'; // Tablet y desktop
-	}
-	
-	images.forEach((image: ProductImage, index: number) => {
-		const thumbnail = document.createElement('img');
-		thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
-		thumbnail.src = image.src;
-		thumbnail.alt = image.alt;
-		thumbnail.dataset.main = image.src;
+	function updateProductImages(productKey) {
+		const images = productData[productKey]?.images;
 		
-		// Aplicar estilos responsivos
-		const size = getThumbnailSize();
-		thumbnail.style.width = size;
-		thumbnail.style.height = size;
-		thumbnail.style.minWidth = size;
-		thumbnail.style.minHeight = size;
-		thumbnail.style.maxWidth = size;
-		thumbnail.style.maxHeight = size;
-		thumbnail.style.objectFit = 'cover';
-		thumbnail.style.borderRadius = '8px';
-		thumbnail.style.cursor = 'pointer';
-		thumbnail.style.border = index === 0 ? '2px solid #2596be' : '2px solid transparent';
-		thumbnail.style.display = 'block';
-		thumbnail.style.flexShrink = '0';
-		thumbnail.style.boxSizing = 'border-box';
+		if (!images || !mainImage || !thumbnailGrid) return;
 		
-		// Add click event for thumbnails
-		thumbnail.addEventListener('click', function(this: HTMLImageElement) {
-			thumbnailGrid.querySelectorAll('.thumbnail').forEach(t => {
-				(t as HTMLImageElement).classList.remove('active');
-				(t as HTMLImageElement).style.border = '2px solid transparent';
+		// Update main image
+		mainImage.src = images[0].src;
+		mainImage.alt = images[0].alt;
+		
+		// Clear and update thumbnail grid
+		thumbnailGrid.innerHTML = '';
+		
+		function getThumbnailSize() {
+			const width = window.innerWidth;
+			if (width <= 320) return '50px';
+			if (width <= 375) return '55px';
+			if (width <= 480) return '60px';
+			if (width <= 768) return '70px';
+			return '80px';
+		}
+		
+		function getThumbnailGap() {
+			const width = window.innerWidth;
+			if (width <= 320) return '6px';
+			if (width <= 480) return '8px';
+			return '12px';
+		}
+		
+		images.forEach((image, index) => {
+			const thumbnail = document.createElement('img');
+			thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+			thumbnail.src = image.src;
+			thumbnail.alt = image.alt;
+			thumbnail.dataset.main = image.src;
+			
+			const size = getThumbnailSize();
+			thumbnail.style.width = size;
+			thumbnail.style.height = size;
+			thumbnail.style.minWidth = size;
+			thumbnail.style.minHeight = size;
+			thumbnail.style.maxWidth = size;
+			thumbnail.style.maxHeight = size;
+			thumbnail.style.objectFit = 'cover';
+			thumbnail.style.borderRadius = '8px';
+			thumbnail.style.cursor = 'pointer';
+			thumbnail.style.border = index === 0 ? '2px solid #2596be' : '2px solid transparent';
+			thumbnail.style.display = 'block';
+			thumbnail.style.flexShrink = '0';
+			thumbnail.style.boxSizing = 'border-box';
+			
+			thumbnail.addEventListener('click', function() {
+				thumbnailGrid.querySelectorAll('.thumbnail').forEach(t => {
+					t.classList.remove('active');
+					t.style.border = '2px solid transparent';
+				});
+				
+				this.classList.add('active');
+				this.style.border = '2px solid #2596be';
+				
+				mainImage.src = this.dataset.main || '';
+				mainImage.alt = this.alt;
 			});
 			
-			this.classList.add('active');
-			this.style.border = '2px solid #2596be';
-			
-			mainImage.src = this.dataset.main || '';
-			mainImage.alt = this.alt;
+			thumbnailGrid.appendChild(thumbnail);
 		});
 		
-		thumbnailGrid.appendChild(thumbnail);
-	});
-	
-	// Aplicar estilos al contenedor
-	thumbnailGrid.style.display = 'flex';
-	thumbnailGrid.style.gap = getThumbnailGap();
-	thumbnailGrid.style.flexWrap = 'wrap';
-	thumbnailGrid.style.alignItems = 'flex-start';
-}
+		thumbnailGrid.style.display = 'flex';
+		thumbnailGrid.style.gap = getThumbnailGap();
+		thumbnailGrid.style.flexWrap = 'wrap';
+		thumbnailGrid.style.alignItems = 'flex-start';
+	}
 
 	// Product tab switching functionality
 	tabButtons.forEach(button => {
-		button.addEventListener('click', function(this: HTMLElement) {
-			const productType = this.dataset.product as ProductKey;
+		button.addEventListener('click', function() {
+			const productType = this.dataset.product;
 			
-			// Remove active class from all tabs
 			tabButtons.forEach(tab => tab.classList.remove('active'));
-			// Add active class to clicked tab
 			this.classList.add('active');
 			
-			// Remove active class from all product content
 			productContents.forEach(content => content.classList.remove('active'));
 			
-			// Show corresponding content
 			const targetContent = document.querySelector(`.product-content[data-product="${productType}"]`);
 			if (targetContent) {
 				targetContent.classList.add('active');
 			}
 			
-			// Update product images
 			updateProductImages(productType);
 		});
 	});
@@ -1592,17 +1677,14 @@ function updateProductImages(productKey: ProductKey) {
 	const detailPanels = document.querySelectorAll('.detail-panel');
 
 	detailTabs.forEach(tab => {
-		tab.addEventListener('click', function(this: HTMLElement) {
+		tab.addEventListener('click', function() {
 			const tabType = this.dataset.tab;
 			
-			// Remove active class from all detail tabs and panels
 			detailTabs.forEach(t => t.classList.remove('active'));
 			detailPanels.forEach(panel => panel.classList.remove('active'));
 			
-			// Add active class to clicked tab
 			this.classList.add('active');
 			
-			// Show corresponding panel
 			const targetPanel = document.querySelector(`.detail-panel[data-panel="${tabType}"]`);
 			if (targetPanel) {
 				targetPanel.classList.add('active');
@@ -1610,93 +1692,436 @@ function updateProductImages(productKey: ProductKey) {
 		});
 	});
 
+	// URL parameters handling
+	const urlParams = new URLSearchParams(window.location.search);
+	const preselectedProduct = urlParams.get('product');
 
-
-// Check URL parameters for preselected product
-const urlParams = new URLSearchParams(window.location.search);
-const preselectedProduct = urlParams.get('product');
-
-// Function to select product tab
-function selectProductTab(productType) {
-	// Remove active class from all tabs
-	tabButtons.forEach(tab => tab.classList.remove('active'));
-	
-	// Find and activate the correct tab
-	const targetTab = document.querySelector(`.tab-button[data-product="${productType}"]`);
-	if (targetTab) {
-		targetTab.classList.add('active');
+	function selectProductTab(productType) {
+		tabButtons.forEach(tab => tab.classList.remove('active'));
+		
+		const targetTab = document.querySelector(`.tab-button[data-product="${productType}"]`);
+		if (targetTab) {
+			targetTab.classList.add('active');
+		}
+		
+		productContents.forEach(content => content.classList.remove('active'));
+		
+		const targetContent = document.querySelector(`.product-content[data-product="${productType}"]`);
+		if (targetContent) {
+			targetContent.classList.add('active');
+		}
+		
+		updateProductImages(productType);
 	}
-	
-	// Remove active class from all product content
-	productContents.forEach(content => content.classList.remove('active'));
-	
-	// Show corresponding content
-	const targetContent = document.querySelector(`.product-content[data-product="${productType}"]`);
-	if (targetContent) {
-		targetContent.classList.add('active');
-	}
-	
-	// Update product images
-	updateProductImages(productType);
-}
 
-// If there's a preselected product, use it; otherwise default to alpha
-const initialProduct = preselectedProduct && ['alpha', 'charisma', 'frequana', 'bundle'].includes(preselectedProduct) 
-	? preselectedProduct 
-	: 'alpha';
+	const initialProduct = preselectedProduct && ['alpha', 'charisma', 'alpha-charisma', 'frequana', 'bundle'].includes(preselectedProduct)
+		? preselectedProduct 
+		: 'alpha';
 
-	// Initialize with preselected or default product
-selectProductTab(initialProduct);
+	selectProductTab(initialProduct);
 
-// Función para reajustar tamaños cuando cambia el viewport
-function handleResize() {
-	const thumbnails = document.querySelectorAll('#thumbnail-grid .thumbnail');
-	const thumbnailGrid = document.getElementById('thumbnail-grid');
-	
-	if (thumbnails.length === 0 || !thumbnailGrid) return;
-	
-	function getThumbnailSize() {
-		const width = window.innerWidth;
-		if (width <= 320) return '50px';
-		if (width <= 375) return '55px';
-		if (width <= 480) return '60px';
-		if (width <= 768) return '70px';
-		return '80px';
+	function handleResize() {
+		const thumbnails = document.querySelectorAll('#thumbnail-grid .thumbnail');
+		const thumbnailGrid = document.getElementById('thumbnail-grid');
+		
+		if (thumbnails.length === 0 || !thumbnailGrid) return;
+		
+		function getThumbnailSize() {
+			const width = window.innerWidth;
+			if (width <= 320) return '50px';
+			if (width <= 375) return '55px';
+			if (width <= 480) return '60px';
+			if (width <= 768) return '70px';
+			return '80px';
+		}
+		
+		function getThumbnailGap() {
+			const width = window.innerWidth;
+			if (width <= 320) return '6px';
+			if (width <= 480) return '8px';
+			return '12px';
+		}
+		
+		const size = getThumbnailSize();
+		const gap = getThumbnailGap();
+		
+		thumbnails.forEach(thumbnail => {
+			thumbnail.style.width = size;
+			thumbnail.style.height = size;
+			thumbnail.style.minWidth = size;
+			thumbnail.style.minHeight = size;
+			thumbnail.style.maxWidth = size;
+			thumbnail.style.maxHeight = size;
+		});
+		
+		thumbnailGrid.style.gap = gap;
 	}
-	
-	function getThumbnailGap() {
-		const width = window.innerWidth;
-		if (width <= 320) return '6px';
-		if (width <= 480) return '8px';
-		return '12px';
-	}
-	
-	const size = getThumbnailSize();
-	const gap = getThumbnailGap();
-	
-	// Actualizar tamaños de todas las miniaturas
-	thumbnails.forEach(thumbnail => {
-		thumbnail.style.width = size;
-		thumbnail.style.height = size;
-		thumbnail.style.minWidth = size;
-		thumbnail.style.minHeight = size;
-		thumbnail.style.maxWidth = size;
-		thumbnail.style.maxHeight = size;
+
+	let resizeTimeout;
+	window.addEventListener('resize', function() {
+		clearTimeout(resizeTimeout);
+		resizeTimeout = setTimeout(handleResize, 150);
 	});
+
+	setTimeout(handleResize, 100);
+
+	// ============ SHOPIFY INTEGRATION - VERSIÓN CON FALLBACK ============
 	
-	// Actualizar gap del contenedor
-	thumbnailGrid.style.gap = gap;
+	// Inicializar cuando Shopify esté listo O usar fallback
+	waitForShopify(() => {
+		// Clase para manejar carrito Shopify
+class ShopifyCart {
+	constructor() {
+		this.checkout = null;
+		this.isDev = isDevelopment && !window.SHOPIFY_CLIENT.checkout.create.toString().includes('fetch');
+		this.mockCart = []; // Para modo desarrollo
+		this.init();
+	}
+
+	async init() {
+		try {
+			this.checkout = await window.SHOPIFY_CLIENT.checkout.create();
+			this.updateCartUI();
+			this.bindEvents();
+			this.createCheckoutModal();
+			console.log('✅ Shopify cart initialized successfully');
+		} catch (error) {
+			console.error('❌ Error initializing Shopify cart:', error);
+			this.bindEvents();
+			this.createCheckoutModal();
+		}
+	}
+
+	createCheckoutModal() {
+		const modalHTML = `
+			<div id="checkout-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; overflow-y: auto;">
+				<div style="position: relative; width: 95%; max-width: 900px; margin: 20px auto; background: white; border-radius: 12px; padding: 0; font-family: var(--base-font);">
+					<div style="padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+						<h2 style="margin: 0; color: #2596be;">Your Cart</h2>
+						<button id="close-checkout" style="background: none; border: none; font-size: 28px; cursor: pointer; color: #666; padding: 5px;">×</button>
+					</div>
+					<div style="padding: 20px;">
+						<div id="cart-items-list"></div>
+						<div id="cart-total" style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #2596be;"></div>
+						<div style="margin-top: 20px; text-align: center;">
+							<button id="proceed-checkout" style="background: #2596be; color: white; border: none; padding: 0px 30px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; max-width: 300px;">
+								Proceed to Payment
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		`;
+		
+		document.body.insertAdjacentHTML('beforeend', modalHTML);
+		
+		// Event listeners del modal
+		document.getElementById('close-checkout').addEventListener('click', () => {
+			document.getElementById('checkout-modal').style.display = 'none';
+		});
+		
+		document.getElementById('checkout-modal').addEventListener('click', (e) => {
+			if (e.target.id === 'checkout-modal') {
+				document.getElementById('checkout-modal').style.display = 'none';
+			}
+		});
+
+		document.getElementById('proceed-checkout').addEventListener('click', () => {
+			this.proceedToPayment();
+		});
+	}
+
+	bindEvents() {
+		document.querySelectorAll('.shopify-add-item').forEach(button => {
+			button.addEventListener('click', (e) => {
+				e.preventDefault();
+				const variantId = e.target.dataset.variantId;
+				const title = e.target.dataset.productTitle || 'Producto';
+				const price = e.target.dataset.price || '399';
+				
+				console.log('🛒 Botón clickeado:', title, 'Variant ID:', variantId);
+				
+				if (this.isDev) {
+					this.addToMockCart(variantId, title, price);
+				} else {
+					if (!variantId) {
+						alert('Error: Variant ID no encontrado');
+						return;
+					}
+					this.addToCart(variantId, 1, title);
+				}
+			});
+		});
+
+		const checkoutButton = document.querySelector('.shopify-checkout');
+		if (checkoutButton) {
+			checkoutButton.addEventListener('click', () => {
+				this.openCheckoutModal();
+			});
+		}
+		
+		console.log('🔗 Event listeners agregados a los botones');
+	}
+
+	// Método para desarrollo - carrito simulado
+	addToMockCart(variantId, title, price) {
+		const existingItem = this.mockCart.find(item => item.variantId === variantId);
+		
+		if (existingItem) {
+			existingItem.quantity += 1;
+		} else {
+			this.mockCart.push({
+				variantId: variantId,
+				title: title,
+				price: parseFloat(price),
+				quantity: 1,
+				id: 'mock-' + Date.now()
+			});
+		}
+		
+		this.updateCartUI();
+		this.showAddToCartNotification(title + ' (Modo desarrollo)');
+	}
+
+	async addToCart(variantId, quantity, title) {
+		const lineItemsToAdd = [{
+			variantId: variantId,
+			quantity: quantity
+		}];
+
+		try {
+			this.checkout = await window.SHOPIFY_CLIENT.checkout.addLineItems(this.checkout.id, lineItemsToAdd);
+			this.updateCartUI();
+			this.showAddToCartNotification(title);
+			console.log('✅ Producto agregado exitosamente:', title);
+		} catch (error) {
+			console.error('❌ Error agregando al carrito:', error);
+			this.showAddToCartNotification(title + ' (Verificar en Shopify)');
+		}
+	}
+
+	updateCartUI() {
+		const cartCount = document.querySelector('.shopify-cart-count');
+		if (cartCount) {
+			if (this.isDev) {
+				const totalItems = this.mockCart.reduce((total, item) => total + item.quantity, 0);
+				cartCount.textContent = totalItems;
+			} else if (this.checkout) {
+				const totalItems = this.checkout.lineItems.reduce((total, item) => total + item.quantity, 0);
+				cartCount.textContent = totalItems;
+			}
+		}
+	}
+
+	openCheckoutModal() {
+		const modal = document.getElementById('checkout-modal');
+		if (!modal) return;
+		
+		this.renderCartItems();
+		modal.style.display = 'block';
+		console.log('🛒 Modal de checkout abierto');
+	}
+
+	renderCartItems() {
+		const itemsList = document.getElementById('cart-items-list');
+		const cartTotal = document.getElementById('cart-total');
+		
+		if (!itemsList || !cartTotal) return;
+
+		if (this.isDev) {
+			// Modo desarrollo
+			if (this.mockCart.length === 0) {
+				itemsList.innerHTML = '<p style="text-align: center; color: #666; padding: 40px;">Tu carrito está vacío</p>';
+				cartTotal.innerHTML = '';
+				return;
+			}
+
+			let itemsHTML = '';
+			let total = 0;
+
+			this.mockCart.forEach((item, index) => {
+				const itemTotal = item.price * item.quantity;
+				total += itemTotal;
+				
+				itemsHTML += `
+					<div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 10px;">
+						<div style="flex: 1;">
+							<h4 style="margin: 0 0 5px 0; color: #333;">${item.title}</h4>
+							<p style="margin: 0; color: #666; font-size: 14px;">$${item.price.toFixed(2)} c/u</p>
+						</div>
+						<div style="display: flex; align-items: center; gap: 10px;">
+							<button onclick="window.shopifyCart.updateMockQuantity(${index}, ${item.quantity - 1})" style="background: #f0f0f0; border: none; padding: 0px 8px; width: 30px; height: 40px; border-radius: 4px; cursor: pointer;">-</button>
+							<span style="font-weight: 600; min-width: 20px; text-align: center;">${item.quantity}</span>
+							<button onclick="window.shopifyCart.updateMockQuantity(${index}, ${item.quantity + 1})" style="background: #f0f0f0; border: none; padding: 0px 8px; width: 30px; height: 40px; border-radius: 4px; cursor: pointer;">+</button>
+							<button onclick="window.shopifyCart.removeMockItem(${index})" style="background: #ff4757; color: white; border: none; padding: 0px 8px; border-radius: 4px; cursor: pointer; margin-left: 10px;">🗑</button>
+						</div>
+					</div>
+				`;
+			});
+
+			itemsList.innerHTML = itemsHTML;
+			cartTotal.innerHTML = `
+				<div style="text-align: right;">
+					<h3 style="margin: 0; color: #2596be;">Total: $${total.toFixed(2)}</h3>
+					<p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">DEV MODE - In production, this will be the real price</p>
+				</div>
+			`;
+		} else {
+			// Modo producción - usar datos reales de Shopify
+			if (!this.checkout || this.checkout.lineItems.length === 0) {
+				itemsList.innerHTML = '<p style="text-align: center; color: #666; padding: 40px;">Tu carrito está vacío</p>';
+				cartTotal.innerHTML = '';
+				return;
+			}
+
+			let itemsHTML = '';
+			this.checkout.lineItems.forEach((item, index) => {
+				itemsHTML += `
+					<div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 10px;">
+						<div style="flex: 1;">
+							<h4 style="margin: 0 0 5px 0; color: #333;">${item.title}</h4>
+							<p style="margin: 0; color: #666; font-size: 14px;">$${item.variant.price.amount} c/u</p>
+						</div>
+						<div style="display: flex; align-items: center; gap: 10px;">
+							<button onclick="window.shopifyCart.updateQuantity('${item.id}', ${item.quantity - 1})" style="background: #f0f0f0; border: none; width: 30px; height: 30px; border-radius: 4px; cursor: pointer;">-</button>
+							<span style="font-weight: 600; min-width: 20px; text-align: center;">${item.quantity}</span>
+							<button onclick="window.shopifyCart.updateQuantity('${item.id}', ${item.quantity + 1})" style="background: #f0f0f0; border: none; width: 30px; height: 30px; border-radius: 4px; cursor: pointer;">+</button>
+							<button onclick="window.shopifyCart.removeItem('${item.id}')" style="background: #ff4757; color: white; border: none; padding: 5px 8px; border-radius: 4px; cursor: pointer; margin-left: 10px;">🗑</button>
+						</div>
+					</div>
+				`;
+			});
+
+			itemsList.innerHTML = itemsHTML;
+			cartTotal.innerHTML = `
+				<div style="text-align: right;">
+					<h3 style="margin: 0; color: #2596be;">Total: $${this.checkout.totalPrice.amount}</h3>
+				</div>
+			`;
+		}
+	}
+
+	// Métodos para desarrollo
+	updateMockQuantity(index, newQuantity) {
+		if (newQuantity <= 0) {
+			this.removeMockItem(index);
+			return;
+		}
+		
+		this.mockCart[index].quantity = newQuantity;
+		this.updateCartUI();
+		this.renderCartItems();
+	}
+
+	removeMockItem(index) {
+		this.mockCart.splice(index, 1);
+		this.updateCartUI();
+		this.renderCartItems();
+	}
+
+	// Métodos para producción
+	async updateQuantity(lineItemId, newQuantity) {
+		if (newQuantity <= 0) {
+			this.removeItem(lineItemId);
+			return;
+		}
+
+		try {
+			const lineItemsToUpdate = [{
+				id: lineItemId,
+				quantity: newQuantity
+			}];
+
+			this.checkout = await window.SHOPIFY_CLIENT.checkout.updateLineItems(this.checkout.id, lineItemsToUpdate);
+			this.updateCartUI();
+			this.renderCartItems();
+			console.log('✅ Cantidad actualizada');
+		} catch (error) {
+			console.error('❌ Error actualizando cantidad:', error);
+		}
+	}
+
+	async removeItem(lineItemId) {
+		try {
+			this.checkout = await window.SHOPIFY_CLIENT.checkout.removeLineItems(this.checkout.id, [lineItemId]);
+			this.updateCartUI();
+			this.renderCartItems();
+			console.log('✅ Producto eliminado');
+		} catch (error) {
+			console.error('❌ Error eliminando producto:', error);
+		}
+	}
+
+	proceedToPayment() {
+		if (this.isDev) {
+			alert('🚧 Development mode: In production here the real payment will be processed with Shopify');
+			return;
+		}
+
+		if (this.checkout && this.checkout.lineItems.length > 0) {
+			// Crear iframe para checkout de pago
+			const checkoutFrame = document.getElementById('shopify-checkout-frame');
+			if (checkoutFrame) {
+				checkoutFrame.src = this.checkout.webUrl;
+				checkoutFrame.style.display = 'block';
+				
+				// Ocultar la lista de productos y mostrar solo el checkout
+				document.getElementById('cart-items-list').style.display = 'none';
+				document.getElementById('cart-total').style.display = 'none';
+				document.querySelector('#proceed-checkout').style.display = 'none';
+				
+				// Añadir botón para volver al carrito
+				const backButton = document.createElement('button');
+				backButton.innerHTML = '← Volver al carrito';
+				backButton.style.cssText = 'background: #6c757d; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin-bottom: 15px;';
+				backButton.addEventListener('click', () => {
+					document.getElementById('cart-items-list').style.display = 'block';
+					document.getElementById('cart-total').style.display = 'block';
+					document.querySelector('#proceed-checkout').style.display = 'block';
+					checkoutFrame.style.display = 'none';
+					backButton.remove();
+				});
+				
+				document.getElementById('checkout-content').insertBefore(backButton, checkoutFrame);
+			}
+		} else {
+			alert('Tu carrito está vacío');
+		}
+	}
+
+	showAddToCartNotification(productTitle) {
+		const notification = document.createElement('div');
+		notification.style.cssText = `
+			position: fixed;
+			top: 20px;
+			right: 20px;
+			background: ${this.isDev ? '#ff6b35' : '#2596be'};
+			color: white;
+			padding: 15px 20px;
+			border-radius: 8px;
+			z-index: 10000;
+			font-weight: 600;
+			box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+			max-width: 300px;
+			font-family: var(--base-font);
+		`;
+		notification.textContent = `✓ ${productTitle} agregado al carrito`;
+		
+		document.body.appendChild(notification);
+		
+		setTimeout(() => {
+			if (document.body.contains(notification)) {
+				document.body.removeChild(notification);
+			}
+		}, 3000);
+	}
 }
 
-// Agregar event listener para resize (con throttling para performance)
-let resizeTimeout;
-window.addEventListener('resize', function() {
-	clearTimeout(resizeTimeout);
-	resizeTimeout = setTimeout(handleResize, 150);
-});
+		// Inicializar carrito Shopify
+		window.shopifyCart = new ShopifyCart();
+		console.log('🚀 Shopify integration loaded successfully');
+	});
 
-// Llamar una vez al cargar para establecer el tamaño inicial
-setTimeout(handleResize, 100); // Dar tiempo para que se renderice
-
+	// ============ FIN SHOPIFY INTEGRATION ============
 });
 </script>
