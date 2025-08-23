@@ -1538,39 +1538,39 @@ document.addEventListener('DOMContentLoaded', function() {
 	const productData = {
 		alpha: {
 			images: [
-				{ src: `${import.meta.env.BASE_URL || ''}src/assets/alpha-main.jpg`, alt: 'Alpha Main' },
-				{ src: `${import.meta.env.BASE_URL || ''}src/assets/alpha-alt1.webp`, alt: 'Alpha Alt 1' },
-				{ src: `${import.meta.env.BASE_URL || ''}src/assets/alpha-alt2.jpg`, alt: 'Alpha Alt 2' },
-				{ src: `${import.meta.env.BASE_URL || ''}src/assets/alpha-alt3.jpg`, alt: 'Alpha Alt 3' }
+				{ src: `${import.meta.env.BASE_URL || ''}public/alpha-main.jpg`, alt: 'Alpha Main' },
+				{ src: `${import.meta.env.BASE_URL || ''}public/alpha-alt1.webp`, alt: 'Alpha Alt 1' },
+				{ src: `${import.meta.env.BASE_URL || ''}public/alpha-alt2.jpg`, alt: 'Alpha Alt 2' },
+				{ src: `${import.meta.env.BASE_URL || ''}public/alpha-alt3.jpg`, alt: 'Alpha Alt 3' }
 			]
 		},
 		charisma: {
 			images: [
-				{ src: `${import.meta.env.BASE_URL || ''}src/assets/charisma-main.webp`, alt: 'Charisma Main' },
-				{ src: `${import.meta.env.BASE_URL || ''}src/assets/charisma-alt1.jpg`, alt: 'Charisma Alt 1' },
-				{ src: `${import.meta.env.BASE_URL || ''}src/assets/charisma-alt2.jpg`, alt: 'Charisma Alt 2' }
+				{ src: `${import.meta.env.BASE_URL || ''}public/charisma-main.webp`, alt: 'Charisma Main' },
+				{ src: `${import.meta.env.BASE_URL || ''}public/charisma-alt1.jpg`, alt: 'Charisma Alt 1' },
+				{ src: `${import.meta.env.BASE_URL || ''}public/charisma-alt2.jpg`, alt: 'Charisma Alt 2' }
 			]
 		},
 		'alpha-charisma': {
 			images: [
-				{ src: `${import.meta.env.BASE_URL || ''}src/assets/alphaandring.jpg`, alt: 'Alpha + Charisma Bundle' },
-				{ src: `${import.meta.env.BASE_URL || ''}src/assets/alpha-main.jpg`, alt: 'Alpha Wearable' },
-				{ src: `${import.meta.env.BASE_URL || ''}src/assets/charisma-main.webp`, alt: 'Charisma Ring' }
+				{ src: `${import.meta.env.BASE_URL || ''}public/alphaandring.jpg`, alt: 'Alpha + Charisma Bundle' },
+				{ src: `${import.meta.env.BASE_URL || ''}public/alpha-main.jpg`, alt: 'Alpha Wearable' },
+				{ src: `${import.meta.env.BASE_URL || ''}public/charisma-main.webp`, alt: 'Charisma Ring' }
 			]
 		},
 		frequana: {
 			images: [
-				{ src: `${import.meta.env.BASE_URL || ''}src/assets/frequana-main.jpg`, alt: 'Frequana Main' },
-				{ src: `${import.meta.env.BASE_URL || ''}src/assets/frequana-alt1.jpg`, alt: 'Frequana Alt 1' },
-				{ src: `${import.meta.env.BASE_URL || ''}src/assets/frequana-alt2.png`, alt: 'Frequana Alt 2' }
+				{ src: `${import.meta.env.BASE_URL || ''}public/frequana-main.jpg`, alt: 'Frequana Main' },
+				{ src: `${import.meta.env.BASE_URL || ''}public/frequana-alt1.jpg`, alt: 'Frequana Alt 1' },
+				{ src: `${import.meta.env.BASE_URL || ''}public/frequana-alt2.png`, alt: 'Frequana Alt 2' }
 			]
 		},
 		bundle: {
 			images: [
-				{ src: `${import.meta.env.BASE_URL || ''}src/assets/pack-bundle.jpg`, alt: 'Complete Bundle' },
-				{ src: `${import.meta.env.BASE_URL || ''}src/assets/alpha-main.jpg`, alt: 'Alpha Included' },
-				{ src: `${import.meta.env.BASE_URL || ''}src/assets/charisma-main.webp`, alt: 'Charisma Included' },
-				{ src: `${import.meta.env.BASE_URL || ''}src/assets/frequana-main.jpg`, alt: 'Frequana Included' }
+				{ src: `${import.meta.env.BASE_URL || ''}public/pack-bundle.jpg`, alt: 'Complete Bundle' },
+				{ src: `${import.meta.env.BASE_URL || ''}public/alpha-main.jpg`, alt: 'Alpha Included' },
+				{ src: `${import.meta.env.BASE_URL || ''}public/charisma-main.webp`, alt: 'Charisma Included' },
+				{ src: `${import.meta.env.BASE_URL || ''}public/frequana-main.jpg`, alt: 'Frequana Included' }
 			]
 		}
 	};
@@ -1880,7 +1880,7 @@ class ShopifyCart {
 		}
 		
 		this.updateCartUI();
-		this.showAddToCartNotification(title + ' (Modo desarrollo)');
+		this.showAddToCartNotification(title + ' (Dev Mode)');
 	}
 
 	async addToCart(variantId, quantity, title) {
@@ -2105,7 +2105,7 @@ class ShopifyCart {
 			max-width: 300px;
 			font-family: var(--base-font);
 		`;
-		notification.textContent = `✓ ${productTitle} agregado al carrito`;
+		notification.textContent = `✓ ${productTitle} added to cart`;
 		
 		document.body.appendChild(notification);
 		

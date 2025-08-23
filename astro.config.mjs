@@ -1,9 +1,11 @@
 import { defineConfig } from 'astro/config';
-
-import netlify from "@astrojs/netlify/functions";
+import netlify from '@astrojs/netlify/functions';
 
 // https://astro.build/config
 export default defineConfig({
-  output: "server",
-  adapter: netlify()
+  output: "static", // Para Shopify
+  adapter: netlify(),
+  experimental: {
+    session: true // Esto soluciona el error
+  }
 });

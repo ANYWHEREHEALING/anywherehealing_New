@@ -15,7 +15,7 @@ import TestimonialUser2 from '../assets/testimonial-user2.jpg';
 import TestimonialUser3 from '../assets/testimonial-user3.jpg';
 
 // Import video
-
+import VideoRejuvena from '../assets/video-rejuvena.mp4';
 
 // Import icons
 import Check from '../assets/check.svg';
@@ -116,7 +116,7 @@ import Shield from '../assets/lock.svg';
         playsinline
         preload="metadata"
     >
-        <source src="/src/assets/video-rejuvena.mp4" type="video/mp4">
+        <source src={VideoRejuvena} type="video/mp4">
         <!-- Fallback aquí -->
     </video>
                     </div>
@@ -2501,7 +2501,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 this.updateCartUI();
-                this.showAddToCartNotification(title + ' (Modo desarrollo)');
+                this.showAddToCartNotification(title + ' (Dev Mode)');
             }
 
             async addToCart(variantId, quantity, title) {
@@ -2698,7 +2698,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     max-width: 300px;
                     font-family: var(--base-font);
                 `;
-                notification.textContent = `✓ ${productTitle} agregado al carrito`;
+                notification.textContent = `✓ ${productTitle} added to cart`;
                 
                 document.body.appendChild(notification);
                 
