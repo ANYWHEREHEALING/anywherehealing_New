@@ -71,12 +71,12 @@ import Footer from '../components/Footer.astro';
 
 						<div class="purchase-section">
 							
-							<button class="buy-button primary shopify-add-item"
-							data-variant-id="51670303506616"
-							data-product-title="Alpha Wearable + App Subscription"
-							data-price="399.00">
-							Order Alpha Wearable - $399
-							</button>
+						<button class="buy-button primary shopify-add-item"
+						data-variant-id="51670303506616"
+						data-product-title="Alpha Wearable + App Subscription"
+						data-price="399.00">
+						Order Alpha Wearable - $399
+						</button>	
 
 							<p class="guarantee">30-day money-back guarantee</p>
 						</div>
@@ -113,12 +113,12 @@ import Footer from '../components/Footer.astro';
 
 						<div class="purchase-section">
 							
-							<button class="buy-button primary shopify-add-item"
-							data-variant-id="51670404956344" 
-							data-product-title="Charisma Ring"
-							data-price="199.00">
-							Order Charisma Ring - $199
-							</button>
+						<button class="buy-button primary shopify-add-item"
+						data-variant-id="51670404956344" 
+						data-product-title="Charisma Ring"
+						data-price="199.00">
+						Order Charisma Ring - $199
+						</button>
 
 							<p class="guarantee">30-day money-back guarantee</p>
 						</div>
@@ -126,46 +126,48 @@ import Footer from '../components/Footer.astro';
 
 
 				<div class="product-content" data-product="alpha-charisma">
-					<h1>Alpha + Charisma Bundle</h1>
-					<div class="price-section">
-						<span class="current-price">$399</span>
-					</div>
-					
-					<div class="product-description">
-						<p>The perfect combination for enhanced frequency therapy. The Charisma Ring amplifies the Alpha Wearable's power, delivering effective results in just 60 seconds. Experience brain massage-like sensations, optimal oxygen levels, clear energy with focus, and the best night's sleep you'll wake up refreshed from.</p>
-					</div>
+	<h1>Alpha + Charisma Bundle</h1>
+	<div class="price-section">
+		<span class="current-price">$499</span>
+		<span class="original-price">$598</span>
+		<span class="savings">Save $99</span>
+	</div>
+	
+	<div class="product-description">
+		<p>The perfect combination for enhanced frequency therapy. The Charisma Ring amplifies the Alpha Wearable's power, delivering effective results in just 60 seconds. Experience brain massage-like sensations, optimal oxygen levels, clear energy with focus, and the best night's sleep you'll wake up refreshed from.</p>
+	</div>
 
-					<div class="key-benefits">
-						<div class="benefit-item">
-							<img src="/check.svg" alt="Check">
-							<span>Enhanced frequency therapy amplification</span>
-						</div>
-						<div class="benefit-item">
-							<img src="/check.svg" alt="Check">
-							<span>60-second brain massage sensation</span>
-						</div>
-						<div class="benefit-item">
-							<img src="/check.svg" alt="Check">
-							<span>Optimal brain oxygen levels & clear energy</span>
-						</div>
-						<div class="benefit-item">
-							<img src="/check.svg" alt="Check">
-							<span>Sleep, stress & HRV tracking included</span>
-						</div>
-					</div>
+	<div class="key-benefits">
+		<div class="benefit-item">
+			<img src="/check.svg" alt="Check">
+			<span>Enhanced frequency therapy amplification</span>
+		</div>
+		<div class="benefit-item">
+			<img src="/check.svg" alt="Check">
+			<span>60-second brain massage sensation</span>
+		</div>
+		<div class="benefit-item">
+			<img src="/check.svg" alt="Check">
+			<span>Optimal brain oxygen levels & clear energy</span>
+		</div>
+		<div class="benefit-item">
+			<img src="/check.svg" alt="Check">
+			<span>Sleep, stress & HRV tracking included</span>
+		</div>
+	</div>
 
-					<div class="purchase-section">
-						<button class="buy-button primary shopify-add-item"
-						data-variant-id="51670385066616"
-						data-product-title="Alpha Wearable + App Subscription"
-						data-price="399.00">
-						Order Alpha + Charisma - $499
-						</button>
+	<div class="purchase-section">
+		<!-- FIXED BUTTON: Correct variant ID and pricing -->
+		<button class="buy-button primary shopify-add-item"
+		data-variant-id="51670385066616"
+		data-product-title="Alpha + Charisma Bundle"
+		data-price="499.00">
+		Order Alpha + Charisma - $499
+		</button>
 
-						<p class="guarantee">30-day money-back guarantee</p>
-					</div>
-				</div>
-
+		<p class="guarantee">30-day money-back guarantee</p>
+	</div>
+</div>
 
 
 
@@ -200,12 +202,12 @@ import Footer from '../components/Footer.astro';
 
 						<div class="purchase-section">
 							
-							<button class="buy-button primary shopify-add-item"
-							data-variant-id="51670420717752"
-							data-product-title="Frequana"
-							data-price="649.00">
-							Order Frequana - $649
-							</button>
+						<button class="buy-button primary shopify-add-item"
+						data-variant-id="51670420717752"
+						data-product-title="Frequana"
+						data-price="649.00">
+						Order Frequana - $649
+						</button>
 
 
 							<p class="guarantee">30-day money-back guarantee</p>
@@ -239,12 +241,12 @@ import Footer from '../components/Footer.astro';
 
 						<div class="purchase-section">
 							
-							<button class="buy-button primary bundle shopify-add-item"
-							data-variant-id="51670504407224"
-							data-product-title="Complete Healing Bundle"
-							data-price="949.00">
-							Order Complete Bundle - $949
-							</button>
+						<button class="buy-button primary bundle shopify-add-item"
+						data-variant-id="51670504407224"
+						data-product-title="Complete Healing Bundle"
+						data-price="949.00">
+						Order Complete Bundle - $949
+						</button>
 
 
 							<p class="guarantee">30-day money-back guarantee + FREE shipping</p>
@@ -1480,11 +1482,37 @@ import Footer from '../components/Footer.astro';
         transform: translateY(-2px);
     }
 }
+
+
+.buy-button {
+    // Add padding that was missing
+    padding: 16px 32px !important;
+    margin: 10px 0 !important;
+    
+    // Ensure button is clickable
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+// Fix cart button positioning and styling
+.shopify-checkout {
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+    
+    // Ensure it's visible and clickable
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+
 </style>
 
 
 
 <script>
+// FIXED VERSION - Replace the entire script section in your Astro component
+
 document.addEventListener('DOMContentLoaded', function() {
 	
 	// Detectar si estamos en desarrollo
@@ -1525,56 +1553,55 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	}
 
-// FIXED: Mapeo de variant IDs problemáticos a Global IDs correctos
-const VARIANT_ID_MAP = {
-	'51670303506616': 'gid://shopify/ProductVariant/51670303506616',
-	'51670404956344': 'gid://shopify/ProductVariant/51670404956344', 
-	'51670385066616': 'gid://shopify/ProductVariant/51670385066616',
-	'51670420717752': 'gid://shopify/ProductVariant/51670420717752',
-	'51670504407224': 'gid://shopify/ProductVariant/51670504407224'
-};
-
+	// FIXED: Mapeo corregido con los variant IDs correctos
+	const VARIANT_ID_MAP = {
+		'51670303506616': 'gid://shopify/ProductVariant/51670303506616', // Alpha
+		'51670404956344': 'gid://shopify/ProductVariant/51670404956344', // Charisma  
+		'51670385066616': 'gid://shopify/ProductVariant/51670385066616', // Alpha+Charisma (FIXED)
+		'51670420717752': 'gid://shopify/ProductVariant/51670420717752', // Frequana
+		'51670504407224': 'gid://shopify/ProductVariant/51670504407224'  // Bundle
+	};
 
 	// TODO EL CÓDIGO DE PRODUCTOS (mantener igual)
-const productData = {
-	alpha: {
-		images: [
-			{ src: '/alpha-main.jpg', alt: 'Alpha Main' },
-			{ src: '/alpha-alt1.webp', alt: 'Alpha Alt 1' },
-			{ src: '/alpha-alt2.jpg', alt: 'Alpha Alt 2' },
-			{ src: '/alpha-alt3.jpg', alt: 'Alpha Alt 3' }
-		]
-	},
-	charisma: {
-		images: [
-			{ src: '/charisma-main.webp', alt: 'Charisma Main' },
-			{ src: '/charisma-alt1.jpg', alt: 'Charisma Alt 1' },
-			{ src: '/charisma-alt2.jpg', alt: 'Charisma Alt 2' }
-		]
-	},
-	'alpha-charisma': {
-		images: [
-			{ src: '/alphaandring.jpg', alt: 'Alpha + Charisma Bundle' },
-			{ src: '/alpha-main.jpg', alt: 'Alpha Wearable' },
-			{ src: '/charisma-main.webp', alt: 'Charisma Ring' }
-		]
-	},
-	frequana: {
-		images: [
-			{ src: '/frequana-main.jpg', alt: 'Frequana Main' },
-			{ src: '/frequana-alt1.jpg', alt: 'Frequana Alt 1' },
-			{ src: '/frequana-alt2.png', alt: 'Frequana Alt 2' }
-		]
-	},
-	bundle: {
-		images: [
-			{ src: '/pack-bundle.jpg', alt: 'Complete Bundle' },
-			{ src: '/alpha-main.jpg', alt: 'Alpha Included' },
-			{ src: '/charisma-main.webp', alt: 'Charisma Included' },
-			{ src: '/frequana-main.jpg', alt: 'Frequana Included' }
-		]
-	}
-};
+	const productData = {
+		alpha: {
+			images: [
+				{ src: '/alpha-main.jpg', alt: 'Alpha Main' },
+				{ src: '/alpha-alt1.webp', alt: 'Alpha Alt 1' },
+				{ src: '/alpha-alt2.jpg', alt: 'Alpha Alt 2' },
+				{ src: '/alpha-alt3.jpg', alt: 'Alpha Alt 3' }
+			]
+		},
+		charisma: {
+			images: [
+				{ src: '/charisma-main.webp', alt: 'Charisma Main' },
+				{ src: '/charisma-alt1.jpg', alt: 'Charisma Alt 1' },
+				{ src: '/charisma-alt2.jpg', alt: 'Charisma Alt 2' }
+			]
+		},
+		'alpha-charisma': {
+			images: [
+				{ src: '/alphaandring.jpg', alt: 'Alpha + Charisma Bundle' },
+				{ src: '/alpha-main.jpg', alt: 'Alpha Wearable' },
+				{ src: '/charisma-main.webp', alt: 'Charisma Ring' }
+			]
+		},
+		frequana: {
+			images: [
+				{ src: '/frequana-main.jpg', alt: 'Frequana Main' },
+				{ src: '/frequana-alt1.jpg', alt: 'Frequana Alt 1' },
+				{ src: '/frequana-alt2.png', alt: 'Frequana Alt 2' }
+			]
+		},
+		bundle: {
+			images: [
+				{ src: '/pack-bundle.jpg', alt: 'Complete Bundle' },
+				{ src: '/alpha-main.jpg', alt: 'Alpha Included' },
+				{ src: '/charisma-main.webp', alt: 'Charisma Included' },
+				{ src: '/frequana-main.jpg', alt: 'Frequana Included' }
+			]
+		}
+	};
 
 	// Get DOM elements
 	const tabButtons = document.querySelectorAll('.tab-button');
@@ -1766,598 +1793,401 @@ const productData = {
 
 	setTimeout(handleResize, 100);
 
-	// ============ SHOPIFY INTEGRATION - VERSIÓN CON FALLBACK ============
+	// ============ FIXED SHOPIFY INTEGRATION ============
 	
 	// Inicializar cuando Shopify esté listo O usar fallback
 	waitForShopify(() => {
-		// Clase para manejar carrito Shopify
-class ShopifyCart {
-	constructor() {
-		this.checkout = null;
-		this.isDev = isDevelopment && !window.SHOPIFY_CLIENT.checkout.create.toString().includes('fetch');
-		this.mockCart = []; // Para modo desarrollo
-		this.init();
-	}
-
-async init() {
-	try {
-		this.checkout = await window.SHOPIFY_CLIENT.checkout.create();
-		this.updateCartUI();
-		// Forzar actualización inicial
-		setTimeout(() => {
-			this.updateCartUI();
-			this.debugCart();
-		}, 100);
-		this.bindEvents();
-		this.createCheckoutModal();
 		
-		// AGREGAR ESTA LÍNEA:
-		if (!this.isDev) this.debugVariantIds();
-		
-		console.log('✅ Shopify cart initialized successfully');
-	} catch (error) {
-		console.error('❌ Error initializing Shopify cart:', error);
-		this.bindEvents();
-		this.createCheckoutModal();
-	}
-}
-
-createCheckoutModal() {
-	const modalHTML = `
-		<div id="checkout-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; overflow-y: auto;">
-			<div style="position: relative; width: 95%; max-width: 1000px; margin: 20px auto; background: white; border-radius: 12px; padding: 0; font-family: var(--base-font);">
-				<div style="padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
-					<h2 style="margin: 0; color: #2596be;">Your Cart</h2>
-					<button id="close-checkout" style="background: none; border: none; font-size: 28px; cursor: pointer; color: #666; padding: 5px;">×</button>
-				</div>
-				<div id="checkout-content" style="padding: 20px;">
-					<div id="cart-items-list"></div>
-					<div id="cart-total" style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #2596be;"></div>
-					<div style="margin-top: 20px; text-align: center;">
-						<button id="proceed-checkout" style="background: #2596be; color: white; border: none; padding: 16px 30px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; max-width: 300px;">
-							Proceed to Payment
-						</button>
-					</div>
-					<!-- Contenedor para el checkout embebido -->
-					<div id="embedded-checkout" style="display: none; margin-top: 30px; min-height: 600px;">
-						<div style="text-align: center; margin-bottom: 20px;">
-							<button id="back-to-cart" style="background: #6c757d; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer;">
-								← Back to Cart
-							</button>
-						</div>
-						<div id="shopify-checkout-container" style="width: 100%; min-height: 500px; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
-							<iframe id="shopify-checkout-frame" 
-								style="width: 100%; height: 600px; border: none; display: block;" 
-								src="" 
-								allow="payment">
-							</iframe>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	`;
-	
-	document.body.insertAdjacentHTML('beforeend', modalHTML);
-	
-	// Event listeners del modal
-	document.getElementById('close-checkout').addEventListener('click', () => {
-		this.closeCheckoutModal();
-	});
-	
-	document.getElementById('checkout-modal').addEventListener('click', (e) => {
-		if (e.target.id === 'checkout-modal') {
-			this.closeCheckoutModal();
-		}
-	});
-
-	document.getElementById('proceed-checkout').addEventListener('click', () => {
-		this.proceedToEmbeddedPayment();
-	});
-
-	document.getElementById('back-to-cart').addEventListener('click', () => {
-		this.showCartView();
-	});
-}
-
-bindEvents() {
-	document.querySelectorAll('.shopify-add-item').forEach(button => {
-		button.addEventListener('click', (e) => {
-			e.preventDefault();
-			
-			// FIXED: Convertir variant ID a Global ID
-			let variantId = e.target.dataset.variantId;
-			const title = e.target.dataset.productTitle || 'Producto';
-			const price = e.target.dataset.price || '399';
-			
-			// Convertir a Global ID si es necesario
-			if (variantId && !variantId.startsWith('gid://')) {
-				variantId = VARIANT_ID_MAP[variantId] || `gid://shopify/ProductVariant/${variantId}`;
+		// FIXED: Clase para manejar carrito Shopify
+		class ShopifyCart {
+			constructor() {
+				this.checkout = null;
+				this.isDev = isDevelopment;
+				this.mockCart = []; // Para modo desarrollo
+				this.init();
 			}
-			
-			console.log('🛒 Botón clickeado:', title, 'Global ID:', variantId);
-			
-			if (this.isDev) {
-				this.addToMockCart(variantId, title, price);
-			} else {
-				if (!variantId) {
-					alert('Error: Variant ID no encontrado');
+
+			async init() {
+				try {
+					this.checkout = await window.SHOPIFY_CLIENT.checkout.create();
+					this.updateCartUI();
+					this.bindEvents();
+					this.createCheckoutModal();
+					
+					console.log('✅ Shopify cart initialized successfully');
+				} catch (error) {
+					console.error('❌ Error initializing Shopify cart:', error);
+					this.bindEvents();
+					this.createCheckoutModal();
+				}
+			}
+
+			createCheckoutModal() {
+				const modalHTML = `
+					<div id="checkout-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; overflow-y: auto;">
+						<div style="position: relative; width: 95%; max-width: 1000px; margin: 20px auto; background: white; border-radius: 12px; padding: 0; font-family: var(--base-font);">
+							<div style="padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+								<h2 style="margin: 0; color: #2596be;">Your Cart</h2>
+								<button id="close-checkout" style="background: none; border: none; font-size: 28px; cursor: pointer; color: #666; padding: 5px;">×</button>
+							</div>
+							<div id="checkout-content" style="padding: 20px;">
+								<div id="cart-items-list"></div>
+								<div id="cart-total" style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #2596be;"></div>
+								<div style="margin-top: 20px; text-align: center;">
+									<button id="proceed-checkout" style="background: #2596be; color: white; border: none; padding: 16px 30px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; max-width: 300px;">
+										Proceed to Payment
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				`;
+				
+				document.body.insertAdjacentHTML('beforeend', modalHTML);
+				
+				// Event listeners del modal
+				document.getElementById('close-checkout').addEventListener('click', () => {
+					this.closeCheckoutModal();
+				});
+				
+				document.getElementById('checkout-modal').addEventListener('click', (e) => {
+					if (e.target.id === 'checkout-modal') {
+						this.closeCheckoutModal();
+					}
+				});
+
+				document.getElementById('proceed-checkout').addEventListener('click', () => {
+					this.proceedToPayment();
+				});
+			}
+
+			bindEvents() {
+				document.querySelectorAll('.shopify-add-item').forEach(button => {
+					button.addEventListener('click', (e) => {
+						e.preventDefault();
+						
+						// FIXED: Obtener datos del botón
+						let variantId = e.target.dataset.variantId;
+						const title = e.target.dataset.productTitle || 'Producto';
+						const price = e.target.dataset.price || '399';
+						
+						// FIXED: Convertir a Global ID si es necesario
+						if (variantId && !variantId.startsWith('gid://')) {
+							variantId = VARIANT_ID_MAP[variantId] || `gid://shopify/ProductVariant/${variantId}`;
+						}
+						
+						console.log('🛒 Agregando producto:', {
+							title,
+							variantId,
+							price,
+							isDev: this.isDev
+						});
+						
+						if (this.isDev) {
+							this.addToMockCart(variantId, title, price);
+						} else {
+							if (!variantId) {
+								console.error('❌ Error: Variant ID no encontrado');
+								alert('Error: Variant ID no encontrado');
+								return;
+							}
+							this.addToCart(variantId, 1, title);
+						}
+					});
+				});
+
+				// Cart button event
+				const checkoutButton = document.getElementById('cart-button');
+				if (checkoutButton) {
+					checkoutButton.addEventListener('click', (e) => {
+						e.preventDefault();
+						console.log('🛒 Cart button clicked');
+						this.openCheckoutModal();
+					});
+				}
+				
+				console.log('🔗 Event listeners agregados correctamente');
+			}
+
+			// FIXED: Método para desarrollo - carrito simulado
+			addToMockCart(variantId, title, price) {
+				const existingItem = this.mockCart.find(item => item.variantId === variantId);
+				
+				if (existingItem) {
+					existingItem.quantity += 1;
+				} else {
+					this.mockCart.push({
+						variantId: variantId,
+						title: title,
+						price: parseFloat(price),
+						quantity: 1,
+						id: 'mock-' + Date.now()
+					});
+				}
+				
+				console.log('🛒 Mock cart updated:', this.mockCart);
+				this.updateCartUI();
+				this.showAddToCartNotification(title + ' (Dev Mode)');
+			}
+
+			// FIXED: Método para producción
+			async addToCart(variantId, quantity, title) {
+				const lineItemsToAdd = [{
+					variantId: variantId,  // Ya viene como Global ID
+					quantity: parseInt(quantity)
+				}];
+
+				try {
+					console.log('📦 Agregando al carrito Shopify:', lineItemsToAdd);
+					this.checkout = await window.SHOPIFY_CLIENT.checkout.addLineItems(this.checkout.id, lineItemsToAdd);
+					this.updateCartUI();
+					this.showAddToCartNotification(title);
+					console.log('✅ Producto agregado exitosamente:', title);
+				} catch (error) {
+					console.error('❌ Error agregando al carrito:', error);
+					// Fallback a modo desarrollo
+					console.log('🔄 Usando fallback a modo desarrollo');
+					this.addToMockCart(variantId, title, '399');
+					this.showAddToCartNotification(title + ' (Fallback Mode)');
+				}
+			}
+
+			// FIXED: Actualizar UI del carrito
+			updateCartUI() {
+				const cartCount = document.querySelector('.shopify-cart-count');
+				if (!cartCount) {
+					console.warn('⚠️ Elemento .shopify-cart-count no encontrado');
 					return;
 				}
-				this.addToCart(variantId, 1, title);
-			}
-		});
-	});
-
-	// Cart button event
-	const checkoutButton = document.getElementById('cart-button');
-	if (checkoutButton) {
-		checkoutButton.addEventListener('click', (e) => {
-			e.preventDefault();
-			console.log('🛒 Cart button clicked');
-			this.openCheckoutModal();
-		});
-	}
-	
-	console.log('🔗 Event listeners agregados a los botones');
-}
-
-
-	// Método para desarrollo - carrito simulado
-addToMockCart(variantId, title, price) {
-	const existingItem = this.mockCart.find(item => item.variantId === variantId);
-	
-	if (existingItem) {
-		existingItem.quantity += 1;
-	} else {
-		this.mockCart.push({
-			variantId: variantId,
-			title: title,
-			price: parseFloat(price),
-			quantity: 1,
-			id: 'mock-' + Date.now()
-		});
-	}
-	
-	console.log('🛒 Mock cart updated:', this.mockCart);
-	this.debugCart(); // Para ver qué está pasando
-	this.updateCartUI();
-	this.showAddToCartNotification(title + ' (Dev Mode)');
-}
-
-debugCart() {
-	console.log('🔍 Debug Cart Status:');
-	console.log('- isDev:', this.isDev);
-	console.log('- mockCart:', this.mockCart);
-	console.log('- checkout exists:', !!this.checkout);
-	if (this.checkout) {
-		console.log('- checkout.lineItems:', this.checkout.lineItems);
-	}
-	
-	const cartCountEl = document.querySelector('.shopify-cart-count');
-	console.log('- cart count element:', cartCountEl);
-	console.log('- cart count text:', cartCountEl?.textContent);
-}
-
-async addToCart(variantId, quantity, title) {
-	// FIXED: Usar formato correcto para Shopify Buy SDK
-	const lineItemsToAdd = [{
-		variantId: variantId,  // Ya viene como Global ID
-		quantity: parseInt(quantity)
-	}];
-
-	try {
-		console.log('📦 Agregando al carrito:', lineItemsToAdd);
-		this.checkout = await window.SHOPIFY_CLIENT.checkout.addLineItems(this.checkout.id, lineItemsToAdd);
-		this.updateCartUI();
-		this.showAddToCartNotification(title);
-		console.log('✅ Producto agregado exitosamente:', title);
-	} catch (error) {
-		console.error('❌ Error agregando al carrito:', error);
-		// Fallback en caso de error
-		this.addToMockCart(variantId, title, '399');
-		this.showAddToCartNotification(title + ' (Usando modo fallback)');
-	}
-}
-
-updateCartUI() {
-	const cartCount = document.querySelector('.shopify-cart-count');
-	if (!cartCount) return;
-	
-	let totalItems = 0;
-	
-	if (this.isDev) {
-		totalItems = this.mockCart.reduce((total, item) => total + item.quantity, 0);
-		console.log('🛒 Dev mode - Mock cart items:', this.mockCart.length, 'Total quantity:', totalItems);
-	} else if (this.checkout && this.checkout.lineItems) {
-		totalItems = this.checkout.lineItems.reduce((total, item) => total + item.quantity, 0);
-		console.log('🛒 Prod mode - Line items:', this.checkout.lineItems.length, 'Total quantity:', totalItems);
-	}
-	
-	cartCount.textContent = totalItems;
-	console.log('🛒 Cart UI updated - Displaying:', totalItems, 'items');
-}
-
-	openCheckoutModal() {
-		const modal = document.getElementById('checkout-modal');
-		if (!modal) return;
-		
-		this.renderCartItems();
-		modal.style.display = 'block';
-		console.log('🛒 Modal de checkout abierto');
-	}
-
-	renderCartItems() {
-		const itemsList = document.getElementById('cart-items-list');
-		const cartTotal = document.getElementById('cart-total');
-		
-		if (!itemsList || !cartTotal) return;
-
-		if (this.isDev) {
-			// Modo desarrollo
-			if (this.mockCart.length === 0) {
-				itemsList.innerHTML = '<p style="text-align: center; color: #666; padding: 40px;">Tu carrito está vacío</p>';
-				cartTotal.innerHTML = '';
-				return;
-			}
-
-			let itemsHTML = '';
-			let total = 0;
-
-			this.mockCart.forEach((item, index) => {
-				const itemTotal = item.price * item.quantity;
-				total += itemTotal;
 				
-				itemsHTML += `
-					<div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 10px;">
-						<div style="flex: 1;">
-							<h4 style="margin: 0 0 5px 0; color: #333;">${item.title}</h4>
-							<p style="margin: 0; color: #666; font-size: 14px;">$${item.price.toFixed(2)} c/u</p>
-						</div>
-						<div style="display: flex; align-items: center; gap: 10px;">
-							<button onclick="window.shopifyCart.updateMockQuantity(${index}, ${item.quantity - 1})" style="background: #f0f0f0; border: none; padding: 0px 8px; width: 30px; height: 40px; border-radius: 4px; cursor: pointer;">-</button>
-							<span style="font-weight: 600; min-width: 20px; text-align: center;">${item.quantity}</span>
-							<button onclick="window.shopifyCart.updateMockQuantity(${index}, ${item.quantity + 1})" style="background: #f0f0f0; border: none; padding: 0px 8px; width: 30px; height: 40px; border-radius: 4px; cursor: pointer;">+</button>
-							<button onclick="window.shopifyCart.removeMockItem(${index})" style="background: #ff4757; color: white; border: none; padding: 0px 8px; border-radius: 4px; cursor: pointer; margin-left: 10px;">🗑</button>
-						</div>
-					</div>
-				`;
-			});
-
-			itemsList.innerHTML = itemsHTML;
-			cartTotal.innerHTML = `
-				<div style="text-align: right;">
-					<h3 style="margin: 0; color: #2596be;">Total: $${total.toFixed(2)}</h3>
-					<p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">DEV MODE - In production, this will be the real price</p>
-				</div>
-			`;
-		} else {
-			// Modo producción - usar datos reales de Shopify
-			if (!this.checkout || this.checkout.lineItems.length === 0) {
-				itemsList.innerHTML = '<p style="text-align: center; color: #666; padding: 40px;">Tu carrito está vacío</p>';
-				cartTotal.innerHTML = '';
-				return;
+				let totalItems = 0;
+				
+				if (this.isDev || this.mockCart.length > 0) {
+					totalItems = this.mockCart.reduce((total, item) => total + item.quantity, 0);
+					console.log('🛒 Dev/Mock mode - Total items:', totalItems);
+				} else if (this.checkout && this.checkout.lineItems) {
+					totalItems = this.checkout.lineItems.reduce((total, item) => total + item.quantity, 0);
+					console.log('🛒 Prod mode - Total items:', totalItems);
+				}
+				
+				cartCount.textContent = totalItems.toString();
+				console.log('✅ Cart UI updated - Displaying:', totalItems, 'items');
 			}
 
-			let itemsHTML = '';
-			this.checkout.lineItems.forEach((item, index) => {
-				itemsHTML += `
-					<div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 10px;">
-						<div style="flex: 1;">
-							<h4 style="margin: 0 0 5px 0; color: #333;">${item.title}</h4>
-							<p style="margin: 0; color: #666; font-size: 14px;">$${item.variant.price.amount} c/u</p>
-						</div>
-						<div style="display: flex; align-items: center; gap: 10px;">
-							<button onclick="window.shopifyCart.updateQuantity('${item.id}', ${item.quantity - 1})" style="background: #f0f0f0; border: none; width: 30px; height: 30px; border-radius: 4px; cursor: pointer;">-</button>
-							<span style="font-weight: 600; min-width: 20px; text-align: center;">${item.quantity}</span>
-							<button onclick="window.shopifyCart.updateQuantity('${item.id}', ${item.quantity + 1})" style="background: #f0f0f0; border: none; width: 30px; height: 30px; border-radius: 4px; cursor: pointer;">+</button>
-							<button onclick="window.shopifyCart.removeItem('${item.id}')" style="background: #ff4757; color: white; border: none; padding: 5px 8px; border-radius: 4px; cursor: pointer; margin-left: 10px;">🗑</button>
-						</div>
-					</div>
-				`;
-			});
-
-			itemsList.innerHTML = itemsHTML;
-			cartTotal.innerHTML = `
-				<div style="text-align: right;">
-					<h3 style="margin: 0; color: #2596be;">Total: $${this.checkout.totalPrice.amount}</h3>
-				</div>
-			`;
-		}
-	}
-
-	// Métodos para desarrollo
-	updateMockQuantity(index, newQuantity) {
-		if (newQuantity <= 0) {
-			this.removeMockItem(index);
-			return;
-		}
-		
-		this.mockCart[index].quantity = newQuantity;
-		this.updateCartUI();
-		this.renderCartItems();
-	}
-
-	removeMockItem(index) {
-		this.mockCart.splice(index, 1);
-		this.updateCartUI();
-		this.renderCartItems();
-	}
-
-	// Métodos para producción
-	async updateQuantity(lineItemId, newQuantity) {
-		if (newQuantity <= 0) {
-			this.removeItem(lineItemId);
-			return;
-		}
-
-		try {
-			const lineItemsToUpdate = [{
-				id: lineItemId,
-				quantity: newQuantity
-			}];
-
-			this.checkout = await window.SHOPIFY_CLIENT.checkout.updateLineItems(this.checkout.id, lineItemsToUpdate);
-			this.updateCartUI();
-			this.renderCartItems();
-			console.log('✅ Cantidad actualizada');
-		} catch (error) {
-			console.error('❌ Error actualizando cantidad:', error);
-		}
-	}
-
-	async removeItem(lineItemId) {
-		try {
-			this.checkout = await window.SHOPIFY_CLIENT.checkout.removeLineItems(this.checkout.id, [lineItemId]);
-			this.updateCartUI();
-			this.renderCartItems();
-			console.log('✅ Producto eliminado');
-		} catch (error) {
-			console.error('❌ Error eliminando producto:', error);
-		}
-	}
-
-proceedToPayment() {
-	let hasItems = false;
-	
-	if (this.isDev) {
-		hasItems = this.mockCart.length > 0;
-		if (!hasItems) {
-			alert('Tu carrito está vacío');
-			return;
-		}
-		
-		// Calcular total para modo desarrollo
-		const total = this.mockCart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-		
-		// Simular proceso de pago
-		const confirmation = confirm(`🚧 Modo desarrollo: ¿Proceder con el pago de $${total.toFixed(2)}?\n\nEn producción, esto te llevará al checkout real de Shopify.`);
-		
-		if (confirmation) {
-			alert('✅ ¡Gracias por tu compra! (Modo desarrollo)\n\nEn producción, serás redirigido al pago real.');
-			// Limpiar carrito de desarrollo
-			this.mockCart = [];
-			this.updateCartUI();
-			document.getElementById('checkout-modal').style.display = 'none';
-		}
-		return;
-	}
-	
-	// Modo producción
-	hasItems = this.checkout && this.checkout.lineItems && this.checkout.lineItems.length > 0;
-	
-	if (!hasItems) {
-		alert('Tu carrito está vacío');
-		return;
-	}
-	
-	// Redirigir al checkout de Shopify
-	window.open(this.checkout.webUrl, '_blank');
-	console.log('🛒 Redirecting to Shopify checkout:', this.checkout.webUrl);
-}
-
-proceedToEmbeddedPayment() {
-	let hasItems = false;
-	
-	if (this.isDev) {
-		hasItems = this.mockCart.length > 0;
-		if (!hasItems) {
-			alert('Tu carrito está vacío');
-			return;
-		}
-		
-		// En modo desarrollo, mostrar checkout simulado
-		this.showMockCheckout();
-		return;
-	}
-	
-	// Modo producción - usar checkout embebido real
-	hasItems = this.checkout && this.checkout.lineItems && this.checkout.lineItems.length > 0;
-	
-	if (!hasItems) {
-		alert('Tu carrito está vacío');
-		return;
-	}
-	
-	this.showEmbeddedCheckout();
-}
-
-showEmbeddedCheckout() {
-	// Ocultar vista del carrito
-	document.getElementById('cart-items-list').style.display = 'none';
-	document.getElementById('cart-total').style.display = 'none';
-	document.getElementById('proceed-checkout').style.display = 'none';
-	
-	// Mostrar checkout embebido
-	const embeddedCheckout = document.getElementById('embedded-checkout');
-	const checkoutFrame = document.getElementById('shopify-checkout-frame');
-	
-	// Configurar el iframe con la URL del checkout
-	checkoutFrame.src = this.checkout.webUrl;
-	
-	embeddedCheckout.style.display = 'block';
-	
-	console.log('🛒 Mostrando checkout embebido:', this.checkout.webUrl);
-	
-	// Escuchar eventos del iframe para detectar cuando se complete la compra
-	this.listenForCheckoutCompletion();
-}
-
-showMockCheckout() {
-	// Ocultar vista del carrito
-	document.getElementById('cart-items-list').style.display = 'none';
-	document.getElementById('cart-total').style.display = 'none';
-	document.getElementById('proceed-checkout').style.display = 'none';
-	
-	// Calcular total
-	const total = this.mockCart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-	
-	// Mostrar formulario de pago simulado
-	const embeddedCheckout = document.getElementById('embedded-checkout');
-	const checkoutContainer = document.getElementById('shopify-checkout-container');
-	
-	checkoutContainer.innerHTML = `
-		<div style="padding: 30px; background: #f8f9fa;">
-			<h3 style="color: #2596be; margin-bottom: 20px;">🚧 Development Mode - Simulated Payment</h3>
-			<div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-				<h4>Order Summary:</h4>
-				${this.mockCart.map(item => `
-					<div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-						<span>${item.title} (${item.quantity}x)</span>
-						<span>$${(item.price * item.quantity).toFixed(2)}</span>
-					</div>
-				`).join('')}
-				<hr>
-				<div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 18px;">
-					<span>Total:</span>
-					<span style="color: #2596be;">$${total.toFixed(2)}</span>
-				</div>
-			</div>
-			
-			<div style="background: white; padding: 20px; border-radius: 8px;">
-				<h4>Payment Information (Demo):</h4>
-				<div style="margin-bottom: 15px;">
-					<label style="display: block; margin-bottom: 5px;">Card Number:</label>
-					<input type="text" placeholder="4242 4242 4242 4242" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;" disabled>
-				</div>
-				<div style="display: flex; gap: 15px; margin-bottom: 15px;">
-					<div style="flex: 1;">
-						<label style="display: block; margin-bottom: 5px;">Expiry:</label>
-						<input type="text" placeholder="MM/YY" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;" disabled>
-					</div>
-					<div style="flex: 1;">
-						<label style="display: block; margin-bottom: 5px;">CVC:</label>
-						<input type="text" placeholder="123" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;" disabled>
-					</div>
-				</div>
-				<button id="complete-demo-payment" style="background: #28a745; color: white; border: none; padding: 15px 30px; border-radius: 6px; width: 100%; font-size: 16px; font-weight: 600; cursor: pointer;">
-					Complete Demo Payment - $${total.toFixed(2)}
-				</button>
-			</div>
-			
-			<p style="text-align: center; color: #666; margin-top: 20px; font-size: 14px;">
-				This is a development environment. In production, real payment processing will occur here.
-			</p>
-		</div>
-	`;
-	
-	embeddedCheckout.style.display = 'block';
-	
-	// Event listener para completar pago demo
-	document.getElementById('complete-demo-payment').addEventListener('click', () => {
-		this.completeMockPayment(total);
-	});
-}
-
-completeMockPayment(total) {
-	// Simular proceso de pago
-	const button = document.getElementById('complete-demo-payment');
-	button.textContent = 'Processing...';
-	button.disabled = true;
-	
-	setTimeout(() => {
-		alert(`✅ Payment Successful!\n\nAmount: $${total.toFixed(2)}\nOrder ID: DEV-${Date.now()}\n\nThank you for your purchase!`);
-		
-		// Limpiar carrito
-		this.mockCart = [];
-		this.updateCartUI();
-		
-		// Cerrar modal
-		this.closeCheckoutModal();
-	}, 2000);
-}
-
-showCartView() {
-	// Mostrar vista del carrito
-	document.getElementById('cart-items-list').style.display = 'block';
-	document.getElementById('cart-total').style.display = 'block';
-	document.getElementById('proceed-checkout').style.display = 'block';
-	
-	// Ocultar checkout embebido
-	document.getElementById('embedded-checkout').style.display = 'none';
-}
-
-closeCheckoutModal() {
-	document.getElementById('checkout-modal').style.display = 'none';
-	this.showCartView(); // Resetear a vista de carrito
-}
-
-listenForCheckoutCompletion() {
-	// Escuchar mensajes del iframe para detectar completación de compra
-	const handleMessage = (event) => {
-		// Verificar que el mensaje viene de Shopify
-		if (event.origin.includes('shopify')) {
-			if (event.data.type === 'checkout_completed') {
-				console.log('✅ Checkout completed successfully!');
+			openCheckoutModal() {
+				const modal = document.getElementById('checkout-modal');
+				if (!modal) return;
 				
-				// Limpiar carrito
-				this.checkout = null;
+				this.renderCartItems();
+				modal.style.display = 'block';
+				console.log('🛒 Modal de checkout abierto');
+			}
+
+			renderCartItems() {
+				const itemsList = document.getElementById('cart-items-list');
+				const cartTotal = document.getElementById('cart-total');
+				
+				if (!itemsList || !cartTotal) return;
+
+				// FIXED: Lógica de renderizado
+				const items = this.isDev || this.mockCart.length > 0 ? this.mockCart : 
+							  (this.checkout && this.checkout.lineItems ? this.checkout.lineItems : []);
+				
+				if (items.length === 0) {
+					itemsList.innerHTML = '<p style="text-align: center; color: #666; padding: 40px;">Tu carrito está vacío</p>';
+					cartTotal.innerHTML = '';
+					return;
+				}
+
+				let itemsHTML = '';
+				let total = 0;
+
+				if (this.isDev || this.mockCart.length > 0) {
+					// Modo desarrollo/mock
+					this.mockCart.forEach((item, index) => {
+						const itemTotal = item.price * item.quantity;
+						total += itemTotal;
+						
+						itemsHTML += `
+							<div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 10px;">
+								<div style="flex: 1;">
+									<h4 style="margin: 0 0 5px 0; color: #333;">${item.title}</h4>
+									<p style="margin: 0; color: #666; font-size: 14px;">$${item.price.toFixed(2)} c/u</p>
+								</div>
+								<div style="display: flex; align-items: center; gap: 10px;">
+									<button onclick="window.shopifyCart.updateMockQuantity(${index}, ${item.quantity - 1})" style="background: #f0f0f0; border: none; padding: 0px 8px; width: 30px; height: 40px; border-radius: 4px; cursor: pointer;">-</button>
+									<span style="font-weight: 600; min-width: 20px; text-align: center;">${item.quantity}</span>
+									<button onclick="window.shopifyCart.updateMockQuantity(${index}, ${item.quantity + 1})" style="background: #f0f0f0; border: none; padding: 0px 8px; width: 30px; height: 40px; border-radius: 4px; cursor: pointer;">+</button>
+									<button onclick="window.shopifyCart.removeMockItem(${index})" style="background: #ff4757; color: white; border: none; padding: 0px 8px; border-radius: 4px; cursor: pointer; margin-left: 10px;">🗑</button>
+								</div>
+							</div>
+						`;
+					});
+
+					cartTotal.innerHTML = `
+						<div style="text-align: right;">
+							<h3 style="margin: 0; color: #2596be;">Total: $${total.toFixed(2)}</h3>
+							${this.isDev ? '<p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">DEV MODE - Precios de prueba</p>' : ''}
+						</div>
+					`;
+				} else {
+					// Modo producción - usar datos reales de Shopify
+					this.checkout.lineItems.forEach((item, index) => {
+						const itemTotal = parseFloat(item.variant.price.amount) * item.quantity;
+						total += itemTotal;
+						
+						itemsHTML += `
+							<div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 10px;">
+								<div style="flex: 1;">
+									<h4 style="margin: 0 0 5px 0; color: #333;">${item.title}</h4>
+									<p style="margin: 0; color: #666; font-size: 14px;">$${item.variant.price.amount} c/u</p>
+								</div>
+								<div style="display: flex; align-items: center; gap: 10px;">
+									<button onclick="window.shopifyCart.updateQuantity('${item.id}', ${item.quantity - 1})" style="background: #f0f0f0; border: none; width: 30px; height: 30px; border-radius: 4px; cursor: pointer;">-</button>
+									<span style="font-weight: 600; min-width: 20px; text-align: center;">${item.quantity}</span>
+									<button onclick="window.shopifyCart.updateQuantity('${item.id}', ${item.quantity + 1})" style="background: #f0f0f0; border: none; width: 30px; height: 30px; border-radius: 4px; cursor: pointer;">+</button>
+									<button onclick="window.shopifyCart.removeItem('${item.id}')" style="background: #ff4757; color: white; border: none; padding: 5px 8px; border-radius: 4px; cursor: pointer; margin-left: 10px;">🗑</button>
+								</div>
+							</div>
+						`;
+					});
+
+					cartTotal.innerHTML = `
+						<div style="text-align: right;">
+							<h3 style="margin: 0; color: #2596be;">Total: $${this.checkout.totalPrice.amount}</h3>
+						</div>
+					`;
+				}
+
+				itemsList.innerHTML = itemsHTML;
+			}
+
+			// Métodos para desarrollo
+			updateMockQuantity(index, newQuantity) {
+				if (newQuantity <= 0) {
+					this.removeMockItem(index);
+					return;
+				}
+				
+				this.mockCart[index].quantity = newQuantity;
 				this.updateCartUI();
+				this.renderCartItems();
+			}
+
+			removeMockItem(index) {
+				this.mockCart.splice(index, 1);
+				this.updateCartUI();
+				this.renderCartItems();
+			}
+
+			// Métodos para producción
+			async updateQuantity(lineItemId, newQuantity) {
+				if (newQuantity <= 0) {
+					this.removeItem(lineItemId);
+					return;
+				}
+
+				try {
+					const lineItemsToUpdate = [{
+						id: lineItemId,
+						quantity: newQuantity
+					}];
+
+					this.checkout = await window.SHOPIFY_CLIENT.checkout.updateLineItems(this.checkout.id, lineItemsToUpdate);
+					this.updateCartUI();
+					this.renderCartItems();
+					console.log('✅ Cantidad actualizada');
+				} catch (error) {
+					console.error('❌ Error actualizando cantidad:', error);
+				}
+			}
+
+			async removeItem(lineItemId) {
+				try {
+					this.checkout = await window.SHOPIFY_CLIENT.checkout.removeLineItems(this.checkout.id, [lineItemId]);
+					this.updateCartUI();
+					this.renderCartItems();
+					console.log('✅ Producto eliminado');
+				} catch (error) {
+					console.error('❌ Error eliminando producto:', error);
+				}
+			}
+
+			proceedToPayment() {
+				let hasItems = false;
 				
-				// Mostrar mensaje de éxito
-				alert('✅ Payment Successful! Thank you for your purchase!');
+				if (this.isDev || this.mockCart.length > 0) {
+					hasItems = this.mockCart.length > 0;
+					if (!hasItems) {
+						alert('Tu carrito está vacío');
+						return;
+					}
+					
+					// Calcular total para modo desarrollo
+					const total = this.mockCart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+					
+					// Simular proceso de pago
+					const confirmation = confirm(`🚧 Modo desarrollo: ¿Proceder con el pago de $${total.toFixed(2)}?\n\nEn producción, esto te llevará al checkout real de Shopify.`);
+					
+					if (confirmation) {
+						alert('✅ ¡Gracias por tu compra! (Modo desarrollo)\n\nEn producción, serás redirigido al pago real.');
+						// Limpiar carrito de desarrollo
+						this.mockCart = [];
+						this.updateCartUI();
+						document.getElementById('checkout-modal').style.display = 'none';
+					}
+					return;
+				}
 				
-				// Cerrar modal
-				this.closeCheckoutModal();
+				// Modo producción
+				hasItems = this.checkout && this.checkout.lineItems && this.checkout.lineItems.length > 0;
 				
-				// Remover listener
-				window.removeEventListener('message', handleMessage);
+				if (!hasItems) {
+					alert('Tu carrito está vacío');
+					return;
+				}
+				
+				// Redirigir al checkout de Shopify
+				window.open(this.checkout.webUrl, '_blank');
+				console.log('🛒 Redirecting to Shopify checkout:', this.checkout.webUrl);
+			}
+
+			closeCheckoutModal() {
+				const modal = document.getElementById('checkout-modal');
+				if (modal) {
+					modal.style.display = 'none';
+				}
+			}
+
+			showAddToCartNotification(productTitle) {
+				const notification = document.createElement('div');
+				notification.style.cssText = `
+					position: fixed;
+					top: 20px;
+					right: 20px;
+					background: ${this.isDev ? '#ff6b35' : '#2596be'};
+					color: white;
+					padding: 15px 20px;
+					border-radius: 8px;
+					z-index: 10000;
+					font-weight: 600;
+					box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+					max-width: 300px;
+					font-family: var(--base-font);
+				`;
+				notification.textContent = `✓ ${productTitle} agregado al carrito`;
+				
+				document.body.appendChild(notification);
+				
+				setTimeout(() => {
+					if (document.body.contains(notification)) {
+						document.body.removeChild(notification);
+					}
+				}, 3000);
 			}
 		}
-	};
-	
-	window.addEventListener('message', handleMessage);
-}
 
-	showAddToCartNotification(productTitle) {
-		const notification = document.createElement('div');
-		notification.style.cssText = `
-			position: fixed;
-			top: 20px;
-			right: 20px;
-			background: ${this.isDev ? '#ff6b35' : '#2596be'};
-			color: white;
-			padding: 15px 20px;
-			border-radius: 8px;
-			z-index: 10000;
-			font-weight: 600;
-			box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-			max-width: 300px;
-			font-family: var(--base-font);
-		`;
-		notification.textContent = `✓ ${productTitle} added to cart`;
-		
-		document.body.appendChild(notification);
-		
-		setTimeout(() => {
-			if (document.body.contains(notification)) {
-				document.body.removeChild(notification);
-			}
-		}, 3000);
-	}
-}
-
-		// Inicializar carrito Shopify
+		// FIXED: Inicializar carrito Shopify
 		window.shopifyCart = new ShopifyCart();
 		console.log('🚀 Shopify integration loaded successfully');
 	});
