@@ -1766,10 +1766,10 @@ document.addEventListener('DOMContentLoaded', function() {
 										<input type="text" id="cardholder-name" placeholder="Nombre del titular" style="padding: 12px; border: 1px solid #ddd; border-radius: 6px;">
 									</div>
 								</div>
-								<button id="proceed-checkout" style="background: #2596be; color: white; border: none; padding: 16px 30px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; max-width: 300px;">
+								<button id="proceed-checkout" style="background: #2596be; color: white; border: none; padding: 0px 30px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; max-width: 300px;">
 									Proceed to Payment
 								</button>
-								<button id="complete-payment" style="display: none; background: #4CAF50; color: white; border: none; padding: 16px 30px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; max-width: 300px;">
+								<button id="complete-payment" style="display: none; background: #4CAF50; color: white; border: none; padding: 0px 30px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; max-width: 300px;">
 									Complete Payment
 								</button>
 							</div>
@@ -2008,7 +2008,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				max-width: 300px;
 				font-family: var(--base-font);
 			`;
-			notification.textContent = `✓ ${productTitle} agregado al carrito`;
+			notification.textContent = `✓ ${productTitle} added to cart`;
 			
 			document.body.appendChild(notification);
 			

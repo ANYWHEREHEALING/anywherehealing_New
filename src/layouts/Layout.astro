@@ -374,6 +374,29 @@ window.addEventListener('load', function() {
 .snipcart-base-button {
    padding: 0px 16px !important;
 }
+
+
+/* Centrar los botones de checkout */
+#checkout-content > div:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+#proceed-checkout,
+#complete-payment {
+    margin: 0 auto !important;
+}
+
+/* Para centrar mejor el formulario de pago también */
+#payment-form {
+    text-align: center;
+}
+
+#payment-form > div {
+    margin: 0 auto;
+}
 	
 	
 </style>
