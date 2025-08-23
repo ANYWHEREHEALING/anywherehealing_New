@@ -632,14 +632,14 @@ import ClinicalResult2 from '../assets/clinical-result-2.jpg'
   }
 </style>
 
-<script>
+<script define:vars={{clinicalImage1: ClinicalResult1.src, clinicalImage2: ClinicalResult2.src}}>
   // Gallery functionality with optimized code
   class ImageGallery {
     constructor() {
-this.images = [
-  ClinicalResult1.src,
-  ClinicalResult2.src
-];
+      this.images = [
+        clinicalImage1,
+        clinicalImage2
+      ];
       this.currentIndex = 0;
       this.modal = null;
       this.init();
