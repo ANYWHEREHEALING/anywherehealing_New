@@ -327,7 +327,8 @@ import Footer from '../components/Footer.astro';
 								<li>Connectivity: Bluetooth 5.0</li>
 								<li>Compatibility: iOS and Android</li>
 								<li>Weight: 300g</li>
-								<li>Materials: Medical-grade silicone</li>
+								<li>Hypoallergenic materials</li>
+								<li>Scratch-resistant sapphire screen</li>
 							</ul>
 						</div>
 						<div class="spec-category">
@@ -1782,6 +1783,11 @@ async init() {
 	try {
 		this.checkout = await window.SHOPIFY_CLIENT.checkout.create();
 		this.updateCartUI();
+		// Forzar actualización inicial
+		setTimeout(() => {
+			this.updateCartUI();
+			this.debugCart();
+		}, 100);
 		this.bindEvents();
 		this.createCheckoutModal();
 		
@@ -1796,44 +1802,63 @@ async init() {
 	}
 }
 
-	createCheckoutModal() {
-		const modalHTML = `
-			<div id="checkout-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; overflow-y: auto;">
-				<div style="position: relative; width: 95%; max-width: 900px; margin: 20px auto; background: white; border-radius: 12px; padding: 0; font-family: var(--base-font);">
-					<div style="padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
-						<h2 style="margin: 0; color: #2596be;">Your Cart</h2>
-						<button id="close-checkout" style="background: none; border: none; font-size: 28px; cursor: pointer; color: #666; padding: 5px;">×</button>
+createCheckoutModal() {
+	const modalHTML = `
+		<div id="checkout-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; overflow-y: auto;">
+			<div style="position: relative; width: 95%; max-width: 1000px; margin: 20px auto; background: white; border-radius: 12px; padding: 0; font-family: var(--base-font);">
+				<div style="padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+					<h2 style="margin: 0; color: #2596be;">Your Cart</h2>
+					<button id="close-checkout" style="background: none; border: none; font-size: 28px; cursor: pointer; color: #666; padding: 5px;">×</button>
+				</div>
+				<div id="checkout-content" style="padding: 20px;">
+					<div id="cart-items-list"></div>
+					<div id="cart-total" style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #2596be;"></div>
+					<div style="margin-top: 20px; text-align: center;">
+						<button id="proceed-checkout" style="background: #2596be; color: white; border: none; padding: 16px 30px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; max-width: 300px;">
+							Proceed to Payment
+						</button>
 					</div>
-					<div style="padding: 20px;">
-						<div id="cart-items-list"></div>
-						<div id="cart-total" style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #2596be;"></div>
-						<div style="margin-top: 20px; text-align: center;">
-							<button id="proceed-checkout" style="background: #2596be; color: white; border: none; padding: 0px 30px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; max-width: 300px;">
-								Proceed to Payment
+					<!-- Contenedor para el checkout embebido -->
+					<div id="embedded-checkout" style="display: none; margin-top: 30px; min-height: 600px;">
+						<div style="text-align: center; margin-bottom: 20px;">
+							<button id="back-to-cart" style="background: #6c757d; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer;">
+								← Back to Cart
 							</button>
+						</div>
+						<div id="shopify-checkout-container" style="width: 100%; min-height: 500px; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
+							<iframe id="shopify-checkout-frame" 
+								style="width: 100%; height: 600px; border: none; display: block;" 
+								src="" 
+								allow="payment">
+							</iframe>
 						</div>
 					</div>
 				</div>
 			</div>
-		`;
-		
-		document.body.insertAdjacentHTML('beforeend', modalHTML);
-		
-		// Event listeners del modal
-		document.getElementById('close-checkout').addEventListener('click', () => {
-			document.getElementById('checkout-modal').style.display = 'none';
-		});
-		
-		document.getElementById('checkout-modal').addEventListener('click', (e) => {
-			if (e.target.id === 'checkout-modal') {
-				document.getElementById('checkout-modal').style.display = 'none';
-			}
-		});
+		</div>
+	`;
+	
+	document.body.insertAdjacentHTML('beforeend', modalHTML);
+	
+	// Event listeners del modal
+	document.getElementById('close-checkout').addEventListener('click', () => {
+		this.closeCheckoutModal();
+	});
+	
+	document.getElementById('checkout-modal').addEventListener('click', (e) => {
+		if (e.target.id === 'checkout-modal') {
+			this.closeCheckoutModal();
+		}
+	});
 
-		document.getElementById('proceed-checkout').addEventListener('click', () => {
-			this.proceedToPayment();
-		});
-	}
+	document.getElementById('proceed-checkout').addEventListener('click', () => {
+		this.proceedToEmbeddedPayment();
+	});
+
+	document.getElementById('back-to-cart').addEventListener('click', () => {
+		this.showCartView();
+	});
+}
 
 bindEvents() {
 	document.querySelectorAll('.shopify-add-item').forEach(button => {
@@ -1895,8 +1920,23 @@ addToMockCart(variantId, title, price) {
 	}
 	
 	console.log('🛒 Mock cart updated:', this.mockCart);
+	this.debugCart(); // Para ver qué está pasando
 	this.updateCartUI();
 	this.showAddToCartNotification(title + ' (Dev Mode)');
+}
+
+debugCart() {
+	console.log('🔍 Debug Cart Status:');
+	console.log('- isDev:', this.isDev);
+	console.log('- mockCart:', this.mockCart);
+	console.log('- checkout exists:', !!this.checkout);
+	if (this.checkout) {
+		console.log('- checkout.lineItems:', this.checkout.lineItems);
+	}
+	
+	const cartCountEl = document.querySelector('.shopify-cart-count');
+	console.log('- cart count element:', cartCountEl);
+	console.log('- cart count text:', cartCountEl?.textContent);
 }
 
 async addToCart(variantId, quantity, title) {
@@ -1928,12 +1968,14 @@ updateCartUI() {
 	
 	if (this.isDev) {
 		totalItems = this.mockCart.reduce((total, item) => total + item.quantity, 0);
+		console.log('🛒 Dev mode - Mock cart items:', this.mockCart.length, 'Total quantity:', totalItems);
 	} else if (this.checkout && this.checkout.lineItems) {
 		totalItems = this.checkout.lineItems.reduce((total, item) => total + item.quantity, 0);
+		console.log('🛒 Prod mode - Line items:', this.checkout.lineItems.length, 'Total quantity:', totalItems);
 	}
 	
 	cartCount.textContent = totalItems;
-	console.log('🛒 Cart updated - Total items:', totalItems);
+	console.log('🛒 Cart UI updated - Displaying:', totalItems, 'items');
 }
 
 	openCheckoutModal() {
@@ -2075,42 +2117,217 @@ updateCartUI() {
 		}
 	}
 
-	proceedToPayment() {
-		if (this.isDev) {
-			alert('🚧 Development mode: In production here the real payment will be processed with Shopify');
+proceedToPayment() {
+	let hasItems = false;
+	
+	if (this.isDev) {
+		hasItems = this.mockCart.length > 0;
+		if (!hasItems) {
+			alert('Tu carrito está vacío');
 			return;
 		}
-
-		if (this.checkout && this.checkout.lineItems.length > 0) {
-			// Crear iframe para checkout de pago
-			const checkoutFrame = document.getElementById('shopify-checkout-frame');
-			if (checkoutFrame) {
-				checkoutFrame.src = this.checkout.webUrl;
-				checkoutFrame.style.display = 'block';
-				
-				// Ocultar la lista de productos y mostrar solo el checkout
-				document.getElementById('cart-items-list').style.display = 'none';
-				document.getElementById('cart-total').style.display = 'none';
-				document.querySelector('#proceed-checkout').style.display = 'none';
-				
-				// Añadir botón para volver al carrito
-				const backButton = document.createElement('button');
-				backButton.innerHTML = '← Volver al carrito';
-				backButton.style.cssText = 'background: #6c757d; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin-bottom: 15px;';
-				backButton.addEventListener('click', () => {
-					document.getElementById('cart-items-list').style.display = 'block';
-					document.getElementById('cart-total').style.display = 'block';
-					document.querySelector('#proceed-checkout').style.display = 'block';
-					checkoutFrame.style.display = 'none';
-					backButton.remove();
-				});
-				
-				document.getElementById('checkout-content').insertBefore(backButton, checkoutFrame);
-			}
-		} else {
-			alert('Tu carrito está vacío');
+		
+		// Calcular total para modo desarrollo
+		const total = this.mockCart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+		
+		// Simular proceso de pago
+		const confirmation = confirm(`🚧 Modo desarrollo: ¿Proceder con el pago de $${total.toFixed(2)}?\n\nEn producción, esto te llevará al checkout real de Shopify.`);
+		
+		if (confirmation) {
+			alert('✅ ¡Gracias por tu compra! (Modo desarrollo)\n\nEn producción, serás redirigido al pago real.');
+			// Limpiar carrito de desarrollo
+			this.mockCart = [];
+			this.updateCartUI();
+			document.getElementById('checkout-modal').style.display = 'none';
 		}
+		return;
 	}
+	
+	// Modo producción
+	hasItems = this.checkout && this.checkout.lineItems && this.checkout.lineItems.length > 0;
+	
+	if (!hasItems) {
+		alert('Tu carrito está vacío');
+		return;
+	}
+	
+	// Redirigir al checkout de Shopify
+	window.open(this.checkout.webUrl, '_blank');
+	console.log('🛒 Redirecting to Shopify checkout:', this.checkout.webUrl);
+}
+
+proceedToEmbeddedPayment() {
+	let hasItems = false;
+	
+	if (this.isDev) {
+		hasItems = this.mockCart.length > 0;
+		if (!hasItems) {
+			alert('Tu carrito está vacío');
+			return;
+		}
+		
+		// En modo desarrollo, mostrar checkout simulado
+		this.showMockCheckout();
+		return;
+	}
+	
+	// Modo producción - usar checkout embebido real
+	hasItems = this.checkout && this.checkout.lineItems && this.checkout.lineItems.length > 0;
+	
+	if (!hasItems) {
+		alert('Tu carrito está vacío');
+		return;
+	}
+	
+	this.showEmbeddedCheckout();
+}
+
+showEmbeddedCheckout() {
+	// Ocultar vista del carrito
+	document.getElementById('cart-items-list').style.display = 'none';
+	document.getElementById('cart-total').style.display = 'none';
+	document.getElementById('proceed-checkout').style.display = 'none';
+	
+	// Mostrar checkout embebido
+	const embeddedCheckout = document.getElementById('embedded-checkout');
+	const checkoutFrame = document.getElementById('shopify-checkout-frame');
+	
+	// Configurar el iframe con la URL del checkout
+	checkoutFrame.src = this.checkout.webUrl;
+	
+	embeddedCheckout.style.display = 'block';
+	
+	console.log('🛒 Mostrando checkout embebido:', this.checkout.webUrl);
+	
+	// Escuchar eventos del iframe para detectar cuando se complete la compra
+	this.listenForCheckoutCompletion();
+}
+
+showMockCheckout() {
+	// Ocultar vista del carrito
+	document.getElementById('cart-items-list').style.display = 'none';
+	document.getElementById('cart-total').style.display = 'none';
+	document.getElementById('proceed-checkout').style.display = 'none';
+	
+	// Calcular total
+	const total = this.mockCart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+	
+	// Mostrar formulario de pago simulado
+	const embeddedCheckout = document.getElementById('embedded-checkout');
+	const checkoutContainer = document.getElementById('shopify-checkout-container');
+	
+	checkoutContainer.innerHTML = `
+		<div style="padding: 30px; background: #f8f9fa;">
+			<h3 style="color: #2596be; margin-bottom: 20px;">🚧 Development Mode - Simulated Payment</h3>
+			<div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+				<h4>Order Summary:</h4>
+				${this.mockCart.map(item => `
+					<div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+						<span>${item.title} (${item.quantity}x)</span>
+						<span>$${(item.price * item.quantity).toFixed(2)}</span>
+					</div>
+				`).join('')}
+				<hr>
+				<div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 18px;">
+					<span>Total:</span>
+					<span style="color: #2596be;">$${total.toFixed(2)}</span>
+				</div>
+			</div>
+			
+			<div style="background: white; padding: 20px; border-radius: 8px;">
+				<h4>Payment Information (Demo):</h4>
+				<div style="margin-bottom: 15px;">
+					<label style="display: block; margin-bottom: 5px;">Card Number:</label>
+					<input type="text" placeholder="4242 4242 4242 4242" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;" disabled>
+				</div>
+				<div style="display: flex; gap: 15px; margin-bottom: 15px;">
+					<div style="flex: 1;">
+						<label style="display: block; margin-bottom: 5px;">Expiry:</label>
+						<input type="text" placeholder="MM/YY" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;" disabled>
+					</div>
+					<div style="flex: 1;">
+						<label style="display: block; margin-bottom: 5px;">CVC:</label>
+						<input type="text" placeholder="123" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;" disabled>
+					</div>
+				</div>
+				<button id="complete-demo-payment" style="background: #28a745; color: white; border: none; padding: 15px 30px; border-radius: 6px; width: 100%; font-size: 16px; font-weight: 600; cursor: pointer;">
+					Complete Demo Payment - $${total.toFixed(2)}
+				</button>
+			</div>
+			
+			<p style="text-align: center; color: #666; margin-top: 20px; font-size: 14px;">
+				This is a development environment. In production, real payment processing will occur here.
+			</p>
+		</div>
+	`;
+	
+	embeddedCheckout.style.display = 'block';
+	
+	// Event listener para completar pago demo
+	document.getElementById('complete-demo-payment').addEventListener('click', () => {
+		this.completeMockPayment(total);
+	});
+}
+
+completeMockPayment(total) {
+	// Simular proceso de pago
+	const button = document.getElementById('complete-demo-payment');
+	button.textContent = 'Processing...';
+	button.disabled = true;
+	
+	setTimeout(() => {
+		alert(`✅ Payment Successful!\n\nAmount: $${total.toFixed(2)}\nOrder ID: DEV-${Date.now()}\n\nThank you for your purchase!`);
+		
+		// Limpiar carrito
+		this.mockCart = [];
+		this.updateCartUI();
+		
+		// Cerrar modal
+		this.closeCheckoutModal();
+	}, 2000);
+}
+
+showCartView() {
+	// Mostrar vista del carrito
+	document.getElementById('cart-items-list').style.display = 'block';
+	document.getElementById('cart-total').style.display = 'block';
+	document.getElementById('proceed-checkout').style.display = 'block';
+	
+	// Ocultar checkout embebido
+	document.getElementById('embedded-checkout').style.display = 'none';
+}
+
+closeCheckoutModal() {
+	document.getElementById('checkout-modal').style.display = 'none';
+	this.showCartView(); // Resetear a vista de carrito
+}
+
+listenForCheckoutCompletion() {
+	// Escuchar mensajes del iframe para detectar completación de compra
+	const handleMessage = (event) => {
+		// Verificar que el mensaje viene de Shopify
+		if (event.origin.includes('shopify')) {
+			if (event.data.type === 'checkout_completed') {
+				console.log('✅ Checkout completed successfully!');
+				
+				// Limpiar carrito
+				this.checkout = null;
+				this.updateCartUI();
+				
+				// Mostrar mensaje de éxito
+				alert('✅ Payment Successful! Thank you for your purchase!');
+				
+				// Cerrar modal
+				this.closeCheckoutModal();
+				
+				// Remover listener
+				window.removeEventListener('message', handleMessage);
+			}
+		}
+	};
+	
+	window.addEventListener('message', handleMessage);
+}
 
 	showAddToCartNotification(productTitle) {
 		const notification = document.createElement('div');
