@@ -20,7 +20,8 @@ const { title } = Astro.props;
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
 		
 		<!-- shopify sdk -->
-			<script src="https://cdn.jsdelivr.net/npm/shopify-buy@2/dist/shopify-buy.umd.min.js"></script>
+			<script src="https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js"></script>
+
 
 		<meta property="og:title" content="{title}" />
 		<meta property="og:description" content="Discover revolutionary healing devices powered by bioresonance technology." />
@@ -34,33 +35,33 @@ const { title } = Astro.props;
 		
 		<!-- CONFIGURACIÓN SHOPIFY - DESPUÉS DEL SDK -->
 		<script>
-			// Esperar a que el SDK se cargue completamente
-			window.addEventListener('load', function() {
-				// Verificar que ShopifyBuy existe
-				if (typeof ShopifyBuy !== 'undefined') {
-					console.log('✅ ShopifyBuy SDK loaded successfully');
-					
-					// Configuración global de Shopify
-					window.SHOPIFY_CONFIG = {
-						domain: '1gnria-yq.myshopify.com', // SIN https://
-						storefrontAccessToken: '8a0c7906e5a62af482193267282e546a'
-					};
-					
-					// Inicializar cliente inmediatamente
-					try {
-						window.SHOPIFY_CLIENT = ShopifyBuy.buildClient({
-							domain: window.SHOPIFY_CONFIG.domain,
-							storefrontAccessToken: window.SHOPIFY_CONFIG.storefrontAccessToken
-						});
-						console.log('✅ Shopify client initialized');
-					} catch (error) {
-						console.error('❌ Error creating Shopify client:', error);
-					}
-				} else {
-					console.error('❌ ShopifyBuy SDK failed to load');
-				}
+// Esperar a que el SDK se cargue completamente
+window.addEventListener('load', function() {
+	// Verificar que ShopifyBuy existe
+	if (typeof ShopifyBuy !== 'undefined') {
+		console.log('✅ ShopifyBuy SDK loaded successfully');
+		
+		// Configuración global de Shopify
+		window.SHOPIFY_CONFIG = {
+			domain: '1gnria-yq.myshopify.com',
+			storefrontAccessToken: 'b57ad6e84b9aa40d64b6c2d85b6e24a0' // Token correcto
+		};
+		
+		// Inicializar cliente inmediatamente
+		try {
+			window.SHOPIFY_CLIENT = ShopifyBuy.buildClient({
+				domain: window.SHOPIFY_CONFIG.domain,
+				storefrontAccessToken: window.SHOPIFY_CONFIG.storefrontAccessToken
 			});
-		</script>
+			console.log('✅ Shopify client initialized');
+		} catch (error) {
+			console.error('❌ Error creating Shopify client:', error);
+		}
+	} else {
+		console.error('❌ ShopifyBuy SDK failed to load');
+	}
+});
+</script>
 
 		
 	</body>
