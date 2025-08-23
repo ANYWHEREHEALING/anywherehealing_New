@@ -570,7 +570,7 @@ import Footer from '../components/Footer.astro';
 </section>
 
 <!-- Botón del carrito flotante -->
-<button class="shopify-checkout" style="position:fixed;bottom:20px;left:20px;z-index:1000;">
+<button class="shopify-checkout" id="cart-button" style="position:fixed;bottom:20px;left:20px;z-index:1000;">
 	🛒 Cart (<span class="shopify-cart-count">0</span>)
 </button>
 
@@ -1843,35 +1843,41 @@ class ShopifyCart {
 			});
 		});
 
-		const checkoutButton = document.querySelector('.shopify-checkout');
-		if (checkoutButton) {
-			checkoutButton.addEventListener('click', () => {
-				this.openCheckoutModal();
-			});
-		}
+// Usar el ID específico del botón
+const checkoutButton = document.getElementById('cart-button');
+if (checkoutButton) {
+	checkoutButton.addEventListener('click', (e) => {
+		e.preventDefault();
+		console.log('🛒 Cart button clicked');
+		this.openCheckoutModal();
+	});
+} else {
+	console.warn('⚠️ Cart button not found');
+}
 		
 		console.log('🔗 Event listeners agregados a los botones');
 	}
 
 	// Método para desarrollo - carrito simulado
-	addToMockCart(variantId, title, price) {
-		const existingItem = this.mockCart.find(item => item.variantId === variantId);
-		
-		if (existingItem) {
-			existingItem.quantity += 1;
-		} else {
-			this.mockCart.push({
-				variantId: variantId,
-				title: title,
-				price: parseFloat(price),
-				quantity: 1,
-				id: 'mock-' + Date.now()
-			});
-		}
-		
-		this.updateCartUI();
-		this.showAddToCartNotification(title + ' (Dev Mode)');
+addToMockCart(variantId, title, price) {
+	const existingItem = this.mockCart.find(item => item.variantId === variantId);
+	
+	if (existingItem) {
+		existingItem.quantity += 1;
+	} else {
+		this.mockCart.push({
+			variantId: variantId,
+			title: title,
+			price: parseFloat(price),
+			quantity: 1,
+			id: 'mock-' + Date.now()
+		});
 	}
+	
+	console.log('🛒 Mock cart updated:', this.mockCart);
+	this.updateCartUI();
+	this.showAddToCartNotification(title + ' (Dev Mode)');
+}
 
 	async addToCart(variantId, quantity, title) {
 		const lineItemsToAdd = [{
@@ -1890,18 +1896,21 @@ class ShopifyCart {
 		}
 	}
 
-	updateCartUI() {
-		const cartCount = document.querySelector('.shopify-cart-count');
-		if (cartCount) {
-			if (this.isDev) {
-				const totalItems = this.mockCart.reduce((total, item) => total + item.quantity, 0);
-				cartCount.textContent = totalItems;
-			} else if (this.checkout) {
-				const totalItems = this.checkout.lineItems.reduce((total, item) => total + item.quantity, 0);
-				cartCount.textContent = totalItems;
-			}
-		}
+updateCartUI() {
+	const cartCount = document.querySelector('.shopify-cart-count');
+	if (!cartCount) return;
+	
+	let totalItems = 0;
+	
+	if (this.isDev) {
+		totalItems = this.mockCart.reduce((total, item) => total + item.quantity, 0);
+	} else if (this.checkout && this.checkout.lineItems) {
+		totalItems = this.checkout.lineItems.reduce((total, item) => total + item.quantity, 0);
 	}
+	
+	cartCount.textContent = totalItems;
+	console.log('🛒 Cart updated - Total items:', totalItems);
+}
 
 	openCheckoutModal() {
 		const modal = document.getElementById('checkout-modal');
