@@ -1524,6 +1524,16 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	}
 
+// FIXED: Mapeo de variant IDs problemáticos a Global IDs correctos
+const VARIANT_ID_MAP = {
+	'51670303506616': 'gid://shopify/ProductVariant/51670303506616',
+	'51670404956344': 'gid://shopify/ProductVariant/51670404956344', 
+	'51670385066616': 'gid://shopify/ProductVariant/51670385066616',
+	'51670420717752': 'gid://shopify/ProductVariant/51670420717752',
+	'51670504407224': 'gid://shopify/ProductVariant/51670504407224'
+};
+
+
 	// TODO EL CÓDIGO DE PRODUCTOS (mantener igual)
 const productData = {
 	alpha: {
@@ -1768,19 +1778,23 @@ class ShopifyCart {
 		this.init();
 	}
 
-	async init() {
-		try {
-			this.checkout = await window.SHOPIFY_CLIENT.checkout.create();
-			this.updateCartUI();
-			this.bindEvents();
-			this.createCheckoutModal();
-			console.log('✅ Shopify cart initialized successfully');
-		} catch (error) {
-			console.error('❌ Error initializing Shopify cart:', error);
-			this.bindEvents();
-			this.createCheckoutModal();
-		}
+async init() {
+	try {
+		this.checkout = await window.SHOPIFY_CLIENT.checkout.create();
+		this.updateCartUI();
+		this.bindEvents();
+		this.createCheckoutModal();
+		
+		// AGREGAR ESTA LÍNEA:
+		if (!this.isDev) this.debugVariantIds();
+		
+		console.log('✅ Shopify cart initialized successfully');
+	} catch (error) {
+		console.error('❌ Error initializing Shopify cart:', error);
+		this.bindEvents();
+		this.createCheckoutModal();
 	}
+}
 
 	createCheckoutModal() {
 		const modalHTML = `
@@ -1821,42 +1835,48 @@ class ShopifyCart {
 		});
 	}
 
-	bindEvents() {
-		document.querySelectorAll('.shopify-add-item').forEach(button => {
-			button.addEventListener('click', (e) => {
-				e.preventDefault();
-				const variantId = e.target.dataset.variantId;
-				const title = e.target.dataset.productTitle || 'Producto';
-				const price = e.target.dataset.price || '399';
-				
-				console.log('🛒 Botón clickeado:', title, 'Variant ID:', variantId);
-				
-				if (this.isDev) {
-					this.addToMockCart(variantId, title, price);
-				} else {
-					if (!variantId) {
-						alert('Error: Variant ID no encontrado');
-						return;
-					}
-					this.addToCart(variantId, 1, title);
+bindEvents() {
+	document.querySelectorAll('.shopify-add-item').forEach(button => {
+		button.addEventListener('click', (e) => {
+			e.preventDefault();
+			
+			// FIXED: Convertir variant ID a Global ID
+			let variantId = e.target.dataset.variantId;
+			const title = e.target.dataset.productTitle || 'Producto';
+			const price = e.target.dataset.price || '399';
+			
+			// Convertir a Global ID si es necesario
+			if (variantId && !variantId.startsWith('gid://')) {
+				variantId = VARIANT_ID_MAP[variantId] || `gid://shopify/ProductVariant/${variantId}`;
+			}
+			
+			console.log('🛒 Botón clickeado:', title, 'Global ID:', variantId);
+			
+			if (this.isDev) {
+				this.addToMockCart(variantId, title, price);
+			} else {
+				if (!variantId) {
+					alert('Error: Variant ID no encontrado');
+					return;
 				}
-			});
+				this.addToCart(variantId, 1, title);
+			}
 		});
-
-// Usar el ID específico del botón
-const checkoutButton = document.getElementById('cart-button');
-if (checkoutButton) {
-	checkoutButton.addEventListener('click', (e) => {
-		e.preventDefault();
-		console.log('🛒 Cart button clicked');
-		this.openCheckoutModal();
 	});
-} else {
-	console.warn('⚠️ Cart button not found');
-}
-		
-		console.log('🔗 Event listeners agregados a los botones');
+
+	// Cart button event
+	const checkoutButton = document.getElementById('cart-button');
+	if (checkoutButton) {
+		checkoutButton.addEventListener('click', (e) => {
+			e.preventDefault();
+			console.log('🛒 Cart button clicked');
+			this.openCheckoutModal();
+		});
 	}
+	
+	console.log('🔗 Event listeners agregados a los botones');
+}
+
 
 	// Método para desarrollo - carrito simulado
 addToMockCart(variantId, title, price) {
@@ -1879,22 +1899,26 @@ addToMockCart(variantId, title, price) {
 	this.showAddToCartNotification(title + ' (Dev Mode)');
 }
 
-	async addToCart(variantId, quantity, title) {
-		const lineItemsToAdd = [{
-			variantId: variantId,
-			quantity: quantity
-		}];
+async addToCart(variantId, quantity, title) {
+	// FIXED: Usar formato correcto para Shopify Buy SDK
+	const lineItemsToAdd = [{
+		variantId: variantId,  // Ya viene como Global ID
+		quantity: parseInt(quantity)
+	}];
 
-		try {
-			this.checkout = await window.SHOPIFY_CLIENT.checkout.addLineItems(this.checkout.id, lineItemsToAdd);
-			this.updateCartUI();
-			this.showAddToCartNotification(title);
-			console.log('✅ Producto agregado exitosamente:', title);
-		} catch (error) {
-			console.error('❌ Error agregando al carrito:', error);
-			this.showAddToCartNotification(title + ' (Verificar en Shopify)');
-		}
+	try {
+		console.log('📦 Agregando al carrito:', lineItemsToAdd);
+		this.checkout = await window.SHOPIFY_CLIENT.checkout.addLineItems(this.checkout.id, lineItemsToAdd);
+		this.updateCartUI();
+		this.showAddToCartNotification(title);
+		console.log('✅ Producto agregado exitosamente:', title);
+	} catch (error) {
+		console.error('❌ Error agregando al carrito:', error);
+		// Fallback en caso de error
+		this.addToMockCart(variantId, title, '399');
+		this.showAddToCartNotification(title + ' (Usando modo fallback)');
 	}
+}
 
 updateCartUI() {
 	const cartCount = document.querySelector('.shopify-cart-count');
