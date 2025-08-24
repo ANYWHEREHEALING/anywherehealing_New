@@ -1728,300 +1728,111 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	// ============ CARRITO CORREGIDO ============
 	
-	// CARRITO LOCAL - Sin dependencia de Shopify
-	class LocalCart {
-		constructor() {
-			this.items = [];
-			this.init();
-		}
+// NUEVO SISTEMA SHOPIFY CART API 
+class ShopifyCart {
+    constructor() {
+        this.client = null;
+        this.cartId = null;
+        this.init();
+    }
 
-		init() {
-			this.bindEvents();
-			this.createCheckoutModal();
-			this.updateCartUI();
-			console.log('✅ Carrito local inicializado');
-		}
+    async init() {
+        // Esperar a que el cliente de Shopify esté listo
+        if (typeof ShopifyBuy !== 'undefined' && window.SHOPIFY_CLIENT) {
+            this.client = window.SHOPIFY_CLIENT;
+            await this.getOrCreateCart();
+            this.bindEvents();
+            console.log('✅ Shopify Cart API inicializado');
+        } else {
+            setTimeout(() => this.init(), 500);
+        }
+    }
 
-		createCheckoutModal() {
-			const modalHTML = `
-				<div id="checkout-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; overflow-y: auto;">
-					<div style="position: relative; width: 95%; max-width: 1000px; margin: 20px auto; background: white; border-radius: 12px; padding: 0; font-family: var(--base-font);">
-						<div style="padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
-							<h2 style="margin: 0; color: #2596be;">Your Cart</h2>
-							<button id="close-checkout" style="background: none; border: none; font-size: 28px; cursor: pointer; color: #666; padding: 5px;">×</button>
-						</div>
-						<div id="checkout-content" style="padding: 20px;">
-							<div id="cart-items-list"></div>
-							<div id="cart-total" style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #2596be;"></div>
-							<div style="margin-top: 20px; text-align: center;">
-								<div id="payment-form" style="display: none; margin-bottom: 20px;">
-									<h3 style="color: #2596be; margin-bottom: 15px;">Información de Pago</h3>
-									<div style="display: grid; gap: 15px; max-width: 400px; margin: 0 auto;">
-										<input type="email" id="customer-email" placeholder="Email" style="padding: 12px; border: 1px solid #ddd; border-radius: 6px;">
-										<input type="text" id="card-number" placeholder="Número de tarjeta" style="padding: 12px; border: 1px solid #ddd; border-radius: 6px;">
-										<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-											<input type="text" id="card-expiry" placeholder="MM/YY" style="padding: 12px; border: 1px solid #ddd; border-radius: 6px;">
-											<input type="text" id="card-cvc" placeholder="CVC" style="padding: 12px; border: 1px solid #ddd; border-radius: 6px;">
-										</div>
-										<input type="text" id="cardholder-name" placeholder="Nombre del titular" style="padding: 12px; border: 1px solid #ddd; border-radius: 6px;">
-									</div>
-								</div>
-								<button id="proceed-checkout" style="background: #2596be; color: white; border: none; padding: 0px 30px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; max-width: 300px;">
-									Proceed to Payment
-								</button>
-								<button id="complete-payment" style="display: none; background: #4CAF50; color: white; border: none; padding: 0px 30px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; max-width: 300px;">
-									Complete Payment
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			`;
-			
-			document.body.insertAdjacentHTML('beforeend', modalHTML);
-			
-			// Event listeners del modal
-			document.getElementById('close-checkout').addEventListener('click', () => {
-				this.closeCheckoutModal();
-			});
-			
-			document.getElementById('checkout-modal').addEventListener('click', (e) => {
-				if (e.target.id === 'checkout-modal') {
-					this.closeCheckoutModal();
-				}
-			});
+    async getOrCreateCart() {
+        // Intentar recuperar carrito existente
+        const savedCartId = localStorage.getItem('shopify-cart-id');
+        
+        if (savedCartId) {
+            try {
+                const cart = await this.client.checkout.fetch(savedCartId);
+                if (!cart.completedAt) {
+                    this.cartId = savedCartId;
+                    return;
+                }
+            } catch (error) {
+                console.log('Carrito anterior no válido, creando nuevo');
+            }
+        }
 
-			document.getElementById('proceed-checkout').addEventListener('click', () => {
-				this.showPaymentForm();
-			});
+        // Crear nuevo carrito
+        const cart = await this.client.checkout.create();
+        this.cartId = cart.id;
+        localStorage.setItem('shopify-cart-id', this.cartId);
+    }
 
-			document.getElementById('complete-payment').addEventListener('click', () => {
-				this.completePayment();
-			});
-		}
+    bindEvents() {
+        document.querySelectorAll('.shopify-add-item').forEach(button => {
+            button.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const variantId = e.target.dataset.variantId;
+                const quantity = 1;
+                
+                await this.addToCart(variantId, quantity);
+            });
+        });
 
-		bindEvents() {
-			// CORREGIDO: Event listeners para todos los botones de compra
-			document.querySelectorAll('.shopify-add-item').forEach(button => {
-				button.addEventListener('click', (e) => {
-					e.preventDefault();
-					
-					const variantId = e.target.dataset.variantId;
-					const title = e.target.dataset.productTitle || 'Producto';
-					const price = parseFloat(e.target.dataset.price) || 399;
-					
-					console.log('🛒 Agregando producto:', { title, variantId, price });
-					
-					this.addToCart(variantId, title, price);
-				});
-			});
+        document.getElementById('cart-button')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.openShopifyCheckout();
+        });
+    }
 
-			// Cart button event
-			const checkoutButton = document.getElementById('cart-button');
-			if (checkoutButton) {
-				checkoutButton.addEventListener('click', (e) => {
-					e.preventDefault();
-					console.log('🛒 Cart button clicked');
-					this.openCheckoutModal();
-				});
-			}
-			
-			console.log('🔗 Event listeners agregados correctamente');
-		}
+    async addToCart(variantId, quantity) {
+        try {
+            const lineItemsToAdd = [{
+                variantId: `gid://shopify/ProductVariant/${variantId}`,
+                quantity: quantity
+            }];
 
-		addToCart(variantId, title, price) {
-			const existingItem = this.items.find(item => item.variantId === variantId);
-			
-			if (existingItem) {
-				existingItem.quantity += 1;
-			} else {
-				this.items.push({
-					variantId: variantId,
-					title: title,
-					price: price,
-					quantity: 1,
-					id: 'item-' + Date.now()
-				});
-			}
-			
-			console.log('🛒 Carrito actualizado:', this.items);
-			this.updateCartUI();
-			this.showAddToCartNotification(title);
-		}
+            const cart = await this.client.checkout.addLineItems(this.cartId, lineItemsToAdd);
+            this.updateCartUI(cart);
+            this.showNotification('Product added to cart');
+            
+        } catch (error) {
+            console.error('Error adding to cart:', error);
+        }
+    }
 
-		updateCartUI() {
-			const cartCount = document.querySelector('.shopify-cart-count');
-			if (!cartCount) {
-				console.warn('⚠️ Elemento .shopify-cart-count no encontrado');
-				return;
-			}
-			
-			const totalItems = this.items.reduce((total, item) => total + item.quantity, 0);
-			cartCount.textContent = totalItems.toString();
-			console.log('✅ Cart UI updated - Displaying:', totalItems, 'items');
-		}
+    async openShopifyCheckout() {
+        if (this.cartId) {
+            const cart = await this.client.checkout.fetch(this.cartId);
+            // Redirigir al checkout real de Shopify
+            window.location.href = cart.webUrl;
+        }
+    }
 
-		openCheckoutModal() {
-			const modal = document.getElementById('checkout-modal');
-			if (!modal) return;
-			
-			this.renderCartItems();
-			modal.style.display = 'block';
-			console.log('🛒 Modal de checkout abierto');
-		}
+    updateCartUI(cart) {
+        const cartCount = document.querySelector('.shopify-cart-count');
+        if (cartCount && cart.lineItems) {
+            const totalItems = cart.lineItems.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems.toString();
+        }
+    }
 
-		renderCartItems() {
-			const itemsList = document.getElementById('cart-items-list');
-			const cartTotal = document.getElementById('cart-total');
-			
-			if (!itemsList || !cartTotal) return;
+    showNotification(message) {
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed; top: 20px; right: 20px; background: #2596be; color: white;
+            padding: 15px 20px; border-radius: 8px; z-index: 10000; font-weight: 600;
+        `;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+        setTimeout(() => notification.remove(), 3000);
+    }
+}
 
-			if (this.items.length === 0) {
-				itemsList.innerHTML = '<p style="text-align: center; color: #666; padding: 40px;">Tu carrito está vacío</p>';
-				cartTotal.innerHTML = '';
-				return;
-			}
-
-			let itemsHTML = '';
-			let total = 0;
-
-			this.items.forEach((item, index) => {
-				const itemTotal = item.price * item.quantity;
-				total += itemTotal;
-				
-				itemsHTML += `
-					<div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 10px;">
-						<div style="flex: 1;">
-							<h4 style="margin: 0 0 5px 0; color: #333;">${item.title}</h4>
-							<p style="margin: 0; color: #666; font-size: 14px;">$${item.price.toFixed(2)} c/u</p>
-						</div>
-						<div style="display: flex; align-items: center; gap: 10px;">
-							<button onclick="window.localCart.updateQuantity(${index}, ${item.quantity - 1})" style="background: #f0f0f0; border: none; padding: 0px 8px; width: 30px; height: 40px; border-radius: 4px; cursor: pointer;">-</button>
-							<span style="font-weight: 600; min-width: 20px; text-align: center;">${item.quantity}</span>
-							<button onclick="window.localCart.updateQuantity(${index}, ${item.quantity + 1})" style="background: #f0f0f0; border: none; padding: 0px 8px; width: 30px; height: 40px; border-radius: 4px; cursor: pointer;">+</button>
-							<button onclick="window.localCart.removeItem(${index})" style="background: #ff4757; color: white; border: none; padding: 0px 8px; border-radius: 4px; cursor: pointer; margin-left: 10px;">🗑</button>
-						</div>
-					</div>
-				`;
-			});
-
-			itemsList.innerHTML = itemsHTML;
-			cartTotal.innerHTML = `
-				<div style="text-align: right;">
-					<h3 style="margin: 0; color: #2596be;">Total: $${total.toFixed(2)}</h3>
-				</div>
-			`;
-		}
-
-		updateQuantity(index, newQuantity) {
-			if (newQuantity <= 0) {
-				this.removeItem(index);
-				return;
-			}
-			
-			this.items[index].quantity = newQuantity;
-			this.updateCartUI();
-			this.renderCartItems();
-		}
-
-		removeItem(index) {
-			this.items.splice(index, 1);
-			this.updateCartUI();
-			this.renderCartItems();
-		}
-
-		showPaymentForm() {
-			if (this.items.length === 0) {
-				alert('Tu carrito está vacío');
-				return;
-			}
-
-			const paymentForm = document.getElementById('payment-form');
-			const proceedBtn = document.getElementById('proceed-checkout');
-			const completeBtn = document.getElementById('complete-payment');
-
-			paymentForm.style.display = 'block';
-			proceedBtn.style.display = 'none';
-			completeBtn.style.display = 'block';
-		}
-
-		completePayment() {
-			const email = document.getElementById('customer-email').value;
-			const cardNumber = document.getElementById('card-number').value;
-			const expiry = document.getElementById('card-expiry').value;
-			const cvc = document.getElementById('card-cvc').value;
-			const name = document.getElementById('cardholder-name').value;
-
-			// Validación básica
-			if (!email || !cardNumber || !expiry || !cvc || !name) {
-				alert('Por favor completa todos los campos');
-				return;
-			}
-
-			// Simular procesamiento de pago
-			const total = this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-			
-			// Mostrar confirmación
-			alert(`✅ ¡Pago procesado exitosamente!\n\nTotal: $${total.toFixed(2)}\nEmail: ${email}\n\n¡Gracias por tu compra!`);
-			
-			// Limpiar carrito
-			this.items = [];
-			this.updateCartUI();
-			this.closeCheckoutModal();
-		}
-
-		closeCheckoutModal() {
-			const modal = document.getElementById('checkout-modal');
-			if (modal) {
-				modal.style.display = 'none';
-				// Reset payment form
-				const paymentForm = document.getElementById('payment-form');
-				const proceedBtn = document.getElementById('proceed-checkout');
-				const completeBtn = document.getElementById('complete-payment');
-				
-				paymentForm.style.display = 'none';
-				proceedBtn.style.display = 'block';
-				completeBtn.style.display = 'none';
-				
-				// Clear form
-				document.getElementById('customer-email').value = '';
-				document.getElementById('card-number').value = '';
-				document.getElementById('card-expiry').value = '';
-				document.getElementById('card-cvc').value = '';
-				document.getElementById('cardholder-name').value = '';
-			}
-		}
-
-		showAddToCartNotification(productTitle) {
-			const notification = document.createElement('div');
-			notification.style.cssText = `
-				position: fixed;
-				top: 20px;
-				right: 20px;
-				background: #2596be;
-				color: white;
-				padding: 15px 20px;
-				border-radius: 8px;
-				z-index: 10000;
-				font-weight: 600;
-				box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-				max-width: 300px;
-				font-family: var(--base-font);
-			`;
-			notification.textContent = `✓ ${productTitle} added to cart`;
-			
-			document.body.appendChild(notification);
-			
-			setTimeout(() => {
-				if (document.body.contains(notification)) {
-					document.body.removeChild(notification);
-				}
-			}, 3000);
-		}
-	}
-
-	// Inicializar carrito local
-	window.localCart = new LocalCart();
-	console.log('🚀 Carrito local cargado exitosamente');
+// Inicializar cuando la página cargue
+document.addEventListener('DOMContentLoaded', function() {
+    window.shopifyCart = new ShopifyCart();
 });
 </script>
