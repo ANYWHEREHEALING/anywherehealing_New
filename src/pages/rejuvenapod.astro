@@ -572,9 +572,7 @@ import Shield from '../assets/lock.svg';
 
     <Footer />
     <!-- Botón del carrito flotante -->
-<button class="shopify-checkout" style="position:fixed;bottom:20px;left:20px;z-index:1000;">
-	🛒 Cart (<span class="shopify-cart-count">0</span>)
-</button>
+
 
 
 <!-- Financing Modal -->
@@ -710,6 +708,11 @@ import Shield from '../assets/lock.svg';
         </div>
     </div>
 </div>
+
+<!-- Botón flotante del carrito -->
+<button id="cart-button" class="shopify-checkout" style="position:fixed;bottom:20px;left:20px;z-index:1000;">
+  🛒 Cart (<span class="shopify-cart-count">0</span>)
+</button>
 
 
 </Layout>
@@ -2241,624 +2244,423 @@ import Shield from '../assets/lock.svg';
 </style>
 
 <script>
-// Enhanced video handling with fallback
-document.addEventListener('DOMContentLoaded', function() {
+// ==================== INICIO DEL SCRIPT COMPLETO ====================
+
+document.addEventListener('DOMContentLoaded', function () {
+  // ============ CLASE ShopifyCart (modo producción puro, igual que order.astro) ============
+  class ShopifyCart {
+    constructor() {
+      this.checkout = null;
+      this.cartId = null;
+      this.init();
+    }
+
+    async init() {
+      // Esperar a que window.SHOPIFY_CLIENT esté disponible
+      if (!window.SHOPIFY_CLIENT) {
+        console.warn('⚠️ Shopify client no disponible aún. Reintentando...');
+        setTimeout(() => this.init(), 200);
+        return;
+      }
+
+      this.client = window.SHOPIFY_CLIENT;
+      await this.getOrCreateCart();
+      this.bindEvents();
+      this.createCheckoutModal();
+      console.log('✅ Shopify cart initialized with real client');
+    }
+
+    async getOrCreateCart() {
+      const savedCartId = localStorage.getItem('shopify-cart-id');
+
+      if (savedCartId) {
+        try {
+          const cart = await this.client.checkout.fetch(savedCartId);
+          if (!cart.completedAt) {
+            this.cartId = savedCartId;
+            this.checkout = cart;
+            this.updateCartUI();
+            return;
+          }
+        } catch (error) {
+          console.log('Carrito guardado no válido, creando nuevo:', error);
+        }
+      }
+
+      // Crear nuevo carrito
+      const cart = await this.client.checkout.create();
+      this.cartId = cart.id;
+      this.checkout = cart;
+      localStorage.setItem('shopify-cart-id', this.cartId);
+      this.updateCartUI();
+    }
+
+    bindEvents() {
+      // Botones para agregar productos
+      document.querySelectorAll('.shopify-add-item').forEach((button) => {
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+          const variantId = e.target.dataset.variantId;
+          const title = e.target.dataset.productTitle || 'Rejuvena Pod';
+
+          if (!variantId) {
+            alert('Error: Variant ID no encontrado');
+            return;
+          }
+
+          this.addToCart(variantId, 1, title);
+        });
+      });
+
+      // Botón flotante del carrito
+      const cartButton = document.getElementById('cart-button') || document.querySelector('.shopify-checkout');
+      if (cartButton) {
+        cartButton.addEventListener('click', () => {
+          this.openCheckoutModal();
+        });
+      }
+
+      // Cerrar modal
+      document.getElementById('close-checkout')?.addEventListener('click', () => {
+        document.getElementById('checkout-modal').style.display = 'none';
+      });
+
+      // Proceder al pago
+      document.getElementById('proceed-checkout')?.addEventListener('click', () => {
+        this.proceedToPayment();
+      });
+
+      // Cerrar modal al hacer clic fuera
+      document.getElementById('checkout-modal')?.addEventListener('click', (e) => {
+        if (e.target.id === 'checkout-modal') {
+          e.target.style.display = 'none';
+        }
+      });
+    }
+
+    async addToCart(variantId, quantity, title) {
+      const lineItems = [{ variantId, quantity }];
+
+      try {
+        this.checkout = await this.client.checkout.addLineItems(this.cartId, lineItems);
+        localStorage.setItem('shopify-cart-id', this.cartId);
+        this.updateCartUI();
+        this.showAddToCartNotification(title);
+      } catch (error) {
+        console.error('❌ Error adding to cart:', error);
+        alert('Error al agregar al carrito. Intenta nuevamente.');
+      }
+    }
+
+    updateCartUI() {
+      const cartCount = document.querySelector('.shopify-cart-count');
+      if (!cartCount) return;
+
+      const totalItems = this.checkout?.lineItems?.reduce((sum, item) => sum + item.quantity, 0) || 0;
+      cartCount.textContent = totalItems;
+    }
+
+    showAddToCartNotification(title) {
+      const notification = document.createElement('div');
+      notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #2596be;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        z-index: 10000;
+        font-weight: 600;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        font-family: var(--base-font);
+        transition: opacity 0.3s;
+      `;
+      notification.textContent = `✅ Added: ${title}`;
+      document.body.appendChild(notification);
+
+      setTimeout(() => {
+        notification.style.opacity = '0';
+        setTimeout(() => {
+          if (document.body.contains(notification)) {
+            document.body.removeChild(notification);
+          }
+        }, 300);
+      }, 3000);
+    }
+
+    openCheckoutModal() {
+      const modal = document.getElementById('checkout-modal');
+      if (!modal) return;
+      this.renderCartItems();
+      modal.style.display = 'block';
+    }
+
+    renderCartItems() {
+      const itemsList = document.getElementById('cart-items-list');
+      const cartTotal = document.getElementById('cart-total');
+      if (!itemsList || !cartTotal) return;
+
+      if (!this.checkout || this.checkout.lineItems.length === 0) {
+        itemsList.innerHTML = '<p style="text-align: center; color: #666; padding: 40px;">Your cart is empty</p>';
+        cartTotal.innerHTML = '';
+        return;
+      }
+
+      let itemsHTML = '';
+      let total = 0;
+
+      this.checkout.lineItems.forEach((item) => {
+        const price = parseFloat(item.variant.price.amount);
+        const itemTotal = price * item.quantity;
+        total += itemTotal;
+
+        itemsHTML += `
+          <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee;">
+            <span>${item.title} × ${item.quantity}</span>
+            <span>$${itemTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+          </div>
+        `;
+      });
+
+      const checkoutTotal = parseFloat(this.checkout.totalPrice.amount);
+      itemsList.innerHTML = itemsHTML;
+      cartTotal.innerHTML = `
+        <div style="text-align: right; margin-top: 20px; padding-top: 20px; border-top: 2px solid #2596be;">
+          <h3 style="margin: 0; color: #2596be;">Total: $${checkoutTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</h3>
+        </div>
+      `;
+    }
+
+    proceedToPayment() {
+      if (this.checkout && this.checkout.lineItems.length > 0) {
+        window.open(this.checkout.webUrl, '_blank');
+        document.getElementById('checkout-modal').style.display = 'none';
+      } else {
+        alert('Your cart is empty.');
+      }
+    }
+
+    createCheckoutModal() {
+      if (document.getElementById('checkout-modal')) return;
+
+      const modalHTML = `
+        <div id="checkout-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center;">
+          <div style="background: white; border-radius: 15px; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto; padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <h2 style="margin: 0; color: #2c3e50;">Your Cart</h2>
+              <button id="close-checkout" style="background: none; border: none; font-size: 28px; cursor: pointer; color: #666;">×</button>
+            </div>
+            <div id="cart-items-list"></div>
+            <div id="cart-total"></div>
+            <div style="margin-top: 20px; text-align: center;">
+              <button id="proceed-checkout" style="background: #2596be; color: white; border: none; padding: 12px 30px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer;">
+                Proceed to Payment
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      document.body.insertAdjacentHTML('beforeend', modalHTML);
+    }
+  }
+
+  // ============ Manejo del video con fallback ============
+  function initializeVideoHandling() {
     const video = document.querySelector('.product-video');
     const videoContainer = document.querySelector('.video-container');
-    const fallback = videoContainer.querySelector('.video-fallback');
-    const retryButton = fallback.querySelector('.retry-video');
-    
-    if (video && videoContainer && fallback) {
-        let videoLoadTimeout;
-        
-        // Set a timeout for video loading
-        videoLoadTimeout = setTimeout(() => {
-            showFallback();
-        }, 10000); // 10 seconds timeout
-        
-        // Video error handling
-        video.addEventListener('error', function(e) {
-            console.log('Video loading error:', e);
-            clearTimeout(videoLoadTimeout);
-            showFallback();
-        });
+    const fallback = videoContainer?.querySelector('.video-fallback');
+    const retryButton = fallback?.querySelector('.retry-video');
 
-        // Video loaded successfully
-        video.addEventListener('loadeddata', function() {
-            console.log('Video loaded successfully');
-            clearTimeout(videoLoadTimeout);
-            hideFallback();
-        });
+    if (!video || !fallback) return;
 
-        // Video can start playing
-        video.addEventListener('canplay', function() {
-            clearTimeout(videoLoadTimeout);
-            hideFallback();
-        });
+    let videoLoadTimeout;
 
-        // Retry button functionality
-        retryButton.addEventListener('click', function() {
-            hideFallback();
-            video.style.display = 'block';
-            video.load(); // Reload the video
-            
-            // Reset timeout
-            videoLoadTimeout = setTimeout(() => {
-                showFallback();
-            }, 10000);
-        });
+    // Mostrar fallback si no carga en 10 segundos
+    videoLoadTimeout = setTimeout(() => {
+      showFallback();
+    }, 10000);
 
-        function showFallback() {
-            video.style.display = 'none';
-            fallback.style.display = 'block';
+    // Eventos de carga
+    video.addEventListener('loadeddata', () => {
+      clearTimeout(videoLoadTimeout);
+      hideFallback();
+    });
+
+    video.addEventListener('canplay', () => {
+      clearTimeout(videoLoadTimeout);
+      hideFallback();
+    });
+
+    video.addEventListener('error', () => {
+      clearTimeout(videoLoadTimeout);
+      showFallback();
+    });
+
+    // Botón de reintento
+    retryButton?.addEventListener('click', () => {
+      hideFallback();
+      video.style.display = 'block';
+      video.load();
+      videoLoadTimeout = setTimeout(() => {
+        showFallback();
+      }, 10000);
+    });
+
+    // Lazy loading
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          video.preload = 'auto';
+          observer.unobserve(video);
         }
+      });
+    });
+    observer.observe(video);
 
-        function hideFallback() {
-            video.style.display = 'block';
-            fallback.style.display = 'none';
-        }
-
-        // Add intersection observer for lazy loading
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    video.preload = 'auto';
-                    observer.unobserve(video);
-                }
-            });
-        });
-
-        observer.observe(video);
+    function showFallback() {
+      video.style.display = 'none';
+      fallback.style.display = 'block';
     }
-});
 
+    function hideFallback() {
+      video.style.display = 'block';
+      fallback.style.display = 'none';
+    }
+  }
 
-// Add smooth scroll behavior for internal links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+  // ============ Animaciones de botones ============
+  function initializeButtonAnimations() {
+    document.querySelectorAll('button').forEach(button => {
+      button.addEventListener('click', function () {
+        // Saltar animación para botones específicos
+        if (this.classList.contains('shopify-add-item') || this.classList.contains('financing-submit-btn')) return;
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          this.style.transform = '';
+        }, 150);
+      });
+    });
+  }
+
+  // ============ Scroll suave ============
+  function initializeSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+          target.scrollIntoView({ behavior: 'smooth' });
         }
+      });
     });
-});
+  }
 
-// Performance optimization: Lazy load images
-document.addEventListener('DOMContentLoaded', function() {
+  // ============ Lazy loading de imágenes ============
+  function initializeLazyLoading() {
     const images = document.querySelectorAll('img[data-src]');
-    
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-                imageObserver.unobserve(img);
-            }
-        });
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+          imageObserver.unobserve(img);
+        }
+      });
     });
-    
     images.forEach(img => imageObserver.observe(img));
-});
+  }
 
-// Shopify 
-document.addEventListener('DOMContentLoaded', function() {
-    // Detectar si estamos en desarrollo
-    const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    
-    // Función para esperar a que Shopify esté listo
-    function waitForShopify(callback, attempts = 0) {
-        const maxAttempts = isDevelopment ? 10 : 50;
-        
-        if (window.SHOPIFY_CLIENT) {
-            callback();
-        } else if (attempts < maxAttempts) {
-            console.log('⏳ Esperando que Shopify se inicialice... Intento:', attempts + 1);
-            setTimeout(() => waitForShopify(callback, attempts + 1), 100);
-        } else {
-            console.warn('⚠️ Shopify no se pudo inicializar, usando modo desarrollo');
-            // Crear cliente mock para desarrollo
-            window.SHOPIFY_CLIENT = {
-                checkout: {
-                    create: () => Promise.resolve({ 
-                        id: 'dev-checkout-' + Date.now(), 
-                        lineItems: [],
-                        webUrl: 'https://1gnria-yq.myshopify.com/cart'
-                    }),
-                    addLineItems: (id, items) => Promise.resolve({ 
-                        id: id,
-                        lineItems: items.map((item, index) => ({
-                            ...item, 
-                            id: 'dev-item-' + index,
-                            title: 'RejuvenaPod (Dev)',
-                            quantity: item.quantity || 1
-                        })),
-                        webUrl: 'https://1gnria-yq.myshopify.com/cart'
-                    })
-                }
-            };
-            callback();
-        }
-    }
-
-    // Inicializar funcionalidades existentes
-    initializeVideoHandling();
-    initializeButtonAnimations();
-    initializeSmoothScroll();
-    initializeLazyLoading();
-
-    // ============ SHOPIFY INTEGRATION ============
-    waitForShopify(() => {
-        // Tu clase ShopifyCart (la misma que funciona)
-        class ShopifyCart {
-            constructor() {
-                this.checkout = null;
-                this.isDev = isDevelopment && !window.SHOPIFY_CLIENT.checkout.create.toString().includes('fetch');
-                this.mockCart = [];
-                this.init();
-            }
-
-            async init() {
-                try {
-                    this.checkout = await window.SHOPIFY_CLIENT.checkout.create();
-                    this.updateCartUI();
-                    this.bindEvents();
-                    this.createCheckoutModal();
-                    console.log('✅ Shopify cart initialized successfully');
-                } catch (error) {
-                    console.error('❌ Error initializing Shopify cart:', error);
-                    this.bindEvents();
-                    this.createCheckoutModal();
-                }
-            }
-
-            createCheckoutModal() {
-                const modalHTML = `
-                    <div id="checkout-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; overflow-y: auto;">
-                        <div style="position: relative; width: 95%; max-width: 900px; margin: 20px auto; background: white; border-radius: 12px; padding: 0; font-family: var(--base-font);">
-                            <div style="padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
-                                <h2 style="margin: 0; color: #2596be;">Your Cart</h2>
-                                <button id="close-checkout" style="background: none; border: none; font-size: 28px; cursor: pointer; color: #666; padding: 5px;">×</button>
-                            </div>
-                            <div style="padding: 20px;">
-                                <div id="cart-items-list"></div>
-                                <div id="cart-total" style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #2596be;"></div>
-                                <div style="margin-top: 20px; text-align: center;">
-                                    <button id="proceed-checkout" style="background: #2596be; color: white; border: none; padding: 0px 30px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; max-width: 300px;">
-                                        Proceed to Payment
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                
-                document.body.insertAdjacentHTML('beforeend', modalHTML);
-                
-                // Event listeners del modal
-                document.getElementById('close-checkout').addEventListener('click', () => {
-                    document.getElementById('checkout-modal').style.display = 'none';
-                });
-                
-                document.getElementById('checkout-modal').addEventListener('click', (e) => {
-                    if (e.target.id === 'checkout-modal') {
-                        document.getElementById('checkout-modal').style.display = 'none';
-                    }
-                });
-
-                document.getElementById('proceed-checkout').addEventListener('click', () => {
-                    this.proceedToPayment();
-                });
-            }
-
-            bindEvents() {
-                document.querySelectorAll('.shopify-add-item').forEach(button => {
-                    button.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const variantId = e.target.dataset.variantId;
-                        const title = e.target.dataset.productTitle || 'RejuvenaPod';
-                        const price = e.target.dataset.price || '95000';
-                        
-                        console.log('🛒 Botón clickeado:', title, 'Variant ID:', variantId);
-                        
-                        if (this.isDev) {
-                            this.addToMockCart(variantId, title, price);
-                        } else {
-                            if (!variantId) {
-                                alert('Error: Variant ID no encontrado');
-                                return;
-                            }
-                            this.addToCart(variantId, 1, title);
-                        }
-                    });
-                });
-
-                const checkoutButton = document.querySelector('.shopify-checkout');
-                if (checkoutButton) {
-                    checkoutButton.addEventListener('click', () => {
-                        this.openCheckoutModal();
-                    });
-                }
-            }
-
-            addToMockCart(variantId, title, price) {
-                const existingItem = this.mockCart.find(item => item.variantId === variantId);
-                
-                if (existingItem) {
-                    existingItem.quantity += 1;
-                } else {
-                    this.mockCart.push({
-                        variantId: variantId,
-                        title: title,
-                        price: parseFloat(price),
-                        quantity: 1,
-                        id: 'mock-' + Date.now()
-                    });
-                }
-                
-                this.updateCartUI();
-                this.showAddToCartNotification(title + ' (Dev Mode)');
-            }
-
-            async addToCart(variantId, quantity, title) {
-                const lineItemsToAdd = [{
-                    variantId: variantId,
-                    quantity: quantity
-                }];
-
-                try {
-                    this.checkout = await window.SHOPIFY_CLIENT.checkout.addLineItems(this.checkout.id, lineItemsToAdd);
-                    this.updateCartUI();
-                    this.showAddToCartNotification(title);
-                    console.log('✅ Producto agregado exitosamente:', title);
-                } catch (error) {
-                    console.error('❌ Error agregando al carrito:', error);
-                    this.showAddToCartNotification(title + ' (Verificar en Shopify)');
-                }
-            }
-
-            updateCartUI() {
-                const cartCount = document.querySelector('.shopify-cart-count');
-                if (cartCount) {
-                    if (this.isDev) {
-                        const totalItems = this.mockCart.reduce((total, item) => total + item.quantity, 0);
-                        cartCount.textContent = totalItems;
-                    } else if (this.checkout) {
-                        const totalItems = this.checkout.lineItems.reduce((total, item) => total + item.quantity, 0);
-                        cartCount.textContent = totalItems;
-                    }
-                }
-            }
-
-            openCheckoutModal() {
-                const modal = document.getElementById('checkout-modal');
-                if (!modal) return;
-                
-                this.renderCartItems();
-                modal.style.display = 'block';
-                console.log('🛒 Modal de checkout abierto');
-            }
-
-            renderCartItems() {
-                const itemsList = document.getElementById('cart-items-list');
-                const cartTotal = document.getElementById('cart-total');
-                
-                if (!itemsList || !cartTotal) return;
-
-                if (this.isDev) {
-                    if (this.mockCart.length === 0) {
-                        itemsList.innerHTML = '<p style="text-align: center; color: #666; padding: 40px;">Tu carrito está vacío</p>';
-                        cartTotal.innerHTML = '';
-                        return;
-                    }
-
-                    let itemsHTML = '';
-                    let total = 0;
-
-                    this.mockCart.forEach((item, index) => {
-                        const itemTotal = item.price * item.quantity;
-                        total += itemTotal;
-                        
-                        itemsHTML += `
-                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 10px;">
-                                <div style="flex: 1;">
-                                    <h4 style="margin: 0 0 5px 0; color: #333;">${item.title}</h4>
-                                    <p style="margin: 0; color: #666; font-size: 14px;">$${item.price.toLocaleString()} c/u</p>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 10px;">
-                                    <button onclick="window.shopifyCart.updateMockQuantity(${index}, ${item.quantity - 1})" style="background: #f0f0f0; border: none; padding: 0px 8px; width: 30px; height: 40px; border-radius: 4px; cursor: pointer;">-</button>
-                                    <span style="font-weight: 600; min-width: 20px; text-align: center;">${item.quantity}</span>
-                                    <button onclick="window.shopifyCart.updateMockQuantity(${index}, ${item.quantity + 1})" style="background: #f0f0f0; border: none; padding: 0px 8px; width: 30px; height: 40px; border-radius: 4px; cursor: pointer;">+</button>
-                                    <button onclick="window.shopifyCart.removeMockItem(${index})" style="background: #ff4757; color: white; border: none; padding: 0px 8px; border-radius: 4px; cursor: pointer; margin-left: 10px;">🗑</button>
-                                </div>
-                            </div>
-                        `;
-                    });
-
-                    itemsList.innerHTML = itemsHTML;
-                    cartTotal.innerHTML = `
-                        <div style="text-align: right;">
-                            <h3 style="margin: 0; color: #2596be;">Total: $${total.toLocaleString()}</h3>
-                            <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">DEV MODE - In production, this will be the real price</p>
-                        </div>
-                    `;
-                } else {
-                    // Modo producción - usar datos reales de Shopify
-                    if (!this.checkout || this.checkout.lineItems.length === 0) {
-                        itemsList.innerHTML = '<p style="text-align: center; color: #666; padding: 40px;">Tu carrito está vacío</p>';
-                        cartTotal.innerHTML = '';
-                        return;
-                    }
-
-                    let itemsHTML = '';
-                    this.checkout.lineItems.forEach((item) => {
-                        itemsHTML += `
-                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 10px;">
-                                <div style="flex: 1;">
-                                    <h4 style="margin: 0 0 5px 0; color: #333;">${item.title}</h4>
-                                    <p style="margin: 0; color: #666; font-size: 14px;">$${parseFloat(item.variant.price.amount).toLocaleString()} c/u</p>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 10px;">
-                                    <button onclick="window.shopifyCart.updateQuantity('${item.id}', ${item.quantity - 1})" style="background: #f0f0f0; border: none; width: 30px; height: 30px; border-radius: 4px; cursor: pointer;">-</button>
-                                    <span style="font-weight: 600; min-width: 20px; text-align: center;">${item.quantity}</span>
-                                    <button onclick="window.shopifyCart.updateQuantity('${item.id}', ${item.quantity + 1})" style="background: #f0f0f0; border: none; width: 30px; height: 30px; border-radius: 4px; cursor: pointer;">+</button>
-                                    <button onclick="window.shopifyCart.removeItem('${item.id}')" style="background: #ff4757; color: white; border: none; padding: 5px 8px; border-radius: 4px; cursor: pointer; margin-left: 10px;">🗑</button>
-                                </div>
-                            </div>
-                        `;
-                    });
-
-                    itemsList.innerHTML = itemsHTML;
-                    cartTotal.innerHTML = `
-                        <div style="text-align: right;">
-                            <h3 style="margin: 0; color: #2596be;">Total: $${parseFloat(this.checkout.totalPrice.amount).toLocaleString()}</h3>
-                        </div>
-                    `;
-                }
-            }
-
-            updateMockQuantity(index, newQuantity) {
-                if (newQuantity <= 0) {
-                    this.removeMockItem(index);
-                    return;
-                }
-                
-                this.mockCart[index].quantity = newQuantity;
-                this.updateCartUI();
-                this.renderCartItems();
-            }
-
-            removeMockItem(index) {
-                this.mockCart.splice(index, 1);
-                this.updateCartUI();
-                this.renderCartItems();
-            }
-
-            async updateQuantity(lineItemId, newQuantity) {
-                if (newQuantity <= 0) {
-                    this.removeItem(lineItemId);
-                    return;
-                }
-
-                try {
-                    const lineItemsToUpdate = [{
-                        id: lineItemId,
-                        quantity: newQuantity
-                    }];
-
-                    this.checkout = await window.SHOPIFY_CLIENT.checkout.updateLineItems(this.checkout.id, lineItemsToUpdate);
-                    this.updateCartUI();
-                    this.renderCartItems();
-                } catch (error) {
-                    console.error('❌ Error actualizando cantidad:', error);
-                }
-            }
-
-            async removeItem(lineItemId) {
-                try {
-                    this.checkout = await window.SHOPIFY_CLIENT.checkout.removeLineItems(this.checkout.id, [lineItemId]);
-                    this.updateCartUI();
-                    this.renderCartItems();
-                } catch (error) {
-                    console.error('❌ Error eliminando producto:', error);
-                }
-            }
-
-            proceedToPayment() {
-                if (this.isDev) {
-                    alert('🚧 Development mode: In production here the real payment will be processed with Shopify');
-                    return;
-                }
-
-                if (this.checkout && this.checkout.lineItems.length > 0) {
-                    window.open(this.checkout.webUrl, '_blank');
-                    document.getElementById('checkout-modal').style.display = 'none';
-                } else {
-                    alert('Tu carrito está vacío');
-                }
-            }
-
-            showAddToCartNotification(productTitle) {
-                const notification = document.createElement('div');
-                notification.style.cssText = `
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    background: ${this.isDev ? '#ff6b35' : '#2596be'};
-                    color: white;
-                    padding: 15px 20px;
-                    border-radius: 8px;
-                    z-index: 10000;
-                    font-weight: 600;
-                    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-                    max-width: 300px;
-                    font-family: var(--base-font);
-                `;
-                notification.textContent = `✓ ${productTitle} added to cart`;
-                
-                document.body.appendChild(notification);
-                
-                setTimeout(() => {
-                    if (document.body.contains(notification)) {
-                        document.body.removeChild(notification);
-                    }
-                }, 3000);
-            }
-        }
-
-        // Inicializar carrito Shopify
-        window.shopifyCart = new ShopifyCart();
-        console.log('🚀 Shopify integration loaded for RejuvenaPod');
-    });
-
-    // Funciones existentes refactorizadas
-    function initializeVideoHandling() {
-        // Tu código de video existente...
-    }
-
-    function initializeButtonAnimations() {
-        document.querySelectorAll('button').forEach(button => {
-            button.addEventListener('click', function(e) {
-                // Skip animation for buttons with shopify-add-item class
-                if (this.classList.contains('shopify-add-item')) {
-                    return;
-                }
-                
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 150);
-            });
-        });
-    }
-
-    function initializeSmoothScroll() {
-        // Tu código de smooth scroll existente...
-    }
-
-    function initializeLazyLoading() {
-        // Tu código de lazy loading existente...
-    }
-});
-
-
-// Financing Modal Functionality
-document.addEventListener('DOMContentLoaded', function() {
-    // Wait for other scripts to load
-    setTimeout(initializeFinancingModal, 100);
-});
-
-function initializeFinancingModal() {
+  // ============ Modal de financiamiento ============
+  function initializeFinancingModal() {
     const modal = document.getElementById('financing-modal');
     const closeBtn = document.getElementById('close-financing-modal');
     const howFoundUsSelect = document.getElementById('how-found-us');
     const otherSourceGroup = document.getElementById('other-source-group');
-    
-    // Bind events to all financing buttons
+
+    // Mostrar campo "Other" si se selecciona esa opción
+    howFoundUsSelect?.addEventListener('change', () => {
+      otherSourceGroup.style.display = howFoundUsSelect.value === 'other' ? 'block' : 'none';
+    });
+
+    // Cerrar modal
+    closeBtn?.addEventListener('click', () => {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+
+    // Cerrar al hacer clic fuera
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Enviar formulario
+    document.getElementById('financingForm')?.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const submitBtn = document.querySelector('.financing-submit-btn');
+      submitBtn.innerHTML = 'Processing Request...';
+      submitBtn.disabled = true;
+
+      try {
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(new FormData(this)).toString()
+        });
+
+        if (response.ok) {
+          document.getElementById('financing-form-feedback').innerHTML = `
+            <div style="background: #d4edda; color: #155724; padding: 25px; border-radius: 15px; text-align: center; border: 2px solid #c3e6cb;">
+              <h3 style="margin: 0 0 15px 0; font-size: 1.5rem;">✅ Request Submitted Successfully!</h3>
+              <p>We'll contact you within 24 hours to discuss your financing options.</p>
+            </div>`;
+          this.reset();
+          setTimeout(() => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+          }, 3000);
+        } else {
+          throw new Error('Network response was not ok');
+        }
+      } catch (error) {
+        document.getElementById('financing-form-feedback').innerHTML = `
+          <div style="background: #f8d7da; color: #721c24; padding: 25px; border-radius: 15px; text-align: center;">
+            <h3 style="margin: 0 0 15px 0; font-size: 1.5rem;">❌ Submission Failed</h3>
+            <p>Please try again or contact us directly.</p>
+          </div>`;
+      } finally {
+        submitBtn.innerHTML = 'Submit Request';
+        submitBtn.disabled = false;
+      }
+    });
+
+    // Abrir modal desde botones
     const financingButtons = document.querySelectorAll('.pricing-cta, .cta-secondary, button[class*="secondary"]');
     financingButtons.forEach(button => {
-        // Only bind to buttons with financing-related text
-        const buttonText = button.textContent.toLowerCase();
-        if (buttonText.includes('monthly') || buttonText.includes('financing') || buttonText.includes('payment')) {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                openFinancingModal();
-            });
-        }
+      const text = button.textContent.toLowerCase();
+      if (text.includes('monthly') || text.includes('financing') || text.includes('payment')) {
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+          modal.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        });
+      }
     });
+  }
 
-    // Close modal events
-    closeBtn.addEventListener('click', closeFinancingModal);
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            closeFinancingModal();
-        }
-    });
+  // ============ Inicializar todo ============
+  window.shopifyCart = new ShopifyCart();
+  initializeVideoHandling();
+  initializeButtonAnimations();
+  initializeSmoothScroll();
+  initializeLazyLoading();
+  initializeFinancingModal();
 
-    // ESC key to close
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.style.display === 'block') {
-            closeFinancingModal();
-        }
-    });
-
-    // Show/hide "other" source field
-    howFoundUsSelect.addEventListener('change', function() {
-        if (this.value === 'other') {
-            otherSourceGroup.style.display = 'block';
-        } else {
-            otherSourceGroup.style.display = 'none';
-            document.getElementById('other-source').value = '';
-        }
-    });
-
-    // Form submission
-    document.getElementById('financingForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        await handleFinancingFormSubmission(this);
-    });
-
-    function openFinancingModal() {
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Prevent background scroll
-        console.log('💰 Financing modal opened');
-    }
-
-    function closeFinancingModal() {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restore scroll
-    }
-
-    async function handleFinancingFormSubmission(form) {
-        const feedback = document.getElementById('financing-form-feedback');
-        const submitBtn = document.querySelector('.financing-submit-btn');
-        
-        submitBtn.innerHTML = 'Processing Request...';
-        submitBtn.disabled = true;
-        
-        try {
-            const response = await fetch('/', {
-                method: 'POST',
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams(new FormData(form)).toString()
-            });
-            
-            if (response.ok) {
-                feedback.innerHTML = `
-                    <div style="background: #d4edda; color: #155724; padding: 25px; border-radius: 15px; text-align: center; border: 2px solid #c3e6cb;">
-                        <h3 style="margin: 0 0 15px 0; font-size: 1.5rem;">✅ Request Submitted Successfully!</h3>
-                        <p style="margin: 0; font-size: 1.1rem; line-height: 1.5;">Thank you for your interest in financing. Our team will review your request and send you all the necessary documentation within 24-48 hours. Check your email for updates!</p>
-                    </div>
-                `;
-                feedback.style.display = 'block';
-                form.reset();
-                submitBtn.style.display = 'none';
-                
-                // Auto-close modal after 5 seconds
-                setTimeout(() => {
-                    closeFinancingModal();
-                }, 5000);
-            }
-        } catch (error) {
-            console.error('Error submitting financing form:', error);
-            feedback.innerHTML = `
-                <div style="background: #f8d7da; color: #721c24; padding: 20px; border-radius: 10px; text-align: center;">
-                    ❌ Something went wrong. Please try again or contact us directly at admin@anywherehealing.com
-                </div>
-            `;
-            feedback.style.display = 'block';
-            submitBtn.innerHTML = 'Try Again';
-            submitBtn.disabled = false;
-        }
-    }
-}
-
-
-
-
+  console.log('🚀 RejuvenaPod: Todo cargado y funcionando en producción');
+});
 </script>
-
