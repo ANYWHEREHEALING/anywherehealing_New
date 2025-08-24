@@ -823,7 +823,7 @@ import Secure from '../assets/lock.svg';
 </style>
 
 
-<script>
+<script is:inline>
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const feedback = document.getElementById('form-feedback');
@@ -833,30 +833,33 @@ document.getElementById('contactForm').addEventListener('submit', async function
     submitBtn.disabled = true;
     
     try {
-        const response = await fetch('/', {
+        const formData = new FormData(this);
+        const body = new URLSearchParams();
+        for (const [key, value] of formData) {
+            body.append(key, value);
+        }
+
+        const response = await fetch(window.location.pathname, {
             method: 'POST',
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(new FormData(this)).toString()
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: body
         });
         
         if (response.ok) {
-            feedback.innerHTML = `
-                <div style="background: #d4edda; color: #155724; padding: 20px; border-radius: 15px; text-align: center; border: 2px solid #c3e6cb;">
-                    <h3 style="margin: 0 0 10px 0;">✅ Message Sent Successfully!</h3>
-                    <p style="margin: 0;">Thank you for contacting us. We'll get back to you within 24 hours.</p>
-                </div>
-            `;
+            feedback.innerHTML = '✅ Message sent';
             feedback.style.display = 'block';
+            feedback.style.color = '#28a745';
+            feedback.style.fontWeight = 'bold';
             this.reset();
             submitBtn.style.display = 'none';
+        } else {
+            throw new Error();
         }
     } catch (error) {
-        feedback.innerHTML = `
-            <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 10px; text-align: center;">
-                ❌ Something went wrong. Please try again.
-            </div>
-        `;
+        feedback.innerHTML = '❌ Error sending the message';
         feedback.style.display = 'block';
+        feedback.style.color = '#dc3545';
+        feedback.style.fontWeight = 'bold';
         submitBtn.innerHTML = 'Try Again';
         submitBtn.disabled = false;
     }
