@@ -2363,13 +2363,26 @@ document.addEventListener('DOMContentLoaded', function() {
             this.updateCartUI(cart);
         }
 
-const cartButton = document.getElementById('cart-button');
-if (cartButton) {
-    cartButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.showCartModal(); // Cambiar de openShopifyCheckout() a showCartModal()
-    });
-}
+        bindEvents() {
+            document.querySelectorAll('.shopify-add-item').forEach(button => {
+                button.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    const variantId = e.target.dataset.variantId;
+                    const title = e.target.dataset.productTitle;
+                    const quantity = 1;
+                    
+                    await this.addToCart(variantId, quantity, title);
+                });
+            });
+
+            const cartButton = document.querySelector('.shopify-checkout');
+            if (cartButton) {
+                cartButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.openShopifyCheckout();
+                });
+            }
+        }
 
         async addToCart(variantId, quantity, title) {
             try {
@@ -2423,162 +2436,6 @@ if (cartButton) {
                 }
             }, 3000);
         }
-
-
-// Agregar estos métodos a la clase ShopifyCart:
-
-async removeFromCart(lineItemId) {
-    try {
-        const cart = await this.client.checkout.removeLineItems(this.cartId, [lineItemId]);
-        this.updateCartUI(cart);
-        this.showNotification('Product removed from cart');
-    } catch (error) {
-        console.error('Error removing from cart:', error);
-        this.showNotification('Error removing product');
-    }
-}
-
-async updateQuantity(lineItemId, quantity) {
-    try {
-        if (quantity <= 0) {
-            await this.removeFromCart(lineItemId);
-            return;
-        }
-        
-        const lineItemsToUpdate = [{
-            id: lineItemId,
-            quantity: quantity
-        }];
-        
-        const cart = await this.client.checkout.updateLineItems(this.cartId, lineItemsToUpdate);
-        this.updateCartUI(cart);
-    } catch (error) {
-        console.error('Error updating quantity:', error);
-        this.showNotification('Error updating quantity');
-    }
-}
-
-async showCartModal() {
-    if (!this.cartId) return;
-    
-    try {
-        const cart = await this.client.checkout.fetch(this.cartId);
-        this.createCartModal(cart);
-    } catch (error) {
-        console.error('Error fetching cart:', error);
-    }
-}
-
-createCartModal(cart) {
-    // Remover modal existente si existe
-    const existingModal = document.getElementById('cart-modal');
-    if (existingModal) {
-        existingModal.remove();
-    }
-
-    const modal = document.createElement('div');
-    modal.id = 'cart-modal';
-    modal.style.cssText = `
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-        background: rgba(0,0,0,0.5); z-index: 10000; display: flex; 
-        justify-content: center; align-items: center; font-family: var(--base-font);
-    `;
-
-    const modalContent = document.createElement('div');
-    modalContent.style.cssText = `
-        background: white; border-radius: 12px; padding: 30px; 
-        max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto;
-        position: relative;
-    `;
-
-    let itemsHTML = '';
-    if (cart.lineItems && cart.lineItems.length > 0) {
-        cart.lineItems.forEach(item => {
-            itemsHTML += `
-                <div class="cart-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #e2e8f0;">
-                    <div style="flex: 1;">
-                        <h4 style="margin: 0 0 5px 0; font-size: 1.1rem;">${item.title}</h4>
-                        <p style="margin: 0; color: #666; font-size: 1rem;">$${item.variant.price.amount}</p>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <button class="qty-btn" data-action="decrease" data-line-id="${item.id}" 
-                                style="width: 30px; height: 30px; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer;">-</button>
-                        <span style="min-width: 20px; text-align: center; font-weight: 600;">${item.quantity}</span>
-                        <button class="qty-btn" data-action="increase" data-line-id="${item.id}" 
-                                style="width: 30px; height: 30px; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer;">+</button>
-                        <button class="remove-btn" data-line-id="${item.id}" 
-                                style="background: #ef4444; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; margin-left: 10px;">Remove</button>
-                    </div>
-                </div>
-            `;
-        });
-    } else {
-        itemsHTML = '<p style="text-align: center; color: #666; padding: 40px 0;">Your cart is empty</p>';
-    }
-
-    modalContent.innerHTML = `
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <h3 style="margin: 0; color: #1a202c;">Shopping Cart</h3>
-            <button id="close-modal" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #666;">&times;</button>
-        </div>
-        <div id="cart-items">
-            ${itemsHTML}
-        </div>
-        ${cart.lineItems && cart.lineItems.length > 0 ? `
-            <div style="border-top: 2px solid #e2e8f0; padding-top: 20px; margin-top: 20px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                    <strong style="font-size: 1.2rem;">Total: $${cart.totalPrice.amount}</strong>
-                </div>
-                <button id="checkout-btn" style="width: 100%; background: #2596be; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
-                    Proceed to Checkout
-                </button>
-            </div>
-        ` : ''}
-    `;
-
-    modal.appendChild(modalContent);
-    document.body.appendChild(modal);
-
-    // Event listeners para el modal
-    document.getElementById('close-modal').addEventListener('click', () => modal.remove());
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) modal.remove();
-    });
-
-    if (cart.lineItems && cart.lineItems.length > 0) {
-        document.getElementById('checkout-btn').addEventListener('click', () => {
-            modal.remove();
-            this.openShopifyCheckout();
-        });
-    }
-
-    // Event listeners para botones de cantidad y eliminar
-    document.querySelectorAll('.qty-btn').forEach(btn => {
-        btn.addEventListener('click', async (e) => {
-            const lineId = e.target.dataset.lineId;
-            const action = e.target.dataset.action;
-            const item = cart.lineItems.find(item => item.id === lineId);
-            
-            if (item) {
-                const newQuantity = action === 'increase' ? item.quantity + 1 : item.quantity - 1;
-                await this.updateQuantity(lineId, newQuantity);
-                modal.remove();
-                setTimeout(() => this.showCartModal(), 100);
-            }
-        });
-    });
-
-    document.querySelectorAll('.remove-btn').forEach(btn => {
-        btn.addEventListener('click', async (e) => {
-            const lineId = e.target.dataset.lineId;
-            await this.removeFromCart(lineId);
-            modal.remove();
-            setTimeout(() => this.showCartModal(), 100);
-        });
-    });
-}
-
-
     }
 
     // Initialize Shopify cart
