@@ -1491,7 +1491,7 @@ import Footer from '../components/Footer.astro';
 
 
 <script>
-// VERSIÓN CORREGIDA - Reemplaza todo el script en tu componente Astro
+// SCRIPT CORREGIDO PARA ORDER.ASTRO
 
 document.addEventListener('DOMContentLoaded', function() {
 	
@@ -1726,114 +1726,127 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	setTimeout(handleResize, 100);
 
-	// ============ CARRITO CORREGIDO ============
+	// ============ NUEVO CARRITO SHOPIFY ============
 	
+	class ShopifyCart {
+		constructor() {
+			this.client = null;
+			this.cartId = null;
+			this.init();
+		}
 
-// NUEVO SISTEMA SHOPIFY CART API (reemplaza el script completo)
-class ShopifyCart {
-    constructor() {
-        this.client = null;
-        this.cartId = null;
-        this.init();
-    }
+		async init() {
+			// Esperar a que el cliente de Shopify esté listo
+			if (typeof ShopifyBuy !== 'undefined' && window.SHOPIFY_CLIENT) {
+				this.client = window.SHOPIFY_CLIENT;
+				await this.getOrCreateCart();
+				this.bindEvents();
+				console.log('✅ Shopify Cart API inicializado');
+			} else {
+				setTimeout(() => this.init(), 500);
+			}
+		}
 
-    async init() {
-        // Esperar a que el cliente de Shopify esté listo
-        if (typeof ShopifyBuy !== 'undefined' && window.SHOPIFY_CLIENT) {
-            this.client = window.SHOPIFY_CLIENT;
-            await this.getOrCreateCart();
-            this.bindEvents();
-            console.log('✅ Shopify Cart API inicializado');
-        } else {
-            setTimeout(() => this.init(), 500);
-        }
-    }
+		async getOrCreateCart() {
+			// Intentar recuperar carrito existente
+			const savedCartId = localStorage.getItem('shopify-cart-id');
+			
+			if (savedCartId) {
+				try {
+					const cart = await this.client.checkout.fetch(savedCartId);
+					if (!cart.completedAt) {
+						this.cartId = savedCartId;
+						this.updateCartUI(cart);
+						return;
+					}
+				} catch (error) {
+					console.log('Carrito anterior no válido, creando nuevo');
+				}
+			}
 
-    async getOrCreateCart() {
-        // Intentar recuperar carrito existente
-        const savedCartId = localStorage.getItem('shopify-cart-id');
-        
-        if (savedCartId) {
-            try {
-                const cart = await this.client.checkout.fetch(savedCartId);
-                if (!cart.completedAt) {
-                    this.cartId = savedCartId;
-                    return;
-                }
-            } catch (error) {
-                console.log('Carrito anterior no válido, creando nuevo');
-            }
-        }
+			// Crear nuevo carrito
+			const cart = await this.client.checkout.create();
+			this.cartId = cart.id;
+			localStorage.setItem('shopify-cart-id', this.cartId);
+			this.updateCartUI(cart);
+		}
 
-        // Crear nuevo carrito
-        const cart = await this.client.checkout.create();
-        this.cartId = cart.id;
-        localStorage.setItem('shopify-cart-id', this.cartId);
-    }
+		bindEvents() {
+			document.querySelectorAll('.shopify-add-item').forEach(button => {
+				button.addEventListener('click', async (e) => {
+					e.preventDefault();
+					const variantId = e.target.dataset.variantId;
+					const title = e.target.dataset.productTitle;
+					const quantity = 1;
+					
+					await this.addToCart(variantId, quantity, title);
+				});
+			});
 
-    bindEvents() {
-        document.querySelectorAll('.shopify-add-item').forEach(button => {
-            button.addEventListener('click', async (e) => {
-                e.preventDefault();
-                const variantId = e.target.dataset.variantId;
-                const quantity = 1;
-                
-                await this.addToCart(variantId, quantity);
-            });
-        });
+			const cartButton = document.getElementById('cart-button');
+			if (cartButton) {
+				cartButton.addEventListener('click', (e) => {
+					e.preventDefault();
+					this.openShopifyCheckout();
+				});
+			}
+		}
 
-        document.getElementById('cart-button')?.addEventListener('click', (e) => {
-            e.preventDefault();
-            this.openShopifyCheckout();
-        });
-    }
+		async addToCart(variantId, quantity, title) {
+			try {
+				const lineItemsToAdd = [{
+					variantId: `gid://shopify/ProductVariant/${variantId}`,
+					quantity: quantity
+				}];
 
-    async addToCart(variantId, quantity) {
-        try {
-            const lineItemsToAdd = [{
-                variantId: `gid://shopify/ProductVariant/${variantId}`,
-                quantity: quantity
-            }];
+				const cart = await this.client.checkout.addLineItems(this.cartId, lineItemsToAdd);
+				this.updateCartUI(cart);
+				this.showNotification(`${title} added to cart`);
+				
+			} catch (error) {
+				console.error('Error adding to cart:', error);
+				this.showNotification('Error adding product to cart');
+			}
+		}
 
-            const cart = await this.client.checkout.addLineItems(this.cartId, lineItemsToAdd);
-            this.updateCartUI(cart);
-            this.showNotification('Product added to cart');
-            
-        } catch (error) {
-            console.error('Error adding to cart:', error);
-        }
-    }
+		async openShopifyCheckout() {
+			if (this.cartId) {
+				try {
+					const cart = await this.client.checkout.fetch(this.cartId);
+					// Redirigir al checkout real de Shopify
+					window.location.href = cart.webUrl;
+				} catch (error) {
+					console.error('Error opening checkout:', error);
+				}
+			}
+		}
 
-    async openShopifyCheckout() {
-        if (this.cartId) {
-            const cart = await this.client.checkout.fetch(this.cartId);
-            // Redirigir al checkout real de Shopify
-            window.location.href = cart.webUrl;
-        }
-    }
+		updateCartUI(cart) {
+			const cartCount = document.querySelector('.shopify-cart-count');
+			if (cartCount && cart.lineItems) {
+				const totalItems = cart.lineItems.reduce((sum, item) => sum + item.quantity, 0);
+				cartCount.textContent = totalItems.toString();
+			}
+		}
 
-    updateCartUI(cart) {
-        const cartCount = document.querySelector('.shopify-cart-count');
-        if (cartCount && cart.lineItems) {
-            const totalItems = cart.lineItems.reduce((sum, item) => sum + item.quantity, 0);
-            cartCount.textContent = totalItems.toString();
-        }
-    }
+		showNotification(message) {
+			const notification = document.createElement('div');
+			notification.style.cssText = `
+				position: fixed; top: 20px; right: 20px; background: #2596be; color: white;
+				padding: 15px 20px; border-radius: 8px; z-index: 10000; font-weight: 600;
+				box-shadow: 0 4px 20px rgba(0,0,0,0.1); font-family: var(--base-font);
+			`;
+			notification.textContent = message;
+			document.body.appendChild(notification);
+			setTimeout(() => {
+				if (document.body.contains(notification)) {
+					document.body.removeChild(notification);
+				}
+			}, 3000);
+		}
+	}
 
-    showNotification(message) {
-        const notification = document.createElement('div');
-        notification.style.cssText = `
-            position: fixed; top: 20px; right: 20px; background: #2596be; color: white;
-            padding: 15px 20px; border-radius: 8px; z-index: 10000; font-weight: 600;
-        `;
-        notification.textContent = message;
-        document.body.appendChild(notification);
-        setTimeout(() => notification.remove(), 3000);
-    }
-}
-
-// Inicializar cuando la página cargue
-document.addEventListener('DOMContentLoaded', function() {
-    window.shopifyCart = new ShopifyCart();
+	// Inicializar carrito Shopify
+	window.shopifyCart = new ShopifyCart();
 });
 </script>
