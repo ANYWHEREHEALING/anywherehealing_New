@@ -1879,17 +1879,17 @@ document.addEventListener('DOMContentLoaded', function() {
 					itemsHTML += `
 						<div class="cart-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #e2e8f0;">
 							<div style="flex: 1;">
-								<h4 style="margin: 0 0 5px 0; font-size: 1.1rem;">${item.title}</h4>
-								<p style="margin: 0; color: #666; font-size: 1rem;">$${item.variant.price.amount}</p>
+								<h4 style="margin: 0 0 5px 0; font-size: 1.6rem;">${item.title}</h4>
+								<p style="margin: 0; color: #666; font-size: 1.5rem;">$${item.variant.price.amount}</p>
 							</div>
 							<div style="display: flex; align-items: center; gap: 10px;">
 								<button class="qty-btn" data-action="decrease" data-line-id="${item.id}" 
-										style="width: 30px; height: 30px; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer;">-</button>
+										style="width: 30px; height: 40px; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer;">-</button>
 								<span style="min-width: 20px; text-align: center; font-weight: 600;">${item.quantity}</span>
 								<button class="qty-btn" data-action="increase" data-line-id="${item.id}" 
-										style="width: 30px; height: 30px; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer;">+</button>
+										style="width: 30px; height: 40px; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer;">+</button>
 								<button class="remove-btn" data-line-id="${item.id}" 
-										style="background: #ef4444; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; margin-left: 10px;">Remove</button>
+										style="background: #ef4444; color: white; border: none; padding: 0px 10px; border-radius: 4px; cursor: pointer; margin-left: 10px;">Remove</button>
 							</div>
 						</div>
 					`;
@@ -1909,9 +1909,9 @@ document.addEventListener('DOMContentLoaded', function() {
 				${cart.lineItems && cart.lineItems.length > 0 ? `
 					<div style="border-top: 2px solid #e2e8f0; padding-top: 20px; margin-top: 20px;">
 						<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-							<strong style="font-size: 1.2rem;">Total: $${cart.totalPrice.amount}</strong>
+							<strong style="font-size: 1.8rem;">Total: $${cart.totalPrice.amount}</strong>
 						</div>
-						<button id="checkout-btn" style="width: 100%; background: #2596be; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
+						<button id="checkout-btn" style="width: 100%; background: #2596be; color: white; border: none; padding: 0px; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
 							Proceed to Checkout
 						</button>
 					</div>
