@@ -1,8 +1,11 @@
-import { defineConfig } from 'astro/config'
-import netlify from '@astrojs/netlify'
+import { defineConfig } from 'astro/config';
+import netlify from '@astrojs/netlify';
+import react from '@astrojs/react'
 
+// https://astro.build/config
 export default defineConfig({
-  output: 'server',          // or 'server' if you use sessions/SSR
+  output: "static", // Para Shopify
+  integrations: [react()],
   adapter: netlify(),
-  // remove any `experimental` block (no longer valid)
-})
+
+});
