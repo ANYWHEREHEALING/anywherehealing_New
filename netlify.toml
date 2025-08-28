@@ -5,7 +5,11 @@
 [build.environment]
   NODE_VERSION = "22"
 
+[functions]
+  directory = "netlify/functions"
+  
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "max-age=31536000, immutable"
+    

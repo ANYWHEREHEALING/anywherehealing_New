@@ -9,11 +9,15 @@
     "preview": "astro preview",
     "astro": "astro"
   },
-  "dependencies": {
-    "@astrojs/netlify": "^6.5.7",
-    "astro": "^5.6.1"
-  },
   "devDependencies": {
+    "@astrojs/netlify": "^6.5.9",
+    "@astrojs/react": "^4.3.0",
+    "astro": "^5.13.4",
     "sass": "^1.63.6"
+  },
+  "dependencies": {
+    "axios": "^1.11.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   }
 }

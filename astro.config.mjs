@@ -1,11 +1,8 @@
-import { defineConfig } from 'astro/config';
-import netlify from '@astrojs/netlify/functions';
+import { defineConfig } from 'astro/config'
+import netlify from '@astrojs/netlify'
 
-// https://astro.build/config
 export default defineConfig({
-  output: "static", // Para Shopify
+  output: 'server',          // or 'server' if you use sessions/SSR
   adapter: netlify(),
-  experimental: {
-    session: true // Esto soluciona el error
-  }
-});
+  // remove any `experimental` block (no longer valid)
+})
