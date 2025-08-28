@@ -1,68 +1,143 @@
 ---
-/* 1. your local background image */
 import bgImage from '../assets/bg-video.jpg';
 ---
 
-<section class="full-video-hero">
-  <!-- 2. background image -->
-  <div class="bg"
-       style={`background:url(${bgImage.src}) center/cover no-repeat`}></div>
+<section class="healing-hero">
+  <div class="container">
+    <!-- LEFT: Description -->
+    <div class="hero-text">
+      <p class="eyebrow">MEET ANYWHERE HEALING</p>
+      <h2 class="headline">The Technology Helping Your Body Heal Naturally</h2>
+      <p class="copy">
+        Our wearable devices use advanced biosensors that gently touch your skin,
+        reading your body’s signals and delivering precise healing frequencies.
+        These frequencies activate your body’s natural recovery systems, helping
+        reduce pain, improve sleep, restore balance, and boost overall well-being.
+      </p>
+    </div>
 
-  <!-- 3. bigger Play button (same SVG style) -->
-  <button class="play-btn" aria-label="Play video">
-    <svg viewBox="0 0 60 60" fill="currentColor">
-      <path d="M20 12v36l30-18z"/>
-    </svg>
-  </button>
+    <!-- RIGHT: Video -->
+    <div class="hero-video">
+      <div class="video-card">
+        <div class="bg" style={`background:url(${bgImage.src}) center/cover no-repeat`}></div>
+        <button class="play-btn" aria-label="Play video">
+          <svg viewBox="0 0 60 60" fill="currentColor" aria-hidden="true">
+            <path d="M20 12v36l30-18z"/>
+          </svg>
+          <span class="play-label">Play Video</span>
+        </button>
+      </div>
+    </div>
+  </div>
 </section>
 
 <style lang="scss">
-.full-video-hero{
-  position:relative;
-  width:100%;
-  aspect-ratio:16 / 9;
-  overflow:hidden;
+/* ---------- Layout ---------- */
+.healing-hero {
+  padding: clamp(56px, 6vw, 88px) 0;
+  background: #fff;
+}
+.container {
+  max-width: 1200px;   /* matches the visual width of the reference */
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 32px);
+  display: grid;
+  grid-template-columns: minmax(420px, 520px) 1fr; /* fixed-ish text column, flexible video */
+  column-gap: clamp(28px, 4vw, 56px);
+  align-items: center; /* vertical center like Apollo */
+}
 
-  .bg{
-    position:absolute;
-    inset:0;
-    z-index:1;
+/* ---------- Typography (Apollo-like scale) ---------- */
+.eyebrow {
+  margin: 0 0 0.5rem 0;
+  font-size: clamp(12px, 0.85vw, 14px);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #666;
+  text-transform: uppercase;
+}
+.headline {
+  margin: 0 0 0.8rem 0;
+  /* ~32–40px across breakpoints */
+  font-size: clamp(28px, 2.4vw + 6px, 40px);
+  line-height: 1.25;
+  font-weight: 750;
+  color: #111;
+}
+.copy {
+  margin: 0;
+  /* ~17–19px across breakpoints */
+  font-size: clamp(16px, 0.9vw + 8px, 19px);
+  line-height: 1.65;
+  color: #3f3f3f;
+  max-width: 52ch;  /* keeps the paragraph readable */
+}
+
+/* ---------- Video card ---------- */
+.hero-video { width: 100%; }
+.video-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow:
+    0 1px 2px rgba(0,0,0,.04),
+    0 8px 24px rgba(0,0,0,.08);  /* soft card feel like the reference */
+}
+.video-card .bg {
+  position: absolute; inset: 0; z-index: 1;
+}
+
+/* Play button + label (aligned like Apollo) */
+.play-btn {
+  position: absolute; inset: 0;
+  margin: auto;
+  width: 88px; height: 88px;
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 14px;
+  border: 0; border-radius: 999px;
+  background: #fff;
+  color: #111;
+  z-index: 2;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,.20);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.play-btn:hover { transform: scale(1.04); box-shadow: 0 10px 26px rgba(0,0,0,.22); }
+.play-btn svg { width: 36px; height: 36px; }
+.play-label {
+  position: absolute;
+  left: calc(50% + 70px);   /* sits to the right of the circle, like the screenshot */
+  top: 50%; transform: translateY(-50%);
+  font-size: clamp(12px, .9vw, 14px);
+  font-weight: 600; letter-spacing: .04em;
+  color: rgba(17,17,17,.9);
+  text-transform: uppercase;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 980px) {
+  .container {
+    grid-template-columns: 1fr;
+    row-gap: 28px;
+    text-align: center;
   }
-
-  .play-btn{
-    position:absolute;
-    top:50%; left:50%;
-    transform:translate(-50%,-50%);
-    z-index:2;
-
-    width:88px;          /* bigger circle */
-    height:88px;
-    border:none;
-    border-radius:50%;
-    background:#fff;
-    box-shadow:0 4px 12px rgba(0,0,0,.2);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    transition:transform .2s, box-shadow .2s;
-
-    &:hover{
-      transform:translate(-50%,-50%) scale(1.05);
-      box-shadow:0 6px 16px rgba(0,0,0,.3);
-    }
-
-    svg{
-      width:40px;        /* bigger icon */
-      height:40px;
-    }
+  .play-label { 
+    position: static; 
+    transform: none; 
+    margin-left: 10px; 
   }
+  .play-btn { left: 50%; transform: translate(-50%, -50%); }
 }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.querySelector('.play-btn');
+  if (!btn) return;
   btn.addEventListener('click', () => {
     const iframe = document.createElement('iframe');
     iframe.src = 'https://www.youtube.com/embed/LdmuquUvU2k?autoplay=1&rel=0&modestbranding=1';

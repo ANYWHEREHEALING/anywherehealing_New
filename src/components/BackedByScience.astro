@@ -1,0 +1,162 @@
+---
+/**
+ * BackedByScience.astro
+ * A mid-page proof section modeled after the provided screenshot.
+ * All percentages are taken from the Group 1 (Bioresonance) column of the study table.
+ */
+ const cards = [
+  {
+    pct: "77.5%",
+    title: "Female participants",
+    caption: "share of women in the bioresonance group",
+    icon: "hex",
+  },
+  {
+    pct: "65%",
+    title: "Urban residents",
+    caption: "participants living in urban environments",
+    icon: "moon",
+  },
+  {
+    pct: "52.5%",
+    title: "Higher education",
+    caption: "participants with higher education",
+    icon: "ring",
+  },
+  {
+    pct: "50%",
+    title: "Married",
+    caption: "participants reporting married status",
+    icon: "target",
+  },
+  {
+    pct: "30%",
+    title: "High school",
+    caption: "participants with high-school education",
+    icon: "focus",
+  },
+];
+---
+
+<section class="ah-proof">
+  <div class="ah-proof__wrap">
+    <header class="ah-proof__head">
+      <h2 class="ah-proof__title">Backed by Science. Proven by You.</h2>
+      <p class="ah-proof__lede">
+        Depression is a negative emotional state that may persist for short or long periods of time with varying severity.
+        The aim of the present study was to evaluate how Anywhere Healing biosensors frequency therapy can improve the severity
+        of recurrent depressive disorder with moderate and mild episodes. Bioresonance therapy is a method of energy treatment
+        that processes the electromagnetic information of the human body.
+      </p>
+    </header>
+
+    <ul class="ah-proof__grid">
+      {cards.map((c) => (
+        <li class="ah-proof__card">
+          <div class="ah-proof__icon" aria-hidden="true">
+            {c.icon === "hex" && (
+              <svg viewBox="0 0 64 64" class="ah-proof__svg">
+                <polygon points="32,4 56,18 56,46 32,60 8,46 8,18" />
+              </svg>
+            )}
+            {c.icon === "moon" && (
+              <svg viewBox="0 0 64 64" class="ah-proof__svg">
+                <path d="M42 6a22 22 0 1 0 16 36A24 24 0 1 1 42 6z" />
+              </svg>
+            )}
+            {c.icon === "ring" && (
+              <svg viewBox="0 0 64 64" class="ah-proof__svg">
+                <circle cx="32" cy="32" r="22" />
+                <circle cx="32" cy="32" r="8" class="ah-proof__svg-hole" />
+              </svg>
+            )}
+            {c.icon === "target" && (
+              <svg viewBox="0 0 64 64" class="ah-proof__svg">
+                <circle cx="32" cy="32" r="24" />
+                <circle cx="32" cy="32" r="12" class="ah-proof__svg-hole" />
+              </svg>
+            )}
+            {c.icon === "focus" && (
+              <svg viewBox="0 0 64 64" class="ah-proof__svg">
+                <rect x="10" y="10" width="44" height="44" rx="8" />
+                <circle cx="32" cy="32" r="8" class="ah-proof__svg-hole" />
+              </svg>
+            )}
+          </div>
+          <div class="ah-proof__stat">{c.pct}</div>
+          <div class="ah-proof__label">{c.title}</div>
+          <p class="ah-proof__caption">{c.caption}</p>
+        </li>
+      ))}
+    </ul>
+
+    <p class="ah-proof__footnote">
+      Study figures summarized from demographic aspects of the bioresonance group.
+      Percentages reflect the composition of participants and are presented in a format consistent with
+      the “card” layout shown in your reference image.
+    </p>
+  </div>
+</section>
+
+<style>
+  .ah-proof { padding: 4rem 1rem; background: #fafafa; }
+  .ah-proof__wrap { max-width: 1100px; margin: 0 auto; }
+  .ah-proof__head { text-align: center; margin-bottom: 2.5rem; }
+
+  /* Larger, clearer typography */
+  .ah-proof__title {
+    font-size: clamp(2rem, 2.5vw + 1rem, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  .ah-proof__lede {
+    margin: 1rem auto 0;
+    max-width: 65ch;
+    color: #333;
+    line-height: 1.7;
+    font-size: 1.125rem; /* 18px */
+  }
+
+  .ah-proof__grid {
+    list-style: none; display: grid; gap: 1.25rem; padding: 0; margin: 0;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  @media (min-width: 640px) { .ah-proof__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .ah-proof__grid { grid-template-columns: repeat(5, 1fr); } }
+
+  .ah-proof__card {
+    background: #fff; border: 1px solid #eee; border-radius: 20px; padding: 1.5rem;
+    text-align: center; box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+  }
+  .ah-proof__icon { display: grid; place-items: center; margin-bottom: 0.75rem; }
+  .ah-proof__svg { width: 56px; height: 56px; fill: #e6e6e6; }
+  .ah-proof__svg-hole { fill: #fff; }
+
+  .ah-proof__stat {
+    font-size: 2rem;   /* 32px */
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+    color: #111;
+  }
+  .ah-proof__label {
+    font-size: 1.125rem; /* 18px */
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: #111;
+  }
+  .ah-proof__caption {
+    margin-top: 0.35rem;
+    font-size: 1rem; /* 16px */
+    line-height: 1.5;
+    color: #555;
+  }
+
+  .ah-proof__footnote {
+    margin-top: 2rem;
+    font-size: 0.95rem;
+    color: #666;
+    text-align: center;
+  }
+</style>

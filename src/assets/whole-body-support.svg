@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Whole‑body support">
+  <title>Whole‑body support</title>
+  <defs>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="16" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+<!-- Human figure -->
+<circle cx="256" cy="120" r="40" fill="#e2e8f0" stroke="#0f172a" stroke-width="4"/>
+<path d="M170 220c40-34 132-34 172 0" fill="none" stroke="#0f172a" stroke-width="6" stroke-linecap="round"/>
+<rect x="216" y="220" width="80" height="120" rx="32" fill="#e2e8f0" stroke="#0f172a" stroke-width="4"/>
+<!-- Radiating rings from chest -->
+<circle cx="256" cy="270" r="10" fill="#22d3ee"/>
+<circle cx="256" cy="270" r="38" fill="none" stroke="#22d3ee" stroke-width="6" opacity="0.7"/>
+<circle cx="256" cy="270" r="74" fill="none" stroke="#06b6d4" stroke-width="6" opacity="0.5"/>
+<circle cx="256" cy="270" r="108" fill="none" stroke="#22d3ee" stroke-width="4" opacity="0.35"/>
+<!-- Mood/energy/rest pictos -->
+<path d="M88 360c20-16 44-16 64 0" fill="none" stroke="#22c55e" stroke-width="8" stroke-linecap="round"/>
+<path d="M360 360l28 0" stroke="#22c55e" stroke-width="10" stroke-linecap="round"/>
+<path d="M344 344l12-20 12 20" fill="none" stroke="#22c55e" stroke-width="6" stroke-linecap="round"/>
+
+</svg>
