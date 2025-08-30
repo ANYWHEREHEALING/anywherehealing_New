@@ -2,7 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Check from '../assets/check.svg'
 ---
+
 
 <Layout title="Order Your Healing Device | Anywhere Healing">
   <Header />
@@ -271,6 +273,7 @@ import Footer from '../components/Footer.astro';
         <div class="detail-panel" data-panel="specifications">
           <h3>Technical Specifications</h3>
           <div class="specs-grid">
+            
             <div class="spec-category">
               <h4>Alpha Wearable</h4>
               <ul>
@@ -283,30 +286,34 @@ import Footer from '../components/Footer.astro';
                 <li>Scratch-resistant sapphire screen</li>
               </ul>
             </div>
+        
             <div class="spec-category">
               <h4>Charisma Ring</h4>
               <ul>
-                <li>Frequency Range: 1 Hz to 10 kHz</li>
                 <li>Battery Life: 5-7 days</li>
                 <li>Sizes: 6-12 available</li>
                 <li>Materials: Titanium with ceramic coating</li>
-                <li>Weight: 8g</li>
-                <li>Water Resistance: IPX5</li>
+                <li>Weight: 8g (feather-light comfort)</li>
+                <li>Water Resistance: IPX5 (splash-proof)</li>
+                <li>Seamlessly pairs with the Alpha App</li>
               </ul>
             </div>
+        
             <div class="spec-category">
               <h4>Frequana</h4>
               <ul>
-                <li>Frequency Range: 0.01 Hz to 100 kHz</li>
                 <li>Power Source: AC adapter</li>
-                <li>Connectivity: WiFi, Bluetooth</li>
+                <li>Connectivity: WiFi & Bluetooth</li>
                 <li>Dimensions: 8" x 6" x 2"</li>
-                <li>Weight: 2.1 lbs</li>
-                <li> </li>
+                <li>Weight: 2.1 lbs (compact & portable)</li>
+                <li>Designed for extended sessions</li>
+                <li>Crafted with premium materials</li>
               </ul>
             </div>
+        
           </div>
         </div>
+        
 
         <div class="detail-panel" data-panel="how-it-works">
           <h3>The Science Behind Frequency Healing</h3>
@@ -334,32 +341,160 @@ import Footer from '../components/Footer.astro';
     </div>
   </section>
 
-  <!-- Testimonials Section -->
-  <section class="testimonials-section">
-    <div class="container">
-      <div class="testimonials-content">
-        <h2>Real Testimonials from Our Users</h2>
-        <p class="testimonials-subtitle">Authentic experiences from people who have transformed their wellbeing</p>
+ <!-- Testimonials Section -->
+<section class="testimonials-section">
+	<div class="container">
+		<div class="testimonials-content">
+			<h2>Real Testimonials from Our Users</h2>
+			<p class="testimonials-subtitle">Authentic experiences from people who have transformed their wellbeing</p>
+			
+			<div class="testimonials-grid">
+				<div class="testimonial-card">
+					<div class="testimonial-header">
+						<div class="user-info">
+							<div class="user-avatar">S</div>
+							<div class="user-details">
+								<h4>Sarah Johnson</h4>
+								<span>Verified ✓</span>
+							</div>
+						</div>
+						<div class="rating">★★★★★</div>
+					</div>
+					<p>"After using the Alpha Wearable for 3 weeks, my sleep quality improved enormously. I used to wake up 4-5 times per night, now I sleep deeply and wake up energized."</p>
+					<div class="testimonial-footer">
+						<span class="product-used">Alpha Wearable</span>
+						<span class="time-used">3 weeks of use</span>
+					</div>
+				</div>
 
-        <div class="testimonials-grid">
-          <!-- keep your testimonial cards here exactly as before -->
-        </div>
+				<div class="testimonial-card">
+					<div class="testimonial-header">
+						<div class="user-info">
+							<div class="user-avatar">M</div>
+							<div class="user-details">
+								<h4>Michael Thompson</h4>
+								<span>Verified ✓</span>
+							</div>
+						</div>
+						<div class="rating">★★★★★</div>
+					</div>
+					<p>"My anxiety has decreased significantly since I started using the Charisma Ring. It's incredible how something so small can have such a big impact on my mental and emotional state."</p>
+					<div class="testimonial-footer">
+						<span class="product-used">Charisma Ring</span>
+						<span class="time-used">6 weeks of use</span>
+					</div>
+				</div>
 
-        <div class="trust-stats">
-          <div class="stat"><span class="stat-number">4,561</span><span class="stat-label">Satisfied Customers</span></div>
-          <div class="stat"><span class="stat-number">95%</span><span class="stat-label">Satisfaction Rate</span></div>
-          <div class="stat"><span class="stat-number">10+</span><span class="stat-label">Cities Reached</span></div>
-          <div class="stat"><span class="stat-number">879</span><span class="stat-label">App Downloads</span></div>
-        </div>
+				<div class="testimonial-card">
+					<div class="testimonial-header">
+						<div class="user-info">
+							<div class="user-avatar">E</div>
+							<div class="user-details">
+								<h4>Emily Rodriguez</h4>
+								<span>Verified ✓</span>
+							</div>
+						</div>
+						<div class="rating">★★★★★</div>
+					</div>
+					<p>"Frequana changed my life. I had been struggling with chronic pain for years. After 2 months of constant use, the pain decreased by 80%. It's as if my body remembered how to heal itself."</p>
+					<div class="testimonial-footer">
+						<span class="product-used">Frequana</span>
+						<span class="time-used">2 months of use</span>
+					</div>
+				</div>
 
-        <div class="certifications">
-          <div class="cert-item"><img src="/check.svg" alt="FDA"><span>No Pills, Frequency Healing</span></div>
-          <div class="cert-item"><img src="/check.svg" alt="Clinical"><span>Restore Natural Balance</span></div>
-          <div class="cert-item"><img src="/check.svg" alt="Safe"><span>Feel Energized, Live Fully</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
+				<div class="testimonial-card">
+					<div class="testimonial-header">
+						<div class="user-info">
+							<div class="user-avatar">D</div>
+							<div class="user-details">
+								<h4>David Miller</h4>
+								<span>Verified ✓</span>
+							</div>
+						</div>
+						<div class="rating">★★★★★</div>
+					</div>
+					<p>"I bought the complete bundle and it has been the best investment in my health. My energy increased, I sleep better and my concentration at work improved noticeably. I recommend it 100%."</p>
+					<div class="testimonial-footer">
+						<span class="product-used">Complete Bundle</span>
+						<span class="time-used">4 months of use</span>
+					</div>
+				</div>
+
+				<div class="testimonial-card">
+					<div class="testimonial-header">
+						<div class="user-info">
+							<div class="user-avatar">J</div>
+							<div class="user-details">
+								<h4>Jessica Williams</h4>
+								<span>Verified ✓</span>
+							</div>
+						</div>
+						<div class="rating">★★★★★</div>
+					</div>
+					<p>"I was skeptical at first, but the results speak for themselves. My stress level dropped considerably and I have a general sense of wellbeing that I hadn't experienced in years."</p>
+					<div class="testimonial-footer">
+						<span class="product-used">Alpha Wearable</span>
+						<span class="time-used">5 weeks of use</span>
+					</div>
+				</div>
+
+				<div class="testimonial-card">
+					<div class="testimonial-header">
+						<div class="user-info">
+							<div class="user-avatar">R</div>
+							<div class="user-details">
+								<h4>Robert Anderson</h4>
+								<span>Verified ✓</span>
+							</div>
+						</div>
+						<div class="rating">★★★★★</div>
+					</div>
+					<p>"After trying multiple treatments for my insomnia, the Alpha Wearable was the only thing that actually worked. Now I sleep 7-8 continuous hours and feel renewed every morning."</p>
+					<div class="testimonial-footer">
+						<span class="product-used">Alpha Wearable</span>
+						<span class="time-used">8 weeks of use</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="trust-stats">
+				<div class="stat">
+					<span class="stat-number">4,561</span>
+					<span class="stat-label">Satisfied Customers</span>
+				</div>
+				<div class="stat">
+					<span class="stat-number">95%</span>
+					<span class="stat-label">Satisfaction Rate</span>
+				</div>
+				<div class="stat">
+					<span class="stat-number">10+</span>
+					<span class="stat-label">Cities Reached</span>
+				</div>
+				<div class="stat">
+					<span class="stat-number">879</span>
+					<span class="stat-label">App Downloads</span>
+				</div>
+			</div>
+			
+			<div class="certifications">
+				<div class="cert-item">
+					<img src="/check.svg" alt="FDA">
+					<span>No Pills, Frequency Healing</span>
+				</div>
+				<div class="cert-item">
+					<img src="/check.svg" alt="Clinical">
+					<span>Restore Natural Balance</span>
+				</div>
+				<div class="cert-item">
+					<img src="/check.svg" alt="Safe">
+					<span>Feel Energized, Live Fully</span>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section>
 
   <!-- Floating Cart Button -->
   <button class="shopify-checkout" id="cart-button" style="position:fixed;bottom:20px;left:20px;z-index:1000;">
@@ -371,6 +506,90 @@ import Footer from '../components/Footer.astro';
 
 <style lang="scss">
 /* ======================== AH modal (scoped + fixed) ======================== */
+/* === Restore testimonial cards to the boxed style (like BEFORE) === */
+.testimonials-section {
+  .testimonials-grid .testimonial-card{
+    background:#ffffff;
+    border:1px solid #e2e8f0;
+    border-radius:14px;
+    padding:22px;
+    box-shadow:0 8px 24px rgba(15,23,42,.06);
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .testimonial-card .testimonial-header{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:6px;
+  }
+  .testimonial-card .user-info{display:flex; align-items:center; gap:12px}
+  .testimonial-card .user-avatar{
+    width:36px; height:36px; border-radius:50%;
+    background:linear-gradient(135deg,#2596be1a,#87bd421a);
+    color:#0f172a; font-weight:700; display:inline-flex;
+    align-items:center; justify-content:center; flex:0 0 36px;
+  }
+  .testimonial-card .user-details h4{margin:0; font-size:1rem; font-weight:700; color:#0f172a}
+  .testimonial-card .user-details span{font-size:.85rem; color:#64748b}
+  .testimonial-card .rating{color:#f59e0b; letter-spacing:1px; font-size:.95rem}
+  .testimonial-card p{margin:2px 0 8px; color:#334155; line-height:1.55; font-size:.98rem}
+  .testimonial-card .testimonial-footer{
+    display:flex; gap:10px; color:#64748b; font-size:.9rem;
+  }
+}
+
+/* === Bring back the blue accent for the stats numbers (incl. App Downloads) === */
+.testimonials-section .trust-stats{
+  text-align:center;
+  .stat{
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+  }
+  .stat-number{
+    color:#2596be;           /* brand blue */
+    font-weight:800;
+    font-size:1.6rem;
+    line-height:1;
+  }
+  .stat-label{
+    color:#64748b;
+    font-size:.95rem;
+  }
+}
+
+/* keep the small certification checkmarks you added */
+.testimonials-section .certifications .cert-item img{
+  width:28px; height:28px; flex:0 0 28px; object-fit:contain;
+}
+
+/* Responsive tweaks so the cards stay tidy */
+@media (max-width: 1024px){
+  .testimonials-section .testimonials-grid .testimonial-card{padding:20px}
+  .testimonials-section .trust-stats .stat-number{font-size:1.4rem}
+}
+@media (max-width: 768px){
+  .testimonials-section .testimonials-grid .testimonial-card{gap:10px}
+  .testimonials-section .trust-stats .stat-number{font-size:1.25rem}
+}
+
+
+/* ===== Fix gigantic checkmarks under the testimonials ===== */
+.testimonials-section .certifications{
+  display:flex; justify-content:center; gap:60px;
+}
+.testimonials-section .certifications .cert-item{
+  display:inline-flex; align-items:center; gap:10px;
+}
+.testimonials-section .certifications .cert-item img{
+  width:24px; height:24px; flex:0 0 24px; object-fit:contain;
+}
+.testimonials-section .certifications .cert-item span{
+  font-size:1rem; line-height:1.2;
+}
+
+/* Mobile tweaks so cards stack nicely */
+@media (max-width: 768px){
+  .testimonials-section .testimonial-card{ padding:16px; }
+  .testimonials-section .user-avatar{ width:32px; height:32px; flex-basis:32px; }
+}
+
 #ah-lead-overlay{
   position: fixed !important;
   inset: 0 !important;
@@ -776,7 +995,7 @@ async function ahCallBackendRegisterLite(payload) {
       { src: '/pack-bundle.jpg', alt: 'Complete Bundle' },
       { src: '/alpha-main.jpg', alt: 'Alpha Included' },
       { src: '/charisma-main.webp', alt: 'Charisma Included' },
-      { src: '/frequana-main.jpg', alt: 'Frequana Included' }
+      { src: '/frequana-main.JPG', alt: 'Frequana Included' }
     ]}
   };
 
