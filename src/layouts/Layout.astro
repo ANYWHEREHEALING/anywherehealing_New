@@ -1,402 +1,360 @@
 ---
 export interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
+const pageTitle =
+  title || 'Anywhere Healing: Frequency Wearables for Sleep, Energy & Natural Balance';
+
+const metaDescription =
+  'Discover Alpha Wearable, Charisma Ring & Frequana—advanced frequency therapy devices designed to restore balance, reduce stress, and improve sleep naturally. No pills. Just science, energy, and results you can feel.';
+
+const siteUrl = 'https://anywherehealing.com';
+const ogImage = `${siteUrl}/assets/logo.png`;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Discover revolutionary healing devices powered by cutting-edge bioresonance technology. Enhance your well-being naturally.">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="icon" type="image/png" href="/favicon.png" />
-		<meta name="robots" content="index, follow" />
-        <meta name="author" content="Anywhere Healing" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
-		
-		<!-- shopify sdk -->
-			<script src="https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content={metaDescription}
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="canonical" href={siteUrl} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Anywhere Healing" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#2596be" />
 
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-		<meta property="og:title" content="{title}" />
-		<meta property="og:description" content="Discover revolutionary healing devices powered by bioresonance technology." />
-		<meta property="og:image" content="../assets/logo.png" />
-		<meta property="og:url" content="https://freqana.com" />
+    <!-- Page Title -->
+    <title>{pageTitle}</title>
 
-	</head>
-	<body>
-		<slot />
+    <!-- Skeleton CSS (kept) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+    />
 
-		
-		<!-- CONFIGURACIÓN SHOPIFY - DESPUÉS DEL SDK -->
-		<script>
-// Esperar a que el SDK se cargue completamente
-window.addEventListener('load', function() {
-	// Verificar que ShopifyBuy existe
-	if (typeof ShopifyBuy !== 'undefined') {
-		console.log('✅ ShopifyBuy SDK loaded successfully');
-		
-		// Configuración global de Shopify
-		window.SHOPIFY_CONFIG = {
-			domain: '1gnria-yq.myshopify.com',
-			storefrontAccessToken: '8a0c7906e5a62af482193267282e546a' // Token correcto
-		};
-		
-		// Inicializar cliente inmediatamente
-		try {
-			window.SHOPIFY_CLIENT = ShopifyBuy.buildClient({
-				domain: window.SHOPIFY_CONFIG.domain,
-				storefrontAccessToken: window.SHOPIFY_CONFIG.storefrontAccessToken
-			});
-			console.log('✅ Shopify client initialized');
-		} catch (error) {
-			console.error('❌ Error creating Shopify client:', error);
-		}
-	} else {
-		console.error('❌ ShopifyBuy SDK failed to load');
-	}
-});
-</script>
+    <!-- Shopify SDK (kept) -->
+    <script src="https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js"></script>
 
-		
-	</body>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:site_name" content="Anywhere Healing" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- JSON-LD: Organization + Website -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Anywhere Healing",
+        "url": "https://anywherehealing.com",
+        "logo": "https://anywherehealing.com/assets/logo.png",
+        "sameAs": [
+          "https://www.instagram.com/",
+          "https://www.facebook.com/",
+          "https://www.linkedin.com/"
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Anywhere Healing",
+        "url": "https://anywherehealing.com",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://anywherehealing.com/search?q={query}",
+          "query-input": "required name=query"
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <slot />
+
+    <!-- CONFIGURACIÓN SHOPIFY - DESPUÉS DEL SDK (kept) -->
+    <script>
+      // Esperar a que el SDK se cargue completamente
+      window.addEventListener('load', function () {
+        // Verificar que ShopifyBuy existe
+        if (typeof ShopifyBuy !== 'undefined') {
+          console.log('✅ ShopifyBuy SDK loaded successfully');
+
+          // Configuración global de Shopify
+          window.SHOPIFY_CONFIG = {
+            domain: '1gnria-yq.myshopify.com',
+            storefrontAccessToken: '8a0c7906e5a62af482193267282e546a' // Token correcto
+          };
+
+          // Inicializar cliente inmediatamente
+          try {
+            window.SHOPIFY_CLIENT = ShopifyBuy.buildClient({
+              domain: window.SHOPIFY_CONFIG.domain,
+              storefrontAccessToken: window.SHOPIFY_CONFIG.storefrontAccessToken
+            });
+            console.log('✅ Shopify client initialized');
+          } catch (error) {
+            console.error('❌ Error creating Shopify client:', error);
+          }
+        } else {
+          console.error('❌ ShopifyBuy SDK failed to load');
+        }
+      });
+    </script>
+  </body>
 </html>
 
 <style lang="scss" is:global>
-	@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap');
 
-	:root {
-		--accent: #cc4b06;
-		--dark: #000;
-		--tenary: #ecf7f8;
-		--base-font: 'Manrope', sans-serif;
-	}
-	
-	html, body {
-		font-family: var(--base-font);
-		margin: 0px;
-		scroll-behavior: smooth;
-		background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
-		overflow-x: hidden;
-	}
+  :root {
+    --accent: #cc4b06;
+    --dark: #000;
+    --tenary: #ecf7f8;
+    --base-font: 'Manrope', sans-serif;
+  }
 
-	.container {
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 0 20px;
-		
-		@media (max-width: 768px) {
-			padding: 0 15px;
-		}
-		
-		@media (max-width: 480px) {
-			padding: 0 10px;
-		}
-	}
+  html, body {
+    font-family: var(--base-font);
+    margin: 0px;
+    scroll-behavior: smooth;
+    background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+    overflow-x: hidden;
+  }
 
-	.block {
-		display: block;
-	}
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 
-	.flex {
-		display: flex;
-		&.center {
-			justify-content: center;
-		}
-	}
+    @media (max-width: 768px) {
+      padding: 0 15px;
+    }
 
-	.text-container {
-		max-width: 600px;
-		margin: 50px auto;
-		padding: 0 20px;
-		
-		@media (max-width: 768px) {
-			margin: 30px auto;
-			padding: 0 15px;
-		}
-	}
+    @media (max-width: 480px) {
+      padding: 0 10px;
+    }
+  }
 
-	.h1-title, .h2-title, .s-subtitle, .l-subtitle {
-		font-weight: 700;
-		line-height: 1.2;
-	}
+  .block { display: block; }
 
-	.h1-title {
-		font-size: 4rem;
-		
-		@media (max-width: 1024px) {
-			font-size: 3.5rem;
-		}
-		
-		@media (max-width: 768px) {
-			font-size: 2.8rem;
-		}
-		
-		@media (max-width: 480px) {
-			font-size: 2.2rem;
-		}
-		
-		@media (max-width: 375px) {
-			font-size: 1.9rem;
-		}
-	}
+  .flex {
+    display: flex;
+    &.center { justify-content: center; }
+  }
 
-	.h2-title {
-		font-size: 3.2rem;
-		
-		@media (max-width: 1024px) {
-			font-size: 2.8rem;
-		}
-		
-		@media (max-width: 768px) {
-			font-size: 2.4rem;
-		}
-		
-		@media (max-width: 480px) {
-			font-size: 2rem;
-		}
-	}
+  .text-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 0 20px;
 
-	.l-subtitle {
-		font-size: 1.9rem;
-		
-		@media (max-width: 768px) {
-			font-size: 1.6rem;
-		}
-		
-		@media (max-width: 480px) {
-			font-size: 1.4rem;
-		}
-	}
+    @media (max-width: 768px) {
+      margin: 30px auto;
+      padding: 0 15px;
+    }
+  }
 
-	.s-margin {
-		margin-bottom: 5px;
-	}
+  .h1-title, .h2-title, .s-subtitle, .l-subtitle {
+    font-weight: 700;
+    line-height: 1.2;
+  }
 
-	.m-margin {
-		margin-bottom: 2rem;
-		
-		@media (max-width: 768px) {
-			margin-bottom: 1.5rem;
-		}
-	}
+  .h1-title {
+    font-size: 4rem;
 
-	.md-width {
-		width: 300px;
-		
-		@media (max-width: 480px) {
-			width: 100%;
-			max-width: 300px;
-		}
-	}
+    @media (max-width: 1024px) { font-size: 3.5rem; }
+    @media (max-width: 768px) { font-size: 2.8rem; }
+    @media (max-width: 480px) { font-size: 2.2rem; }
+    @media (max-width: 375px) { font-size: 1.9rem; }
+  }
 
-	.s-paragraph {
-		font-size: 1.3rem;
-		
-		@media (max-width: 768px) {
-			font-size: 1.2rem;
-		}
-		
-		@media (max-width: 480px) {
-			font-size: 1.1rem;
-		}
-	}
+  .h2-title {
+    font-size: 3.2rem;
 
-	p {
-		font-size: 1.8rem;
-		line-height: 1.5;
-		
-		@media (max-width: 1024px) {
-			font-size: 1.6rem;
-		}
-		
-		@media (max-width: 768px) {
-			font-size: 1.4rem;
-		}
-		
-		@media (max-width: 480px) {
-			font-size: 1.2rem;
-		}
-	}
+    @media (max-width: 1024px) { font-size: 2.8rem; }
+    @media (max-width: 768px) { font-size: 2.4rem; }
+    @media (max-width: 480px) { font-size: 2rem; }
+  }
 
-	.button {
-		border-radius: 8px;
-		transition: all 0.3s ease;
-		font-weight: 600;
-		
-		&.button-primary, &.button-primary:hover, &.button-primary:focus {
-			background: #2596be;
-			border: #2596be;
-			color: white;
-		}
-		
-		&:hover {
-			opacity: .8;
-			transform: translateY(-1px);
-			color: white !important;
-		}
-		
-		@media (max-width: 768px) {
-			padding: 12px 20px;
-			font-size: 1rem;
-		}
-		
-		@media (max-width: 480px) {
-			padding: 10px 18px;
-			font-size: 0.9rem;
-		}
-	}
+  .l-subtitle {
+    font-size: 1.9rem;
 
-	section {
-		padding: 70px 0;
-		
-		@media (max-width: 1024px) {
-			padding: 60px 0;
-		}
-		
-		@media (max-width: 768px) {
-			padding: 50px 0;
-		}
-		
-		@media (max-width: 480px) {
-			padding: 40px 0;
-		}
-	}
+    @media (max-width: 768px) { font-size: 1.6rem; }
+    @media (max-width: 480px) { font-size: 1.4rem; }
+  }
 
-	.center { 
-		text-align: center; 
-	}
+  .s-margin { margin-bottom: 5px; }
 
-	.product-cta {
-		max-width: 250px;
-		margin: 0 auto;
-		
-		.button {
-			margin-bottom: 3px;
-		}
-		
-		@media (max-width: 768px) {
-			max-width: 280px;
-		}
-		
-		@media (max-width: 480px) {
-			max-width: 100%;
-			
-			.button {
-				width: 100%;
-				max-width: 300px;
-			}
-		}
-	}
+  .m-margin {
+    margin-bottom: 2rem;
 
-	.mobile-only {
-		display: none;
-		
-		@media (max-width: 768px) {
-			display: block;
-		}
-	}
+    @media (max-width: 768px) {
+      margin-bottom: 1.5rem;
+    }
+  }
 
-	.desktop-only {
-		display: block;
-		
-		@media (max-width: 768px) {
-			display: none;
-		}
-	}
+  .md-width {
+    width: 300px;
 
-	.tablet-only {
-		display: none;
-		
-		@media (min-width: 769px) and (max-width: 1024px) {
-			display: block;
-		}
-	}
+    @media (max-width: 480px) {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
 
-	img {
-		max-width: 100%;
-		height: auto;
-	}
+  .s-paragraph {
+    font-size: 1.3rem;
 
-	* {
-		box-sizing: border-box;
-	}
+    @media (max-width: 768px) { font-size: 1.2rem; }
+    @media (max-width: 480px) { font-size: 1.1rem; }
+  }
 
-	.hero-copy, .text-content, .feature-content {
-		h1, h2, h3, p {
-			margin-left: auto;
-			margin-right: auto;
-		}
-	}
+  p {
+    font-size: 1.8rem;
+    line-height: 1.5;
 
-	@media (max-width: 550px) {
-		.columns {
-			width: 100% !important;
-			margin-left: 0 !important;
-		}
-		
-		.row {
-			margin-bottom: 0;
-		}
-	}
-	
-	a:hover {
-		color: #87bd42 !important;
-	}
+    @media (max-width: 1024px) { font-size: 1.6rem; }
+    @media (max-width: 768px) { font-size: 1.4rem; }
+    @media (max-width: 480px) { font-size: 1.2rem; }
+  }
 
-	/* Estilos personalizados para Snipcart */
-	.snipcart-checkout {
-		background: #2596be !important;
-		color: white !important;
-		border: none !important;
+  .button {
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 600;
 
-		border-radius: 50px !important;
-		font-weight: 600 !important;
-		cursor: pointer !important;
-		transition: all 0.3s ease !important;
-		
-		&:hover {
-			background: #87bd42 !important;
-			transform: translateY(-2px) !important;
-		}
-	}
-	
-.snipcart-input {
-	border: 0px !important;
-}
-	
+    &.button-primary, &.button-primary:hover, &.button-primary:focus {
+      background: #2596be;
+      border: #2596be;
+      color: white;
+    }
 
-.snipcart-base-button {
-   padding: 0px 16px !important;
-}
+    &:hover {
+      opacity: .8;
+      transform: translateY(-1px);
+      color: white !important;
+    }
 
+    @media (max-width: 768px) {
+      padding: 12px 20px;
+      font-size: 1rem;
+    }
 
-/* Centrar los botones de checkout */
-#checkout-content > div:last-child {
+    @media (max-width: 480px) {
+      padding: 10px 18px;
+      font-size: 0.9rem;
+    }
+  }
+
+  section {
+    padding: 70px 0;
+
+    @media (max-width: 1024px) { padding: 60px 0; }
+    @media (max-width: 768px) { padding: 50px 0; }
+    @media (max-width: 480px) { padding: 40px 0; }
+  }
+
+  .center { text-align: center; }
+
+  .product-cta {
+    max-width: 250px;
+    margin: 0 auto;
+
+    .button { margin-bottom: 3px; }
+
+    @media (max-width: 768px) { max-width: 280px; }
+
+    @media (max-width: 480px) {
+      max-width: 100%;
+
+      .button {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  }
+
+  .mobile-only { display: none; @media (max-width: 768px) { display: block; } }
+  .desktop-only { display: block; @media (max-width: 768px) { display: none; } }
+  .tablet-only { display: none; @media (min-width: 769px) and (max-width: 1024px) { display: block; } }
+
+  img { max-width: 100%; height: auto; }
+  * { box-sizing: border-box; }
+
+  .hero-copy, .text-content, .feature-content {
+    h1, h2, h3, p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  @media (max-width: 550px) {
+    .columns {
+      width: 100% !important;
+      margin-left: 0 !important;
+    }
+
+    .row { margin-bottom: 0; }
+  }
+
+  a:hover { color: #87bd42 !important; }
+
+  /* Estilos personalizados para Snipcart */
+  .snipcart-checkout {
+    background: #2596be !important;
+    color: white !important;
+    border: none !important;
+
+    border-radius: 50px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+
+    &:hover {
+      background: #87bd42 !important;
+      transform: translateY(-2px) !important;
+    }
+  }
+
+  .snipcart-input { border: 0px !important; }
+
+  .snipcart-base-button { padding: 0px 16px !important; }
+
+  /* Centrar los botones de checkout */
+  #checkout-content > div:last-child {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
-}
+  }
 
-#proceed-checkout,
-#complete-payment {
+  #proceed-checkout,
+  #complete-payment {
     margin: 0 auto !important;
-}
+  }
 
-/* Para centrar mejor el formulario de pago también */
-#payment-form {
-    text-align: center;
-}
-
-#payment-form > div {
-    margin: 0 auto;
-}
-	
-	
+  /* Para centrar mejor el formulario de pago también */
+  #payment-form { text-align: center; }
+  #payment-form > div { margin: 0 auto; }
 </style>
