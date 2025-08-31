@@ -88,6 +88,12 @@ import bgImage from '../assets/bg-video.jpg';
 .video-card .bg {
   position: absolute; inset: 0; z-index: 1;
 }
+.video-card { position: relative; }
+.video-card .bg { position:absolute; inset:0; z-index:1; transition:opacity .2s ease; }
+.video-card.playing .bg { opacity:0; visibility:hidden; }
+
+/* the YT mount should sit above the poster */
+#yt-player { position:absolute; inset:0; z-index:3; }
 
 /* Play button + label (aligned like Apollo) */
 .play-btn {
@@ -165,17 +171,76 @@ import bgImage from '../assets/bg-video.jpg';
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const btn = document.querySelector('.play-btn');
-  if (!btn) return;
-  btn.addEventListener('click', () => {
-    const iframe = document.createElement('iframe');
-    iframe.src = 'https://www.youtube.com/embed/LdmuquUvU2k?autoplay=1&rel=0&modestbranding=1';
-    iframe.className = 'video-frame';
-    iframe.style.cssText = 'width:100%;height:100%;border:none;position:absolute;inset:0;z-index:3;';
-    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-    iframe.setAttribute('allowfullscreen', 'true');
-    btn.replaceWith(iframe);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn  = document.querySelector('.play-btn');
+    const card = document.querySelector('.video-card');
+    if (!btn || !card) return;
+  
+    // Load YT API once and queue callbacks
+    function loadYTApi(cb){
+      if (window.YT && typeof YT.Player === 'function') return cb();
+      (window._ytReadyCbs ||= []).push(cb);
+      if (!window._ytApiLoading){
+        window._ytApiLoading = true;
+        const tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        document.head.appendChild(tag);
+        window.onYouTubeIframeAPIReady = () => {
+          window._ytReadyCbs.forEach(fn => fn());
+          window._ytReadyCbs = [];
+        };
+      }
+    }
+  
+    btn.addEventListener('click', () => {
+      // Mount for the player (above poster)
+      const mount = document.createElement('div');
+      mount.id = 'yt-player';
+      mount.style.cssText = 'position:absolute;inset:0;z-index:3;';
+      card.appendChild(mount);
+  
+      // Remove the fake button
+      btn.remove();
+  
+      loadYTApi(() => {
+        const player = new YT.Player('yt-player', {
+          videoId: 'LdmuquUvU2k',
+          playerVars: {
+            autoplay: 1,
+            playsinline: 1,
+            rel: 0,
+            modestbranding: 1,
+            enablejsapi: 1
+          },
+          events: {
+            onReady: (e) => {
+              card.classList.add('playing');      // 🔑 hide the poster
+              const p = e.target.playVideo?.();
+              if (p && typeof p.then === 'function') {
+                p.catch(() => {
+                  // iOS may block audio: fallback to muted autoplay + chip
+                  e.target.mute();
+                  e.target.playVideo();
+                  showUnmute(e.target);
+                });
+              }
+            }
+          }
+        });
+  
+        function showUnmute(player) {
+          const unmute = document.createElement('button');
+          unmute.className = 'unmute-btn';
+          unmute.textContent = 'Tap for sound';
+          unmute.style.cssText = `
+            position:absolute;left:50%;bottom:12px;transform:translateX(-50%);
+            padding:8px 12px;border:0;border-radius:999px;background:#fff;
+            box-shadow:0 6px 18px rgba(0,0,0,.18);font-size:12px;font-weight:600;letter-spacing:.06em;z-index:4;`;
+          card.appendChild(unmute);
+          unmute.addEventListener('click', () => { player.unMute(); unmute.remove(); });
+        }
+      });
+    });
   });
-});
-</script>
+  </script>
+  
