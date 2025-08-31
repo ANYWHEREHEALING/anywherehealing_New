@@ -125,13 +125,43 @@ import bgImage from '../assets/bg-video.jpg';
     row-gap: 28px;
     text-align: center;
   }
-  .play-label { 
-    position: static; 
-    transform: none; 
-    margin-left: 10px; 
+
+  /* Center the circle dead-center on the thumbnail */
+  .play-btn {
+    /* undo desktop centering-by-inset */
+    inset: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* center */
+    width: 84px;
+    height: 84px;
+    box-shadow: 0 8px 22px rgba(0,0,0,.20);
   }
-  .play-btn { left: 50%; transform: translate(-50%, -50%); }
+
+  /* Put the label UNDER the circle and center it */
+  .play-label {
+    position: absolute;
+    top: calc(50% + 62px);        /* circle center + radius + spacing */
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(17,17,17,.9);
+    background: rgba(255,255,255,.9);
+    padding: 6px 10px;
+    border-radius: 999px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  }
 }
+
+/* Small phones */
+@media (max-width: 600px) {
+  .play-btn { width: 76px; height: 76px; }
+  .play-label { top: calc(50% + 58px); font-size: 11px; padding: 5px 9px; }
+}
+
 </style>
 
 <script>
