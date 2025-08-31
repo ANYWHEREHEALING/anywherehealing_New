@@ -10,7 +10,7 @@ import CharismaRing from '../assets/charismaring.png'
       <h3 class="h1-title">Choose the right one</h3>
       <p>Pick the device that matches your goals—or combine them to stack resonance power and accelerate results.</p>
 
-      <!-- NEW: Quick Comparison Bar -->
+      <!-- Quick Comparison Bar -->
       <div class="compare-bar" role="list" aria-label="Product comparison">
         <div class="compare-pill" role="listitem">
           <div class="compare-title">Frequana</div>
@@ -52,16 +52,26 @@ import CharismaRing from '../assets/charismaring.png'
         <div class="product-image">
           <img src={Frequana.src} alt="Frequana" class="product-img" data-image="frequana">
         </div>
+
         <div class="price-header m-margin">
-          <h5 class="l-subtitle">Frequana</h5>
-          <div class="sensor-chips" aria-label="Core capabilities">
-            <span class="chip">Tri-Layer Resonance</span>
-            <span class="chip">Circulatory Insight</span>
-            <span class="chip">Precision Thermal Mapping</span>
+          <div class="header-top">
+            <h5 class="l-subtitle">Frequana</h5>
+            <div class="sensor-chips" aria-label="Core capabilities">
+              <span class="chip">Tri-Layer Resonance</span>
+              <span class="chip">Circulatory Insight</span>
+              <span class="chip">Precision Thermal Mapping</span>
+            </div>
+            <small class="sensor-note">Three synchronized biofeedback layers amplify the therapeutic field.</small>
           </div>
-          <small class="sensor-note">Three synchronized biofeedback layers amplify the therapeutic field.</small>
-          <h3 class="h2-title">$649<span class="s-paragraph"> USD</span></h3>
-          <a href="/order?product=frequana" class="button u-full-width">Buy Now</a>
+
+          <div class="price">
+            <span class="amount">$649</span>
+            <span class="currency">USD</span>
+          </div>
+
+          <div class="price-actions">
+            <a href="/order?product=frequana" class="button u-full-width">Buy Now</a>
+          </div>
         </div>
 
         <div class="quick-use">
@@ -92,15 +102,25 @@ import CharismaRing from '../assets/charismaring.png'
         <div class="product-image">
           <img src={AlphaWearable.src} alt="Alpha Wearable" class="product-img" data-image="alpha">
         </div>
+
         <div class="price-header m-margin">
-          <h5 class="l-subtitle">Alpha Wearable + App subscription</h5>
-          <div class="sensor-chips" aria-label="Core capabilities">
-            <span class="chip">Dual Biofeedback</span>
-            <span class="chip">Thermal Balance Tracking</span>
+          <div class="header-top">
+            <h5 class="l-subtitle">Alpha Wearable + App subscription</h5>
+            <div class="sensor-chips" aria-label="Core capabilities">
+              <span class="chip">Dual Biofeedback</span>
+              <span class="chip">Thermal Balance Tracking</span>
+            </div>
+            <small class="sensor-note">Two adaptive channels guide day-to-day resonance.</small>
           </div>
-          <small class="sensor-note">Two adaptive channels guide day-to-day resonance.</small>
-          <h3 class="h2-title">$399<span class="s-paragraph"> USD</span></h3>
-          <a href="/order?product=alpha" class="button button-primary u-full-width">Buy Now</a>
+
+          <div class="price">
+            <span class="amount">$399</span>
+            <span class="currency">USD</span>
+          </div>
+
+          <div class="price-actions">
+            <a href="/order?product=alpha" class="button button-primary u-full-width">Buy Now</a>
+          </div>
         </div>
 
         <div class="quick-use">
@@ -132,15 +152,25 @@ import CharismaRing from '../assets/charismaring.png'
         <div class="product-image">
           <img src={CharismaRing.src} alt="Charisma Ring" class="product-img" data-image="charisma">
         </div>
+
         <div class="price-header m-margin">
-          <h5 class="l-subtitle">Charisma ring</h5>
-          <div class="sensor-chips" aria-label="Core capabilities">
-            <span class="chip">Dual Resonance Sensing</span>
-            <span class="chip">Flow & Vitality Signals</span>
+          <div class="header-top">
+            <h5 class="l-subtitle">Charisma ring</h5>
+            <div class="sensor-chips" aria-label="Core capabilities">
+              <span class="chip">Dual Resonance Sensing</span>
+              <span class="chip">Flow & Vitality Signals</span>
+            </div>
+            <small class="sensor-note">Compact guidance for on-the-go sessions.</small>
           </div>
-          <small class="sensor-note">Compact guidance for on-the-go sessions.</small>
-          <h3 class="h2-title">$199<span class="s-paragraph"> USD</span></h3>
-          <a href="/order?product=charisma" class="button u-full-width">Buy Now</a>
+
+          <div class="price">
+            <span class="amount">$199</span>
+            <span class="currency">USD</span>
+          </div>
+
+          <div class="price-actions">
+            <a href="/order?product=charisma" class="button u-full-width">Buy Now</a>
+          </div>
         </div>
 
         <div class="quick-use">
@@ -175,116 +205,143 @@ import CharismaRing from '../assets/charismaring.png'
 </section>
 
 <style lang="scss">
-.pricing-table {
-  background-color: #fff;
+/* ---------- Alignment variables ---------- */
+:root{
+  --space-0: 4px;
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 20px;
+  --space-5: 28px;
+  --space-6: 36px;
 
-  /* NEW: Comparison bar styles */
-  .compare-bar{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:14px;
-    border:1px solid #e5e7eb; border-radius:16px; padding:14px; margin:20px 0 36px;
-    background:#fafafa;
-  }
-  .compare-pill{
-    background:#ffffff; border:1px solid #e5e7eb; border-radius:12px; padding:12px 14px;
-    display:flex; flex-direction:column; gap:6px;
-  }
-  .compare-pill.featured{ box-shadow:0 8px 18px rgba(0,0,0,.05); transform:translateY(-2px); }
-  .compare-title{ font-weight:700; letter-spacing:.2px; }
-  .compare-sub{ font-size:.9rem; color:#2563eb; font-weight:700; }
-  .compare-pill ul{ margin:0; padding-left:18px; }
-  .compare-pill li{ margin:4px 0; font-size:.95rem; }
-
-  .price-item{
-    border: 1px solid #dde2e5;
-    padding: 30px;
-    margin-top: 20px;
-    border-radius: 20px;
-    position: relative;
-
-    &.featured{
-      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
-      transform: translateY(-6px);
-    }
-
-    .product-image { text-align:center; margin-bottom:25px;
-      .product-img{
-        width:70px!important; height:70px!important; object-fit:cover;
-        transition:transform .3s ease; display:block; margin:0 auto;
-        border-radius:12px!important; border:1px solid #ddd; cursor:pointer;
-        &:hover{ transform:scale(1.1); }
-      }
-    }
-
-    .price-header{
-      h3 .s-paragraph{ color:#9ba5b9; }
-      .sensor-note{ display:block; margin-top:6px; color:#6b7280; font-size:.9rem; }
-    }
-
-    /* Capability chips */
-    .sensor-chips{
-      margin:6px 0 4px; display:flex; gap:8px; flex-wrap:wrap;
-      .chip{
-        display:inline-block; padding:6px 10px; border-radius:9999px;
-        border:1px solid #e2e8f0; font-size:.8rem; font-weight:600; letter-spacing:.02em;
-        background:#f8fafc;
-      }
-    }
-
-    .quick-use{
-      background:#f7fbff; border:1px solid #dceeff; border-radius:12px;
-      padding:14px; margin:14px 0 8px;
-      ul{ margin:8px 0 0 18px; }
-      li{ margin:6px 0; }
-    }
-
-    .price-list p{
-      margin:10px 0; position:relative; padding-left:20px; font-size:14px; line-height:1.4;
-      &::before{
-        position:absolute; content:''; left:0; top:5px; display:inline-block; transform:rotate(45deg);
-        height:8px; width:5px; border-bottom:2px solid #9ba5b9; border-right:2px solid #9ba5b9; z-index:5;
-      }
-    }
-  }
-
-  .price-item .button:hover{ color:#333!important; }
-  .price-item .button.button-primary:hover{ color:#fff!important; }
+  /* Key alignment knobs (tweak if copy changes) */
+  --header-min: 220px;     /* keeps title/chips/note area consistent */
+  --quickuse-min: 180px;   /* keeps the blue “Use this if you want” box aligned */
+  --card-gap: var(--space-3);
+  --text-max: 58ch;
 }
 
-.buttonbuyall{ margin-top:50px; margin-bottom:70px; }
+.pricing-table{ background:#fff; line-height:1.65; letter-spacing:.01em; }
+.pricing-table .container{ max-width:1200px; margin:0 auto; padding:0 16px; box-sizing:border-box; }
 
-/* Modal (unchanged) */
-.image-modal{ display:none; position:fixed; z-index:10000; left:0; top:0; width:100%; height:100%;
-  background-color:rgba(0,0,0,.9); backdrop-filter:blur(5px);
-  &.active{ display:flex; justify-content:center; align-items:center; padding:20px; }
-  .modal-content{ position:relative; width:100%; height:100%; display:flex; justify-content:center; align-items:center;
-    .close-button{ position:fixed; top:20px; right:20px; color:#fff; font-size:40px; font-weight:bold; cursor:pointer;
-      z-index:10001; transition:all .3s ease; background:rgba(0,0,0,.5); border-radius:50%; width:60px; height:60px;
-      display:flex; align-items:center; justify-content:center;
-      &:hover{ color:#ccc; background:rgba(0,0,0,.7); transform:scale(1.1); }
-    }
-    img{ max-width:calc(100vw - 40px); max-height:calc(100vh - 40px); width:auto; height:auto; object-fit:contain;
-      border-radius:15px; box-shadow:0 20px 40px rgba(0,0,0,.3); transition:opacity .3s ease; }
-  }
+/* Top grid of cards */
+.pricing-table .row{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap: var(--space-6);
+}
+.pricing-table .row > .column,
+.pricing-table .row > .one-third{ float:none!important; width:auto!important; max-width:none!important; margin-left:0!important; box-sizing:border-box; }
+
+/* ----- Card as a grid: image / header / quick-use / features ----- */
+.price-item{
+  border:1px solid #dde2e5;
+  border-radius:22px;
+  background:#fff;
+  padding:var(--space-6);
+  display:grid;
+  grid-template-rows: auto /* image */ auto /* header */ auto /* quick-use */ 1fr /* features fill */;
+  gap: var(--card-gap);
 }
 
+/* image */
+.product-image{ text-align:center; }
+.product-img{
+  width:80px!important; height:80px!important; object-fit:cover;
+  border-radius:14px!important; border:1px solid #ddd;
+  transition:transform .3s ease; display:block; margin:0 auto;
+}
+.product-img:hover{ transform:scale(1.1); }
+
+/* header */
+.price-header{
+  display:grid;
+  grid-template-rows: 1fr auto auto; /* header-top stretches; price + button lock to bottom */
+  gap: 10px;
+  min-height: var(--header-min);
+}
+.header-top{ display:flex; flex-direction:column; gap:8px; }
+
+.price{
+  display:inline-flex; align-items:flex-end; gap:8px;
+}
+.price .amount{
+  font-size:2.6rem; font-weight:800; line-height:1; letter-spacing:-0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.price .currency{
+  font-size:.9rem; line-height:1; margin-bottom:6px; color:#6b7280;
+  text-transform:uppercase; font-weight:700; letter-spacing:.02em;
+}
+.price-actions{ margin-top:4px; }
+
+/* chips + note */
+.sensor-chips{ display:flex; gap:10px; flex-wrap:wrap; }
+.sensor-chips .chip{ padding:6px 10px; border-radius:9999px; border:1px solid #e2e8f0; font-size:.8rem; font-weight:600; background:#f8fafc; }
+.sensor-note{ color:#6b7280; font-size:.9rem; }
+
+/* quick-use box (kept same height across cards) */
+.quick-use{
+  background:#f7fbff; border:1px solid #dceeff; border-radius:12px;
+  padding:var(--space-3);
+  min-height: var(--quickuse-min);
+  display:flex; flex-direction:column;
+}
+.quick-use ul{ margin:var(--space-1) 0 0 18px; }
+.quick-use li{ margin:8px 0; }
+
+/* features list */
+.price-list{ max-width: var(--text-max); align-self:stretch; }
+.price-list p{
+  margin:12px 0; position:relative; padding-left:22px; font-size:14px; line-height:1.6;
+}
+.price-list p::before{
+  position:absolute; content:''; left:0; top:5px; transform:rotate(45deg);
+  height:8px; width:5px; border-bottom:2px solid #9ba5b9; border-right:2px solid #9ba5b9;
+}
+
+/* featured card pop */
+.price-item.featured{ box-shadow:0 10px 24px rgba(0,0,0,0.06); transform:translateY(-6px); }
+
+/* buttons */
+.price-item .button{ padding:0 22px; }
+.price-item .button:hover{ color:#333!important; }
+.price-item .button.button-primary:hover{ color:#fff!important; }
+
+.buttonbuyall{ margin-top:54px; margin-bottom:80px; }
+
+/* comparison bar */
+.compare-bar{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-2);
+  border:1px solid #e5e7eb; border-radius:16px; padding:var(--space-3); margin:20px 0 36px; background:#fafafa;
+}
+.compare-pill{ background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:var(--space-3); display:flex; flex-direction:column; gap:var(--space-1); }
+.compare-pill.featured{ box-shadow:0 8px 18px rgba(0,0,0,.05); transform:translateY(-2px); }
+.compare-title{ font-weight:700; }
+.compare-sub{ font-size:.9rem; color:#2563eb; font-weight:700; }
+.compare-pill ul{ margin:0; padding-left:18px; }
+.compare-pill li{ margin:6px 0; font-size:.95rem; }
+
+/* modal (unchanged) */
+.image-modal{ display:none; position:fixed; z-index:10000; inset:0; background-color:rgba(0,0,0,.9); backdrop-filter:blur(5px); }
+.image-modal.active{ display:flex; justify-content:center; align-items:center; padding:20px; }
+.image-modal .modal-content{ position:relative; width:100%; height:100%; display:flex; justify-content:center; align-items:center; }
+.image-modal .close-button{ position:fixed; top:20px; right:20px; color:#fff; font-size:40px; font-weight:bold; cursor:pointer; z-index:10001; transition:all .3s ease; background:rgba(0,0,0,.5); border-radius:50%; width:60px; height:60px; display:flex; align-items:center; justify-content:center; }
+.image-modal .close-button:hover{ color:#ccc; background:rgba(0,0,0,.7); transform:scale(1.1); }
+.image-modal img{ max-width:calc(100vw - 40px); max-height:calc(100vh - 40px); width:auto; height:auto; object-fit:contain; border-radius:15px; box-shadow:0 20px 40px rgba(0,0,0,.3); transition:opacity .3s ease; }
+
+/* responsive alignment knobs */
+@media (max-width: 1024px){
+  :root{ --header-min: 210px; --quickuse-min: 170px; }
+  .pricing-table .row{ gap: var(--space-5); }
+}
 @media (max-width: 920px){
-  .pricing-table .compare-bar{ grid-template-columns:1fr; }
+  .pricing-table .row{ grid-template-columns:1fr; }
+  :root{ --header-min: 190px; --quickuse-min: 160px; }
 }
-
 @media (max-width: 768px){
-  .h1-title{ font-size:3rem; }
-  .l-subtitle, .h2-title{ text-align:center; }
-  .button{ padding:0 18px; font-size:1.1rem; }
-  p{ font-size:1.4rem; margin-top:35px; }
-  .image-modal.active{ padding:10px; }
-  .image-modal .close-button{ top:10px; right:10px; font-size:30px; width:50px; height:50px; }
-  .image-modal img{ max-width:calc(100vw - 20px); max-height:calc(100vh - 20px); }
-}
-
-@media (max-width: 480px){
-  .image-modal.active{ padding:5px; }
-  .image-modal .close-button{ top:5px; right:5px; font-size:24px; width:40px; height:40px; }
-  .image-modal img{ max-width:calc(100vw - 10px); max-height:calc(100vh - 10px); }
+  :root{ --header-min: 180px; --quickuse-min: 150px; }
 }
 </style>
 
@@ -312,7 +369,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   closeBtn.addEventListener('click', closeModal, { passive:true });
-  modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); }, { passive:true });
+  document.getElementById('imageModal').addEventListener('click', function(e){ if(e.target === this) closeModal(); }, { passive:true });
 
   let escapeTimeout;
   document.addEventListener('keydown', function(e){
