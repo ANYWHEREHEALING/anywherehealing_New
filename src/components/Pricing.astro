@@ -274,6 +274,44 @@ import CharismaRing from '../assets/charismaring.png'
   .compare-deck{ grid-template-columns:1fr; }
   .ccard-head{ min-height:unset; }
 }
+
+/* ===== Fix: mobile CTA vertical centering (iPhone Safari) ===== */
+.buttonbuyall {
+  display: flex;
+  justify-content: center;
+  padding-left: max(16px, env(safe-area-inset-left));
+  padding-right: max(16px, env(safe-area-inset-right));
+}
+
+.buttonbuyall .button {
+  /* Center text perfectly */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  /* Avoid the line-height hack that looks off on iOS */
+  height: 52px !important;
+  padding: 0 22px !important;
+  line-height: 1 !important;
+
+  /* Keep it tidy */
+  text-align: center;
+  white-space: nowrap;
+  border-radius: 14px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  -webkit-appearance: none;
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .buttonbuyall .button {
+    width: 100%;
+    height: 48px !important;
+    padding: 0 18px !important;
+  }
+}
+
 </style>
 
 <script>
