@@ -3,13 +3,36 @@
   <head>
     <meta charset="utf-8">
     <title>{{ page_title }} – {{ shop.name }}</title>
+    <meta name="description" content="Discover revolutionary healing devices powered by cutting-edge bioresonance technology. Enhance your well-being naturally.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{ content_for_header }} {# Shopify injects required scripts #}
-    <link rel="icon" href="{{ 'favicon.png' | asset_url }}">
+
+    {% comment %} Shopify injects required scripts {% endcomment %}
+    {{ content_for_header }}
+
+    {%- comment -%} Favicon {%- endcomment -%}
+    <link rel="icon" type="image/png" href="{{ 'favicon.png' | asset_url }}">
+
+    {%- comment -%} External CSS from your Astro layout {%- endcomment -%}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+
+    {%- comment -%} Your compiled theme styles {%- endcomment -%}
     <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+
+    {%- comment -%} Open Graph (cannot use Astro variables; use Shopify/Liquid) {%- endcomment -%}
+    <meta property="og:title" content="{{ page_title }} — {{ shop.name }}">
+    <meta property="og:description" content="Discover revolutionary healing devices powered by bioresonance technology.">
+    <meta property="og:image" content="{{ 'logo.png' | asset_url }}">
+    <meta property="og:url" content="{{ canonical_url }}">
   </head>
+
   <body>
     {{ content_for_layout }}
+
+    {%- comment -%}
+      DO NOT load the Buy Button/Storefront SDK inside a Shopify theme.
+      Use native product/collection templates/sections instead.
+    {%- endcomment -%}
+
     <script src="{{ 'theme.js' | asset_url }}" defer></script>
   </body>
 </html>
