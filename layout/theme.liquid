@@ -9,30 +9,19 @@
     {% comment %} Shopify injects required scripts {% endcomment %}
     {{ content_for_header }}
 
-    {%- comment -%} Favicon {%- endcomment -%}
     <link rel="icon" type="image/png" href="{{ 'favicon.png' | asset_url }}">
-
-    {%- comment -%} External CSS from your Astro layout {%- endcomment -%}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
-
-    {%- comment -%} Your compiled theme styles {%- endcomment -%}
     <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
 
-    {%- comment -%} Open Graph (cannot use Astro variables; use Shopify/Liquid) {%- endcomment -%}
     <meta property="og:title" content="{{ page_title }} — {{ shop.name }}">
     <meta property="og:description" content="Discover revolutionary healing devices powered by bioresonance technology.">
     <meta property="og:image" content="{{ 'logo.png' | asset_url }}">
     <meta property="og:url" content="{{ canonical_url }}">
   </head>
-
   <body>
+    {% section 'header' %}
     {{ content_for_layout }}
-
-    {%- comment -%}
-      DO NOT load the Buy Button/Storefront SDK inside a Shopify theme.
-      Use native product/collection templates/sections instead.
-    {%- endcomment -%}
-
+    {% section 'footer' %}
     <script src="{{ 'theme.js' | asset_url }}" defer></script>
   </body>
 </html>

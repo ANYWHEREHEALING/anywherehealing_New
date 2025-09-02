@@ -1,0 +1,31 @@
+<section class="hero" style="position:relative;">
+  <div class="container">
+    <div class="hero-copy">
+      <h1 class="h1-title">{{ section.settings.heading | escape }}</h1>
+      <p class="s-paragraph">{{ section.settings.subtext }}</p>
+      {% if section.settings.cta_label != blank and section.settings.cta_url != blank %}
+        <a class="button button-primary" href="{{ section.settings.cta_url }}">{{ section.settings.cta_label }}</a>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if section.settings.hero_image != blank %}
+    <img class="hero-bg" src="{{ section.settings.hero_image | image_url: width: 2400 }}" alt="" loading="eager" style="width:100%;height:auto;">
+  {% else %}
+    <img class="hero-bg" src="{{ 'hero.jpg' | asset_url }}" alt="" style="width:100%;height:auto;">
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Your Body Speaks,\nAlpha Wearable Listens" },
+    { "type": "richtext", "id": "subtext", "label": "Subtext", "default": "<p>Like a radio, when you aren’t tuned to the right frequency, all you get is static. That’s because your cells vibrate at natural frequencies, and when something’s wrong, those frequencies become disrupted.</p>" },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "SHOP ALPHA WEARABLE" },
+    { "type": "url", "id": "cta_url", "label": "CTA link", "default": "/products/alpha-wearable" },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image" }
+  ],
+  "presets": [{"name": "Hero"}]
+}
+{% endschema %}

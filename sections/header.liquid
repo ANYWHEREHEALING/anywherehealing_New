@@ -1,0 +1,31 @@
+<header class="site-header">
+  <nav class="nav container" style="display:flex;align-items:center;gap:24px;padding:16px 0;">
+    <a class="logo" href="{{ routes.root_url }}">
+      <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" style="height:56px;width:auto;">
+    </a>
+
+    <ul class="links" style="display:flex;gap:20px;list-style:none;margin:0;padding:0;">
+      {% assign main_menu = linklists.main-menu.links | default: linklists.main_menu.links %}
+      {% if main_menu.size > 0 %}
+        {% for link in main_menu %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+      {% else %}
+        <li><a href="/pages/about">About</a></li>
+        <li><a href="/collections/all">Product</a></li>
+        <li><a href="/pages/rejuvena-pod">Rejuvena Pod</a></li>
+        <li><a href="/pages/contact">Contact</a></li>
+      {% endif %}
+    </ul>
+
+    <a class="button button-primary" href="/collections/all" style="margin-left:auto;">ORDER NOW</a>
+  </nav>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [],
+  "presets": [{"name":"Header"}]
+}
+{% endschema %}

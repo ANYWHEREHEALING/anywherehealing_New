@@ -1,0 +1,30 @@
+<section class="text-section">
+  <div class="container" style="display:grid;grid-template-columns:1fr;gap:24px;">
+    <div class="text-content">
+      <h2 class="h2-title">{{ section.settings.title | escape }}</h2>
+      <div class="rte">{{ section.settings.body }}</div>
+      {% if section.settings.cta_label != blank and section.settings.cta_url != blank %}
+        <p><a class="button button-primary" href="{{ section.settings.cta_url }}">{{ section.settings.cta_label }}</a></p>
+      {% endif %}
+    </div>
+    {% if section.settings.media != blank %}
+      <div class="media">
+        <img src="{{ section.settings.media | image_url: width: 1600 }}" alt="">
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Rich text with media",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "The Technology Helping Your Body Heal Naturally" },
+    { "type": "richtext", "id": "body", "label": "Body", "default": "<p>Our wearable devices use advanced biosensors...</p>" },
+    { "type": "image_picker", "id": "media", "label": "Image/Video cover" },
+    { "type": "text", "id": "cta_label", "label": "CTA label" },
+    { "type": "url", "id": "cta_url", "label": "CTA URL" }
+  ],
+  "presets": [{"name": "Rich text + media"}]
+}
+{% endschema %}

@@ -1,6 +1,7 @@
 {
   "sections": {
-    "main": { "type": "main-home" }
+    "hero": { "type": "hero" },
+    "tech": { "type": "rich-text-media" }
   },
-  "order": ["main"]
+  "order": ["hero", "tech"]
 }
