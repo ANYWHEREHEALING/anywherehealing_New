@@ -5,48 +5,46 @@ import Footer from '../components/Footer.astro';
 import Check from '../assets/check.svg'
 ---
 
-
 <Layout title="Order Your Healing Device | Anywhere Healing">
   <Header />
 
-<!-- ======================= AH PRE-CHECKOUT MODAL ======================= -->
-<div id="ah-lead-overlay" class="ah-overlay ah-hidden" aria-hidden="true">
-	<div class="ah-modal" role="dialog" aria-modal="true" aria-labelledby="ah-lead-title">
-	  <button id="ah-lead-close" class="ah-close" aria-label="Close">×</button>
-	  <h3 id="ah-lead-title" style="margin-top:0">Almost there—who’s checking out?</h3>
-  
-	  <form id="ah-lead-form" autocomplete="off">
-		<div class="ah-field">
-		  <label for="ah-first">First name</label>
-		  <input id="ah-first" required autocomplete="given-name" />
-		</div>
-		<div class="ah-field">
-		  <label for="ah-last">Last name</label>
-		  <input id="ah-last" required autocomplete="family-name" />
-		</div>
-		<div class="ah-field">
-		  <label for="ah-email">Email</label>
-		  <input id="ah-email" type="email" required autocomplete="email" />
-		</div>
-  
-		<!-- NEW: password + confirm password -->
-		<div class="ah-field">
-		  <label for="ah-pass">Password</label>
-		  <input id="ah-pass" type="password" required minlength="8" autocomplete="new-password" />
-		  <small class="ah-hint">8+ characters</small>
-		</div>
-		<div class="ah-field">
-		  <label for="ah-pass2">Confirm password</label>
-		  <input id="ah-pass2" type="password" required minlength="8" autocomplete="new-password" />
-		</div>
-  
-		<button id="ah-lead-submit" type="submit" class="ah-btn">Continue to payment</button>
-		<p id="ah-lead-error" class="ah-error" style="display:none"></p>
-	  </form>
-	</div>
+  <!-- ======================= AH PRE-CHECKOUT MODAL ======================= -->
+  <div id="ah-lead-overlay" class="ah-overlay ah-hidden" aria-hidden="true">
+    <div class="ah-modal" role="dialog" aria-modal="true" aria-labelledby="ah-lead-title">
+      <button id="ah-lead-close" class="ah-close" aria-label="Close">×</button>
+      <h3 id="ah-lead-title" style="margin-top:0">Almost there—who’s checking out?</h3>
+
+      <form id="ah-lead-form" autocomplete="off">
+        <div class="ah-field">
+          <label for="ah-first">First name</label>
+          <input id="ah-first" required autocomplete="given-name" />
+        </div>
+        <div class="ah-field">
+          <label for="ah-last">Last name</label>
+          <input id="ah-last" required autocomplete="family-name" />
+        </div>
+        <div class="ah-field">
+          <label for="ah-email">Email</label>
+          <input id="ah-email" type="email" required autocomplete="email" />
+        </div>
+
+        <!-- NEW: password + confirm password -->
+        <div class="ah-field">
+          <label for="ah-pass">Password</label>
+          <input id="ah-pass" type="password" required minlength="8" autocomplete="new-password" />
+          <small class="ah-hint">8+ characters</small>
+        </div>
+        <div class="ah-field">
+          <label for="ah-pass2">Confirm password</label>
+          <input id="ah-pass2" type="password" required minlength="8" autocomplete="new-password" />
+        </div>
+
+        <button id="ah-lead-submit" type="submit" class="ah-btn">Continue to payment</button>
+        <p id="ah-lead-error" class="ah-error" style="display:none"></p>
+      </form>
+    </div>
   </div>
   <!-- ==================================================================== -->
-  
 
   <!-- Product Selection Section -->
   <section class="product-hero">
@@ -273,7 +271,6 @@ import Check from '../assets/check.svg'
         <div class="detail-panel" data-panel="specifications">
           <h3>Technical Specifications</h3>
           <div class="specs-grid">
-            
             <div class="spec-category">
               <h4>Alpha Wearable</h4>
               <ul>
@@ -286,7 +283,7 @@ import Check from '../assets/check.svg'
                 <li>Scratch-resistant sapphire screen</li>
               </ul>
             </div>
-        
+
             <div class="spec-category">
               <h4>Charisma Ring</h4>
               <ul>
@@ -298,7 +295,7 @@ import Check from '../assets/check.svg'
                 <li>Seamlessly pairs with the Alpha App</li>
               </ul>
             </div>
-        
+
             <div class="spec-category">
               <h4>Frequana</h4>
               <ul>
@@ -310,10 +307,8 @@ import Check from '../assets/check.svg'
                 <li>Crafted with premium materials</li>
               </ul>
             </div>
-        
           </div>
         </div>
-        
 
         <div class="detail-panel" data-panel="how-it-works">
           <h3>The Science Behind Frequency Healing</h3>
@@ -341,160 +336,159 @@ import Check from '../assets/check.svg'
     </div>
   </section>
 
- <!-- Testimonials Section -->
-<section class="testimonials-section">
-	<div class="container">
-		<div class="testimonials-content">
-			<h2>Real Testimonials from Our Users</h2>
-			<p class="testimonials-subtitle">Authentic experiences from people who have transformed their wellbeing</p>
-			
-			<div class="testimonials-grid">
-				<div class="testimonial-card">
-					<div class="testimonial-header">
-						<div class="user-info">
-							<div class="user-avatar">S</div>
-							<div class="user-details">
-								<h4>Sarah Johnson</h4>
-								<span>Verified ✓</span>
-							</div>
-						</div>
-						<div class="rating">★★★★★</div>
-					</div>
-					<p>"After using the Alpha Wearable for 3 weeks, my sleep quality improved enormously. I used to wake up 4-5 times per night, now I sleep deeply and wake up energized."</p>
-					<div class="testimonial-footer">
-						<span class="product-used">Alpha Wearable</span>
-						<span class="time-used">3 weeks of use</span>
-					</div>
-				</div>
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="testimonials-content">
+        <h2>Real Testimonials from Our Users</h2>
+        <p class="testimonials-subtitle">Authentic experiences from people who have transformed their wellbeing</p>
 
-				<div class="testimonial-card">
-					<div class="testimonial-header">
-						<div class="user-info">
-							<div class="user-avatar">M</div>
-							<div class="user-details">
-								<h4>Michael Thompson</h4>
-								<span>Verified ✓</span>
-							</div>
-						</div>
-						<div class="rating">★★★★★</div>
-					</div>
-					<p>"My anxiety has decreased significantly since I started using the Charisma Ring. It's incredible how something so small can have such a big impact on my mental and emotional state."</p>
-					<div class="testimonial-footer">
-						<span class="product-used">Charisma Ring</span>
-						<span class="time-used">6 weeks of use</span>
-					</div>
-				</div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="user-info">
+                <div class="user-avatar">S</div>
+                <div class="user-details">
+                  <h4>Sarah Johnson</h4>
+                  <span>Verified ✓</span>
+                </div>
+              </div>
+              <div class="rating">★★★★★</div>
+            </div>
+            <p>"After using the Alpha Wearable for 3 weeks, my sleep quality improved enormously. I used to wake up 4-5 times per night, now I sleep deeply and wake up energized."</p>
+            <div class="testimonial-footer">
+              <span class="product-used">Alpha Wearable</span>
+              <span class="time-used">3 weeks of use</span>
+            </div>
+          </div>
 
-				<div class="testimonial-card">
-					<div class="testimonial-header">
-						<div class="user-info">
-							<div class="user-avatar">E</div>
-							<div class="user-details">
-								<h4>Emily Rodriguez</h4>
-								<span>Verified ✓</span>
-							</div>
-						</div>
-						<div class="rating">★★★★★</div>
-					</div>
-					<p>"Frequana changed my life. I had been struggling with chronic pain for years. After 2 months of constant use, the pain decreased by 80%. It's as if my body remembered how to heal itself."</p>
-					<div class="testimonial-footer">
-						<span class="product-used">Frequana</span>
-						<span class="time-used">2 months of use</span>
-					</div>
-				</div>
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="user-info">
+                <div class="user-avatar">M</div>
+                <div class="user-details">
+                  <h4>Michael Thompson</h4>
+                  <span>Verified ✓</span>
+                </div>
+              </div>
+              <div class="rating">★★★★★</div>
+            </div>
+            <p>"My anxiety has decreased significantly since I started using the Charisma Ring. It's incredible how something so small can have such a big impact on my mental and emotional state."</p>
+            <div class="testimonial-footer">
+              <span class="product-used">Charisma Ring</span>
+              <span class="time-used">6 weeks of use</span>
+            </div>
+          </div>
 
-				<div class="testimonial-card">
-					<div class="testimonial-header">
-						<div class="user-info">
-							<div class="user-avatar">D</div>
-							<div class="user-details">
-								<h4>David Miller</h4>
-								<span>Verified ✓</span>
-							</div>
-						</div>
-						<div class="rating">★★★★★</div>
-					</div>
-					<p>"I bought the complete bundle and it has been the best investment in my health. My energy increased, I sleep better and my concentration at work improved noticeably. I recommend it 100%."</p>
-					<div class="testimonial-footer">
-						<span class="product-used">Complete Bundle</span>
-						<span class="time-used">4 months of use</span>
-					</div>
-				</div>
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="user-info">
+                <div class="user-avatar">E</div>
+                <div class="user-details">
+                  <h4>Emily Rodriguez</h4>
+                  <span>Verified ✓</span>
+                </div>
+              </div>
+              <div class="rating">★★★★★</div>
+            </div>
+            <p>"Frequana changed my life. I had been struggling with chronic pain for years. After 2 months of constant use, the pain decreased by 80%. It's as if my body remembered how to heal itself."</p>
+            <div class="testimonial-footer">
+              <span class="product-used">Frequana</span>
+              <span class="time-used">2 months of use</span>
+            </div>
+          </div>
 
-				<div class="testimonial-card">
-					<div class="testimonial-header">
-						<div class="user-info">
-							<div class="user-avatar">J</div>
-							<div class="user-details">
-								<h4>Jessica Williams</h4>
-								<span>Verified ✓</span>
-							</div>
-						</div>
-						<div class="rating">★★★★★</div>
-					</div>
-					<p>"I was skeptical at first, but the results speak for themselves. My stress level dropped considerably and I have a general sense of wellbeing that I hadn't experienced in years."</p>
-					<div class="testimonial-footer">
-						<span class="product-used">Alpha Wearable</span>
-						<span class="time-used">5 weeks of use</span>
-					</div>
-				</div>
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="user-info">
+                <div class="user-avatar">D</div>
+                <div class="user-details">
+                  <h4>David Miller</h4>
+                  <span>Verified ✓</span>
+                </div>
+              </div>
+              <div class="rating">★★★★★</div>
+            </div>
+            <p>"I bought the complete bundle and it has been the best investment in my health. My energy increased, I sleep better and my concentration at work improved noticeably. I recommend it 100%."</p>
+            <div class="testimonial-footer">
+              <span class="product-used">Complete Bundle</span>
+              <span class="time-used">4 months of use</span>
+            </div>
+          </div>
 
-				<div class="testimonial-card">
-					<div class="testimonial-header">
-						<div class="user-info">
-							<div class="user-avatar">R</div>
-							<div class="user-details">
-								<h4>Robert Anderson</h4>
-								<span>Verified ✓</span>
-							</div>
-						</div>
-						<div class="rating">★★★★★</div>
-					</div>
-					<p>"After trying multiple treatments for my insomnia, the Alpha Wearable was the only thing that actually worked. Now I sleep 7-8 continuous hours and feel renewed every morning."</p>
-					<div class="testimonial-footer">
-						<span class="product-used">Alpha Wearable</span>
-						<span class="time-used">8 weeks of use</span>
-					</div>
-				</div>
-			</div>
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="user-info">
+                <div class="user-avatar">J</div>
+                <div class="user-details">
+                  <h4>Jessica Williams</h4>
+                  <span>Verified ✓</span>
+                </div>
+              </div>
+              <div class="rating">★★★★★</div>
+            </div>
+            <p>"I was skeptical at first, but the results speak for themselves. My stress level dropped considerably and I have a general sense of wellbeing that I hadn't experienced in years."</p>
+            <div class="testimonial-footer">
+              <span class="product-used">Alpha Wearable</span>
+              <span class="time-used">5 weeks of use</span>
+            </div>
+          </div>
 
-			<div class="trust-stats">
-				<div class="stat">
-					<span class="stat-number">4,561</span>
-					<span class="stat-label">Satisfied Customers</span>
-				</div>
-				<div class="stat">
-					<span class="stat-number">95%</span>
-					<span class="stat-label">Satisfaction Rate</span>
-				</div>
-				<div class="stat">
-					<span class="stat-number">10+</span>
-					<span class="stat-label">Cities Reached</span>
-				</div>
-				<div class="stat">
-					<span class="stat-number">879</span>
-					<span class="stat-label">App Downloads</span>
-				</div>
-			</div>
-			
-			<div class="certifications">
-				<div class="cert-item">
-					<img src="/check.svg" alt="FDA">
-					<span>No Pills, Frequency Healing</span>
-				</div>
-				<div class="cert-item">
-					<img src="/check.svg" alt="Clinical">
-					<span>Restore Natural Balance</span>
-				</div>
-				<div class="cert-item">
-					<img src="/check.svg" alt="Safe">
-					<span>Feel Energized, Live Fully</span>
-				</div>
-			</div>
-		</div>
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="user-info">
+                <div class="user-avatar">R</div>
+                <div class="user-details">
+                  <h4>Robert Anderson</h4>
+                  <span>Verified ✓</span>
+                </div>
+              </div>
+              <div class="rating">★★★★★</div>
+            </div>
+            <p>"After trying multiple treatments for my insomnia, the Alpha Wearable was the only thing that actually worked. Now I sleep 7-8 continuous hours and feel renewed every morning."</p>
+            <div class="testimonial-footer">
+              <span class="product-used">Alpha Wearable</span>
+              <span class="time-used">8 weeks of use</span>
+            </div>
+          </div>
+        </div>
 
-	</div>
-</section>
+        <div class="trust-stats">
+          <div class="stat">
+            <span class="stat-number">4,561</span>
+            <span class="stat-label">Satisfied Customers</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">95%</span>
+            <span class="stat-label">Satisfaction Rate</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">10+</span>
+            <span class="stat-label">Cities Reached</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">879</span>
+            <span class="stat-label">App Downloads</span>
+          </div>
+        </div>
+
+        <div class="certifications">
+          <div class="cert-item">
+            <img src="/check.svg" alt="FDA">
+            <span>No Pills, Frequency Healing</span>
+          </div>
+          <div class="cert-item">
+            <img src="/check.svg" alt="Clinical">
+            <span>Restore Natural Balance</span>
+          </div>
+          <div class="cert-item">
+            <img src="/check.svg" alt="Safe">
+            <span>Feel Energized, Live Fully</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Floating Cart Button -->
   <button class="shopify-checkout" id="cart-button" style="position:fixed;bottom:20px;left:20px;z-index:1000;">
@@ -543,7 +537,7 @@ import Check from '../assets/check.svg'
     display:flex; flex-direction:column; align-items:center; gap:6px;
   }
   .stat-number{
-    color:#2596be;           /* brand blue */
+    color:#2596be;
     font-weight:800;
     font-size:1.6rem;
     line-height:1;
@@ -568,7 +562,6 @@ import Check from '../assets/check.svg'
   .testimonials-section .testimonials-grid .testimonial-card{gap:10px}
   .testimonials-section .trust-stats .stat-number{font-size:1.25rem}
 }
-
 
 /* ===== Fix gigantic checkmarks under the testimonials ===== */
 .testimonials-section .certifications{
@@ -711,7 +704,6 @@ import Check from '../assets/check.svg'
 
 /* --- everything else below is your existing CSS, unchanged --- */
 
-/* Optimized CSS - Removed animations and transitions for faster loading */
 .product-hero {
   padding: 120px 0 80px;
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
@@ -854,11 +846,18 @@ import Check from '../assets/check.svg'
 </style>
 
 <script>
+// Save ?discount=... from the URL (works for FREQUENCY20 or {{ coupon_code }})
+const __params = new URLSearchParams(location.search);
+const __emailDiscount = (__params.get('discount') || '').trim();
+if (__emailDiscount) {
+  try { localStorage.setItem('discount_code', __emailDiscount); } catch {}
+  const u = new URL(location.href); u.searchParams.delete('discount');
+  history.replaceState({}, '', u.toString());
+}
+
 // @ts-nocheck
-// SCRIPT COMPLETO PARA ORDER.ASTRO CON CARRITO + AH GATE (non-blocking redirect)
-
+// Full checkout + discount-UI script
 document.addEventListener('DOMContentLoaded', function () {
-
   // =================== AH lead capture helpers ===================
   function ahOpenLead(productType) {
     const ov = document.getElementById('ah-lead-overlay');
@@ -867,108 +866,89 @@ document.addEventListener('DOMContentLoaded', function () {
     ov?.setAttribute('aria-hidden', 'false');
     document.getElementById('ah-first')?.focus();
   }
-
   function ahCloseLead() {
     const ov = document.getElementById('ah-lead-overlay');
     ov?.classList.add('ah-hidden');
     ov?.setAttribute('aria-hidden', 'true');
   }
-
   document.getElementById('ah-lead-close')?.addEventListener('click', ahCloseLead);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') ahCloseLead(); });
 
-// ---- Best-effort backend call with timeout (never blocks checkout) ----
-// Try Astro API route first; if it ever fails, fallback to direct AH API
-// make sure this points to your Astro API route
-async function ahCallBackendRegisterLite(payload) {
-  try {
-    const controller = new AbortController();
-    const t = setTimeout(() => controller.abort(), 4500);
-    const res = await fetch('/api/ah-register-lite', {  // ✅ not /.netlify/functions/...
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-      signal: controller.signal
-    });
-    clearTimeout(t);
-    const json = await res.json().catch(() => ({}));
-    return res.ok && json.success !== false;
-  } catch {
-    return false;
-  }
-}
-
-
-
-  // ---- Show modal, wait for valid form once, stamp attributes (best-effort) ----
-  async function ahEnsureLeadAndAttributes(client, checkoutId) {
-  // Always prompt; do not bypass with localStorage
-  const form = document.getElementById('ah-lead-form');
-  const err  = document.getElementById('ah-lead-error');
-
-  const overlay = document.getElementById('ah-lead-overlay');
-  if (overlay?.classList.contains('ah-hidden')) {
-    const activeTab = document.querySelector('.tab-button.active');
-    const productType = (activeTab && activeTab.getAttribute('data-product')) || 'alpha';
-    ahOpenLead(productType);
-  }
-  if (!form) return false;
-
-  const data = await new Promise((resolve) => {
-    function submitHandler(e) {
-      e.preventDefault();
-      err.style.display = 'none';
-      const first = document.getElementById('ah-first').value.trim();
-      const last  = document.getElementById('ah-last').value.trim();
-      const email = document.getElementById('ah-email').value.trim();
-      const pass  = document.getElementById('ah-pass').value;
-      const pass2 = document.getElementById('ah-pass2').value;
-
-      if (!first || !last || !email || !pass || !pass2) {
-        err.textContent = 'Please complete all fields.'; err.style.display = 'block'; return;
-      }
-      if (pass.length < 8) {
-        err.textContent = 'Password must be at least 8 characters.'; err.style.display = 'block'; return;
-      }
-      if (pass !== pass2) {
-        err.textContent = 'Passwords do not match.'; err.style.display = 'block'; return;
-      }
-
-      form.removeEventListener('submit', submitHandler);
-      resolve({ first, last, email, pass, pass2 });
+  async function ahCallBackendRegisterLite(payload) {
+    try {
+      const controller = new AbortController();
+      const t = setTimeout(() => controller.abort(), 4500);
+      const res = await fetch('/api/ah-register-lite', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        signal: controller.signal
+      });
+      clearTimeout(t);
+      const json = await res.json().catch(() => ({}));
+      return res.ok && json.success !== false;
+    } catch {
+      return false;
     }
-    form.addEventListener('submit', submitHandler);
-  });
+  }
 
-  // Stamp NON-sensitive attributes to Shopify (best-effort)
-  try {
-    await client.checkout.updateAttributes(checkoutId, {
-      customAttributes: [
-        { key: 'ah_email', value: data.email },
-        { key: 'ah_first_name', value: data.first },
-        { key: 'ah_last_name',  value: data.last },
-        { key: 'ah_product_type', value: window.__ahProductType || 'alpha' },
-      ],
+  async function ahEnsureLeadAndAttributes(client, checkoutId) {
+    const form = document.getElementById('ah-lead-form');
+    const err  = document.getElementById('ah-lead-error');
+
+    const overlay = document.getElementById('ah-lead-overlay');
+    if (overlay?.classList.contains('ah-hidden')) {
+      const activeTab = document.querySelector('.tab-button.active');
+      const productType = (activeTab && activeTab.getAttribute('data-product')) || 'alpha';
+      ahOpenLead(productType);
+    }
+    if (!form) return false;
+
+    const data = await new Promise((resolve) => {
+      function submitHandler(e) {
+        e.preventDefault();
+        err.style.display = 'none';
+        const first = document.getElementById('ah-first').value.trim();
+        const last  = document.getElementById('ah-last').value.trim();
+        const email = document.getElementById('ah-email').value.trim();
+        const pass  = document.getElementById('ah-pass').value;
+        const pass2 = document.getElementById('ah-pass2').value;
+
+        if (!first || !last || !email || !pass || !pass2) { err.textContent = 'Please complete all fields.'; err.style.display = 'block'; return; }
+        if (pass.length < 8) { err.textContent = 'Password must be at least 8 characters.'; err.style.display = 'block'; return; }
+        if (pass !== pass2) { err.textContent = 'Passwords do not match.'; err.style.display = 'block'; return; }
+
+        form.removeEventListener('submit', submitHandler);
+        resolve({ first, last, email, pass, pass2 });
+      }
+      form.addEventListener('submit', submitHandler);
     });
-  } catch (e) { console.warn('Shopify attributes failed (continuing):', e); }
 
-  // Create or login the AH account via our server endpoint
-  const api = await ahCallBackendRegisterLite({
-    email: data.email,
-    firstName: data.first,
-    lastName: data.last,
-    productType: '1',
-    password: data.pass,
-    password_confirmation: data.pass2,
-  });
+    try {
+      await client.checkout.updateAttributes(checkoutId, {
+        customAttributes: [
+          { key: 'ah_email', value: data.email },
+          { key: 'ah_first_name', value: data.first },
+          { key: 'ah_last_name',  value: data.last },
+          { key: 'ah_product_type', value: window.__ahProductType || 'alpha' },
+        ],
+      });
+    } catch (e) { console.warn('Shopify attributes failed (continuing):', e); }
 
-  // Optional: show success text briefly (or just close)
-  ahCloseLead();
-  return true;
-}
+    await ahCallBackendRegisterLite({
+      email: data.email,
+      firstName: data.first,
+      lastName: data.last,
+      productType: '1',
+      password: data.pass,
+      password_confirmation: data.pass2,
+    });
 
+    ahCloseLead();
+    return true;
+  }
 
-  // ============ DATOS DE PRODUCTOS ============
+  // ============ Product images (unchanged) ============
   const productData = {
     alpha: { images: [
       { src: '/alpha-main.jpg', alt: 'Alpha Main' },
@@ -999,7 +979,6 @@ async function ahCallBackendRegisterLite(payload) {
     ]}
   };
 
-  // Get DOM elements
   const tabButtons = document.querySelectorAll('.tab-button');
   const productContents = document.querySelectorAll('.product-content');
   const mainImage = document.getElementById('main-product-image');
@@ -1065,7 +1044,6 @@ async function ahCallBackendRegisterLite(payload) {
     thumbnailGrid.style.alignItems = 'flex-start';
   }
 
-  // Product tabs
   tabButtons.forEach(button => {
     button.addEventListener('click', function () {
       const productType = this.dataset.product;
@@ -1078,7 +1056,6 @@ async function ahCallBackendRegisterLite(payload) {
     });
   });
 
-  // Detail tabs
   const detailTabs = document.querySelectorAll('.detail-tab');
   const detailPanels = document.querySelectorAll('.detail-panel');
   detailTabs.forEach(tab => {
@@ -1092,7 +1069,6 @@ async function ahCallBackendRegisterLite(payload) {
     });
   });
 
-  // URL param preselect
   const urlParams = new URLSearchParams(window.location.search);
   const preselectedProduct = urlParams.get('product');
   function selectProductTab(productType) {
@@ -1109,8 +1085,8 @@ async function ahCallBackendRegisterLite(payload) {
 
   function handleResize() {
     const thumbnails = document.querySelectorAll('#thumbnail-grid .thumbnail');
-    const thumbnailGrid = document.getElementById('thumbnail-grid');
-    if (thumbnails.length === 0 || !thumbnailGrid) return;
+    const grid = document.getElementById('thumbnail-grid');
+    if (thumbnails.length === 0 || !grid) return;
 
     function getThumbnailSize() {
       const width = window.innerWidth;
@@ -1133,7 +1109,7 @@ async function ahCallBackendRegisterLite(payload) {
       th.style.minWidth = size; th.style.minHeight = size;
       th.style.maxWidth = size; th.style.maxHeight = size;
     });
-    thumbnailGrid.style.gap = gap;
+    grid.style.gap = gap;
   }
   let resizeTimeout;
   window.addEventListener('resize', function () {
@@ -1142,108 +1118,206 @@ async function ahCallBackendRegisterLite(payload) {
   });
   setTimeout(handleResize, 100);
 
-  // ================= CARRITO SHOPIFY CON GATE AH =================
+  // ================= Shopify Cart w/ discount UI =================
   class ShopifyCart {
     constructor() {
       this.client = null;
       this.cartId = null;
       this.init();
     }
+
     async init() {
       if (typeof ShopifyBuy !== 'undefined' && window.SHOPIFY_CLIENT) {
         this.client = window.SHOPIFY_CLIENT;
         await this.getOrCreateCart();
         this.bindEvents();
+        await this.reflectDiscountUI(); // show discounted prices on page if code is active
         console.log('✅ Shopify Cart API inicializado');
       } else {
         setTimeout(() => this.init(), 500);
       }
     }
+
     async getOrCreateCart() {
       const savedCartId = localStorage.getItem('shopify-cart-id');
+      const code = (localStorage.getItem('discount_code') || '').trim();
+
       if (savedCartId) {
         try {
           const cart = await this.client.checkout.fetch(savedCartId);
           if (!cart.completedAt) {
             this.cartId = savedCartId;
+            if (code) { try { await this.client.checkout.addDiscount(this.cartId, code); } catch {} }
             this.updateCartUI(cart);
             return;
           }
-        } catch (e) {
-          console.log('Carrito anterior no válido, creando nuevo');
-        }
+        } catch {}
       }
+
       const cart = await this.client.checkout.create();
       this.cartId = cart.id;
       localStorage.setItem('shopify-cart-id', this.cartId);
+
+      if (code) { try { await this.client.checkout.addDiscount(this.cartId, code); } catch {} }
+
       this.updateCartUI(cart);
     }
-    bindEvents() {
-  // Never let a bad product button stop the rest of the bindings
-  try {
-    document.querySelectorAll('.shopify-add-item').forEach(button => {
-      button.addEventListener('click', async (e) => {
-        e.preventDefault();
-        const el = e.currentTarget;
-        const variantId = el.dataset.variantId;
-        const title = el.dataset.productTitle || 'Product';
-        const price = parseFloat(el.dataset.price || '0') || 0;
-        const quantity = 1;
 
-        // main image (fallback if missing)
-        const imgEl = document.getElementById('main-product-image');
-        const imageURL = (imgEl && imgEl.src) || (location.origin + '/favicon.png');
+    // ---------- UI helpers & reflector (now methods) ----------
+    ahFormatMoney(n) {
+      const v = Math.round(n * 100) / 100;
+      const isInt = Math.abs(v - Math.round(v)) < 1e-6;
+      return isInt ? String(Math.round(v)) : v.toFixed(2);
+    }
 
-        // product key from active tab (for Categories)
-        const activeTab = document.querySelector('.tab-button.active');
-        const productKey = activeTab?.getAttribute('data-product') || 'alpha';
+    ahApplyDiscountUI(percent) {
+      if (!percent || percent <= 0) return;
 
-        await this.addToCart({ variantId, quantity, title, price, imageURL, productKey });
-      });
-    });
-  } catch (err) {
-    console.warn('add-to-cart binding error (continuing):', err);
-  }
+      if (!document.querySelector('#ah-email-discount-badge')) {
+        const tabs = document.querySelector('.product-tabs');
+        if (tabs) {
+          const note = document.createElement('div');
+          note.id = 'ah-email-discount-badge';
+          note.style.cssText =
+            'margin:8px 0 18px;color:#0f766e;background:#ecfdf5;border:1px solid #99f6e4;padding:8px 12px;border-radius:10px;display:inline-block;font-weight:600;';
+          const code = (localStorage.getItem('discount_code') || '').trim();
+          note.textContent = `Email subscriber price active — ${percent}% off${code ? ` (code: ${code})` : ''}`;
+          tabs.after(note);
+        }
+      }
 
-  // Cart button -> always open modal
-  try {
-    const cartButton = document.getElementById('cart-button');
-    if (cartButton) {
-      cartButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.showCartModal();
+      document.querySelectorAll('.product-content').forEach(card => {
+        const btn = card.querySelector('.shopify-add-item');
+        if (!btn) return;
+
+        const base = parseFloat(btn.dataset.price || '0');
+        if (!base) return;
+
+        if (!btn.dataset.basePrice) btn.dataset.basePrice = base.toFixed(2);
+
+        const discounted = Math.max(0, Math.round(base * (1 - percent / 100) * 100) / 100);
+        const saved = Math.max(0, Math.round((base - discounted) * 100) / 100);
+
+        const currentEl  = card.querySelector('.price-section .current-price');
+        let originalEl   = card.querySelector('.price-section .original-price');
+        let savingsEl    = card.querySelector('.price-section .savings, .price-section .savings-bundle');
+
+        if (!originalEl && currentEl) {
+          originalEl = document.createElement('span');
+          originalEl.className = 'original-price';
+          originalEl.style.textDecoration = 'line-through';
+          originalEl.style.marginLeft = '12px';
+          currentEl.after(originalEl);
+          originalEl.setAttribute('data-ah-generated', '1');
+        }
+        if (!savingsEl && currentEl) {
+          savingsEl = document.createElement('span');
+          savingsEl.className = 'savings';
+          savingsEl.style.marginLeft = '12px';
+          savingsEl.style.background = 'linear-gradient(135deg,#87bd42,#2596be)';
+          savingsEl.style.color = '#fff';
+          savingsEl.style.padding = '6px 12px';
+          savingsEl.style.borderRadius = '20px';
+          savingsEl.style.fontSize = '.9rem';
+          savingsEl.style.fontWeight = '600';
+          (originalEl || currentEl).after(savingsEl);
+          savingsEl.setAttribute('data-ah-generated', '1');
+        }
+
+        if (currentEl) currentEl.textContent = `$${this.ahFormatMoney(discounted)}`;
+        if (originalEl) originalEl.textContent = `$${this.ahFormatMoney(base)}`;
+        if (savingsEl)  savingsEl.textContent = `Save $${this.ahFormatMoney(saved)}`;
+
+        const title = btn.dataset.productTitle || (card.querySelector('h1')?.textContent ?? 'Order');
+        btn.textContent = `Order ${title.replace(/ - .*$/, '')} - $${this.ahFormatMoney(discounted)}`;
       });
     }
-  } catch (err) {
-    console.warn('cart-button binding error:', err);
-  }
-}
+
+    async reflectDiscountUI() {
+      try {
+        const code = (localStorage.getItem('discount_code') || '').trim();
+        if (!code || !this.client || !this.cartId) return;
+
+        try { await this.client.checkout.addDiscount(this.cartId, code); } catch {}
+
+        const checkout = await this.client.checkout.fetch(this.cartId);
+        let pct = 0;
+
+        const apps = checkout && checkout.discountApplications || [];
+        if (apps.length && apps[0].value && typeof apps[0].value.percentage === 'number') {
+          pct = apps[0].value.percentage;
+        }
+
+        if (!pct && /20/.test(code)) pct = 20;
+
+        if (pct) this.ahApplyDiscountUI(pct);
+      } catch (e) {
+        console.warn('Could not reflect discount UI:', e);
+      }
+    }
+    // ----------------------------------------------------------
+
+    bindEvents() {
+      try {
+        document.querySelectorAll('.shopify-add-item').forEach(button => {
+          button.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const el = e.currentTarget;
+            const variantId = el.dataset.variantId;
+            const title = el.dataset.productTitle || 'Product';
+            const price = parseFloat(el.dataset.price || '0') || 0;
+            const quantity = 1;
+
+            const imgEl = document.getElementById('main-product-image');
+            const imageURL = (imgEl && imgEl.src) || (location.origin + '/favicon.png');
+
+            const activeTab = document.querySelector('.tab-button.active');
+            const productKey = activeTab?.getAttribute('data-product') || 'alpha';
+
+            await this.addToCart({ variantId, quantity, title, price, imageURL, productKey });
+          });
+        });
+      } catch (err) {
+        console.warn('add-to-cart binding error (continuing):', err);
+      }
+
+      try {
+        const cartButton = document.getElementById('cart-button');
+        if (cartButton) {
+          cartButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.showCartModal();
+          });
+        }
+      } catch (err) {
+        console.warn('cart-button binding error:', err);
+      }
+    }
 
     async addToCart({ variantId, quantity, title, price, imageURL, productKey }) {
-  try {
-    const lineItemsToAdd = [{ variantId: `gid://shopify/ProductVariant/${variantId}`, quantity }];
-    const cart = await this.client.checkout.addLineItems(this.cartId, lineItemsToAdd);
-    this.updateCartUI(cart);
-    this.showNotification(`${title} added to cart`);
+      try {
+        const lineItemsToAdd = [{ variantId: `gid://shopify/ProductVariant/${variantId}`, quantity }];
+        const cart = await this.client.checkout.addLineItems(this.cartId, lineItemsToAdd);
+        this.updateCartUI(cart);
+        this.showNotification(`${title} added to cart`);
 
-    // 🔔 Klaviyo: Added to Cart
-    window.klaviyo = window.klaviyo || [];
-    // standard payload fields Klaviyo recognizes
-    klaviyo.track("Added to Cart", {
-      ProductName: title,
-      ProductID: variantId,            // Shopify variant id
-      Categories: [productKey],        // e.g., "alpha", "charisma"
-      Brand: "Anywhere Healing",
-      Price: price,                    // single-unit price
-      Quantity: quantity,
-      URL: location.href,
-      ImageURL: imageURL
-    });
-  } catch (error) {
-    console.error('Error adding to cart:', error);
-    this.showNotification('Error adding product to cart');
-  }
-}
+        window.klaviyo = window.klaviyo || [];
+        klaviyo.track("Added to Cart", {
+          ProductName: title,
+          ProductID: variantId,
+          Categories: [productKey],
+          Brand: "Anywhere Healing",
+          Price: price,
+          Quantity: quantity,
+          URL: location.href,
+          ImageURL: imageURL
+        });
+      } catch (error) {
+        console.error('Error adding to cart:', error);
+        this.showNotification('Error adding product to cart');
+      }
+    }
+
     async removeFromCart(lineItemId) {
       try {
         const cart = await this.client.checkout.removeLineItems(this.cartId, [lineItemId]);
@@ -1254,6 +1328,7 @@ async function ahCallBackendRegisterLite(payload) {
         this.showNotification('Error removing product');
       }
     }
+
     async updateQuantity(lineItemId, quantity) {
       try {
         if (quantity <= 0) { await this.removeFromCart(lineItemId); return; }
@@ -1264,6 +1339,7 @@ async function ahCallBackendRegisterLite(payload) {
         this.showNotification('Error updating quantity');
       }
     }
+
     async showCartModal() {
       if (!this.cartId) return;
       try {
@@ -1271,6 +1347,7 @@ async function ahCallBackendRegisterLite(payload) {
         this.createCartModal(cart);
       } catch (error) { console.error('Error fetching cart:', error); }
     }
+
     createCartModal(cart) {
       const existingModal = document.getElementById('cart-modal');
       if (existingModal) existingModal.remove();
@@ -1330,11 +1407,9 @@ async function ahCallBackendRegisterLite(payload) {
           const productType = (activeTab && activeTab.getAttribute('data-product')) || '1';
           window.__ahProductType = productType;
 
-          // Gate: collect lead + try to stamp attributes + notify AH (best-effort)
           try {
             await ahEnsureLeadAndAttributes(this.client, this.cartId);
           } finally {
-            // ALWAYS continue to Shopify checkout after user submits valid info
             modal.remove();
             this.openShopifyCheckout();
           }
@@ -1363,13 +1438,47 @@ async function ahCallBackendRegisterLite(payload) {
         });
       });
     }
+
     async openShopifyCheckout() {
       if (!this.cartId) return;
+
       try {
-        const cart = await this.client.checkout.fetch(this.cartId);
-        window.location.href = cart.webUrl;
-      } catch (error) { console.error('Error opening checkout:', error); }
+        const code = (localStorage.getItem('discount_code') || '').trim();
+
+        if (code) {
+          try { await this.client.checkout.addDiscount(this.cartId, code); }
+          catch (e) { console.warn('addDiscount failed (continuing without URL param):', e); }
+        }
+
+        const checkout = await this.client.checkout.fetch(this.cartId);
+        const u = new URL(checkout.webUrl);
+        if (!u.searchParams.has('channel')) u.searchParams.set('channel', 'buy_button');
+        // 🚫 never pass discount via URL (prevents “invalid: channel”)
+        u.searchParams.delete('discount');
+
+        window.location.href = u.toString();
+      } catch (error) {
+        console.error('Error opening checkout:', error);
+
+        try {
+          localStorage.removeItem('shopify-cart-id');
+          const fresh = await this.client.checkout.create();
+          this.cartId = fresh.id;
+
+          const code = (localStorage.getItem('discount_code') || '').trim();
+          if (code) { try { await this.client.checkout.addDiscount(this.cartId, code); } catch {} }
+
+          const u = new URL(fresh.webUrl);
+          if (!u.searchParams.has('channel')) u.searchParams.set('channel', 'buy_button');
+          u.searchParams.delete('discount');
+
+          window.location.href = u.toString();
+        } catch (e2) {
+          console.error('Recovery failed:', e2);
+        }
+      }
     }
+
     updateCartUI(cart) {
       const cartCount = document.querySelector('.shopify-cart-count');
       if (cartCount && cart.lineItems) {
@@ -1377,6 +1486,7 @@ async function ahCallBackendRegisterLite(payload) {
         cartCount.textContent = totalItems.toString();
       }
     }
+
     showNotification(message) {
       const n = document.createElement('div');
       n.style.cssText = `position:fixed;top:20px;right:20px;background:#2596be;color:white;padding:15px 20px;border-radius:8px;z-index:10000;font-weight:600;box-shadow:0 4px 20px rgba(0,0,0,.1);font-family:var(--base-font);`;
@@ -1385,7 +1495,7 @@ async function ahCallBackendRegisterLite(payload) {
     }
   }
 
-  // Inicializar carrito Shopify
+  // Initialize
   window.shopifyCart = new ShopifyCart();
 });
 </script>
